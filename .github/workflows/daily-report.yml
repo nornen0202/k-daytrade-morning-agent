@@ -97,11 +97,17 @@ jobs:
               return $false
             }
             try {
+              $previousCodexHome = $env:CODEX_HOME
+              $versionHome = Join-Path $env:RUNNER_TEMP "codex-version-home"
+              New-Item -ItemType Directory -Force -Path $versionHome | Out-Null
+              $env:CODEX_HOME = $versionHome
               & $Candidate --version | Out-Null
               return ($LASTEXITCODE -eq 0)
             } catch {
               Write-Warning "Codex candidate failed: $Candidate :: $($_.Exception.Message)"
               return $false
+            } finally {
+              $env:CODEX_HOME = $previousCodexHome
             }
           }
 
@@ -213,13 +219,16 @@ jobs:
                   handle.write("REPORT_LLM_PROVIDER=template\n")
               raise SystemExit(0)
 
-          print("Codex account:", result.account)
+          account_type = result.account.get("type", "unknown")
+          plan_type = result.account.get("planType", "unknown")
+          print(f"Codex account type: {account_type}; plan: {plan_type}")
           print("First available models:", ", ".join(result.models[:8]))
           write_summary(
               [
                   "## Codex preflight passed",
                   "",
-                  f"- Account: {result.account}",
+                  f"- Account type: {account_type}",
+                  f"- Plan: {plan_type}",
                   f"- Models: {', '.join(result.models[:8])}",
                   f"- Binary: {os.getenv('CODEX_BINARY', '(auto)')}",
               ]
