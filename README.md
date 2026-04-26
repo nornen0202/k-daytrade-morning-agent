@@ -66,11 +66,10 @@ GitHub Actions cron은 기본적으로 UTC입니다. KST 평일 08:45 실행을 
 `45 23 * * 0-4`입니다. 수동 실행은 `workflow_dispatch`로 지원하며 날짜 입력을 받을 수
 있습니다.
 
-`daily-report.yml`의 리포트 생성 job은 TradingAgents와 같은 방식으로
-`runs-on: [self-hosted, Windows]`에서 실행됩니다. runner 서비스 계정에 Codex CLI가
-설치되어 있고 `codex login` 또는 `codex login --device-auth`가 완료되어 있어야 합니다.
-워크플로우는 `CODEX_BINARY` 후보를 탐색하고 `codex app-server` preflight로 로그인과
-`gpt-5.5` 모델 접근 가능 여부를 확인한 뒤 리포트를 생성합니다.
+`daily-report.yml`의 기본 리포트 생성 job은 `ubuntu-latest`에서 실행되어 self-hosted runner가
+없어도 Pages 배포까지 진행됩니다. `REPORT_LLM_PROVIDER=codex`이고 runner에 Codex CLI와 로그인이
+준비되어 있으면 `codex app-server` preflight 후 `gpt-5.5` 모델로 리포트를 생성합니다. Codex
+binary/login/model 접근이 불가능한 환경에서는 템플릿 작성기로 fallback해 배포를 계속합니다.
 
 검증 실패 시에도 Pages 배포는 계속됩니다. 이 경우 상세 페이지는 데이터 검증 실패 리포트를
 표시하고 실패 이유를 공개합니다.

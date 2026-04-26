@@ -165,7 +165,7 @@
       "title": "로봇 테마 시간외 변동 확대"
     }
   ],
-  "generated_at": "2026-04-27T06:39:38.288352+09:00",
+  "generated_at": "2026-04-27T06:46:39.045423+09:00",
   "markdown_length": 2730,
   "market_context": {
     "kospi": {
@@ -237,7 +237,7 @@
   "report_date": "2026-04-27",
   "sources": [
     {
-      "collected_at": "2026-04-27T06:39:38.288352+09:00",
+      "collected_at": "2026-04-27T06:46:39.045423+09:00",
       "published_at": "2026-04-27T07:10:00+09:00",
       "source_id": "src_policy_001",
       "source_name": "Mock Policy News",
@@ -246,7 +246,7 @@
       "source_url": "https://example.com/policy-semicon"
     },
     {
-      "collected_at": "2026-04-27T06:39:38.288352+09:00",
+      "collected_at": "2026-04-27T06:46:39.045423+09:00",
       "published_at": "2026-04-27T07:45:00+09:00",
       "source_id": "src_dart_001",
       "source_name": "OpenDART Mock",
@@ -255,7 +255,7 @@
       "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000001"
     },
     {
-      "collected_at": "2026-04-27T06:39:38.288352+09:00",
+      "collected_at": "2026-04-27T06:46:39.045423+09:00",
       "published_at": "2026-04-27T06:30:00+09:00",
       "source_id": "src_global_001",
       "source_name": "Mock Global News",
@@ -264,7 +264,7 @@
       "source_url": "https://example.com/global-chip"
     },
     {
-      "collected_at": "2026-04-27T06:39:38.288352+09:00",
+      "collected_at": "2026-04-27T06:46:39.045423+09:00",
       "published_at": "2026-04-26T18:10:00+09:00",
       "source_id": "src_theme_001",
       "source_name": "Mock Theme Feed",

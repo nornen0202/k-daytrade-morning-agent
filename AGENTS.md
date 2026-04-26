@@ -60,7 +60,7 @@ pytest
 - Do not implement order placement.
 - Do not call trading/order endpoints.
 - Store optional debug artifacts only under `private_artifacts/`.
-- Scheduled Codex execution should use the self-hosted Windows runner app-server path when `REPORT_LLM_PROVIDER=codex`, with `CODEX_BINARY` and `CODEX_HOME` coming from runner configuration or repository variables.
+- Scheduled Codex execution should use `codex app-server` when `REPORT_LLM_PROVIDER=codex` and a usable `CODEX_BINARY` is available. If Codex is unavailable, keep the deterministic template fallback working so Pages deployment can continue.
 
 ## Financial Language Rules
 

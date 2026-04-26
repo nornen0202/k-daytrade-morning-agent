@@ -23,10 +23,10 @@ concurrency:
 
 jobs:
   build:
-    runs-on: [self-hosted, Windows]
+    runs-on: ubuntu-latest
     defaults:
       run:
-        shell: powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File {0}
+        shell: pwsh
     env:
       PYTHONUTF8: "1"
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
@@ -76,10 +76,7 @@ jobs:
         run: |
           $reportDate = "${{ github.event.inputs.date }}"
           if ([string]::IsNullOrWhiteSpace($reportDate)) {
-            $reportDate = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId(
-              [DateTimeOffset]::UtcNow,
-              "Korea Standard Time"
-            ).ToString("yyyy-MM-dd")
+            $reportDate = python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Seoul')).date().isoformat())"
           }
           Add-Content -Path $env:GITHUB_ENV -Value "REPORT_DATE=$reportDate"
           Write-Host "REPORT_DATE=$reportDate"
@@ -109,15 +106,23 @@ jobs:
           if (-not [string]::IsNullOrWhiteSpace($env:CODEX_BINARY)) {
             $candidates.Add($env:CODEX_BINARY)
           }
-          $candidates.Add((Join-Path $env:USERPROFILE ".codex\.sandbox-bin\codex.exe"))
+          if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+            $candidates.Add((Join-Path $env:USERPROFILE ".codex\.sandbox-bin\codex.exe"))
+          }
+          if ($IsWindows) {
+            Get-ChildItem -Path "C:\Users\*\.codex\.sandbox-bin\codex.exe" -ErrorAction SilentlyContinue |
+              Sort-Object LastWriteTime -Descending |
+              ForEach-Object { $candidates.Add($_.FullName) }
 
-          Get-ChildItem -Path "C:\Users\*\.codex\.sandbox-bin\codex.exe" -ErrorAction SilentlyContinue |
-            Sort-Object LastWriteTime -Descending |
-            ForEach-Object { $candidates.Add($_.FullName) }
-
-          Get-ChildItem -Path "C:\Users\*\.vscode\extensions\openai.chatgpt-*\bin\windows-x86_64\codex.exe" -ErrorAction SilentlyContinue |
-            Sort-Object LastWriteTime -Descending |
-            ForEach-Object { $candidates.Add($_.FullName) }
+            Get-ChildItem -Path "C:\Users\*\.vscode\extensions\openai.chatgpt-*\bin\windows-x86_64\codex.exe" -ErrorAction SilentlyContinue |
+              Sort-Object LastWriteTime -Descending |
+              ForEach-Object { $candidates.Add($_.FullName) }
+          } else {
+            $command = Get-Command codex -ErrorAction SilentlyContinue
+            if ($command) {
+              $candidates.Add($command.Source)
+            }
+          }
 
           $resolvedBinary = $null
           foreach ($candidate in $candidates) {
