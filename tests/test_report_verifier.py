@@ -62,3 +62,12 @@ def test_verifier_rejects_numeric_claim_without_evidence():
 
     assert result.status == "fail"
     assert any("numeric material claim" in error for error in result.errors)
+
+
+def test_verifier_rejects_unsourced_price_like_claim():
+    context = _context()
+    markdown = "# Report\n- 현재가 10,000원 확인 필요.\n"
+    result = verify_report(context, markdown)
+
+    assert result.status == "fail"
+    assert any("price-like claim" in error for error in result.errors)

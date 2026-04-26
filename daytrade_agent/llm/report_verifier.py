@@ -97,7 +97,11 @@ def _check_price_claims(context: ReportContext, markdown: str, errors: list[str]
         and not line.startswith("#")
     ]
     for line in price_lines:
-        if "data_key:" not in line and not any(data_key in line for data_key in data_keys):
+        if (
+            "data_key:" not in line
+            and "source_id:" not in line
+            and not any(data_key in line for data_key in data_keys)
+        ):
             errors.append("price-like claim lacks price_snapshot data_key")
             return
 
