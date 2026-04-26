@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from datetime import datetime
 from importlib import import_module
 from typing import Any
@@ -202,8 +203,20 @@ def _name_from_ticker(ticker: object, fallback: str) -> str:
     except Exception:
         info = {}
     if isinstance(info, dict):
-        return str(info.get("shortName") or info.get("longName") or fallback)
+        name = str(info.get("shortName") or info.get("longName") or fallback).strip()
+        if _looks_like_symbol_bundle(name, fallback):
+            return fallback
+        return name
     return fallback
+
+
+def _looks_like_symbol_bundle(name: str, fallback: str) -> bool:
+    if not name:
+        return True
+    if "," in name:
+        return True
+    observed_codes = set(re.findall(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])", name))
+    return bool(observed_codes - {fallback})
 
 
 def _float_or_none(value: object) -> float | None:
