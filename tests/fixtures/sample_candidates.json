@@ -1,0 +1,15 @@
+{
+  "candidates": [
+    {
+      "symbol": "005930",
+      "name": "Samsung Electronics",
+      "expected_min_score": 5.0
+    },
+    {
+      "symbol": "039030",
+      "name": "이오테크닉스",
+      "expected_min_score": 5.0
+    }
+  ]
+}
+

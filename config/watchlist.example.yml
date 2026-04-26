@@ -1,0 +1,8 @@
+symbols:
+  - symbol: "005930"
+    name: "Samsung Electronics"
+    market: "KOSPI"
+  - symbol: "000660"
+    name: "SK hynix"
+    market: "KOSPI"
+

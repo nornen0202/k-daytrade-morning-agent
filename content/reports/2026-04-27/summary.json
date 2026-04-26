@@ -1,0 +1,276 @@
+{
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "categories": [
+        "global_issue",
+        "political_theme"
+      ],
+      "data_key": "price_005930_20260427_0835",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "반도체 세액 지원 정책 논의 (source_id: src_policy_001)",
+      "market": "KOSPI",
+      "name": "Samsung Electronics",
+      "observation_condition": "2026-04-27T08:35:00+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.81,
+      "source_ids": [
+        "src_global_001",
+        "src_policy_001"
+      ],
+      "symbol": "005930"
+    },
+    {
+      "categories": [
+        "global_issue",
+        "political_theme"
+      ],
+      "data_key": "price_000660_20260427_0835",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "반도체 세액 지원 정책 논의 (source_id: src_policy_001)",
+      "market": "KOSPI",
+      "name": "SK hynix",
+      "observation_condition": "2026-04-27T08:35:00+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.81,
+      "source_ids": [
+        "src_global_001",
+        "src_policy_001"
+      ],
+      "symbol": "000660"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_039030_20260427_0835",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "장비 공급계약 공시 (source_id: src_dart_001)",
+      "market": "KOSDAQ",
+      "name": "이오테크닉스",
+      "observation_condition": "2026-04-27T08:35:00+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.04,
+      "source_ids": [
+        "src_dart_001"
+      ],
+      "symbol": "039030"
+    },
+    {
+      "categories": [
+        "theme_surge"
+      ],
+      "data_key": "price_277810_20260427_missing",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "로봇 테마 시간외 변동 확대 (source_id: src_theme_001)",
+      "market": "KOSDAQ",
+      "name": "레인보우로보틱스",
+      "observation_condition": "가격 스냅샷 데이터 부족. 공식 시세 재확인 필요.",
+      "risk_flags": [
+        "missing_price_timestamp"
+      ],
+      "score": 3.51,
+      "source_ids": [
+        "src_theme_001"
+      ],
+      "symbol": "277810"
+    }
+  ],
+  "data_status": "ok",
+  "disclaimer": "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.",
+  "events": [
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [
+        "005930",
+        "000660"
+      ],
+      "category": "political_theme",
+      "confidence": 0.66,
+      "data_status": "ok",
+      "event_id": "evt_policy_semicon_20260427",
+      "published_at": "2026-04-27T07:10:00+09:00",
+      "source_id": "src_policy_001",
+      "source_name": "Mock Policy News",
+      "source_quality": 0.68,
+      "source_url": "https://example.com/policy-semicon",
+      "summary": "정부의 반도체 투자 지원 논의가 보도되어 관련 업종의 장전 관심도가 높아졌습니다.",
+      "title": "반도체 세액 지원 정책 논의"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor equipment"
+      ],
+      "candidate_symbols": [
+        "039030"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.78,
+      "data_status": "ok",
+      "event_id": "evt_dart_contract_20260427",
+      "published_at": "2026-04-27T07:45:00+09:00",
+      "source_id": "src_dart_001",
+      "source_name": "OpenDART Mock",
+      "source_quality": 0.85,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000001",
+      "summary": "반도체 장비 업체의 공급계약 공시가 확인되었습니다.",
+      "title": "장비 공급계약 공시"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [
+        "005930",
+        "000660"
+      ],
+      "category": "global_issue",
+      "confidence": 0.61,
+      "data_status": "ok",
+      "event_id": "evt_global_chip_20260427",
+      "published_at": "2026-04-27T06:30:00+09:00",
+      "source_id": "src_global_001",
+      "source_name": "Mock Global News",
+      "source_quality": 0.62,
+      "source_url": "https://example.com/global-chip",
+      "summary": "미국 주요 반도체 종목 흐름이 국내 관련주의 장전 참고 변수로 분류되었습니다.",
+      "title": "미국 반도체 지수 강세"
+    },
+    {
+      "affected_sectors": [
+        "robotics"
+      ],
+      "candidate_symbols": [
+        "277810"
+      ],
+      "category": "theme_surge",
+      "confidence": 0.55,
+      "data_status": "partial",
+      "event_id": "evt_theme_robot_20260427",
+      "published_at": "2026-04-26T18:10:00+09:00",
+      "source_id": "src_theme_001",
+      "source_name": "Mock Theme Feed",
+      "source_quality": 0.52,
+      "source_url": "https://example.com/theme-robot",
+      "summary": "로봇 관련 후보군 일부에서 장전 확인이 필요한 변동성 확대가 관찰되었습니다.",
+      "title": "로봇 테마 시간외 변동 확대"
+    }
+  ],
+  "generated_at": "2026-04-27T06:23:01.444152+09:00",
+  "markdown_length": 2716,
+  "market_context": {
+    "kospi": {
+      "as_of": "2026-04-27T08:35:00+09:00",
+      "change_rate": 0.42,
+      "data_key": "mk_kospi_20260427",
+      "value": 2748.12
+    },
+    "usdkrw": {
+      "as_of": "2026-04-27T08:30:00+09:00",
+      "data_key": "fx_usdkrw_20260427",
+      "value": 1375.4
+    }
+  },
+  "missing_data": [],
+  "price_snapshots": [
+    {
+      "as_of": "2026-04-27T08:35:00+09:00",
+      "change_rate": 1.12,
+      "data_key": "price_005930_20260427_0835",
+      "data_status": "ok",
+      "last_price": 72000.0,
+      "market": "KOSPI",
+      "name": "Samsung Electronics",
+      "provider": "mock_quote",
+      "session_type": "preopen",
+      "symbol": "005930",
+      "trading_value": 1110960000000,
+      "volume": 15430000
+    },
+    {
+      "as_of": "2026-04-27T08:35:00+09:00",
+      "change_rate": 2.05,
+      "data_key": "price_000660_20260427_0835",
+      "data_status": "ok",
+      "last_price": 185000.0,
+      "market": "KOSPI",
+      "name": "SK hynix",
+      "provider": "mock_quote",
+      "session_type": "preopen",
+      "symbol": "000660",
+      "trading_value": 976800000000,
+      "volume": 5280000
+    },
+    {
+      "as_of": "2026-04-27T08:35:00+09:00",
+      "change_rate": 3.4,
+      "data_key": "price_039030_20260427_0835",
+      "data_status": "ok",
+      "last_price": 148500.0,
+      "market": "KOSDAQ",
+      "name": "이오테크닉스",
+      "provider": "mock_quote",
+      "session_type": "preopen",
+      "symbol": "039030",
+      "trading_value": 121770000000,
+      "volume": 820000
+    },
+    {
+      "data_key": "price_277810_20260427_missing",
+      "data_status": "insufficient",
+      "market": "KOSDAQ",
+      "name": "레인보우로보틱스",
+      "provider": "mock_quote",
+      "session_type": "after_hours",
+      "symbol": "277810"
+    }
+  ],
+  "report_date": "2026-04-27",
+  "sources": [
+    {
+      "collected_at": "2026-04-27T06:23:01.444152+09:00",
+      "published_at": "2026-04-27T07:10:00+09:00",
+      "source_id": "src_policy_001",
+      "source_name": "Mock Policy News",
+      "source_quality": 0.68,
+      "source_type": "political_theme",
+      "source_url": "https://example.com/policy-semicon"
+    },
+    {
+      "collected_at": "2026-04-27T06:23:01.444152+09:00",
+      "published_at": "2026-04-27T07:45:00+09:00",
+      "source_id": "src_dart_001",
+      "source_name": "OpenDART Mock",
+      "source_quality": 0.85,
+      "source_type": "corporate_disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000001"
+    },
+    {
+      "collected_at": "2026-04-27T06:23:01.444152+09:00",
+      "published_at": "2026-04-27T06:30:00+09:00",
+      "source_id": "src_global_001",
+      "source_name": "Mock Global News",
+      "source_quality": 0.62,
+      "source_type": "global_issue",
+      "source_url": "https://example.com/global-chip"
+    },
+    {
+      "collected_at": "2026-04-27T06:23:01.444152+09:00",
+      "published_at": "2026-04-26T18:10:00+09:00",
+      "source_id": "src_theme_001",
+      "source_name": "Mock Theme Feed",
+      "source_quality": 0.52,
+      "source_type": "theme_surge",
+      "source_url": "https://example.com/theme-robot"
+    }
+  ],
+  "verification_status": "pass"
+}

@@ -1,0 +1,7 @@
+high_volatility_change_rate_abs: 8.0
+stale_hours: 48
+low_source_quality_below: 0.4
+low_confidence_below: 0.45
+missing_price_penalty: 1.0
+high_risk_penalty: 1.5
+

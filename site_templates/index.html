@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Latest - K-Daytrade Morning Brief{% endblock %}
+{% block page_title %}최신 장전 브리핑{% endblock %}
+{% block content %}
+  {% if latest %}
+  <section class="band">
+    <div class="section-heading">
+      <div>
+        <h2>{{ latest.report_date }}</h2>
+        <p class="muted">Generated {{ latest.summary.generated_at }}</p>
+      </div>
+      <a class="button" href="/reports/{{ latest.report_date }}/">상세 보기</a>
+    </div>
+    <p class="notice">{{ latest.summary.disclaimer }}</p>
+    <div class="status {{ latest.verification.status }}">
+      검증 상태: {{ latest.verification.status }}
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>후보</th>
+            <th>점수</th>
+            <th>근거</th>
+            <th>리스크</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for candidate in latest.summary.candidates[:8] %}
+          <tr>
+            <td><strong>{{ candidate.name }}</strong><br><span>{{ candidate.symbol }}</span></td>
+            <td>{{ candidate.score }}</td>
+            <td>{{ candidate.source_ids|join(", ") }}{% if candidate.data_key %}; {{ candidate.data_key }}{% endif %}</td>
+            <td>{{ candidate.risk_flags|join(", ") }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4">데이터 부족</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% else %}
+  <section class="band">
+    <h2>데이터 부족</h2>
+    <p class="notice">아직 공개 리포트가 없습니다.</p>
+  </section>
+  {% endif %}
+
+  <section class="band">
+    <div class="section-heading">
+      <h2>최근 리포트</h2>
+      <a href="/reports/">전체 보기</a>
+    </div>
+    <ol class="archive-list">
+      {% for report in reports %}
+      <li><a href="/reports/{{ report.report_date }}/">{{ report.report_date }}</a> <span>{{ report.verification.status }}</span></li>
+      {% else %}
+      <li>데이터 부족</li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endblock %}
+

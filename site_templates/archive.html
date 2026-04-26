@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Archive - K-Daytrade Morning Brief{% endblock %}
+{% block page_title %}리포트 아카이브{% endblock %}
+{% block content %}
+  <section class="band">
+    <ol class="archive-list">
+      {% for report in reports %}
+      <li>
+        <a href="/reports/{{ report.report_date }}/">{{ report.report_date }}</a>
+        <span>Generated {{ report.summary.generated_at }} · 검증 {{ report.verification.status }}</span>
+      </li>
+      {% else %}
+      <li>데이터 부족</li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endblock %}
+

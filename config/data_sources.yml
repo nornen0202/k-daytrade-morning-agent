@@ -1,0 +1,18 @@
+opendart:
+  enabled_env: OPENDART_API_KEY
+  list_url: https://opendart.fss.or.kr/api/list.json
+news:
+  enabled_env: NEWS_API_KEY
+  rss_urls_env: NEWS_RSS_URLS
+quote_provider:
+  url_env: QUOTE_PROVIDER_URL
+  api_key_env: QUOTE_PROVIDER_API_KEY
+openai:
+  api_key_env: OPENAI_API_KEY
+  model_env: OPENAI_REPORT_MODEL
+  default_model: gpt-5.5
+llm:
+  provider_env: REPORT_LLM_PROVIDER
+  default_provider: codex
+  codex_model_env: CODEX_REPORT_MODEL
+  default_codex_model: gpt-5.5

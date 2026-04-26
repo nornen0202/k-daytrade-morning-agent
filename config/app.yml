@@ -1,0 +1,9 @@
+project_name: k-daytrade-morning-agent
+timezone: Asia/Seoul
+default_report_time: "08:45"
+content_dir: content/reports
+dist_dir: dist
+private_artifacts_dir: private_artifacts
+default_top_n: 10
+disclaimer: "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다."
+
