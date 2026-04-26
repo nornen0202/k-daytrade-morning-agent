@@ -1,7 +1,5 @@
 {
   "errors": [
-    "prohibited wording found",
-    "unknown symbol mentioned: 002230, 002837, 600584",
     "price-like claim lacks price_snapshot data_key"
   ],
   "status": "fail",

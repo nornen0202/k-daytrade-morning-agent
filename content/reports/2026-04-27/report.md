@@ -1,13 +1,11 @@
 # 데이터 검증 실패 리포트 - 2026-04-27
 
-생성 시각: 2026-04-27T06:51:57.931306+09:00
+생성 시각: 2026-04-27T06:55:00.607773+09:00
 
 > 이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.
 
 ## 검증 실패 이유
 
-- prohibited wording found
-- unknown symbol mentioned: 002230, 002837, 600584
 - price-like claim lacks price_snapshot data_key
 
 ## 경고
