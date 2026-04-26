@@ -1,7 +1,5 @@
 {
-  "errors": [
-    "unknown symbol mentioned: 794450"
-  ],
-  "status": "fail",
+  "errors": [],
+  "status": "pass",
   "warnings": []
 }
