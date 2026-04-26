@@ -38,8 +38,8 @@ def test_news_provider_uses_naver_when_configured(monkeypatch):
             {
                 "items": [
                     {
-                        "title": "<b>반도체</b> 정책 뉴스",
-                        "description": "정부 산업 정책 관련 보도",
+                        "title": "<b>반도체</b> 123456 정책 뉴스",
+                        "description": "정부 산업 정책 관련 보도와 작전주 표현",
                         "originallink": "https://example.com/news/1",
                         "pubDate": "Mon, 27 Apr 2026 08:10:00 +0900",
                     }
@@ -53,6 +53,7 @@ def test_news_provider_uses_naver_when_configured(monkeypatch):
 
     assert result.events
     assert result.events[0].source_name == "Naver News"
-    assert result.events[0].title == "반도체 정책 뉴스"
+    assert result.events[0].title == "반도체 종목코드 확인 필요 정책 뉴스"
+    assert "근거 부족 테마" in result.events[0].summary
     assert result.events[0].affected_sectors == ["semiconductor"]
     assert result.sources[0].source_url is not None

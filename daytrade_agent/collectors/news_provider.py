@@ -14,6 +14,14 @@ from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_d
 
 _NAVER_ENDPOINT = "https://openapi.naver.com/v1/search/news.json"
 _NEWSAPI_ENDPOINT = "https://newsapi.org/v2/everything"
+_PUBLIC_REPLACEMENTS = {
+    "무조건 매수": "매수 강요 표현",
+    "확실한 수익": "수익 보장성 표현",
+    "상한가 확정": "가격 급등 확정 표현",
+    "작전주": "근거 부족 테마",
+    "세력주": "수급 집중 관련 표현",
+    "조작": "보도 기준 의혹",
+}
 
 
 def collect_news_category(
@@ -224,7 +232,10 @@ def _parse_pubdate(value: object) -> datetime | None:
 
 
 def _strip_html(text: str) -> str:
-    return re.sub(r"<[^>]+>", "", html.unescape(text or "")).strip()
+    sanitized = re.sub(r"<[^>]+>", "", html.unescape(text or "")).strip()
+    for forbidden, replacement in _PUBLIC_REPLACEMENTS.items():
+        sanitized = sanitized.replace(forbidden, replacement)
+    return re.sub(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])", "종목코드 확인 필요", sanitized)
 
 
 def _affected_sectors(title: str, summary: str) -> list[str]:

@@ -38,6 +38,12 @@ CERTAINTY_PATTERNS = [
 ]
 PRICE_LIKE_PATTERN = re.compile(r"\d[\d,]*(?:\uc6d0|%)")
 SYMBOL_PATTERN = re.compile(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])")
+PRICE_CONTEXT_PATTERN = re.compile(
+    r"(\uac00\uaca9|\ud604\uc7ac\uac00|\uc2dc\uc138|\uc804\uc77c\ub300\ube44|"
+    r"\ub4f1\ub77d\ub960|\uc0c1\uc2b9\ub960|\ud558\ub77d\ub960|\uac70\ub798\ub300\uae08|"
+    r"last_price|change_rate|trading_value|price)",
+    re.IGNORECASE,
+)
 
 
 def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
@@ -86,7 +92,9 @@ def _check_price_claims(context: ReportContext, markdown: str, errors: list[str]
     price_lines = [
         line
         for line in markdown.splitlines()
-        if PRICE_LIKE_PATTERN.search(line) and not line.startswith("#")
+        if PRICE_LIKE_PATTERN.search(line)
+        and PRICE_CONTEXT_PATTERN.search(line)
+        and not line.startswith("#")
     ]
     for line in price_lines:
         if "data_key:" not in line and not any(data_key in line for data_key in data_keys):
