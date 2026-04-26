@@ -18,6 +18,8 @@ debug-*.json
 api-dump*.json
 private_artifacts/
 .codex-report-workspace/
+.codex-preflight/
+.codex-local-preflight*/
 .runtime/
 
 dist/

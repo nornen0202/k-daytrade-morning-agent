@@ -23,7 +23,10 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Defaults to GitHub-hosted runners. Set repository variable REPORT_RUNS_ON to
+    # ["self-hosted","Windows","X64","codex","k-daytrade"] to use the local
+    # Codex-enabled self-hosted runner.
+    runs-on: ${{ fromJSON(vars.REPORT_RUNS_ON || '["ubuntu-latest"]') }}
     defaults:
       run:
         shell: pwsh
