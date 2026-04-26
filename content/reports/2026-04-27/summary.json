@@ -1,16 +1,16 @@
 {
-  "candidate_count": 6,
+  "candidate_count": 8,
   "candidates": [
     {
       "categories": [
         "political_theme"
       ],
-      "data_key": "price_4b97c85212af",
+      "data_key": "price_83d5c2458162",
       "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
       "main_reason": "Is Micron Technology, Inc. (MU) Among the Best AI Stocks to Buy According to Billionaire Ken Griffin? (source_id: src_b0d1ca442c67)",
       "market": "KOSPI",
       "name": "SK hynix",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "none"
       ],
@@ -31,12 +31,12 @@
       "categories": [
         "political_theme"
       ],
-      "data_key": "price_2cab08dd4dab",
+      "data_key": "price_b8f4c36b81ee",
       "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
       "main_reason": "The Week in Numbers: gas price peaks, record protest numbers (source_id: src_b021569323ef)",
       "market": "KOSPI",
       "name": "SamsungElec",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "none"
       ],
@@ -53,12 +53,12 @@
       "categories": [
         "political_theme"
       ],
-      "data_key": "price_682d31eb1ede",
+      "data_key": "price_3788e386e70e",
       "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
       "main_reason": "Crypto exchange Bithumb postpones IPO bid amid economic uncertainty (source_id: src_7e73cc753cac)",
       "market": "KOSPI",
       "name": "NAVER",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "none"
       ],
@@ -77,12 +77,12 @@
       "categories": [
         "political_theme"
       ],
-      "data_key": "price_84c7af7b6083",
+      "data_key": "price_a785b24454af",
       "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
       "main_reason": "Latest News In E-Commerce - South Korea's Social Commerce Boom Driven By Innovation (source_id: src_fb373f50dd29)",
       "market": "KOSPI",
       "name": "Kakao",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "none"
       ],
@@ -103,12 +103,50 @@
       "categories": [
         "corporate_disclosure"
       ],
-      "data_key": "price_9b09a08fdbdb",
+      "data_key": "price_a616834f1e08",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "효력발생안내( 2026.4.15. 제출 증권신고서(주식의포괄적교환ㆍ이전) ) (source_id: src_0f89d616ce60)",
+      "market": "KOSPI",
+      "name": "Netmarble",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 6.83,
+      "source_ids": [
+        "src_0f89d616ce60"
+      ],
+      "symbol": "251270"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_f0e092a0e6bd",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "임원ㆍ주요주주특정증권등소유상황보고서 (source_id: src_570fad62fdbf)",
+      "market": "KOSPI",
+      "name": "042040",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 6.64,
+      "source_ids": [
+        "src_570fad62fdbf"
+      ],
+      "symbol": "042040"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_712a581cfaab",
       "invalidation_condition": "장초 변동성이 과도하면 추적 우선순위 하향.",
       "main_reason": "[기재정정]주요사항보고서(유상증자결정) (source_id: src_41454a1d00b7)",
       "market": "KOSPI",
       "name": "065420",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "high_volatility"
       ],
@@ -122,12 +160,12 @@
       "categories": [
         "theme_surge"
       ],
-      "data_key": "price_fd7ea03cf98c",
+      "data_key": "price_c7dd2459e6a7",
       "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
       "main_reason": "Robotics trade in focus: 2 overlooked stock picks (source_id: src_d385b9dccca3)",
       "market": "KOSPI",
       "name": "277810",
-      "observation_condition": "2026-04-27T07:20:11.492038+09:00 기준 시세와 거래대금 재확인.",
+      "observation_condition": "2026-04-27T07:43:46.828086+09:00 기준 시세와 거래대금 재확인.",
       "risk_flags": [
         "none"
       ],
@@ -138,10 +176,40 @@
       "symbol": "277810"
     }
   ],
-  "data_as_of": "2026-04-27T07:20:11.492038+09:00",
+  "data_as_of": "2026-04-27T07:43:46.828086+09:00",
   "data_status": "ok",
   "disclaimer": "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.",
   "events": [
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_9b169983646b",
+      "published_at": "2026-04-27T07:39:00+09:00",
+      "source_id": "src_942331d6aac8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.munhwa.com/article/11585087?ref=naver",
+      "summary": "그러나 미국의 주요 언론과 정책 엘리트 상당수는 전혀 다르게 본다. 그들에게 문제는 이란이 아니라... 주식시장 역시 같은 논리로 움직인다. 월가는 영웅보다 안정성을 선호한다. 갑작스러운 공습, 협상 취소, 해상...",
+      "title": "[기고]김태준의 美·이란戰 중계  “이제 바다는 공짜가 아니다”…..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_fb4c95dc1b1c",
+      "published_at": "2026-04-27T07:26:00+09:00",
+      "source_id": "src_795c405d0255",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.sejungilbo.com/news/articleView.html?idxno=57959",
+      "summary": "상법은 주식회사의 이익배당에 있어 회계기간의 결산기를 배당가능이익 산출의 기준시점으로 하고 있다... (사)한국조세정책학회 부회장 △ 전 (사)한국조세연구포럼 회장 △ 전 (사)한국지방세학회 회장 △ 전 기재부...",
+      "title": "[판세] 법인세 미감면 법인으로부터 받은 배당소득은 배당세액공제 대상..."
+    },
     {
       "affected_sectors": [
         "ai"
@@ -267,36 +335,6 @@
       "source_url": "https://www.ebn.co.kr/news/articleView.html?idxno=1706568",
       "summary": "이는 전체 발행주식 수의 약 4.6%에 해당하는 규모로, 회사 설립 이후 처음으로 단행되는 자사주 소각... 이를 통해 단기적인 조치에 그치지 않고, 일정한 기준에 따라 자사주 정책을 반복 운영하는 구조를 마련한다는...",
       "title": "[Car & Now] 벤츠 'E 200 익스클루시브' 출시·포르쉐 '카이엔 쿠페 일렉..."
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "political_theme",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_4d962c9a8495",
-      "published_at": "2026-04-27T06:30:00+09:00",
-      "source_id": "src_1f5c84b63970",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=370404",
-      "summary": "심지어 주식시장은 세계에서 가장 높은 상승률을 기록하고 있다. 어떤 지표를 보더라도 전형적인 위기... 신현송 한국은행 총재는 취임 일성으로 통화 정책의 신중하고 유연한 운영을 강조했다. 그러나 신 총재의 말처럼...",
-      "title": "환율 1500원 시대…외환위기와는 다른데, 더 어렵다 [김상철의 경제 톺..."
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "political_theme",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_16ab69a02137",
-      "published_at": "2026-04-27T06:22:00+09:00",
-      "source_id": "src_dceacc07b98d",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_url": "https://view.asiae.co.kr/article/2026042407533296977",
-      "summary": "역대 대통령들은 정책 추진 방향에 맞춰 다양한 펀드 상품에 투자했다. 문재인 전 대통령은 일본의... 문 대통령은 2021년 1월 필승코리아펀드의 수익금만 환매하고, 금액을 보태 '한국판 뉴딜펀드'에...",
-      "title": "'대통령의 펀드' 함께 투자했다면 지금 수익률은?"
     },
     {
       "affected_sectors": [
@@ -1043,6 +1081,23 @@
       "category": "political_theme",
       "confidence": 0.5,
       "data_status": "partial",
+      "event_id": "evt_7a2f3a44a573",
+      "published_at": "2026-04-26T16:07:13+09:00",
+      "source_id": "src_11e51fe3420f",
+      "source_name": "GuruFocus",
+      "source_quality": 0.58,
+      "source_url": "https://www.gurufocus.com/stock/HAM:BN9/financials",
+      "summary": "This article from GuruFocus provides a comprehensive financial overview of Bank of New York Mellon Corp (HAM:BN9), including its stock price, market capitalization, P/E and P/B ratios, and GF Score. It details 30-year financial data focused on growth rates for key metrics such as revenue, EPS, dividends, and book value. The page also explains how growth rates are calculated and offers various options for viewing and exporting financial data.",
+      "title": "Bank of New York Mellon Corp (HAM:BN9) Stock Price & 30 Year Financial Data"
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
       "event_id": "evt_dfbaff208f55",
       "published_at": "2026-04-26T15:49:22+09:00",
       "source_id": "src_a298c166e0dd",
@@ -1429,21 +1484,6 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-acquires-771882-shares-of-the-tjx-companies-inc-tjx-2026-04-26/",
       "summary": "Vanguard Group Inc. has increased its stake in The TJX Companies, Inc. (NYSE:TJX) by 0.8%, purchasing an additional 771,882 shares during the fourth quarter, bringing their total holdings to 102,733,668 shares valued at approximately $15.78 billion. This acquisition represents about 9.25% of the company. Other institutional investors also adjusted their positions in TJX, while CEO Ernie Herrman sold 30,000 shares for $4.83 million, reducing insider ownership to 0.13%.",
       "title": "Vanguard Group Inc. Acquires 771,882 Shares of The TJX Companies, Inc. $TJX"
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "political_theme",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_aaff7a869f98",
-      "published_at": "2026-04-26T12:20:38+09:00",
-      "source_id": "src_7913577feefe",
-      "source_name": "MarketBeat",
-      "source_quality": 0.58,
-      "source_url": "https://www.marketbeat.com/instant-alerts/filing-universal-beteiligungs-und-servicegesellschaft-mbh-acquires-11792-shares-of-the-j-m-smucker-company-sjm-2026-04-26/",
-      "summary": "Universal Beteiligungs und Servicegesellschaft mbH increased its stake in The J. M. Smucker Company (SJM) by 9.8% in Q4, acquiring an additional 11,792 shares to bring its total holding to 131,985 shares, valued at approximately $12.96 million. SJM reported strong Q4 EPS of $2.38, exceeding estimates, and announced a quarterly dividend of $1.10. Despite a mixed analyst outlook and negative net margin and PE ratio, institutional investors own 81.66% of the stock, with several major funds significantly increasing their positions.",
-      "title": "Universal Beteiligungs und Servicegesellschaft mbH Acquires 11,792 Shares of The J. M. Smucker Company $SJM"
     },
     {
       "affected_sectors": [
@@ -1928,6 +1968,130 @@
       "source_url": "https://www.ccn.com/news/crypto/samsung-kakao-and-naver-are-powering-koreas-stablecoin-push/",
       "summary": "South Korea’s major holding companies are rushing to partner with tech giants like Samsung in the wake of upcoming stablecoin regulations. The country’s financial regulator ...",
       "title": "How Samsung, Kakao, and Naver Are Powering Korea’s Stablecoin Push"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "251270"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_1827cd889c33",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_0f89d616ce60",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260415100122",
+      "summary": "넷마블 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.15. 제출 증권신고서(주식의포괄적교환ㆍ이전) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_dc669f193646",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_60b8849dfe1c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100002",
+      "summary": "브이아이자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.23. 제출 증권신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_583839f29c8d",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_f76aad8fc17b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100012",
+      "summary": "신한자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.21. 제출 증권신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_f1c88874625c",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_12025f0bef8e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100011",
+      "summary": "신한자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.23. 제출 증권신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_3d0f4de39b4e",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_83756d694a05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100010",
+      "summary": "한국투자신탁운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.9. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_b7666f2ab143",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_ab376ef04f20",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100009",
+      "summary": "한국투자신탁운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.9. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_94bdb93d7adb",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_5751a9b6e3e7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100006",
+      "summary": "한국투자신탁운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.4.9. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "042040"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_dbc1bbd394e2",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_570fad62fdbf",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000815",
+      "summary": "케이피엠테크 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
     },
     {
       "affected_sectors": [],
@@ -3254,13 +3418,43 @@
       "confidence": 0.5,
       "data_status": "partial",
       "event_id": "evt_7213cf22dcb0",
-      "published_at": "2026-04-27T07:09:57+09:00",
+      "published_at": "2026-04-27T07:31:31+09:00",
       "source_id": "src_05790ceaacd3",
       "source_name": "Investor's Business Daily",
       "source_quality": 0.45,
       "source_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-apple-amazon-google-earnings-ai-iran-talks/?src=A00220&yptr=yahoo",
       "summary": "The stock market is at highs but results and spending for Apple, Amazon, Google and more will be key. Iran talks were called off.",
       "title": "Dow Jones Futures Fall After Iran Talks Shelved; Apple, Amazon, Google Lead Earnings Wave"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_d308c50d1c3d",
+      "published_at": "2026-04-27T07:30:00+09:00",
+      "source_id": "src_cf6a205e10f0",
+      "source_name": "Motley Fool",
+      "source_quality": 0.45,
+      "source_url": "https://www.fool.com/investing/2026/04/26/the-stock-market-recently-did-something-witnessed/",
+      "summary": "Is now a good time to buy stocks?",
+      "title": "The Stock Market Recently Did Something Witnessed Only Once Before in 154 Years -- and History Is Very Clear About What Happens Next."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_88bff1065cae",
+      "published_at": "2026-04-27T07:21:34+09:00",
+      "source_id": "src_c7b600c14be2",
+      "source_name": "Reuters",
+      "source_quality": 0.45,
+      "source_url": "https://sg.finance.yahoo.com/news/oil-jumps-stock-futures-slip-222134935.html",
+      "summary": "SINGAPORE, April 27 (Reuters) - Oil prices rose, the dollar inched higher and U.S. stock futures wobbled lower in early Asia trade on Monday after U.S.-Iran peace talks stalled over the weekend,",
+      "title": "Oil jumps, stock futures slip as US-Iran talks stall"
     },
     {
       "affected_sectors": [],
@@ -3325,38 +3519,6 @@
       "source_url": "https://www.barrons.com/articles/stock-futures-trading-sunday-676fbb19?siteid=yhoof2&yptr=yahoo",
       "summary": "The S&P 500 and Nasdaq prepare for another week of trading, with geopolitics and economic data in focus.",
       "title": "Stock Futures on Deck After Record-Setting Friday"
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "global_issue",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_558393b7dc7e",
-      "published_at": "2026-04-27T04:32:00+09:00",
-      "source_id": "src_38ba95d52539",
-      "source_name": "Barrons.com",
-      "source_quality": 0.45,
-      "source_url": "https://www.barrons.com/articles/buffett-abel-berkshire-hathaway-stock-43f2385f?siteid=yhoof2&yptr=yahoo",
-      "summary": "Berkshire Hathaway stock is in the midst of one of its worst periods of underperformance relative to the S&P 500 since Buffett took control in 1965.",
-      "title": "Warren Buffett Found Plenty of Stock Buys Over the Years. Right Now His Company Looks Like One."
-    },
-    {
-      "affected_sectors": [
-        "ai"
-      ],
-      "candidate_symbols": [],
-      "category": "global_issue",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_01e927c519b9",
-      "published_at": "2026-04-27T03:05:00+09:00",
-      "source_id": "src_7b2ad7c1a843",
-      "source_name": "Motley Fool",
-      "source_quality": 0.45,
-      "source_url": "https://www.fool.com/investing/2026/04/26/this-monster-dividend-stock-boasts-the-free-cash/",
-      "summary": "Verizon is a dividend darling, and more importantly, it has the means to support long-term payout growth.",
-      "title": "This Monster Dividend Stock Boasts the Free Cash Flow to Mint Millionaires"
     },
     {
       "affected_sectors": [
@@ -3569,6 +3731,21 @@
       "title": "The stock market’s most hated rally keeps getting stronger"
     },
     {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_acb0471fc2fa",
+      "published_at": "2026-04-27T07:32:22+09:00",
+      "source_id": "src_d1f24a5d886c",
+      "source_name": "Insider Monkey",
+      "source_quality": 0.45,
+      "source_url": "https://finance.yahoo.com/markets/stocks/articles/cerebras-systems-close-ipo-means-223222531.html",
+      "summary": "​NVIDIA Corporation (NASDAQ:NVDA) is one of the Best Stocks to Buy While the Market Is Down. ​On April 18, Reuters announced that Cerebras Systems, which is a venture capital-backed, Silicon Valley-based company, filed for a US initial public offering. This can mean direct competition for NVIDIA Corporation (NASDAQ:NVDA), as on its website, Cerebras Systems boasts […]",
+      "title": "Cerebras Systems Close to IPO, Here’s What It Means For Nvidia (NVDA)"
+    },
+    {
       "affected_sectors": [
         "ai"
       ],
@@ -3616,21 +3793,6 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/magnificent-seven-trillion-dollar-stock-invest/",
       "summary": "Even the most dominant companies face uncertainty, a reality that the best investors know to be true.",
       "title": "The Biggest Risk Facing This \"Magnificent Seven\" Trillion-Dollar Stock Is Something Investors Shouldn't Worry About Yet"
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "global_issue",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_aaaabe334c22",
-      "published_at": "2026-04-27T03:50:00+09:00",
-      "source_id": "src_42e596bf830b",
-      "source_name": "Motley Fool",
-      "source_quality": 0.45,
-      "source_url": "https://www.fool.com/investing/2026/04/26/down-30-from-its-all-time-high-is-now-the-perfect/",
-      "summary": "Palantir hasn't rallied to all-time highs like its peers.",
-      "title": "Down 30% From Its All-Time High, Is Now the Perfect Buying Opportunity for Palantir's Stock?"
     },
     {
       "affected_sectors": [
@@ -4300,6 +4462,21 @@
       "category": "theme_surge",
       "confidence": 0.5,
       "data_status": "partial",
+      "event_id": "evt_4186877eb261",
+      "published_at": "2026-04-26T15:08:58+09:00",
+      "source_id": "src_eb7a4b66b6fb",
+      "source_name": "MSN",
+      "source_quality": 0.58,
+      "source_url": "http://www.msn.com/en-us/money/topstocks/why-james-hardie-industries-stock-zoomed-8-higher-today/ar-AA1O31IY?ocid=finance-verthp-feeds&apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c",
+      "summary": "NULL",
+      "title": "Why James Hardie Industries Stock Zoomed 8% Higher Today"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
       "event_id": "evt_d384668b2476",
       "published_at": "2026-04-26T14:40:09+09:00",
       "source_id": "src_cb0e6ad21f84",
@@ -4308,6 +4485,21 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/broadwind-energy-inc-nasdaqbwen-sees-significant-growth-in-short-interest-2026-04-26/",
       "summary": "Broadwind Energy, Inc. (NASDAQ:BWEN) experienced a significant 111.2% increase in short interest during April, reaching 87,621 shares. This equates to a short-interest ratio of approximately 0.9 days. Analyst ratings are mixed, with a consensus \"Hold\" rating and a $6.00 price target, while institutional ownership stands at 33.27%.",
       "title": "Broadwind Energy, Inc. (NASDAQ:BWEN) Sees Significant Growth in Short Interest"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_884e35b5428f",
+      "published_at": "2026-04-26T14:09:41+09:00",
+      "source_id": "src_c1326d05d17c",
+      "source_name": "Simply Wall Street",
+      "source_quality": 0.58,
+      "source_url": "https://simplywall.st/community/narratives/us/food-beverage-tobacco/nasdaq-jjsf/jj-snack-foods/zxk9pzhc-jjsf-manufacturing-optimization-and-dividend-increase-will-support-future-performance/updates/23-analysts-kept-their-dollar110-price-target-on-jandj-snack-foods-unc",
+      "summary": "J&J Snack Foods (JJSF) authorized a share buyback program of up to $50 million, active for two years, to enhance shareholder returns. Although the company's valuation metrics saw only minor adjustments, including a slightly lower long-term revenue growth assumption, the unchanged $110 price target and future P/E outlook reflect continued analyst confidence. Repurchases under an earlier authorization had already bought back 2.7% of shares for $50 million.",
+      "title": "JJSF: Share Repurchases Will Support Higher Future P/E Upside"
     },
     {
       "affected_sectors": [
@@ -4620,6 +4812,21 @@
       "title": "J.P. Morgan Remains a Buy on General Motors (GM)"
     },
     {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5e446411f285",
+      "published_at": "2026-04-26T12:07:47+09:00",
+      "source_id": "src_c2679fc05fa0",
+      "source_name": "MarketBeat",
+      "source_quality": 0.58,
+      "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-increases-stock-position-in-honeywell-international-inc-hon-2026-04-26/",
+      "summary": "Vanguard Group Inc. increased its stake in Honeywell International Inc. (NASDAQ:HON) by 1.7% in the fourth quarter, now owning 9.95% of the company's stock valued at approximately $12.32 billion. While Honeywell beat Q1 adjusted EPS, it missed revenue expectations and gave softer FY/Q2 revenue and cash-flow outlooks, leading to mixed analyst reactions. Insiders have sold a notable amount of shares, and management is pursuing portfolio simplification through asset sales and an aerospace spin-off.",
+      "title": "Vanguard Group Inc. Increases Stock Position in Honeywell International Inc. $HON"
+    },
+    {
       "affected_sectors": [
         "ai"
       ],
@@ -4653,57 +4860,6 @@
     },
     {
       "affected_sectors": [
-        "ai"
-      ],
-      "candidate_symbols": [],
-      "category": "theme_surge",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_9a27f323139b",
-      "published_at": "2026-04-26T11:39:39+09:00",
-      "source_id": "src_3b071a88fdb4",
-      "source_name": "Intellectia AI",
-      "source_quality": 0.58,
-      "source_url": "https://intellectia.ai/news/stock/valmont-industries-reports-strong-q1-earnings-stock-surges",
-      "summary": "Valmont Industries (VMI) reported strong Q1 earnings, with EPS of $5.51 exceeding estimates of $4.67 and revenue growing 6.3% year-over-year to $1.03 billion. The company raised its infrastructure sales forecast while lowering its agriculture sales target, reflecting a positive outlook on infrastructure demand. This performance and an increased diluted EPS guidance led to a 20.9% surge in the stock price over the week.",
-      "title": "Valmont Industries Reports Strong Q1 Earnings, Stock Surges"
-    },
-    {
-      "affected_sectors": [
-        "ai"
-      ],
-      "candidate_symbols": [],
-      "category": "theme_surge",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_197fd5c1f4e8",
-      "published_at": "2026-04-26T11:39:37+09:00",
-      "source_id": "src_aa5d95ab4842",
-      "source_name": "MarketBeat",
-      "source_quality": 0.58,
-      "source_url": "https://www.marketbeat.com/instant-alerts/filing-mountain-pacific-investment-advisers-llc-takes-534-million-position-in-csw-industrials-inc-csw-2026-04-26/",
-      "summary": "Mountain Pacific Investment Advisers LLC has acquired a new position of 18,203 shares in CSW Industrials, Inc. (NYSE:CSW), valued at approximately $5.34 million. This represents about 0.11% of the company's stock. The company recently missed quarterly earnings expectations but raised its quarterly dividend to $0.30 per share.",
-      "title": "Mountain Pacific Investment Advisers LLC Takes $5.34 Million Position in CSW Industrials, Inc. $CSW"
-    },
-    {
-      "affected_sectors": [
-        "ai"
-      ],
-      "candidate_symbols": [],
-      "category": "theme_surge",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_f6b5a046fc65",
-      "published_at": "2026-04-26T11:39:33+09:00",
-      "source_id": "src_0d7d6366ec68",
-      "source_name": "Intellectia AI",
-      "source_quality": 0.58,
-      "source_url": "https://intellectia.ai/news/stock/nuclear-renaissance-the-rise-of-small-modular-reactors",
-      "summary": "The article discusses the \"Nuclear Renaissance\" driven by the U.S. Department of Energy's goal to triple nuclear output by 2050, focusing on the potential of small modular reactors (SMRs). It highlights Oklo's Aurora reactor and BWX Technologies' strong market position and financial performance in this evolving sector. While Oklo presents a high-risk, high-reward investment, BWX Technologies is positioned as a safer alternative due to its established experience and revenue growth.",
-      "title": "Nuclear Renaissance: The Rise of Small Modular Reactors"
-    },
-    {
-      "affected_sectors": [
         "robotics"
       ],
       "candidate_symbols": [
@@ -4722,15 +4878,15 @@
       "title": "Robotics trade in focus: 2 overlooked stock picks"
     }
   ],
-  "generated_at": "2026-04-27T07:20:11.492038+09:00",
-  "markdown_length": 129427,
+  "generated_at": "2026-04-27T07:43:46.828086+09:00",
+  "markdown_length": 1478,
   "market_context": {},
   "missing_data": [],
   "price_snapshots": [
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": -0.24,
-      "data_key": "price_4b97c85212af",
+      "data_key": "price_83d5c2458162",
       "data_status": "ok",
       "last_price": 1222000.0,
       "market": "KOSPI",
@@ -4742,9 +4898,9 @@
       "volume": 3127857
     },
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": -2.23,
-      "data_key": "price_2cab08dd4dab",
+      "data_key": "price_b8f4c36b81ee",
       "data_status": "ok",
       "last_price": 219500.0,
       "market": "KOSPI",
@@ -4756,9 +4912,9 @@
       "volume": 19626666
     },
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": -1.61,
-      "data_key": "price_682d31eb1ede",
+      "data_key": "price_3788e386e70e",
       "data_status": "ok",
       "last_price": 214000.0,
       "market": "KOSPI",
@@ -4770,9 +4926,9 @@
       "volume": 476096
     },
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": -0.72,
-      "data_key": "price_84c7af7b6083",
+      "data_key": "price_a785b24454af",
       "data_status": "ok",
       "last_price": 48050.0,
       "market": "KOSPI",
@@ -4784,9 +4940,22 @@
       "volume": 1064052
     },
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
+      "change_rate": 0.0,
+      "data_key": "price_f0e092a0e6bd",
+      "data_status": "ok",
+      "last_price": 147.0,
+      "market": "KOSPI",
+      "name": "042040",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "042040",
+      "volume": 0
+    },
+    {
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": 9.2,
-      "data_key": "price_9b09a08fdbdb",
+      "data_key": "price_712a581cfaab",
       "data_status": "ok",
       "last_price": 285.0,
       "market": "KOSPI",
@@ -4798,9 +4967,23 @@
       "volume": 39440560
     },
     {
-      "as_of": "2026-04-27T07:20:11.492038+09:00",
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
+      "change_rate": 1.51,
+      "data_key": "price_a616834f1e08",
+      "data_status": "ok",
+      "last_price": 50400.0,
+      "market": "KOSPI",
+      "name": "Netmarble",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "251270",
+      "trading_value": 8621121600,
+      "volume": 171054
+    },
+    {
+      "as_of": "2026-04-27T07:43:46.828086+09:00",
       "change_rate": 2.0,
-      "data_key": "price_fd7ea03cf98c",
+      "data_key": "price_c7dd2459e6a7",
       "data_status": "ok",
       "last_price": 612000.0,
       "market": "KOSPI",
@@ -4815,7 +4998,25 @@
   "report_date": "2026-04-27",
   "sources": [
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:39:00+09:00",
+      "source_id": "src_942331d6aac8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.munhwa.com/article/11585087?ref=naver"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:26:00+09:00",
+      "source_id": "src_795c405d0255",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.sejungilbo.com/news/articleView.html?idxno=57959"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:05:00+09:00",
       "source_id": "src_8bb7fe6c4100",
       "source_name": "Naver News",
@@ -4824,7 +5025,7 @@
       "source_url": "https://www.sedaily.com/article/20037319?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:04:00+09:00",
       "source_id": "src_7cf60fc40fc1",
       "source_name": "Naver News",
@@ -4833,7 +5034,7 @@
       "source_url": "https://www.smarttoday.co.kr/ko-kr/articles/106848"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:04:00+09:00",
       "source_id": "src_770cf830df8e",
       "source_name": "Naver News",
@@ -4842,7 +5043,7 @@
       "source_url": "https://www.sedaily.com/article/20037318?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:02:00+09:00",
       "source_id": "src_4a3e247f7a47",
       "source_name": "Naver News",
@@ -4851,7 +5052,7 @@
       "source_url": "https://www.ceoscoredaily.com/page/view/2026042416224271797"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:02:00+09:00",
       "source_id": "src_3ec03bd2e231",
       "source_name": "Naver News",
@@ -4860,7 +5061,7 @@
       "source_url": "https://news.dealsitetv.com/articles/168967"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:00:00+09:00",
       "source_id": "src_ba93a2702bd7",
       "source_name": "Naver News",
@@ -4869,7 +5070,7 @@
       "source_url": "https://www.sedaily.com/article/20037314?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T06:56:00+09:00",
       "source_id": "src_3a45446ec116",
       "source_name": "Naver News",
@@ -4878,7 +5079,7 @@
       "source_url": "https://www.pennmike.com/news/articleView.html?idxno=119461"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T06:44:00+09:00",
       "source_id": "src_b22fb7177637",
       "source_name": "Naver News",
@@ -4887,25 +5088,7 @@
       "source_url": "https://www.ebn.co.kr/news/articleView.html?idxno=1706568"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T06:30:00+09:00",
-      "source_id": "src_1f5c84b63970",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_type": "political_theme",
-      "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=370404"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T06:22:00+09:00",
-      "source_id": "src_dceacc07b98d",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_type": "political_theme",
-      "source_url": "https://view.asiae.co.kr/article/2026042407533296977"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T03:36:00+09:00",
       "source_id": "src_5963881a3836",
       "source_name": "Naver News",
@@ -4914,7 +5097,7 @@
       "source_url": "https://www.mhns.co.kr/news/articleView.html?idxno=745871"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T00:29:00+09:00",
       "source_id": "src_f3ab742434ee",
       "source_name": "Naver News",
@@ -4923,7 +5106,7 @@
       "source_url": "https://www.joongang.co.kr/article/25423499"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T18:54:00+09:00",
       "source_id": "src_ff70abfb585a",
       "source_name": "Naver News",
@@ -4932,7 +5115,7 @@
       "source_url": "http://www.fnnews.com/news/202604261852140807"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:59:00+09:00",
       "source_id": "src_0336e014b11c",
       "source_name": "Naver News",
@@ -4941,7 +5124,7 @@
       "source_url": "https://news.tvchosun.com/site/data/html_dir/2026/04/26/2026042690102.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:06:00+09:00",
       "source_id": "src_ba757936dd37",
       "source_name": "Naver News",
@@ -4950,7 +5133,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411733"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:20:00+09:00",
       "source_id": "src_6aeaaf495275",
       "source_name": "Naver News",
@@ -4959,7 +5142,7 @@
       "source_url": "https://www.m-i.kr/news/articleView.html?idxno=1367741"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T08:10:00+09:00",
       "source_id": "src_55e05f9d5ca3",
       "source_name": "Naver News",
@@ -4968,7 +5151,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16044728"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T13:10:00+09:00",
       "source_id": "src_116dc34775ab",
       "source_name": "Naver News",
@@ -4977,7 +5160,7 @@
       "source_url": "http://www.ifs.or.kr/bbs/board.php?bo_table=News&wr_id=55727"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T12:06:00+09:00",
       "source_id": "src_63561f39ae1b",
       "source_name": "Naver News",
@@ -4986,7 +5169,7 @@
       "source_url": "https://www.sedaily.com/article/20037013?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T09:48:00+09:00",
       "source_id": "src_f59f81be8345",
       "source_name": "Naver News",
@@ -4995,7 +5178,7 @@
       "source_url": "https://www.jejusori.net/news/articleView.html?idxno=501842"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-01-01T20:52:00+09:00",
       "source_id": "src_1674cc24042b",
       "source_name": "Naver News",
@@ -5004,7 +5187,7 @@
       "source_url": "https://news.cpbc.co.kr/article/1169534?division=NAVER"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-22T10:00:00+09:00",
       "source_id": "src_42fea90a4836",
       "source_name": "Naver News",
@@ -5013,7 +5196,7 @@
       "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=343580"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-19T14:04:00+09:00",
       "source_id": "src_26374e18d303",
       "source_name": "Naver News",
@@ -5022,7 +5205,7 @@
       "source_url": "https://www.m-joongang.com/news/articleView.html?idxno=401465"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-12T20:14:00+09:00",
       "source_id": "src_12ac0a4ce16e",
       "source_name": "Naver News",
@@ -5031,7 +5214,7 @@
       "source_url": "https://n.news.naver.com/mnews/article/214/0001442376?sid=100"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-08T11:30:00+09:00",
       "source_id": "src_efdc9b9a2ca9",
       "source_name": "Naver News",
@@ -5040,7 +5223,7 @@
       "source_url": "https://radio.ytn.co.kr/program/?f=2&id=104258&s_mcd=0214&s_hcd=01"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-08T09:27:00+09:00",
       "source_id": "src_b73bffbcb67f",
       "source_name": "Naver News",
@@ -5049,7 +5232,7 @@
       "source_url": "https://www.ytn.co.kr/_ln/0101_202508080927528179"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-08-05T17:10:00+09:00",
       "source_id": "src_5227db7fd374",
       "source_name": "Naver News",
@@ -5058,7 +5241,7 @@
       "source_url": "https://www.sisajournal-e.com/news/articleView.html?idxno=414085"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-07-31T11:48:00+09:00",
       "source_id": "src_1e365a4d2997",
       "source_name": "Naver News",
@@ -5067,7 +5250,7 @@
       "source_url": "http://kor.theasian.asia/archives/388866"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-07-31T07:00:00+09:00",
       "source_id": "src_537d6395c3f9",
       "source_name": "Naver News",
@@ -5076,7 +5259,7 @@
       "source_url": "https://view.asiae.co.kr/article/2025072917271781710"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-07-26T06:02:00+09:00",
       "source_id": "src_22b0660e840c",
       "source_name": "Naver News",
@@ -5085,7 +5268,7 @@
       "source_url": "https://www.news1.kr/politics/assembly/5859499"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T21:39:53+09:00",
       "source_id": "src_516dae2750a4",
       "source_name": "AD HOC NEWS",
@@ -5094,7 +5277,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/indivior-plc-stock-gb00byz0c031-why-google-discover-changes-matter-more/69243417"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T21:33:34+09:00",
       "source_id": "src_623b17aeb9d2",
       "source_name": "Insider Monkey",
@@ -5103,7 +5286,7 @@
       "source_url": "https://www.insidermonkey.com/blog/is-vici-properties-inc-vici-a-good-stock-to-buy-now-1730979/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T20:29:00+09:00",
       "source_id": "src_2d3429b3d831",
       "source_name": "Insider Monkey",
@@ -5112,7 +5295,7 @@
       "source_url": "https://www.insidermonkey.com/blog/is-aflac-incorporated-afl-a-good-stock-to-buy-now-1733917/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T20:28:00+09:00",
       "source_id": "src_0697735a1b23",
       "source_name": "Yahoo Finance",
@@ -5121,7 +5304,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/mcdonald-corporation-mcd-one-best-202824002.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T20:01:41+09:00",
       "source_id": "src_f9002fd14b49",
       "source_name": "Insider Monkey",
@@ -5130,7 +5313,7 @@
       "source_url": "https://www.insidermonkey.com/blog/is-u-s-bancorp-usb-a-good-stock-to-buy-now-1731722/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T19:09:48+09:00",
       "source_id": "src_d5e2a95643cd",
       "source_name": "AD HOC NEWS",
@@ -5139,7 +5322,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/idex-corporation-stock-us45167r1041-why-its-fluid-and-metering-focus/69246040"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T18:09:38+09:00",
       "source_id": "src_82df12cc56bf",
       "source_name": "IndexBox",
@@ -5148,7 +5331,7 @@
       "source_url": "https://www.indexbox.io/blog/hilltop-holdings-stock-drops-39-after-q1-results-show-revenue-miss-and-slight-eps-decline/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T18:02:41+09:00",
       "source_id": "src_a7da9dcab113",
       "source_name": "AD HOC NEWS",
@@ -5157,7 +5340,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/exxon-mobil-corp-stock-us30231g1022-why-google-discover-changes-matter/69245703"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:56:20+09:00",
       "source_id": "src_99a142d10803",
       "source_name": "AD HOC NEWS",
@@ -5166,7 +5349,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/rtx-corporation-stock-us75511l1035-why-defense-sector-positioning/69245672"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:51:57+09:00",
       "source_id": "src_c2a85be3266d",
       "source_name": "AD HOC NEWS",
@@ -5175,7 +5358,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/3m-company-stock-us88579y1010-is-its-industrial-diversification-strong/69245652"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:30:08+09:00",
       "source_id": "src_a503dcb72a07",
       "source_name": "The Globe and Mail",
@@ -5184,7 +5367,7 @@
       "source_url": "https://www.theglobeandmail.com/investing/markets/stocks/O-N/pressreleases/1525516/want-reliable-dividend-income-these-3-stocks-yield-5-and-have-been-raising-their-payouts-for-decades/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:09:03+09:00",
       "source_id": "src_207803c60d73",
       "source_name": "Insider Monkey",
@@ -5193,7 +5376,7 @@
       "source_url": "https://www.insidermonkey.com/blog/spacex-ipo-could-boost-ati-inc-ati-prospects-1747138/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:59:04+09:00",
       "source_id": "src_7a6fa7be04e9",
       "source_name": "IndexBox",
@@ -5202,7 +5385,7 @@
       "source_url": "https://www.indexbox.io/blog/apa-corporation-stock-drops-29-as-oil-prices-fall-on-us-iran-diplomatic-hopes/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:56:07+09:00",
       "source_id": "src_f2c9c3d6f5f9",
       "source_name": "AD HOC NEWS",
@@ -5211,7 +5394,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/the-coca-cola-company-stock-us1912161007-is-its-global-brand-moat/69245352"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:54:44+09:00",
       "source_id": "src_28c2048cdca9",
       "source_name": "Yahoo Finance Singapore",
@@ -5220,7 +5403,7 @@
       "source_url": "https://sg.finance.yahoo.com/news/gladman-sachs-gs-one-stocks-165430529.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:47:19+09:00",
       "source_id": "src_de3ba19bd12b",
       "source_name": "AD HOC NEWS",
@@ -5229,7 +5412,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/chipotle-mexican-grill-stock-us1696561059-why-google-discover-changes/69245209"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:47:04+09:00",
       "source_id": "src_9306809e7c40",
       "source_name": "AD HOC NEWS",
@@ -5238,7 +5421,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/applied-materials-inc-stock-us0382221051-is-ai-infrastructure-demand/69245203"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:39:50+09:00",
       "source_id": "src_d37461b01361",
       "source_name": "Simply Wall Street",
@@ -5247,7 +5430,7 @@
       "source_url": "https://simplywall.st/stocks/us/banks/nasdaq-ctbi/community-trust-bancorp/news/a-look-at-community-trust-bancorp-ctbi-valuation-after-stron"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:38:18+09:00",
       "source_id": "src_3c6f5ec3a874",
       "source_name": "Insider Monkey",
@@ -5256,7 +5439,7 @@
       "source_url": "https://www.insidermonkey.com/blog/the-sherwin-williams-company-shw-among-the-10-best-may-dividend-stocks-to-buy-1747168/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:34:50+09:00",
       "source_id": "src_9d8ba66031bd",
       "source_name": "AD HOC NEWS",
@@ -5265,7 +5448,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/international-paper-stock-us4601461035-why-google-discover-changes/69245145"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:28:20+09:00",
       "source_id": "src_f56092f9cbbc",
       "source_name": "AD HOC NEWS",
@@ -5274,7 +5457,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/cisco-systems-inc-stock-us17275r1023-is-its-ai-networking-edge-strong/69245118"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:21:48+09:00",
       "source_id": "src_954cf8d23a6e",
       "source_name": "TechStock²",
@@ -5283,7 +5466,7 @@
       "source_url": "https://ts2.tech/en/axt-stock-has-a-632-5-million-question-can-its-china-wafer-bet-keep-up-with-ai-demand/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:19:00+09:00",
       "source_id": "src_ad1a1753256f",
       "source_name": "Insider Monkey",
@@ -5292,7 +5475,7 @@
       "source_url": "https://www.insidermonkey.com/blog/is-deere-company-de-a-good-stock-to-buy-now-1734030/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:12:21+09:00",
       "source_id": "src_93ccefd53204",
       "source_name": "AD HOC NEWS",
@@ -5301,7 +5484,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/paypal-holdings-inc-stock-us70450y1038-is-its-product-innovation-edge/69245048"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:10:40+09:00",
       "source_id": "src_201b65a5d33c",
       "source_name": "Simply Wall Street",
@@ -5310,7 +5493,16 @@
       "source_url": "https://simplywall.st/stocks/us/retail/nasdaq-tsco/tractor-supply/news/is-tractor-supplys-tsco-steady-guidance-masking-deeper-margi"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-26T16:07:13+09:00",
+      "source_id": "src_11e51fe3420f",
+      "source_name": "GuruFocus",
+      "source_quality": 0.58,
+      "source_type": "political_theme",
+      "source_url": "https://www.gurufocus.com/stock/HAM:BN9/financials"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:49:22+09:00",
       "source_id": "src_a298c166e0dd",
       "source_name": "AD HOC NEWS",
@@ -5319,7 +5511,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/costco-wholesale-corporation-stock-us22160k1051-is-its-membership-model/69244945"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:39:24+09:00",
       "source_id": "src_fee815f47c92",
       "source_name": "Insider Monkey",
@@ -5328,7 +5520,7 @@
       "source_url": "https://www.insidermonkey.com/blog/insteel-industries-iiin-sits-comfortably-with-current-market-position-following-q2-announcement-1746816/?amp=1"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:39:24+09:00",
       "source_id": "src_ae9904bc456b",
       "source_name": "Yahoo Finance",
@@ -5337,7 +5529,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/insteel-industries-iiin-sits-comfortably-151320264.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:38:53+09:00",
       "source_id": "src_443653df3247",
       "source_name": "TechStock²",
@@ -5346,7 +5538,7 @@
       "source_url": "https://ts2.tech/en/amkor-stocks-7-jump-raises-the-bar-for-q1-earnings-and-ai-packaging-demand/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:36:59+09:00",
       "source_id": "src_ec193766344b",
       "source_name": "AD HOC NEWS",
@@ -5355,7 +5547,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/aflac-inc-stock-us0010551028-why-google-discover-changes-matter-more/69244768"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:35:00+09:00",
       "source_id": "src_13985bbfe39d",
       "source_name": "Yahoo Finance",
@@ -5364,7 +5556,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/baird-trims-stanley-black-decker-153540034.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:30:29+09:00",
       "source_id": "src_10e1cdc22ce0",
       "source_name": "AD HOC NEWS",
@@ -5373,7 +5565,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/packaging-corp-of-america-stock-us6951561022-why-google-discover/69244858"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:05:40+09:00",
       "source_id": "src_fb7dcda78057",
       "source_name": "Yahoo Finance",
@@ -5382,7 +5574,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/assessing-j-m-smucker-valuation-150537120.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:46:36+09:00",
       "source_id": "src_8cbdd18b2be0",
       "source_name": "AD HOC NEWS",
@@ -5391,7 +5583,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/eqt-corp-stock-us26884l1098-why-google-discover-changes-matter-more/69244662"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:42:14+09:00",
       "source_id": "src_456149c139cc",
       "source_name": "AD HOC NEWS",
@@ -5400,7 +5592,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/caterpillar-inc-stock-us1491231015-why-services-growth-is-suddenly/69244642"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:42:10+09:00",
       "source_id": "src_b6e339e66221",
       "source_name": "TIKR.com",
@@ -5409,7 +5601,7 @@
       "source_url": "https://www.tikr.com/blog/booking-holdings-stock-fell-6-this-week-heres-whats-driving-the-pullback"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:39:10+09:00",
       "source_id": "src_93c085d87b3a",
       "source_name": "TechStock²",
@@ -5418,7 +5610,7 @@
       "source_url": "https://ts2.tech/en/berkshire-hathaways-370-billion-question-greg-abel-faces-first-big-test-after-warren-buffett/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:36:17+09:00",
       "source_id": "src_fc52455e0f41",
       "source_name": "AD HOC NEWS",
@@ -5427,7 +5619,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/newmont-corporation-stock-us6516391066-why-google-discover-changes/69244616"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:25:41+09:00",
       "source_id": "src_38181f06c2e1",
       "source_name": "AD HOC NEWS",
@@ -5436,7 +5628,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/ross-stores-inc-stock-us7782961038-why-google-discover-changes-matter/69244569"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:50:02+09:00",
       "source_id": "src_0ef7679210c3",
       "source_name": "The Motley Fool",
@@ -5445,7 +5637,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/better-stock-to-buy-right-now-altria-vs-coca-cola/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:24:12+09:00",
       "source_id": "src_9674076c7b7c",
       "source_name": "AD HOC NEWS",
@@ -5454,7 +5646,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/booking-holdings-inc-stock-us09857l1089-why-google-discover-changes/69244279"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:11:38+09:00",
       "source_id": "src_c41ddedb7440",
       "source_name": "AD HOC NEWS",
@@ -5463,7 +5655,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/rollins-inc-stock-us7757111049-why-google-discover-changes-matter-more/69244235"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:10:21+09:00",
       "source_id": "src_a4fb08c41b19",
       "source_name": "Simply Wall Street",
@@ -5472,7 +5664,7 @@
       "source_url": "https://simplywall.st/stocks/ca/banks/tsx-cm/canadian-imperial-bank-of-commerce-shares/news/how-investors-may-respond-to-canadian-imperial-bank-of-comme-2"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:58:42+09:00",
       "source_id": "src_88f6a350df8a",
       "source_name": "MarketBeat",
@@ -5481,7 +5673,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-verdence-capital-advisors-llc-sells-24823-shares-of-qualcomm-incorporated-qcom-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:51:31+09:00",
       "source_id": "src_dfeea0a98fff",
       "source_name": "AD HOC NEWS",
@@ -5490,7 +5682,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/otis-worldwide-corp-stock-us68902v1070-why-google-discover-changes/69244148"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:39:32+09:00",
       "source_id": "src_51b626258c11",
       "source_name": "IndexBox",
@@ -5499,7 +5691,7 @@
       "source_url": "https://www.indexbox.io/blog/coursera-stock-drops-after-q1-2026-earnings-miss-and-weak-q2-guidance/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:29:25+09:00",
       "source_id": "src_957eb4ec3864",
       "source_name": "MarketBeat",
@@ -5508,7 +5700,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-pepsico-inc-pep-shares-purchased-by-vanguard-group-inc-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:25:26+09:00",
       "source_id": "src_36510d7fe44e",
       "source_name": "MarketBeat",
@@ -5517,7 +5709,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-prologis-inc-pld-shares-bought-by-vanguard-group-inc-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:24:45+09:00",
       "source_id": "src_5e43b29b69b4",
       "source_name": "MarketBeat",
@@ -5526,16 +5718,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-acquires-771882-shares-of-the-tjx-companies-inc-tjx-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-26T12:20:38+09:00",
-      "source_id": "src_7913577feefe",
-      "source_name": "MarketBeat",
-      "source_quality": 0.58,
-      "source_type": "political_theme",
-      "source_url": "https://www.marketbeat.com/instant-alerts/filing-universal-beteiligungs-und-servicegesellschaft-mbh-acquires-11792-shares-of-the-j-m-smucker-company-sjm-2026-04-26/"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T14:59:32+09:00",
       "source_id": "src_b0d1ca442c67",
       "source_name": "Insider Monkey",
@@ -5544,7 +5727,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-inc-mu-among-055932997.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T12:18:19+09:00",
       "source_id": "src_76f99c2ac1ba",
       "source_name": "Investing.com",
@@ -5553,7 +5736,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/ai-chip-surge-pushes-taiwan-031819385.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T09:00:00+09:00",
       "source_id": "src_fab0d412dac6",
       "source_name": "Bloomberg",
@@ -5562,7 +5745,7 @@
       "source_url": "https://finance.yahoo.com/news/ai-chip-surge-elevates-taiwan-000000285.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T19:52:31+09:00",
       "source_id": "src_b021569323ef",
       "source_name": "Reuters Videos",
@@ -5571,7 +5754,7 @@
       "source_url": "https://finance.yahoo.com/video/week-numbers-gas-price-peaks-105231859.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T19:10:26+09:00",
       "source_id": "src_ac61ee1831ce",
       "source_name": "Reuters",
@@ -5580,7 +5763,7 @@
       "source_url": "https://finance.yahoo.com/sectors/technology/articles/samsungs-chip-output-dropped-amid-101026699.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T02:52:38+09:00",
       "source_id": "src_466535f3b30c",
       "source_name": "Insider Monkey",
@@ -5589,7 +5772,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/asml-holding-n-v-asml-175238777.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T02:04:35+09:00",
       "source_id": "src_653e28b626ff",
       "source_name": "GuruFocus.com",
@@ -5598,7 +5781,7 @@
       "source_url": "https://finance.yahoo.com/sectors/technology/articles/samsung-faces-growing-pressure-workers-170435813.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T02:04:18+09:00",
       "source_id": "src_ef69661ce485",
       "source_name": "Simply Wall St.",
@@ -5607,7 +5790,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/samsung-mid-range-ai-phones-170418337.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T05:58:09+09:00",
       "source_id": "src_66eb540d8ea6",
       "source_name": "Insider Monkey",
@@ -5616,7 +5799,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/acm-research-inc-acmr-good-205809931.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T21:41:00+09:00",
       "source_id": "src_2561696671f8",
       "source_name": "Motley Fool",
@@ -5625,7 +5808,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/24/is-the-memory-supercycle-already-priced-in-what-th/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T19:01:05+09:00",
       "source_id": "src_31ae82d9692e",
       "source_name": "Benzinga",
@@ -5634,7 +5817,7 @@
       "source_url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-supplier-sk-hynix-smashes-100105798.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T03:16:55+09:00",
       "source_id": "src_b2e2d5fd691c",
       "source_name": "Bloomberg",
@@ -5643,7 +5826,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/intel-240-billion-rally-slams-091734304.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T21:38:11+09:00",
       "source_id": "src_fb373f50dd29",
       "source_name": "Simply Wall St.",
@@ -5652,7 +5835,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/latest-news-e-commerce-south-123811949.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-02T01:08:41+09:00",
       "source_id": "src_7e73cc753cac",
       "source_name": "DLNews",
@@ -5661,7 +5844,7 @@
       "source_url": "https://www.dlnews.com/articles/markets/crypto-exchange-bithumb-postpones-ipo-bid-economic-uncertainty/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-12T20:19:46+09:00",
       "source_id": "src_1badbe665e62",
       "source_name": "GuruFocus.com",
@@ -5670,7 +5853,7 @@
       "source_url": "https://finance.yahoo.com/news/amd-eyes-challenge-nvidia-south-111946823.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-12T04:47:20+09:00",
       "source_id": "src_91347c9ea019",
       "source_name": "MT Newswires",
@@ -5679,7 +5862,7 @@
       "source_url": "https://finance.yahoo.com/news/sector-tech-stocks-advance-afternoon-194720702.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-11T22:06:22+09:00",
       "source_id": "src_e60cf95cfe65",
       "source_name": "GuruFocus.com",
@@ -5688,7 +5871,7 @@
       "source_url": "https://finance.yahoo.com/news/amd-ceo-meet-samsung-chief-130622132.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-11T19:18:46+09:00",
       "source_id": "src_2b92253e768b",
       "source_name": "Reuters",
@@ -5697,7 +5880,7 @@
       "source_url": "https://finance.yahoo.com/news/amd-ceo-meet-samsung-chief-101846926.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-02-27T14:09:37+09:00",
       "source_id": "src_f73ccdc513c6",
       "source_name": "Reuters",
@@ -5706,7 +5889,7 @@
       "source_url": "https://finance.yahoo.com/news/south-korea-approves-google-bid-050937703.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-02-08T10:00:21+09:00",
       "source_id": "src_c69ec9629d9d",
       "source_name": "GuruFocus.com",
@@ -5715,7 +5898,7 @@
       "source_url": "https://finance.yahoo.com/news/naver-corp-xkrx-035420-q4-010021896.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-02-13T10:05:42+09:00",
       "source_id": "src_67b4b24cef29",
       "source_name": "GuruFocus.com",
@@ -5724,7 +5907,7 @@
       "source_url": "https://finance.yahoo.com/news/kakao-corp-xkrx-035720-q4-010542682.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-12-02T01:33:51+09:00",
       "source_id": "src_1472e6d153e2",
       "source_name": "DLNews",
@@ -5733,7 +5916,7 @@
       "source_url": "https://www.dlnews.com/articles/markets/korean-tech-giants-to-clash-over-stablecoins/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-11-26T20:38:53+09:00",
       "source_id": "src_ebcf94fb9e4d",
       "source_name": "decrypt",
@@ -5742,7 +5925,7 @@
       "source_url": "https://decrypt.co/350068/kakaobank-pushes-forward-with-korean-won-backed-stablecoin-plans"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-11-26T17:10:39+09:00",
       "source_id": "src_7833e46ec0aa",
       "source_name": "Cryptonews",
@@ -5751,7 +5934,7 @@
       "source_url": "https://cryptonews.com/news/kakaobank-plans-to-launch-own-won-pegged-stablecoin-seeks-fresh-hires/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-11-26T13:45:17+09:00",
       "source_id": "src_d6ecd0e32591",
       "source_name": "BeInCrypto",
@@ -5760,7 +5943,7 @@
       "source_url": "https://beincrypto.com/south-korea-stablecoin-market-kakao-naver/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2025-11-10T19:17:15+09:00",
       "source_id": "src_ce50ec61c1be",
       "source_name": "CCN",
@@ -5769,7 +5952,79 @@
       "source_url": "https://www.ccn.com/news/crypto/samsung-kakao-and-naver-are-powering-koreas-stablecoin-push/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_0f89d616ce60",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260415100122"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_60b8849dfe1c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100002"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_f76aad8fc17b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100012"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_12025f0bef8e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100011"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_83756d694a05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100010"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_ab376ef04f20",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100009"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_5751a9b6e3e7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424100006"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T08:45:00+09:00",
+      "source_id": "src_570fad62fdbf",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000815"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T08:45:00+09:00",
       "source_id": "src_41454a1d00b7",
       "source_name": "OpenDART",
@@ -5778,7 +6033,7 @@
       "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000820"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T05:29:00+09:00",
       "source_id": "src_acc1513f9215",
       "source_name": "Naver News",
@@ -5787,7 +6042,7 @@
       "source_url": "https://www.newspim.com/news/view/20260425000009"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T23:30:00+09:00",
       "source_id": "src_3d78e2bada31",
       "source_name": "Naver News",
@@ -5796,7 +6051,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043975"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T15:06:00+09:00",
       "source_id": "src_0964dc47a563",
       "source_name": "Naver News",
@@ -5805,7 +6060,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411559"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T09:12:00+09:00",
       "source_id": "src_f5304218b841",
       "source_name": "Naver News",
@@ -5814,7 +6069,7 @@
       "source_url": "http://www.choicenews.co.kr/news/articleView.html?idxno=164373"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T06:52:00+09:00",
       "source_id": "src_d5123564f343",
       "source_name": "Naver News",
@@ -5823,7 +6078,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043100"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T22:40:00+09:00",
       "source_id": "src_2437a8564c58",
       "source_name": "Naver News",
@@ -5832,7 +6087,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043023"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T19:20:00+09:00",
       "source_id": "src_898c00f3547e",
       "source_name": "Naver News",
@@ -5841,7 +6096,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411363"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T17:56:00+09:00",
       "source_id": "src_0e0df84fd1aa",
       "source_name": "Naver News",
@@ -5850,7 +6105,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411348"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T17:14:00+09:00",
       "source_id": "src_ac6a9bc0f26e",
       "source_name": "Naver News",
@@ -5859,7 +6114,7 @@
       "source_url": "https://www.thereport.co.kr/news/articleView.html?idxno=87090"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T07:48:00+09:00",
       "source_id": "src_ee4d28cf1180",
       "source_name": "Naver News",
@@ -5868,7 +6123,7 @@
       "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202604230195&t=NN"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-20T14:58:00+09:00",
       "source_id": "src_760f11c0f5c9",
       "source_name": "Naver News",
@@ -5877,7 +6132,7 @@
       "source_url": "https://www.wolyo.co.kr/news/articleView.html?idxno=310969"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-13T14:32:00+09:00",
       "source_id": "src_aa8ac27f841b",
       "source_name": "Naver News",
@@ -5886,7 +6141,7 @@
       "source_url": "https://www.koreareport.co.kr/news/articleView.html?idxno=50141"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-07T17:46:00+09:00",
       "source_id": "src_a0b1fe6a38e9",
       "source_name": "Naver News",
@@ -5895,7 +6150,7 @@
       "source_url": "https://www.ekn.kr/web/view.php?key=20260407028165084"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-07T00:37:00+09:00",
       "source_id": "src_bcdd0fbb23ec",
       "source_name": "Naver News",
@@ -5904,7 +6159,7 @@
       "source_url": "https://www.chosun.com/economy/money/2026/04/07/JJBI6KNXP5B7PIVTIK2KSQJYIM/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-01T10:44:00+09:00",
       "source_id": "src_2fd6408ca805",
       "source_name": "Naver News",
@@ -5913,7 +6168,7 @@
       "source_url": "https://www.smarttoday.co.kr/ko-kr/articles/106032"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-31T09:00:00+09:00",
       "source_id": "src_051d405e4ad3",
       "source_name": "Naver News",
@@ -5922,7 +6177,7 @@
       "source_url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008497430&plink=ORI&cooper=NAVER"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-29T15:21:00+09:00",
       "source_id": "src_da001ade2bd0",
       "source_name": "Naver News",
@@ -5931,7 +6186,7 @@
       "source_url": "https://view.asiae.co.kr/article/2026032915210835469"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-29T05:01:00+09:00",
       "source_id": "src_f604fd5cbe01",
       "source_name": "Naver News",
@@ -5940,7 +6195,7 @@
       "source_url": "https://www.nocutnews.co.kr/news/6492458?utm_source=naver&utm_medium=article&utm_campaign=20260329050053"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-26T07:40:00+09:00",
       "source_id": "src_99055f26ed41",
       "source_name": "Naver News",
@@ -5949,7 +6204,7 @@
       "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=56745"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-24T13:12:00+09:00",
       "source_id": "src_e2b589760203",
       "source_name": "Naver News",
@@ -5958,7 +6213,7 @@
       "source_url": "https://www.naeil.com/news/read/582505?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T16:37:00+09:00",
       "source_id": "src_43facf7b7375",
       "source_name": "Naver News",
@@ -5967,7 +6222,7 @@
       "source_url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8545133&ref=A"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T14:46:00+09:00",
       "source_id": "src_b6d29959e8fc",
       "source_name": "Naver News",
@@ -5976,7 +6231,7 @@
       "source_url": "https://www.wikitree.co.kr/articles/1133367"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T08:40:00+09:00",
       "source_id": "src_fd4a0137d23c",
       "source_name": "Naver News",
@@ -5985,7 +6240,7 @@
       "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=58449"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T08:18:00+09:00",
       "source_id": "src_d51d77040cbd",
       "source_name": "Naver News",
@@ -5994,7 +6249,7 @@
       "source_url": "http://www.issuenbiz.com/news/articleView.html?idxno=76040"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T08:03:00+09:00",
       "source_id": "src_65c95528c144",
       "source_name": "Naver News",
@@ -6003,7 +6258,7 @@
       "source_url": "https://www.yna.co.kr/view/AKR20260424021900008?input=1195m"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T00:28:00+09:00",
       "source_id": "src_5eecbeebb0b4",
       "source_name": "Naver News",
@@ -6012,7 +6267,7 @@
       "source_url": "https://www.news2day.co.kr/article/20260424500005"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T23:08:00+09:00",
       "source_id": "src_b8bb1a31bb27",
       "source_name": "Naver News",
@@ -6021,7 +6276,7 @@
       "source_url": "https://www.tokenpost.kr/news/market/352633"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T19:18:00+09:00",
       "source_id": "src_635cc7d4c4c3",
       "source_name": "Naver News",
@@ -6030,7 +6285,7 @@
       "source_url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0200&key=20260424.22011006938"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T19:02:00+09:00",
       "source_id": "src_d54e80740367",
       "source_name": "Naver News",
@@ -6039,7 +6294,7 @@
       "source_url": "https://www.segye.com/newsView/20260423516658?OutUrl=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T07:58:00+09:00",
       "source_id": "src_bdfc5b95a3de",
       "source_name": "Naver News",
@@ -6048,7 +6303,7 @@
       "source_url": "https://www.newsis.com/view/NISX20260423_0003602658"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T10:57:19+09:00",
       "source_id": "src_e0acab2ab7e1",
       "source_name": "AD HOC NEWS",
@@ -6057,7 +6312,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/citizens-financial-group-stock-us1746101054-why-deposit-trends-matter/69243681"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T04:40:09+09:00",
       "source_id": "src_3fe0b4488ad0",
       "source_name": "Simply Wall Street",
@@ -6066,7 +6321,7 @@
       "source_url": "https://simplywall.st/stocks/us/consumer-durables/nyse-ccs/century-communities/news/assessing-century-communities-ccs-valuation-after-guidance-c"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T02:09:52+09:00",
       "source_id": "src_5119ec4a3115",
       "source_name": "HarianBasis.co",
@@ -6075,7 +6330,7 @@
       "source_url": "https://www.harianbasis.co/en/vaneck-emlc-bond-etf-yield-analysis-2026"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T19:43:17+09:00",
       "source_id": "src_9fbf369bdb2c",
       "source_name": "The Globe and Mail",
@@ -6084,7 +6339,7 @@
       "source_url": "https://www.theglobeandmail.com/investing/markets/stocks/NVDA-Q/pressreleases/1519947/the-best-gold-etf-to-invest-500-in-right-now/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T19:39:39+09:00",
       "source_id": "src_ba77d472f7be",
       "source_name": "The Globe and Mail",
@@ -6093,7 +6348,7 @@
       "source_url": "https://www.theglobeandmail.com/investing/markets/stocks/INTC/pressreleases/1519947/the-best-gold-etf-to-invest-500-in-right-now/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T18:38:43+09:00",
       "source_id": "src_ead324008acf",
       "source_name": "The National Law Review",
@@ -6102,7 +6357,7 @@
       "source_url": "https://natlawreview.com/press-releases/ofs-credit-company-provides-december-2025-net-asset-value-update"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T12:37:17+09:00",
       "source_id": "src_39f5fc87503b",
       "source_name": "inkl",
@@ -6111,7 +6366,7 @@
       "source_url": "https://www.inkl.com/news/what-to-expect-from-copart-s-q3-2026-earnings-report"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T04:37:15+09:00",
       "source_id": "src_db44a48f14e1",
       "source_name": "Yahoo Finance UK",
@@ -6120,7 +6375,7 @@
       "source_url": "https://uk.finance.yahoo.com/news/jefferies-cuts-clorox-clx-price-192058985.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T23:02:00+09:00",
       "source_id": "src_d9312bf4adc7",
       "source_name": "Stock Traders Daily",
@@ -6129,7 +6384,7 @@
       "source_url": "https://news.stocktradersdaily.com/news_release/24/How_Alpha_Architect_High_Inflation_And_Deflation_Etf_HIDE_Affects_Rotational_Strategy_Timing_042426110201_1777086121.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T19:09:52+09:00",
       "source_id": "src_dea9f5d8a803",
       "source_name": "Stocktwits",
@@ -6138,7 +6393,7 @@
       "source_url": "https://stocktwits.com/symbol/DIA/news"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T18:41:06+09:00",
       "source_id": "src_96602a55c939",
       "source_name": "Trefis",
@@ -6147,7 +6402,7 @@
       "source_url": "https://www.trefis.com/stock/axon/articles2/597428/stress-testing-axon-historical-drawdowns-and-macro-risks-3/2026-04-24"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T18:39:39+09:00",
       "source_id": "src_3a202e29aceb",
       "source_name": "24/7 Wall St.",
@@ -6156,7 +6411,7 @@
       "source_url": "https://247wallst.com/investing/2026/04/24/commodity-prices-are-soaring-again-here-are-3-etfs-to-ride-the-trend/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T18:10:25+09:00",
       "source_id": "src_b190c85b8165",
       "source_name": "www.stonex.com",
@@ -6165,7 +6420,7 @@
       "source_url": "https://www.stonex.com/en-gb/insights/australian-rates-outlook-strengthens-as-inflation-stays-elevated/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T18:09:37+09:00",
       "source_id": "src_3bb165e4a5f6",
       "source_name": "24/7 Wall St.",
@@ -6174,7 +6429,7 @@
       "source_url": "https://247wallst.com/investing/2026/04/24/3-small-cap-value-etfs-poised-to-outperform-in-2026-as-fed-rate-cuts-accelerate-returns/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T17:10:24+09:00",
       "source_id": "src_b9d0dd8bfa9a",
       "source_name": "www.stonex.com",
@@ -6183,7 +6438,7 @@
       "source_url": "https://www.stonex.com/en-gb/insights/financial-markets-morning-commentary-2026-04-24/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T15:39:16+09:00",
       "source_id": "src_7545b67101a2",
       "source_name": "Morningstar",
@@ -6192,7 +6447,7 @@
       "source_url": "https://www.morningstar.com/markets/investors-may-be-ignoring-big-market-disruptions-is-there-risk-rebuff"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T14:40:00+09:00",
       "source_id": "src_89de886dec60",
       "source_name": "Yahoo Finance UK",
@@ -6201,7 +6456,7 @@
       "source_url": "https://uk.finance.yahoo.com/news/coca-cola-company-ko-investors-144030446.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T13:10:30+09:00",
       "source_id": "src_1b68c47136f1",
       "source_name": "TIKR.com",
@@ -6210,7 +6465,7 @@
       "source_url": "https://www.tikr.com/blog/xp-fell-7-over-the-past-week-heres-where-the-stock-could-go-in-2026"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T13:10:14+09:00",
       "source_id": "src_42db9d2a1616",
       "source_name": "Seeking Alpha",
@@ -6219,7 +6474,7 @@
       "source_url": "https://seekingalpha.com/article/4893741-rlty-real-estate-recovery-postponed-collect-8-5-percent-yield-while-you-wait"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T13:09:35+09:00",
       "source_id": "src_f35143c034bb",
       "source_name": "Investing.com",
@@ -6228,7 +6483,7 @@
       "source_url": "https://m.investing.com/news/transcripts/earnings-call-transcript-financial-institutions-beats-q1-2026-eps-estimates-93CH-4635753?ampMode=1"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T12:09:37+09:00",
       "source_id": "src_75b35c027945",
       "source_name": "Advisor Perspectives",
@@ -6237,7 +6492,7 @@
       "source_url": "https://www.advisorperspectives.com/commentaries/2026/04/24/markets-in-context-noise-vs-fundamentals"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T05:10:07+09:00",
       "source_id": "src_69455fe212c9",
       "source_name": "https://news.financial/",
@@ -6246,7 +6501,7 @@
       "source_url": "https://news.financial/comments/gold-heading-for-another-record-high-lahontan-gold-coeur-mining-and-commerzbank-s-usd-5-000-forecast"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T00:10:04+09:00",
       "source_id": "src_a5bfc1072f2f",
       "source_name": "Seeking Alpha",
@@ -6255,7 +6510,7 @@
       "source_url": "https://seekingalpha.com/article/4893741-rlty-real-estate-recovery-postponed-collect-8-5-percent-yield-while-you-wait?source=feed_sector_etf_portfolio_strategy"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T00:08:45+09:00",
       "source_id": "src_a4ebcb063911",
       "source_name": "Moomoo",
@@ -6264,7 +6519,7 @@
       "source_url": "https://www.moomoo.com/news/post/68785806/update-asgn-shares-drop-after-q1-adjusted-eps-revenue-miss"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T22:08:27+09:00",
       "source_id": "src_8a1a892d25fe",
       "source_name": "T. Rowe Price",
@@ -6273,7 +6528,7 @@
       "source_url": "https://www.troweprice.com/en/ee/insights/when-markets-twist-and-turn-flex-your-fixed-income"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T20:09:56+09:00",
       "source_id": "src_5c3fc48d8436",
       "source_name": "24/7 Wall St.",
@@ -6282,7 +6537,7 @@
       "source_url": "https://247wallst.com/investing/2026/04/23/2-monthly-dividend-etfs-set-to-surge-if-theres-a-rate-hike-in-2026/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T20:02:00+09:00",
       "source_id": "src_bac13773c381",
       "source_name": "HarianBasis.co",
@@ -6291,7 +6546,7 @@
       "source_url": "https://www.harianbasis.co/en/dorval-corp-reduces-istb-etf-stake"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T19:09:23+09:00",
       "source_id": "src_01eee1c983c3",
       "source_name": "TradingKey",
@@ -6300,7 +6555,7 @@
       "source_url": "https://www.tradingkey.com/news/market-movers/261817561-market-movers-bbva-20260423"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T18:35:35+09:00",
       "source_id": "src_d7851d32b06a",
       "source_name": "Investing.com",
@@ -6309,7 +6564,7 @@
       "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-us-bancorp-q1-2026-results-beat-estimates-93CH-4633698"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T18:30:00+09:00",
       "source_id": "src_1e732b003c88",
       "source_name": "XTB.com",
@@ -6318,7 +6573,7 @@
       "source_url": "https://www.xtb.com/lat/analisis-y-noticias/analisis-de-mercado/banco-de-chile-antes-del-q1-2026-compensa-la-correccion-del-18-desde-maximos"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T15:50:00+09:00",
       "source_id": "src_6a6920b2ef64",
       "source_name": "Swiss Resource Capital AG",
@@ -6327,7 +6582,7 @@
       "source_url": "https://www.resource-capital.ch/en/news/view/the-back-and-forth-in-the-iran-conflict-continues-what-will-happen-to-the-price-of-gold/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T15:35:07+09:00",
       "source_id": "src_e137484e27d2",
       "source_name": "Mining.com",
@@ -6336,7 +6591,7 @@
       "source_url": "https://www.mining.com/morgan-stanley-cuts-gold-price-forecast-by-almost-10/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T11:08:37+09:00",
       "source_id": "src_3791fe072ed7",
       "source_name": "T. Rowe Price",
@@ -6345,7 +6600,7 @@
       "source_url": "https://www.troweprice.com/financial-intermediary/de/en/thinking/articles/2026/q2/global-asset-allocation-view-from-europe-april-2026.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T11:07:08+09:00",
       "source_id": "src_3a87f83f1203",
       "source_name": "Apollo Global Management",
@@ -6354,7 +6609,7 @@
       "source_url": "https://www.apollo.com/wealth/the-daily-spark/inflation-s-drag-on-public-markets"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T09:22:16+09:00",
       "source_id": "src_0f7812b299f8",
       "source_name": "Investing.com",
@@ -6363,7 +6618,7 @@
       "source_url": "https://www.investing.com/news/stock-market-news/bank-of-america-sees-brazil-inflation-risk-premium-narrow-but-remain-elevated-93CH-4631470"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T08:39:30+09:00",
       "source_id": "src_bd7fe818c131",
       "source_name": "StockStory",
@@ -6372,7 +6627,7 @@
       "source_url": "https://stockstory.org/us/stocks/nasdaq/caty/news/earnings-call/caty-q1-deep-dive-loan-growth-lags-as-deposit-costs-ease-focus-on-credit-quality-remains"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T08:21:40+09:00",
       "source_id": "src_880a3e5d3170",
       "source_name": "MarketBeat",
@@ -6381,7 +6636,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-caprock-group-llc-raises-stock-position-in-synchrony-financial-syf-2026-04-23/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T04:38:26+09:00",
       "source_id": "src_c11d4407ecd9",
       "source_name": "T. Rowe Price",
@@ -6390,7 +6645,7 @@
       "source_url": "https://www.troweprice.com/financial-intermediary/ie/en/thinking/articles/2026/q2/global-asset-allocation-view-from-europe-april-2026.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T00:38:36+09:00",
       "source_id": "src_25723ca37502",
       "source_name": "Investing.com",
@@ -6399,7 +6654,7 @@
       "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-preferred-bank-q1-2026-sees-eps-beat-but-revenue-miss-93CH-4630343"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T22:54:29+09:00",
       "source_id": "src_82b2cf10a253",
       "source_name": "Benzinga",
@@ -6408,7 +6663,7 @@
       "source_url": "https://www.benzinga.com/news/politics/26/04/51988090/trump-approval-rating-still-underwater-record-highs-for-stock-market-not-enough-to-ease-voter-concerns"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T21:38:03+09:00",
       "source_id": "src_78d4225140a3",
       "source_name": "InvestmentNews",
@@ -6417,7 +6672,7 @@
       "source_url": "https://www.investmentnews.com/equities/investors-stay-upbeat-even-as-risks-mount-morgan-stanley-survey-finds/266267"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T21:38:03+09:00",
       "source_id": "src_9117dc6fd9e9",
       "source_name": "TheStreet",
@@ -6426,7 +6681,7 @@
       "source_url": "https://www.thestreet.com/investing/morgan-stanley-resets-gold-price-target-for-rest-of-2026"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T19:39:37+09:00",
       "source_id": "src_5dd72f9633cd",
       "source_name": "TradingView",
@@ -6435,7 +6690,7 @@
       "source_url": "https://www.tradingview.com/news/stockstory:bb355b885094b:0-why-are-jack-in-the-box-jack-shares-soaring-today/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T19:09:20+09:00",
       "source_id": "src_8ade9922b0a2",
       "source_name": "TradingView",
@@ -6444,7 +6699,7 @@
       "source_url": "https://www.tradingview.com/news/stockstory:83d411dca094b:0-why-triumph-financial-tfin-stock-is-falling-today/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T19:09:17+09:00",
       "source_id": "src_2a0c33a6341f",
       "source_name": "Investing.com",
@@ -6453,7 +6708,7 @@
       "source_url": "https://m.investing.com/news/transcripts/earnings-call-transcript-preferred-bank-q1-2026-sees-eps-beat-but-revenue-miss-93CH-4630343?ampMode=1"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T18:32:16+09:00",
       "source_id": "src_edbacc624f39",
       "source_name": "MSN",
@@ -6462,7 +6717,7 @@
       "source_url": "https://www.msn.com/en-us/money/topstocks/stock-selection-is-critical-amid-high-volatility-with-fed-and-midterms-raymond-james-larry-adam/vi-AA21uAV5?ocid=finance-verthp-feeds"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T14:39:07+09:00",
       "source_id": "src_9c615b6ec098",
       "source_name": "StoneX",
@@ -6471,7 +6726,7 @@
       "source_url": "https://www.stonex.com/en/insights/usd-cad-traders-await-fed-and-bank-of-canada-signals/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T14:09:03+09:00",
       "source_id": "src_1c0a95250f92",
       "source_name": "Investing.com",
@@ -6480,7 +6735,7 @@
       "source_url": "https://m.investing.com/news/earnings/trico-bancshares-faces-earnings-test-amid-rate-headwinds-93CH-4629804?ampMode=1"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T23:30:00+09:00",
       "source_id": "src_2380affe0f1a",
       "source_name": "Yahoo Finance",
@@ -6489,8 +6744,8 @@
       "source_url": "https://finance.yahoo.com/markets/article/a-return-to-optimism-wall-street-strategists-are-bullish-on-the-ai-trade-143000172.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T07:09:57+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:31:31+09:00",
       "source_id": "src_05790ceaacd3",
       "source_name": "Investor's Business Daily",
       "source_quality": 0.45,
@@ -6498,7 +6753,25 @@
       "source_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-apple-amazon-google-earnings-ai-iran-talks/?src=A00220&yptr=yahoo"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:30:00+09:00",
+      "source_id": "src_cf6a205e10f0",
+      "source_name": "Motley Fool",
+      "source_quality": 0.45,
+      "source_type": "global_issue",
+      "source_url": "https://www.fool.com/investing/2026/04/26/the-stock-market-recently-did-something-witnessed/"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:21:34+09:00",
+      "source_id": "src_c7b600c14be2",
+      "source_name": "Reuters",
+      "source_quality": 0.45,
+      "source_type": "global_issue",
+      "source_url": "https://sg.finance.yahoo.com/news/oil-jumps-stock-futures-slip-222134935.html"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T07:01:00+09:00",
       "source_id": "src_1d533bb6abd7",
       "source_name": "Motley Fool",
@@ -6507,7 +6780,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/institutional-investors-add-bitcoin-balance-sheet/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T06:32:27+09:00",
       "source_id": "src_ee317720595f",
       "source_name": "Insider Monkey",
@@ -6516,7 +6789,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/natural-partners-l-p-nrp-213227586.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T05:50:14+09:00",
       "source_id": "src_6ed624a9c225",
       "source_name": "Bloomberg",
@@ -6525,7 +6798,7 @@
       "source_url": "https://finance.yahoo.com/news/record-setting-momentum-rally-drawing-200000605.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T05:24:00+09:00",
       "source_id": "src_52578599a1bc",
       "source_name": "Barrons.com",
@@ -6534,25 +6807,7 @@
       "source_url": "https://www.barrons.com/articles/stock-futures-trading-sunday-676fbb19?siteid=yhoof2&yptr=yahoo"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T04:32:00+09:00",
-      "source_id": "src_38ba95d52539",
-      "source_name": "Barrons.com",
-      "source_quality": 0.45,
-      "source_type": "global_issue",
-      "source_url": "https://www.barrons.com/articles/buffett-abel-berkshire-hathaway-stock-43f2385f?siteid=yhoof2&yptr=yahoo"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T03:05:00+09:00",
-      "source_id": "src_7b2ad7c1a843",
-      "source_name": "Motley Fool",
-      "source_quality": 0.45,
-      "source_type": "global_issue",
-      "source_url": "https://www.fool.com/investing/2026/04/26/this-monster-dividend-stock-boasts-the-free-cash/"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T20:30:16+09:00",
       "source_id": "src_78e63a0d1a25",
       "source_name": "Yahoo Finance",
@@ -6561,7 +6816,7 @@
       "source_url": "https://finance.yahoo.com/news/mag-7-earnings-bonanza-and-powells-home-stretch-what-to-watch-this-week-113016596.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T01:47:00+09:00",
       "source_id": "src_90516293649d",
       "source_name": "TheStreet",
@@ -6570,7 +6825,7 @@
       "source_url": "https://www.thestreet.com/investing/citi-outlines-the-1-8t-etf-shift-investors-must-watch"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T00:50:00+09:00",
       "source_id": "src_9690136e8ddc",
       "source_name": "Motley Fool",
@@ -6579,7 +6834,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/nasdaq-is-on-fire-here-are-the-2-best-ai-stocks/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T21:18:00+09:00",
       "source_id": "src_a80d3ee5842d",
       "source_name": "Motley Fool",
@@ -6588,7 +6843,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/after-the-sp-500s-historic-comeback-should-you-wai/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T20:32:11+09:00",
       "source_id": "src_0e4075b4dde0",
       "source_name": "MarketBeat",
@@ -6597,7 +6852,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/cigna-group-agm-highlights-275b-revenue-ceo-transition-and-vote-defeat-on-written-consent-proposal-2026-04-26/?utm_source=yahoofinance&utm_medium=yahoofinance"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T22:08:02+09:00",
       "source_id": "src_bc82ec24ea10",
       "source_name": "MT Newswires",
@@ -6606,7 +6861,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-rise-equity-130802590.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T22:14:52+09:00",
       "source_id": "src_88f21cd4099b",
       "source_name": "MT Newswires",
@@ -6615,7 +6870,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131452787.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T00:11:39+09:00",
       "source_id": "src_5d59940e7af3",
       "source_name": "Barrons.com",
@@ -6624,7 +6879,7 @@
       "source_url": "https://www.barrons.com/livecoverage/stock-market-news-today-042226/card/chips-and-software-are-finally-rallying-together-again-FmBU3mvhIGlxN11Yjeut?siteid=yhoof2&yptr=yahoo"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T22:14:24+09:00",
       "source_id": "src_8d48a76f3d6a",
       "source_name": "MT Newswires",
@@ -6633,7 +6888,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131424366.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-21T22:06:22+09:00",
       "source_id": "src_68215c17ad87",
       "source_name": "MT Newswires",
@@ -6642,7 +6897,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130622104.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-20T22:10:28+09:00",
       "source_id": "src_5a28b85d18cb",
       "source_name": "MT Newswires",
@@ -6651,7 +6906,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131028007.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-19T22:05:40+09:00",
       "source_id": "src_9f3cbcbadce9",
       "source_name": "Yahoo Finance",
@@ -6660,7 +6915,7 @@
       "source_url": "https://finance.yahoo.com/news/the-ai-trade-is-fueling-the-market-to-record-highs-despite-iran-war-130540185.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-18T22:02:13+09:00",
       "source_id": "src_8d22ee5a195a",
       "source_name": "Yahoo Finance",
@@ -6669,7 +6924,16 @@
       "source_url": "https://finance.yahoo.com/news/the-stock-markets-most-hated-rally-keeps-getting-stronger-130213393.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-27T07:32:22+09:00",
+      "source_id": "src_d1f24a5d886c",
+      "source_name": "Insider Monkey",
+      "source_quality": 0.45,
+      "source_type": "global_issue",
+      "source_url": "https://finance.yahoo.com/markets/stocks/articles/cerebras-systems-close-ipo-means-223222531.html"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T05:46:00+09:00",
       "source_id": "src_db56f37a6dbc",
       "source_name": "Motley Fool",
@@ -6678,7 +6942,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/amazon-stock-just-keeps-rising-heres-the-latest-ca/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T04:56:00+09:00",
       "source_id": "src_ff78d6662ad3",
       "source_name": "Motley Fool",
@@ -6687,7 +6951,7 @@
       "source_url": "https://www.fool.com/retirement/2026/04/26/this-key-roth-conversion-move-could-save-you-hundr/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-27T04:10:00+09:00",
       "source_id": "src_3751f77dbcc4",
       "source_name": "Motley Fool",
@@ -6696,16 +6960,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/magnificent-seven-trillion-dollar-stock-invest/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-27T03:50:00+09:00",
-      "source_id": "src_42e596bf830b",
-      "source_name": "Motley Fool",
-      "source_quality": 0.45,
-      "source_type": "global_issue",
-      "source_url": "https://www.fool.com/investing/2026/04/26/down-30-from-its-all-time-high-is-now-the-perfect/"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T11:14:00+09:00",
       "source_id": "src_044f462612fa",
       "source_name": "Naver News",
@@ -6714,7 +6969,7 @@
       "source_url": "http://www.metroseoul.co.kr/article/20260426500088"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T11:24:00+09:00",
       "source_id": "src_63688f1fec50",
       "source_name": "Naver News",
@@ -6723,7 +6978,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20260424500058"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T08:26:00+09:00",
       "source_id": "src_b141663dca12",
       "source_name": "Naver News",
@@ -6732,7 +6987,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265269"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-23T05:57:00+09:00",
       "source_id": "src_6f5d4ecb2b81",
       "source_name": "Naver News",
@@ -6741,7 +6996,7 @@
       "source_url": "https://www.seoulfn.com/news/articleView.html?idxno=627191"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-22T08:08:00+09:00",
       "source_id": "src_c331c2d1146a",
       "source_name": "Naver News",
@@ -6750,7 +7005,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265087"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-21T08:14:00+09:00",
       "source_id": "src_6f7a0d12d857",
       "source_name": "Naver News",
@@ -6759,7 +7014,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265010"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-20T09:10:00+09:00",
       "source_id": "src_9507c088b6b5",
       "source_name": "Naver News",
@@ -6768,7 +7023,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=264938"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-17T08:12:00+09:00",
       "source_id": "src_52f8b481e0b5",
       "source_name": "Naver News",
@@ -6777,7 +7032,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=264873"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-17T07:27:00+09:00",
       "source_id": "src_ceb6859ff9a8",
       "source_name": "Naver News",
@@ -6786,7 +7041,7 @@
       "source_url": "https://www.sedaily.com/article/20033615?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-16T16:18:00+09:00",
       "source_id": "src_7fa642f7d4ff",
       "source_name": "Naver News",
@@ -6795,7 +7050,7 @@
       "source_url": "https://www.kdpress.co.kr/news/articleView.html?idxno=204328"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-03-18T11:10:00+09:00",
       "source_id": "src_eb3dbf1557cf",
       "source_name": "Naver News",
@@ -6804,7 +7059,7 @@
       "source_url": "http://www.4th.kr/news/articleView.html?idxno=2109199"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-02-16T10:54:00+09:00",
       "source_id": "src_ee37b00276d8",
       "source_name": "Naver News",
@@ -6813,7 +7068,7 @@
       "source_url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=429976"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2024-03-11T18:28:00+09:00",
       "source_id": "src_8a5f0fe80ce9",
       "source_name": "Naver News",
@@ -6822,7 +7077,7 @@
       "source_url": "https://www.ngetnews.com/news/articleView.html?idxno=503020"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2024-03-11T14:58:00+09:00",
       "source_id": "src_e20f55844536",
       "source_name": "Naver News",
@@ -6831,7 +7086,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20240311500263"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2023-09-23T09:31:00+09:00",
       "source_id": "src_5844516cf7ed",
       "source_name": "Naver News",
@@ -6840,7 +7095,7 @@
       "source_url": "http://www.edaily.co.kr/news/newspath.asp?newsid=01262806635743072"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2023-03-23T14:42:00+09:00",
       "source_id": "src_e01d9fac42e9",
       "source_name": "Naver News",
@@ -6849,7 +7104,7 @@
       "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202303230146&t=NN"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2023-03-23T12:00:00+09:00",
       "source_id": "src_f2290309397b",
       "source_name": "Naver News",
@@ -6858,7 +7113,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20230323500176"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2022-09-13T17:48:00+09:00",
       "source_id": "src_15fe524c3bcf",
       "source_name": "Naver News",
@@ -6867,7 +7122,7 @@
       "source_url": "http://news.mk.co.kr/newsRead.php?no=808193&year=2022"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2021-05-24T19:02:00+09:00",
       "source_id": "src_08e02fdd1e25",
       "source_name": "Naver News",
@@ -6876,7 +7131,7 @@
       "source_url": "https://www.sedaily.com/NewsView/22MHH4ZC8D"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2021-01-07T18:41:00+09:00",
       "source_id": "src_041df6617b3f",
       "source_name": "Naver News",
@@ -6885,7 +7140,7 @@
       "source_url": "http://www.dt.co.kr/contents.html?article_no=2021010802100258040002&ref=naver"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:00:00+09:00",
       "source_id": "src_fe281d1a0fe7",
       "source_name": "Naver News",
@@ -6894,7 +7149,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570304"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:46:00+09:00",
       "source_id": "src_6eb2e20b312a",
       "source_name": "Naver News",
@@ -6903,7 +7158,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570302"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:06:00+09:00",
       "source_id": "src_fd4b03c4ca4a",
       "source_name": "Naver News",
@@ -6912,7 +7167,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570299"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T00:00:00+09:00",
       "source_id": "src_ca8749c24e7b",
       "source_name": "Naver News",
@@ -6921,7 +7176,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570272"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-25T09:00:00+09:00",
       "source_id": "src_4ab7cc669dd7",
       "source_name": "Naver News",
@@ -6930,7 +7185,7 @@
       "source_url": "https://economist.co.kr/article/view/ecn202604230065"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T16:47:00+09:00",
       "source_id": "src_73981eaf0f3d",
       "source_name": "Naver News",
@@ -6939,7 +7194,7 @@
       "source_url": "https://www.mk.co.kr/article/12026687"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T15:58:00+09:00",
       "source_id": "src_470c66cd8740",
       "source_name": "Naver News",
@@ -6948,7 +7203,7 @@
       "source_url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=611075"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T14:40:00+09:00",
       "source_id": "src_58ad710ff13f",
       "source_name": "Naver News",
@@ -6957,7 +7212,7 @@
       "source_url": "http://www.newsprime.co.kr/news/article.html?no=731472"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-24T11:38:00+09:00",
       "source_id": "src_6ee8e4bf84c0",
       "source_name": "Naver News",
@@ -6966,7 +7221,7 @@
       "source_url": "https://www.tokenpost.kr/news/international/352868"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T21:06:45+09:00",
       "source_id": "src_3cecda009125",
       "source_name": "Yahoo Finance",
@@ -6975,7 +7230,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/investors-reacting-illinois-tool-works-210711882.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T21:04:04+09:00",
       "source_id": "src_26be634b57f5",
       "source_name": "Insider Monkey",
@@ -6984,7 +7239,7 @@
       "source_url": "https://www.insidermonkey.com/blog/how-strong-growth-metrics-asserts-axon-enterprise-inc-axon-as-top-industrial-stock-1747212/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T19:48:13+09:00",
       "source_id": "src_024684a5d8c4",
       "source_name": "AD HOC NEWS",
@@ -6993,7 +7248,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/caterpillar-inc-stock-us1491231015-why-google-discover-changes-matter/69246217"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T19:29:01+09:00",
       "source_id": "src_073111eef04b",
       "source_name": "The Motley Fool",
@@ -7002,7 +7257,7 @@
       "source_url": "https://www.fool.com/investing/2026/04/26/fluor-big-year-now-still-good-time-buy-stock/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T19:07:27+09:00",
       "source_id": "src_a4307617d566",
       "source_name": "TradingView",
@@ -7011,7 +7266,7 @@
       "source_url": "https://www.tradingview.com/symbols/SWB-XS2010038730/analysis-overview/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:07:56+09:00",
       "source_id": "src_48c5d7a7b959",
       "source_name": "Yahoo Finance Singapore",
@@ -7020,7 +7275,7 @@
       "source_url": "https://sg.finance.yahoo.com/news/linde-lin-rocket-fuel-expertise-165414136.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T17:06:51+09:00",
       "source_id": "src_8e9c17ad14c9",
       "source_name": "AD HOC NEWS",
@@ -7029,7 +7284,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/linde-plc-stock-ie00bz12wp82-is-its-industrial-gases-dominance-strong/69245404"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:59:00+09:00",
       "source_id": "src_280d78000cba",
       "source_name": "Insider Monkey",
@@ -7038,7 +7293,7 @@
       "source_url": "https://www.insidermonkey.com/blog/this-is-why-heico-corporation-hei-is-the-best-industrial-stock-following-sherwood-avionics-and-accessories-acquisition-1746919/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T16:32:14+09:00",
       "source_id": "src_a216575d6d6b",
       "source_name": "Benzinga",
@@ -7047,7 +7302,7 @@
       "source_url": "https://www.benzinga.com/markets/large-cap/26/04/52052918/tractor-supply-lululemon-and-northrop-grumman-are-among-top-10-large-cap-losers-last-week-april-20-april-24-are-the-others-in-your-portfolio"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:43:41+09:00",
       "source_id": "src_a7037caf971a",
       "source_name": "Yahoo Finance",
@@ -7056,7 +7311,7 @@
       "source_url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-cuts-pentair-pnr-154408697.html"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:36:25+09:00",
       "source_id": "src_644d3b460506",
       "source_name": "AD HOC NEWS",
@@ -7065,7 +7320,7 @@
       "source_url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/idex-corporation-stock-us45167r1041-why-google-discover-changes-matter/69244893"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T15:10:44+09:00",
       "source_id": "src_d5430c139a5c",
       "source_name": "Insider Monkey",
@@ -7074,7 +7329,16 @@
       "source_url": "https://www.insidermonkey.com/blog/ennis-inc-ebf-delivers-in-line-fourth-quarter-results-1746810/?amp=1"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-26T15:08:58+09:00",
+      "source_id": "src_eb7a4b66b6fb",
+      "source_name": "MSN",
+      "source_quality": 0.58,
+      "source_type": "theme_surge",
+      "source_url": "http://www.msn.com/en-us/money/topstocks/why-james-hardie-industries-stock-zoomed-8-higher-today/ar-AA1O31IY?ocid=finance-verthp-feeds&apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T14:40:09+09:00",
       "source_id": "src_cb0e6ad21f84",
       "source_name": "MarketBeat",
@@ -7083,7 +7347,16 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/broadwind-energy-inc-nasdaqbwen-sees-significant-growth-in-short-interest-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-26T14:09:41+09:00",
+      "source_id": "src_c1326d05d17c",
+      "source_name": "Simply Wall Street",
+      "source_quality": 0.58,
+      "source_type": "theme_surge",
+      "source_url": "https://simplywall.st/community/narratives/us/food-beverage-tobacco/nasdaq-jjsf/jj-snack-foods/zxk9pzhc-jjsf-manufacturing-optimization-and-dividend-increase-will-support-future-performance/updates/23-analysts-kept-their-dollar110-price-target-on-jandj-snack-foods-unc"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:42:00+09:00",
       "source_id": "src_689a3f854587",
       "source_name": "TIKR.com",
@@ -7092,7 +7365,7 @@
       "source_url": "https://www.tikr.com/blog/spx-technologies-stock-and-the-300-million-crawford-united-deal-how-two-acquisitions-reset-the-2026-growth-floor"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:09:35+09:00",
       "source_id": "src_39b517c50e4f",
       "source_name": "MarketBeat",
@@ -7101,7 +7374,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-ubs-group-ag-has-86382-million-position-in-parker-hannifin-corporation-ph-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T13:09:09+09:00",
       "source_id": "src_f99e46f04432",
       "source_name": "Simply Wall Street",
@@ -7110,7 +7383,7 @@
       "source_url": "https://simplywall.st/stocks/ca/materials/tsx-hbm/hudbay-minerals-shares/news/does-hudbay-minerals-tsxhbm-new-pbcn-partnership-hint-at-a-s"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:58:44+09:00",
       "source_id": "src_31fcc973b2ad",
       "source_name": "MarketBeat",
@@ -7119,7 +7392,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-wiregrass-investment-management-llc-invests-102-million-in-fastenal-company-fast-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:55:00+09:00",
       "source_id": "src_6c840c61191f",
       "source_name": "Insider Monkey",
@@ -7128,7 +7401,7 @@
       "source_url": "https://www.insidermonkey.com/blog/analysts-optimistic-about-parker-hannifin-ph-prospects-1747133/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:54:00+09:00",
       "source_id": "src_ed15f0322f63",
       "source_name": "Insider Monkey",
@@ -7137,7 +7410,7 @@
       "source_url": "https://www.insidermonkey.com/blog/could-howmet-aerospace-hwm-be-a-beneficiary-of-spacex-ipo-1747136/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:40:27+09:00",
       "source_id": "src_4a75816204a2",
       "source_name": "MarketBeat",
@@ -7146,7 +7419,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-universal-beteiligungs-und-servicegesellschaft-mbh-acquires-24874-shares-of-borgwarner-inc-bwa-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:40:10+09:00",
       "source_id": "src_84274a9dda80",
       "source_name": "MarketBeat",
@@ -7155,7 +7428,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-universal-beteiligungs-und-servicegesellschaft-mbh-cuts-holdings-in-curtiss-wright-corporation-cw-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:37:27+09:00",
       "source_id": "src_2b78f0d4501e",
       "source_name": "MarketBeat",
@@ -7164,7 +7437,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-acquires-198332-shares-of-deere-company-de-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:37:10+09:00",
       "source_id": "src_f2767a7cb479",
       "source_name": "MarketBeat",
@@ -7173,7 +7446,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-verdence-capital-advisors-llc-decreases-stock-position-in-caterpillar-inc-cat-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:25:12+09:00",
       "source_id": "src_ec11d6e3582e",
       "source_name": "MarketBeat",
@@ -7182,7 +7455,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-boosts-stake-in-caterpillar-inc-cat-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:25:06+09:00",
       "source_id": "src_f327bad58938",
       "source_name": "MarketBeat",
@@ -7191,7 +7464,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-has-1541-billion-position-in-the-boeing-company-ba-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:16:27+09:00",
       "source_id": "src_50eb3845ddf5",
       "source_name": "Seeking Alpha",
@@ -7200,7 +7473,7 @@
       "source_url": "https://seekingalpha.com/article/4894416-paccars-rough-ride-warrants-caution-as-earnings-near"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:10:52+09:00",
       "source_id": "src_16001fb8c7c8",
       "source_name": "Simply Wall Street",
@@ -7209,7 +7482,7 @@
       "source_url": "https://simplywall.st/stocks/us/materials/nyse-son/sonoco-products/news/paul-joachimczyk-bought-39-more-shares-in-sonoco-products"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:10:24+09:00",
       "source_id": "src_7b2da0bc1ceb",
       "source_name": "MarketBeat",
@@ -7218,7 +7491,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-cnh-industrial-nv-cnh-shares-sold-by-zurcher-kantonalbank-zurich-cantonalbank-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:10:00+09:00",
       "source_id": "src_168183165337",
       "source_name": "MarketBeat",
@@ -7227,7 +7500,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-spx-technologies-inc-spxc-stock-position-increased-by-universal-beteiligungs-und-servicegesellschaft-mbh-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:09:54+09:00",
       "source_id": "src_1694ae19ff54",
       "source_name": "MarketBeat",
@@ -7236,7 +7509,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-universal-beteiligungs-und-servicegesellschaft-mbh-reduces-position-in-flex-ltd-flex-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:09:42+09:00",
       "source_id": "src_248f10e2fd7d",
       "source_name": "MarketBeat",
@@ -7245,7 +7518,7 @@
       "source_url": "https://www.marketbeat.com/instant-alerts/filing-azz-inc-azz-shares-purchased-by-speece-thorson-capital-group-inc-2026-04-26/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T12:07:47+09:00",
       "source_id": "src_5318016538c8",
       "source_name": "The Globe and Mail",
@@ -7254,7 +7527,16 @@
       "source_url": "https://www.theglobeandmail.com/investing/markets/stocks/GM/pressreleases/1524209/jp-morgan-remains-a-buy-on-general-motors-gm/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
+      "published_at": "2026-04-26T12:07:47+09:00",
+      "source_id": "src_c2679fc05fa0",
+      "source_name": "MarketBeat",
+      "source_quality": 0.58,
+      "source_type": "theme_surge",
+      "source_url": "https://www.marketbeat.com/instant-alerts/filing-vanguard-group-inc-increases-stock-position-in-honeywell-international-inc-hon-2026-04-26/"
+    },
+    {
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T11:55:00+09:00",
       "source_id": "src_eb395c0cec6b",
       "source_name": "Insider Monkey",
@@ -7263,7 +7545,7 @@
       "source_url": "https://www.insidermonkey.com/blog/is-linde-lin-one-of-the-best-dividend-aristocrat-stocks-to-buy-in-2026-1747105/"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-04-26T11:41:07+09:00",
       "source_id": "src_e69e279cdc18",
       "source_name": "MSN",
@@ -7272,34 +7554,7 @@
       "source_url": "https://www.msn.com/en-us/money/topstocks/trinity-industries-reaches-80-plus-relative-strength-rating-benchmark/ar-AA21EhE7?ocid=finance-verthp-feeds"
     },
     {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-26T11:39:39+09:00",
-      "source_id": "src_3b071a88fdb4",
-      "source_name": "Intellectia AI",
-      "source_quality": 0.58,
-      "source_type": "theme_surge",
-      "source_url": "https://intellectia.ai/news/stock/valmont-industries-reports-strong-q1-earnings-stock-surges"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-26T11:39:37+09:00",
-      "source_id": "src_aa5d95ab4842",
-      "source_name": "MarketBeat",
-      "source_quality": 0.58,
-      "source_type": "theme_surge",
-      "source_url": "https://www.marketbeat.com/instant-alerts/filing-mountain-pacific-investment-advisers-llc-takes-534-million-position-in-csw-industrials-inc-csw-2026-04-26/"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
-      "published_at": "2026-04-26T11:39:33+09:00",
-      "source_id": "src_0d7d6366ec68",
-      "source_name": "Intellectia AI",
-      "source_quality": 0.58,
-      "source_type": "theme_surge",
-      "source_url": "https://intellectia.ai/news/stock/nuclear-renaissance-the-rise-of-small-modular-reactors"
-    },
-    {
-      "collected_at": "2026-04-27T07:20:11.492038+09:00",
+      "collected_at": "2026-04-27T07:43:46.828086+09:00",
       "published_at": "2026-02-19T20:30:06+09:00",
       "source_id": "src_d385b9dccca3",
       "source_name": "Yahoo Finance Video",
@@ -7311,13 +7566,13 @@
   "top_event": {
     "category": "corporate_disclosure",
     "data_status": "ok",
-    "source_id": "src_41454a1d00b7",
-    "summary": "에스아이리소스 공시 접수. 원문 확인 필요.",
-    "title": "[기재정정]주요사항보고서(유상증자결정)"
+    "source_id": "src_0f89d616ce60",
+    "summary": "넷마블 공시 접수. 원문 확인 필요.",
+    "title": "효력발생안내( 2026.4.15. 제출 증권신고서(주식의포괄적교환ㆍ이전) )"
   },
   "top_risks": [
-    "high_volatility"
+    "데이터 부족"
   ],
   "top_theme": "ai",
-  "verification_status": "pass"
+  "verification_status": "fail"
 }
