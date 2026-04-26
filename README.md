@@ -37,7 +37,9 @@ python -m daytrade_agent.cli build-site
 필요한 항목만 저장합니다. 값은 코드나 Markdown에 하드코딩하지 않습니다.
 
 - `OPENDART_API_KEY`: OpenDART 공시 조회
-- `NEWS_API_KEY`: 선택 뉴스 API
+- `NEWS_API_KEY`: NewsAPI.org 뉴스 조회
+- `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`: Naver Search News API
+- `ALPHA_VANTAGE_API_KEY`: Alpha Vantage 뉴스/시장 보조 데이터
 - `QUOTE_PROVIDER_URL`: 호환 시세 provider endpoint
 - `QUOTE_PROVIDER_API_KEY`: 선택 시세 provider bearer token
 - `KIS_APP_KEY`, `KIS_APP_SECRET`: 향후 KIS quote adapter용
@@ -83,16 +85,17 @@ binary/login/model 접근이 불가능한 환경에서는 템플릿 작성기로
 ## 데이터 소스
 
 - OpenDART: 국내 공시
-- RSS/Naver/NewsAPI provider: 정치/정책, 글로벌 이슈, 테마 변동 후보
-- 호환 quote provider: 현재가, 등락률, 거래량, 거래대금, 시각
+- RSS/Naver/NewsAPI/Alpha Vantage/yfinance provider: 정치/정책, 글로벌 이슈, 테마 변동 후보
+- 호환 quote provider 또는 yfinance fallback: 현재가, 등락률, 거래량, 거래대금, 시각
 - mock collector: API 키 없는 테스트와 dry-run
 
 데이터가 없거나 오래되면 값을 만들지 않고 `insufficient` 상태와 "데이터 부족" 문구를 사용합니다.
 
-뉴스 수집은 `NEWS_RSS_URLS`가 있으면 RSS를 우선 사용하고, 없으면 `NAVER_CLIENT_ID` /
-`NAVER_CLIENT_SECRET`, 그다음 `NEWS_API_KEY` 순서로 시도합니다. TradingAgents와 동일하게
-`yfinance`는 키 없이 쓸 수 있는 보조 후보지만, 이 프로젝트의 장전 뉴스 MVP에서는 한국어 뉴스
-적합성이 높은 Naver Search API를 우선 적용합니다.
+뉴스 수집은 `NEWS_RSS_URLS`, Naver Search News, NewsAPI.org, Alpha Vantage, yfinance를
+순서대로 시도하고 provider별 결과를 dedupe합니다. TradingAgents처럼 yfinance는 키 없이 쓰는
+보조 provider로 남겨두고, 한국어 뉴스 적합성이 높은 Naver Search API와 NewsAPI.org를 우선
+사용합니다. 시세는 `QUOTE_PROVIDER_URL`이 있으면 우선 사용하고, 없으면 yfinance quote fallback을
+사용합니다.
 
 ## 테스트
 

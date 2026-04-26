@@ -12,6 +12,25 @@ news:
     - rss
     - naver
     - newsapi
+    - alpha_vantage
+    - yfinance
+  alpha_vantage_endpoint: https://www.alphavantage.co/query
+  yfinance_tickers:
+    political_theme:
+      - "005930.KS"
+      - "000660.KS"
+      - "035420.KS"
+      - "035720.KS"
+    global_issue:
+      - "^GSPC"
+      - "^IXIC"
+      - "SOXX"
+      - "NVDA"
+    theme_surge:
+      - "005930.KS"
+      - "000660.KS"
+      - "277810.KQ"
+      - "042700.KS"
   query_map:
     political_theme:
       - "한국 정책 주식"
