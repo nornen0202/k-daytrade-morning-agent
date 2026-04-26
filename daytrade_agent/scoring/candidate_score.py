@@ -154,7 +154,7 @@ def _main_reason(events: list[MarketEvent]) -> str:
 
 def _observation_condition(snapshot: PriceSnapshot | None) -> str:
     if snapshot is None or snapshot.as_of is None:
-        return "가격 스냅샷 데이터 부족. 공식 시세 재확인 필요."
+        return "가격 확인 필요. 공식 시세 화면에서 가격, 등락률, 거래대금 재확인 필요."
     return f"{snapshot.as_of.isoformat()} 기준 시세와 거래대금 재확인."
 
 

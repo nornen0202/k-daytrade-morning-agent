@@ -20,3 +20,5 @@ def test_candidate_score_is_deterministic():
     assert first[0].score >= 5
     assert first[0].source_ids
 
+    missing_price = next(candidate for candidate in first if candidate.symbol == "277810")
+    assert "가격 확인 필요" in missing_price.observation_condition

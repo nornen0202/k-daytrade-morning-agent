@@ -34,6 +34,9 @@ def build_site(config: AppConfig) -> list[Path]:
             latest=latest,
             reports=reports[:10],
             config=config,
+            asset_href="assets/style.css",
+            latest_href="index.html",
+            archive_href="reports/index.html",
         )
     )
     created.append(
@@ -43,6 +46,9 @@ def build_site(config: AppConfig) -> list[Path]:
             dist / "reports" / "index.html",
             reports=reports,
             config=config,
+            asset_href="../assets/style.css",
+            latest_href="../index.html",
+            archive_href="index.html",
         )
     )
 
@@ -56,6 +62,9 @@ def build_site(config: AppConfig) -> list[Path]:
                 report=report,
                 report_html=markdown_to_html(report["markdown"]),
                 config=config,
+                asset_href="../../assets/style.css",
+                latest_href="../../index.html",
+                archive_href="../index.html",
             ),
             encoding="utf-8",
         )

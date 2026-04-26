@@ -57,6 +57,9 @@ Codex 실행 환경이 없으면 템플릿 작성기로 안전하게 fallback합
 3. `.github/workflows/daily-report.yml`가 `dist/`를 Pages artifact로 업로드하고 배포합니다.
 4. Actions 권한은 repository Settings에서 "Read and write permissions"가 허용되어야 `content/reports` 커밋이 가능합니다.
 
+Private repository에서 Pages가 막히는 플랜이면 GitHub API가 Pages 설정을 거부할 수 있습니다. 이 경우
+저장소를 public으로 전환하거나 Pages를 지원하는 플랜/조직 정책을 먼저 적용해야 합니다.
+
 ## Daily workflow
 
 GitHub Actions cron은 기본적으로 UTC입니다. KST 평일 08:45 실행을 위해 fallback cron은

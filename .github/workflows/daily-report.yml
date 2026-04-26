@@ -30,7 +30,7 @@ jobs:
     env:
       PYTHONUTF8: "1"
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
-      REPORT_LLM_PROVIDER: codex
+      REPORT_LLM_PROVIDER: ${{ vars.REPORT_LLM_PROVIDER || 'codex' }}
       CODEX_REPORT_MODEL: ${{ vars.CODEX_REPORT_MODEL || 'gpt-5.5' }}
       CODEX_BINARY: ${{ vars.CODEX_BINARY }}
       CODEX_HOME: ${{ vars.CODEX_HOME }}
@@ -86,6 +86,11 @@ jobs:
 
       - name: Resolve Codex runtime
         run: |
+          if ($env:REPORT_LLM_PROVIDER -ne "codex") {
+            Write-Host "REPORT_LLM_PROVIDER=$env:REPORT_LLM_PROVIDER; skipping Codex runtime resolution."
+            exit 0
+          }
+
           function Test-CodexCandidate {
             param([string]$Candidate)
             if ([string]::IsNullOrWhiteSpace($Candidate) -or -not (Test-Path $Candidate)) {
@@ -122,7 +127,9 @@ jobs:
             }
           }
           if (-not $resolvedBinary) {
-            throw "Could not find a usable Codex binary. Set CODEX_BINARY or install Codex for the runner service account."
+            Write-Warning "Could not find a usable Codex binary. Falling back to deterministic template writer."
+            Add-Content -Path $env:GITHUB_ENV -Value "REPORT_LLM_PROVIDER=template"
+            exit 0
           }
 
           Add-Content -Path $env:GITHUB_ENV -Value "CODEX_BINARY=$resolvedBinary"
@@ -139,6 +146,11 @@ jobs:
 
       - name: Verify Codex login and model availability
         run: |
+          if ($env:REPORT_LLM_PROVIDER -ne "codex") {
+            Write-Host "REPORT_LLM_PROVIDER=$env:REPORT_LLM_PROVIDER; skipping Codex preflight."
+            exit 0
+          }
+
           $workspaceDir = $env:CODEX_WORKSPACE_DIR
           if ([string]::IsNullOrWhiteSpace($workspaceDir)) {
             $workspaceDir = Join-Path $env:GITHUB_WORKSPACE ".codex-preflight"
@@ -171,20 +183,27 @@ jobs:
           except CodexAppServerAuthError as exc:
               message = (
                   "Codex is installed but not logged in for the runner. "
-                  "Run `codex login` or `codex login --device-auth` on the runner machine."
+                  "Falling back to deterministic template writer for this run. "
+                  "Run `codex login` or `codex login --device-auth` on the runner machine "
+                  "to enable Codex-generated reports."
               )
-              print(f"::error::{message}")
+              print(f"::warning::{message}")
               print(exc)
-              write_summary(["## Codex login required", "", message])
-              raise SystemExit(1)
+              write_summary(["## Codex fallback", "", message])
+              with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as handle:
+                  handle.write("REPORT_LLM_PROVIDER=template\n")
+              raise SystemExit(0)
           except CodexAppServerBinaryError as exc:
               message = (
-                  "A usable Codex binary or requested Codex model is not available for the runner."
+                  "A usable Codex binary or requested Codex model is not available for the runner. "
+                  "Falling back to deterministic template writer for this run."
               )
-              print(f"::error::{message}")
+              print(f"::warning::{message}")
               print(exc)
-              write_summary(["## Codex runtime issue", "", message, "", str(exc)])
-              raise SystemExit(1)
+              write_summary(["## Codex fallback", "", message, "", str(exc)])
+              with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as handle:
+                  handle.write("REPORT_LLM_PROVIDER=template\n")
+              raise SystemExit(0)
 
           print("Codex account:", result.account)
           print("First available models:", ", ".join(result.models[:8]))

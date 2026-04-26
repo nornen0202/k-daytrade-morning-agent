@@ -3,17 +3,49 @@
 {% block page_title %}최신 장전 브리핑{% endblock %}
 {% block content %}
   {% if latest %}
+  {% set top_event = latest.summary.top_event or {} %}
   <section class="band">
     <div class="section-heading">
       <div>
         <h2>{{ latest.report_date }}</h2>
-        <p class="muted">Generated {{ latest.summary.generated_at }}</p>
+        <p class="muted">
+          생성 시각 {{ latest.summary.generated_at }} · 데이터 기준 시각 {{ latest.summary.data_as_of }}
+        </p>
       </div>
-      <a class="button" href="/reports/{{ latest.report_date }}/">상세 보기</a>
+      <a class="button" href="reports/{{ latest.report_date }}/">최신 리포트 보기</a>
     </div>
     <p class="notice">{{ latest.summary.disclaimer }}</p>
     <div class="status {{ latest.verification.status }}">
       검증 상태: {{ latest.verification.status }}
+    </div>
+
+    <dl class="context-grid">
+      <div>
+        <dt>오늘의 시장 분위기</dt>
+        <dd>{{ latest.summary.data_status }}</dd>
+      </div>
+      <div>
+        <dt>최우선 이벤트</dt>
+        <dd>
+          {{ top_event.title or "데이터 부족" }}
+          {% if top_event.source_id %}<br>source_id: {{ top_event.source_id }}{% endif %}
+        </dd>
+      </div>
+      <div>
+        <dt>최우선 관찰 테마</dt>
+        <dd>{{ latest.summary.top_theme or "데이터 부족" }}</dd>
+      </div>
+      <div>
+        <dt>핵심 리스크</dt>
+        <dd>{{ latest.summary.top_risks|join(", ") if latest.summary.top_risks else "데이터 부족" }}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="band">
+    <div class="section-heading">
+      <h2>통합 후보 Top 3</h2>
+      <a href="reports/{{ latest.report_date }}/">상세 근거</a>
     </div>
     <div class="table-scroll">
       <table>
@@ -22,19 +54,24 @@
             <th>후보</th>
             <th>점수</th>
             <th>근거</th>
+            <th>관찰 조건</th>
             <th>리스크</th>
           </tr>
         </thead>
         <tbody>
-        {% for candidate in latest.summary.candidates[:8] %}
+        {% for candidate in latest.summary.candidates[:3] %}
           <tr>
             <td><strong>{{ candidate.name }}</strong><br><span>{{ candidate.symbol }}</span></td>
             <td>{{ candidate.score }}</td>
-            <td>{{ candidate.source_ids|join(", ") }}{% if candidate.data_key %}; {{ candidate.data_key }}{% endif %}</td>
+            <td>
+              {{ candidate.source_ids|join(", ") }}
+              {% if candidate.data_key %}<br>{{ candidate.data_key }}{% endif %}
+            </td>
+            <td>{{ candidate.observation_condition }}</td>
             <td>{{ candidate.risk_flags|join(", ") }}</td>
           </tr>
         {% else %}
-          <tr><td colspan="4">데이터 부족</td></tr>
+          <tr><td colspan="5">데이터 부족</td></tr>
         {% endfor %}
         </tbody>
       </table>
@@ -49,16 +86,18 @@
 
   <section class="band">
     <div class="section-heading">
-      <h2>최근 리포트</h2>
-      <a href="/reports/">전체 보기</a>
+      <h2>이전 리포트 목록</h2>
+      <a href="reports/index.html">전체 보기</a>
     </div>
     <ol class="archive-list">
       {% for report in reports %}
-      <li><a href="/reports/{{ report.report_date }}/">{{ report.report_date }}</a> <span>{{ report.verification.status }}</span></li>
+      <li>
+        <a href="reports/{{ report.report_date }}/">{{ report.report_date }}</a>
+        <span>{{ report.verification.status }}</span>
+      </li>
       {% else %}
       <li>데이터 부족</li>
       {% endfor %}
     </ol>
   </section>
 {% endblock %}
-

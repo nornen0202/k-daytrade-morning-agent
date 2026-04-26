@@ -6,7 +6,7 @@
     <ol class="archive-list">
       {% for report in reports %}
       <li>
-        <a href="/reports/{{ report.report_date }}/">{{ report.report_date }}</a>
+        <a href="{{ report.report_date }}/">{{ report.report_date }}</a>
         <span>Generated {{ report.summary.generated_at }} · 검증 {{ report.verification.status }}</span>
       </li>
       {% else %}
@@ -15,4 +15,3 @@
     </ol>
   </section>
 {% endblock %}
-

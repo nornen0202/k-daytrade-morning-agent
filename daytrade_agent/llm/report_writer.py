@@ -1,13 +1,20 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
+from datetime import datetime
 
 from openai import OpenAI
 
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.codex_app_server import CodexAppServerSession
 from daytrade_agent.llm.prompt_builder import build_prompt
-from daytrade_agent.normalizers.event_schema import Candidate, ReportContext, model_dump_json_safe
+from daytrade_agent.normalizers.event_schema import (
+    Candidate,
+    ReportContext,
+    model_dump_json_safe,
+    parse_datetime,
+)
 
 
 def write_report_markdown(
@@ -48,11 +55,15 @@ def build_summary(
     return {
         "report_date": context.report_date,
         "generated_at": context.generated_at.isoformat(),
+        "data_as_of": _data_as_of(context),
         "data_status": context.data_status,
         "verification_status": verification_status,
         "market_context": context.market_context,
         "missing_data": context.missing_data,
         "candidate_count": len(context.candidates),
+        "top_event": _top_event(context),
+        "top_theme": _top_theme(context),
+        "top_risks": _top_risks(context),
         "events": [model_dump_json_safe(event) for event in context.events],
         "candidates": [
             {
@@ -88,6 +99,59 @@ def build_summary(
         "disclaimer": config_disclaimer(),
         "markdown_length": len(markdown),
     }
+
+
+def _data_as_of(context: ReportContext) -> str:
+    timestamps: list[datetime] = []
+    for snapshot in context.price_snapshots:
+        if snapshot.as_of:
+            timestamps.append(snapshot.as_of)
+    for value in context.market_context.values():
+        if not isinstance(value, dict):
+            continue
+        raw_as_of = value.get("as_of")
+        parsed = parse_datetime(str(raw_as_of)) if raw_as_of else None
+        if parsed:
+            timestamps.append(parsed)
+    if not timestamps:
+        return "데이터 부족"
+    return max(timestamps).isoformat()
+
+
+def _top_event(context: ReportContext) -> dict[str, object]:
+    if not context.events:
+        return {"title": "데이터 부족", "source_id": None, "category": None}
+    event = sorted(
+        context.events,
+        key=lambda item: (item.confidence, item.source_quality),
+        reverse=True,
+    )[0]
+    return {
+        "title": event.title,
+        "summary": event.summary,
+        "category": event.category,
+        "source_id": event.source_id,
+        "data_status": event.data_status,
+    }
+
+
+def _top_theme(context: ReportContext) -> str:
+    counter: Counter[str] = Counter()
+    for event in context.events:
+        if event.affected_sectors:
+            counter.update(event.affected_sectors)
+        else:
+            counter[event.category] += 1
+    if not counter:
+        return "데이터 부족"
+    return counter.most_common(1)[0][0]
+
+
+def _top_risks(context: ReportContext) -> list[str]:
+    risks: list[str] = []
+    for candidate in context.candidates[:5]:
+        risks.extend(flag for flag in candidate.risk_flags if flag != "none")
+    return sorted(set(risks)) or ["데이터 부족"]
 
 
 def config_disclaimer() -> str:

@@ -3,7 +3,9 @@
 {% block page_title %}{{ report.report_date }} 리포트{% endblock %}
 {% block content %}
   <section class="band">
-    <p class="muted">Generated {{ report.summary.generated_at }}</p>
+    <p class="muted">
+      생성 시각 {{ report.summary.generated_at }} · 데이터 기준 시각 {{ report.summary.data_as_of }}
+    </p>
     <p class="notice">{{ report.summary.disclaimer }}</p>
     <div class="status {{ report.verification.status }}">검증 상태: {{ report.verification.status }}</div>
     {% if report.verification.errors %}
@@ -20,6 +22,7 @@
     <h2>데이터 신뢰도</h2>
     <dl class="context-grid">
       <div><dt>data_status</dt><dd>{{ report.summary.data_status }}</dd></div>
+      <div><dt>data_as_of</dt><dd>{{ report.summary.data_as_of }}</dd></div>
       <div><dt>candidate_count</dt><dd>{{ report.summary.candidate_count }}</dd></div>
       <div><dt>missing_data</dt><dd>{{ report.summary.missing_data|join(", ") if report.summary.missing_data else "없음" }}</dd></div>
     </dl>
@@ -29,4 +32,3 @@
     {{ report_html|safe }}
   </section>
 {% endblock %}
-
