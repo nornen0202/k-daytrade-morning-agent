@@ -1,8 +1,7 @@
 {
-  "errors": [],
-  "status": "warning",
-  "warnings": [
-    "report data_status is partial",
-    "missing data was reported"
-  ]
+  "errors": [
+    "unknown symbol mentioned: 794450"
+  ],
+  "status": "fail",
+  "warnings": []
 }
