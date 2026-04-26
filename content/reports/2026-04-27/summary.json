@@ -31,6 +31,21 @@
       "category": "political_theme",
       "confidence": 0.5,
       "data_status": "partial",
+      "event_id": "evt_bea89505018e",
+      "published_at": "2026-04-27T06:56:00+09:00",
+      "source_id": "src_3a45446ec116",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.pennmike.com/news/articleView.html?idxno=119461",
+      "summary": "더불어민주당 정책 싱크탱크 민생연석회의(금융·주거위원회)의 일원이었기도 한 부동산 전문가가 한... 물건이 나올 테니 이 기회를 노리면 되고 매도자는 과감히 팔아라\"라며 \"국가가 주식시장을 뒷받침해 끌고 가고...",
+      "title": "\"전세 못 구하면 안 나가고 개기면 돼\"...이재명 시대의 부동산시장 뉴..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
       "event_id": "evt_d74fecbc0ee1",
       "published_at": "2026-04-27T06:44:00+09:00",
       "source_id": "src_b22fb7177637",
@@ -159,21 +174,6 @@
       "source_url": "https://www.joongang.co.kr/article/25423482",
       "summary": "한국 실질실효환율은 지난 2024년 12월 비상계엄 사태 직후 원·달러 환율이 1480원을 돌파하며 91.37로 떨어졌다. 이후 지난해 미국 관세 정책에 따른 불확실성, 서학 개미(해외 주식에 투자하는 개인) 열풍, 확장 재정에...",
       "title": "원화 실질가치, 금융위기 후 최저…5개월째 위안화보다 저평가"
-    },
-    {
-      "affected_sectors": [],
-      "candidate_symbols": [],
-      "category": "political_theme",
-      "confidence": 0.5,
-      "data_status": "partial",
-      "event_id": "evt_e4bd055a0c54",
-      "published_at": "2026-04-27T00:02:00+09:00",
-      "source_id": "src_5c4d306688bf",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_url": "http://www.fntimes.com/html/view.php?ud=202604252226392057dd55077bc2_18",
-      "summary": "대비해 한국거래소가 주도하는 KDX 유통플랫폼에 참여하고 있다. 특히 STO를 리테일 부문의 핵심 사업으로 보고, 개인 투자자를 위한 다양한 투자 자산 발굴에 나설 계획이다. 배 대표는 “정부의 자본시장 활성화 정책...",
-      "title": "'재무통' 배형근 현대차증권 대표, 연금·디지털 깃발 [금투업계 CEO열전..."
     },
     {
       "affected_sectors": [
@@ -1465,8 +1465,8 @@
       "title": "중동 긴장 고조, 방산주 급등...지정학적 위험 확대"
     }
   ],
-  "generated_at": "2026-04-27T06:55:00.607773+09:00",
-  "markdown_length": 492,
+  "generated_at": "2026-04-27T06:57:20.729920+09:00",
+  "markdown_length": 20707,
   "market_context": {},
   "missing_data": [
     "price_snapshot: QUOTE_PROVIDER_URL is not configured"
@@ -1475,7 +1475,16 @@
   "report_date": "2026-04-27",
   "sources": [
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
+      "published_at": "2026-04-27T06:56:00+09:00",
+      "source_id": "src_3a45446ec116",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.pennmike.com/news/articleView.html?idxno=119461"
+    },
+    {
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T06:44:00+09:00",
       "source_id": "src_b22fb7177637",
       "source_name": "Naver News",
@@ -1484,7 +1493,7 @@
       "source_url": "https://www.ebn.co.kr/news/articleView.html?idxno=1706568"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T06:30:00+09:00",
       "source_id": "src_1f5c84b63970",
       "source_name": "Naver News",
@@ -1493,7 +1502,7 @@
       "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=370404"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T06:22:00+09:00",
       "source_id": "src_dceacc07b98d",
       "source_name": "Naver News",
@@ -1502,7 +1511,7 @@
       "source_url": "https://view.asiae.co.kr/article/2026042407533296977"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T05:46:00+09:00",
       "source_id": "src_f5ba598ce1fe",
       "source_name": "Naver News",
@@ -1511,7 +1520,7 @@
       "source_url": "https://www.econovill.com/news/articleView.html?idxno=738670"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T05:31:00+09:00",
       "source_id": "src_da76abc3dde5",
       "source_name": "Naver News",
@@ -1520,7 +1529,7 @@
       "source_url": "https://www.chosun.com/economy/money/2026/04/27/RJYSGN2L3NEA5AOFOXTLZ46AQI/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T05:26:00+09:00",
       "source_id": "src_4346311a7f11",
       "source_name": "Naver News",
@@ -1529,7 +1538,7 @@
       "source_url": "https://www.dt.co.kr/article/12059543?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T05:02:00+09:00",
       "source_id": "src_ae3859dc2f9b",
       "source_name": "Naver News",
@@ -1538,7 +1547,7 @@
       "source_url": "https://www.hani.co.kr/arti/opinion/column/1255978.html"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T05:00:00+09:00",
       "source_id": "src_b00ebe5bc42d",
       "source_name": "Naver News",
@@ -1547,7 +1556,7 @@
       "source_url": "https://www.joongang.co.kr/article/25423509"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T00:04:00+09:00",
       "source_id": "src_9a9005935b81",
       "source_name": "Naver News",
@@ -1556,16 +1565,7 @@
       "source_url": "https://www.joongang.co.kr/article/25423482"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
-      "published_at": "2026-04-27T00:02:00+09:00",
-      "source_id": "src_5c4d306688bf",
-      "source_name": "Naver News",
-      "source_quality": 0.65,
-      "source_type": "political_theme",
-      "source_url": "http://www.fntimes.com/html/view.php?ud=202604252226392057dd55077bc2_18"
-    },
-    {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T03:36:00+09:00",
       "source_id": "src_5963881a3836",
       "source_name": "Naver News",
@@ -1574,7 +1574,7 @@
       "source_url": "https://www.mhns.co.kr/news/articleView.html?idxno=745871"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T00:29:00+09:00",
       "source_id": "src_f3ab742434ee",
       "source_name": "Naver News",
@@ -1583,7 +1583,7 @@
       "source_url": "https://www.joongang.co.kr/article/25423499"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T18:54:00+09:00",
       "source_id": "src_ff70abfb585a",
       "source_name": "Naver News",
@@ -1592,7 +1592,7 @@
       "source_url": "http://www.fnnews.com/news/202604261852140807"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T16:59:00+09:00",
       "source_id": "src_0336e014b11c",
       "source_name": "Naver News",
@@ -1601,7 +1601,7 @@
       "source_url": "https://news.tvchosun.com/site/data/html_dir/2026/04/26/2026042690102.html"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T14:06:00+09:00",
       "source_id": "src_ba757936dd37",
       "source_name": "Naver News",
@@ -1610,7 +1610,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411733"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T12:20:00+09:00",
       "source_id": "src_6aeaaf495275",
       "source_name": "Naver News",
@@ -1619,7 +1619,7 @@
       "source_url": "https://www.m-i.kr/news/articleView.html?idxno=1367741"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T08:10:00+09:00",
       "source_id": "src_55e05f9d5ca3",
       "source_name": "Naver News",
@@ -1628,7 +1628,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16044728"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-25T13:10:00+09:00",
       "source_id": "src_116dc34775ab",
       "source_name": "Naver News",
@@ -1637,7 +1637,7 @@
       "source_url": "http://www.ifs.or.kr/bbs/board.php?bo_table=News&wr_id=55727"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-25T12:06:00+09:00",
       "source_id": "src_63561f39ae1b",
       "source_name": "Naver News",
@@ -1646,7 +1646,7 @@
       "source_url": "https://www.sedaily.com/article/20037013?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-25T09:48:00+09:00",
       "source_id": "src_f59f81be8345",
       "source_name": "Naver News",
@@ -1655,7 +1655,7 @@
       "source_url": "https://www.jejusori.net/news/articleView.html?idxno=501842"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-01-01T20:52:00+09:00",
       "source_id": "src_1674cc24042b",
       "source_name": "Naver News",
@@ -1664,7 +1664,7 @@
       "source_url": "https://news.cpbc.co.kr/article/1169534?division=NAVER"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-22T10:00:00+09:00",
       "source_id": "src_42fea90a4836",
       "source_name": "Naver News",
@@ -1673,7 +1673,7 @@
       "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=343580"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-19T14:04:00+09:00",
       "source_id": "src_26374e18d303",
       "source_name": "Naver News",
@@ -1682,7 +1682,7 @@
       "source_url": "https://www.m-joongang.com/news/articleView.html?idxno=401465"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-12T20:14:00+09:00",
       "source_id": "src_12ac0a4ce16e",
       "source_name": "Naver News",
@@ -1691,7 +1691,7 @@
       "source_url": "https://n.news.naver.com/mnews/article/214/0001442376?sid=100"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-08T11:30:00+09:00",
       "source_id": "src_efdc9b9a2ca9",
       "source_name": "Naver News",
@@ -1700,7 +1700,7 @@
       "source_url": "https://radio.ytn.co.kr/program/?f=2&id=104258&s_mcd=0214&s_hcd=01"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-08T09:27:00+09:00",
       "source_id": "src_b73bffbcb67f",
       "source_name": "Naver News",
@@ -1709,7 +1709,7 @@
       "source_url": "https://www.ytn.co.kr/_ln/0101_202508080927528179"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-08-05T17:10:00+09:00",
       "source_id": "src_5227db7fd374",
       "source_name": "Naver News",
@@ -1718,7 +1718,7 @@
       "source_url": "https://www.sisajournal-e.com/news/articleView.html?idxno=414085"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-07-31T11:48:00+09:00",
       "source_id": "src_1e365a4d2997",
       "source_name": "Naver News",
@@ -1727,7 +1727,7 @@
       "source_url": "http://kor.theasian.asia/archives/388866"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-07-31T07:00:00+09:00",
       "source_id": "src_537d6395c3f9",
       "source_name": "Naver News",
@@ -1736,7 +1736,7 @@
       "source_url": "https://view.asiae.co.kr/article/2025072917271781710"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2025-07-26T06:02:00+09:00",
       "source_id": "src_22b0660e840c",
       "source_name": "Naver News",
@@ -1745,7 +1745,7 @@
       "source_url": "https://www.news1.kr/politics/assembly/5859499"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-27T08:45:00+09:00",
       "source_id": "src_41454a1d00b7",
       "source_name": "OpenDART",
@@ -1754,7 +1754,7 @@
       "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000820"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-25T05:29:00+09:00",
       "source_id": "src_acc1513f9215",
       "source_name": "Naver News",
@@ -1763,7 +1763,7 @@
       "source_url": "https://www.newspim.com/news/view/20260425000009"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T23:30:00+09:00",
       "source_id": "src_3d78e2bada31",
       "source_name": "Naver News",
@@ -1772,7 +1772,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043975"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T15:06:00+09:00",
       "source_id": "src_0964dc47a563",
       "source_name": "Naver News",
@@ -1781,7 +1781,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411559"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T09:12:00+09:00",
       "source_id": "src_f5304218b841",
       "source_name": "Naver News",
@@ -1790,7 +1790,7 @@
       "source_url": "http://www.choicenews.co.kr/news/articleView.html?idxno=164373"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T06:52:00+09:00",
       "source_id": "src_d5123564f343",
       "source_name": "Naver News",
@@ -1799,7 +1799,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043100"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T22:40:00+09:00",
       "source_id": "src_2437a8564c58",
       "source_name": "Naver News",
@@ -1808,7 +1808,7 @@
       "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16043023"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T19:20:00+09:00",
       "source_id": "src_898c00f3547e",
       "source_name": "Naver News",
@@ -1817,7 +1817,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411363"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T17:56:00+09:00",
       "source_id": "src_0e0df84fd1aa",
       "source_name": "Naver News",
@@ -1826,7 +1826,7 @@
       "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4411348"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T17:14:00+09:00",
       "source_id": "src_ac6a9bc0f26e",
       "source_name": "Naver News",
@@ -1835,7 +1835,7 @@
       "source_url": "https://www.thereport.co.kr/news/articleView.html?idxno=87090"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T07:48:00+09:00",
       "source_id": "src_ee4d28cf1180",
       "source_name": "Naver News",
@@ -1844,7 +1844,7 @@
       "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202604230195&t=NN"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-20T14:58:00+09:00",
       "source_id": "src_760f11c0f5c9",
       "source_name": "Naver News",
@@ -1853,7 +1853,7 @@
       "source_url": "https://www.wolyo.co.kr/news/articleView.html?idxno=310969"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-13T14:32:00+09:00",
       "source_id": "src_aa8ac27f841b",
       "source_name": "Naver News",
@@ -1862,7 +1862,7 @@
       "source_url": "https://www.koreareport.co.kr/news/articleView.html?idxno=50141"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-07T17:46:00+09:00",
       "source_id": "src_a0b1fe6a38e9",
       "source_name": "Naver News",
@@ -1871,7 +1871,7 @@
       "source_url": "https://www.ekn.kr/web/view.php?key=20260407028165084"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-07T00:37:00+09:00",
       "source_id": "src_bcdd0fbb23ec",
       "source_name": "Naver News",
@@ -1880,7 +1880,7 @@
       "source_url": "https://www.chosun.com/economy/money/2026/04/07/JJBI6KNXP5B7PIVTIK2KSQJYIM/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-01T10:44:00+09:00",
       "source_id": "src_2fd6408ca805",
       "source_name": "Naver News",
@@ -1889,7 +1889,7 @@
       "source_url": "https://www.smarttoday.co.kr/ko-kr/articles/106032"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-31T09:00:00+09:00",
       "source_id": "src_051d405e4ad3",
       "source_name": "Naver News",
@@ -1898,7 +1898,7 @@
       "source_url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008497430&plink=ORI&cooper=NAVER"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-29T15:21:00+09:00",
       "source_id": "src_da001ade2bd0",
       "source_name": "Naver News",
@@ -1907,7 +1907,7 @@
       "source_url": "https://view.asiae.co.kr/article/2026032915210835469"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-29T05:01:00+09:00",
       "source_id": "src_f604fd5cbe01",
       "source_name": "Naver News",
@@ -1916,7 +1916,7 @@
       "source_url": "https://www.nocutnews.co.kr/news/6492458?utm_source=naver&utm_medium=article&utm_campaign=20260329050053"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-26T07:40:00+09:00",
       "source_id": "src_99055f26ed41",
       "source_name": "Naver News",
@@ -1925,7 +1925,7 @@
       "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=56745"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-24T13:12:00+09:00",
       "source_id": "src_e2b589760203",
       "source_name": "Naver News",
@@ -1934,7 +1934,7 @@
       "source_url": "https://www.naeil.com/news/read/582505?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T16:37:00+09:00",
       "source_id": "src_43facf7b7375",
       "source_name": "Naver News",
@@ -1943,7 +1943,7 @@
       "source_url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8545133&ref=A"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T14:46:00+09:00",
       "source_id": "src_b6d29959e8fc",
       "source_name": "Naver News",
@@ -1952,7 +1952,7 @@
       "source_url": "https://www.wikitree.co.kr/articles/1133367"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T08:40:00+09:00",
       "source_id": "src_fd4a0137d23c",
       "source_name": "Naver News",
@@ -1961,7 +1961,7 @@
       "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=58449"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T08:18:00+09:00",
       "source_id": "src_d51d77040cbd",
       "source_name": "Naver News",
@@ -1970,7 +1970,7 @@
       "source_url": "http://www.issuenbiz.com/news/articleView.html?idxno=76040"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T08:03:00+09:00",
       "source_id": "src_65c95528c144",
       "source_name": "Naver News",
@@ -1979,7 +1979,7 @@
       "source_url": "https://www.yna.co.kr/view/AKR20260424021900008?input=1195m"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T00:28:00+09:00",
       "source_id": "src_5eecbeebb0b4",
       "source_name": "Naver News",
@@ -1988,7 +1988,7 @@
       "source_url": "https://www.news2day.co.kr/article/20260424500005"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T23:08:00+09:00",
       "source_id": "src_b8bb1a31bb27",
       "source_name": "Naver News",
@@ -1997,7 +1997,7 @@
       "source_url": "https://www.tokenpost.kr/news/market/352633"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T19:18:00+09:00",
       "source_id": "src_635cc7d4c4c3",
       "source_name": "Naver News",
@@ -2006,7 +2006,7 @@
       "source_url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0200&key=20260424.22011006938"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T19:02:00+09:00",
       "source_id": "src_d54e80740367",
       "source_name": "Naver News",
@@ -2015,7 +2015,7 @@
       "source_url": "https://www.segye.com/newsView/20260423516658?OutUrl=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T07:58:00+09:00",
       "source_id": "src_bdfc5b95a3de",
       "source_name": "Naver News",
@@ -2024,7 +2024,7 @@
       "source_url": "https://www.newsis.com/view/NISX20260423_0003602658"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T11:14:00+09:00",
       "source_id": "src_044f462612fa",
       "source_name": "Naver News",
@@ -2033,7 +2033,7 @@
       "source_url": "http://www.metroseoul.co.kr/article/20260426500088"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T11:24:00+09:00",
       "source_id": "src_63688f1fec50",
       "source_name": "Naver News",
@@ -2042,7 +2042,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20260424500058"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T08:26:00+09:00",
       "source_id": "src_b141663dca12",
       "source_name": "Naver News",
@@ -2051,7 +2051,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265269"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-23T05:57:00+09:00",
       "source_id": "src_6f5d4ecb2b81",
       "source_name": "Naver News",
@@ -2060,7 +2060,7 @@
       "source_url": "https://www.seoulfn.com/news/articleView.html?idxno=627191"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-22T08:08:00+09:00",
       "source_id": "src_c331c2d1146a",
       "source_name": "Naver News",
@@ -2069,7 +2069,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265087"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-21T08:14:00+09:00",
       "source_id": "src_6f7a0d12d857",
       "source_name": "Naver News",
@@ -2078,7 +2078,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=265010"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-20T09:10:00+09:00",
       "source_id": "src_9507c088b6b5",
       "source_name": "Naver News",
@@ -2087,7 +2087,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=264938"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-17T08:12:00+09:00",
       "source_id": "src_52f8b481e0b5",
       "source_name": "Naver News",
@@ -2096,7 +2096,7 @@
       "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=264873"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-17T07:27:00+09:00",
       "source_id": "src_ceb6859ff9a8",
       "source_name": "Naver News",
@@ -2105,7 +2105,7 @@
       "source_url": "https://www.sedaily.com/article/20033615?ref=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-16T16:18:00+09:00",
       "source_id": "src_7fa642f7d4ff",
       "source_name": "Naver News",
@@ -2114,7 +2114,7 @@
       "source_url": "https://www.kdpress.co.kr/news/articleView.html?idxno=204328"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-03-18T11:10:00+09:00",
       "source_id": "src_eb3dbf1557cf",
       "source_name": "Naver News",
@@ -2123,7 +2123,7 @@
       "source_url": "http://www.4th.kr/news/articleView.html?idxno=2109199"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-02-16T10:54:00+09:00",
       "source_id": "src_ee37b00276d8",
       "source_name": "Naver News",
@@ -2132,7 +2132,7 @@
       "source_url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=429976"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2024-03-11T18:28:00+09:00",
       "source_id": "src_8a5f0fe80ce9",
       "source_name": "Naver News",
@@ -2141,7 +2141,7 @@
       "source_url": "https://www.ngetnews.com/news/articleView.html?idxno=503020"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2024-03-11T14:58:00+09:00",
       "source_id": "src_e20f55844536",
       "source_name": "Naver News",
@@ -2150,7 +2150,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20240311500263"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2023-09-23T09:31:00+09:00",
       "source_id": "src_5844516cf7ed",
       "source_name": "Naver News",
@@ -2159,7 +2159,7 @@
       "source_url": "http://www.edaily.co.kr/news/newspath.asp?newsid=01262806635743072"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2023-03-23T14:42:00+09:00",
       "source_id": "src_e01d9fac42e9",
       "source_name": "Naver News",
@@ -2168,7 +2168,7 @@
       "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202303230146&t=NN"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2023-03-23T12:00:00+09:00",
       "source_id": "src_f2290309397b",
       "source_name": "Naver News",
@@ -2177,7 +2177,7 @@
       "source_url": "https://www.asiatime.co.kr/article/20230323500176"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2022-09-13T17:48:00+09:00",
       "source_id": "src_15fe524c3bcf",
       "source_name": "Naver News",
@@ -2186,7 +2186,7 @@
       "source_url": "http://news.mk.co.kr/newsRead.php?no=808193&year=2022"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2021-05-24T19:02:00+09:00",
       "source_id": "src_08e02fdd1e25",
       "source_name": "Naver News",
@@ -2195,7 +2195,7 @@
       "source_url": "https://www.sedaily.com/NewsView/22MHH4ZC8D"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2021-01-07T18:41:00+09:00",
       "source_id": "src_041df6617b3f",
       "source_name": "Naver News",
@@ -2204,7 +2204,7 @@
       "source_url": "http://www.dt.co.kr/contents.html?article_no=2021010802100258040002&ref=naver"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T14:00:00+09:00",
       "source_id": "src_fe281d1a0fe7",
       "source_name": "Naver News",
@@ -2213,7 +2213,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570304"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T13:46:00+09:00",
       "source_id": "src_6eb2e20b312a",
       "source_name": "Naver News",
@@ -2222,7 +2222,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570302"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T13:06:00+09:00",
       "source_id": "src_fd4b03c4ca4a",
       "source_name": "Naver News",
@@ -2231,7 +2231,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570299"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-26T00:00:00+09:00",
       "source_id": "src_ca8749c24e7b",
       "source_name": "Naver News",
@@ -2240,7 +2240,7 @@
       "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=570272"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-25T09:00:00+09:00",
       "source_id": "src_4ab7cc669dd7",
       "source_name": "Naver News",
@@ -2249,7 +2249,7 @@
       "source_url": "https://economist.co.kr/article/view/ecn202604230065"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T16:47:00+09:00",
       "source_id": "src_73981eaf0f3d",
       "source_name": "Naver News",
@@ -2258,7 +2258,7 @@
       "source_url": "https://www.mk.co.kr/article/12026687"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T15:58:00+09:00",
       "source_id": "src_470c66cd8740",
       "source_name": "Naver News",
@@ -2267,7 +2267,7 @@
       "source_url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=611075"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T14:40:00+09:00",
       "source_id": "src_58ad710ff13f",
       "source_name": "Naver News",
@@ -2276,7 +2276,7 @@
       "source_url": "http://www.newsprime.co.kr/news/article.html?no=731472"
     },
     {
-      "collected_at": "2026-04-27T06:55:00.607773+09:00",
+      "collected_at": "2026-04-27T06:57:20.729920+09:00",
       "published_at": "2026-04-24T11:38:00+09:00",
       "source_id": "src_6ee8e4bf84c0",
       "source_name": "Naver News",
@@ -2296,5 +2296,5 @@
     "missing_price_snapshot"
   ],
   "top_theme": "semiconductor",
-  "verification_status": "fail"
+  "verification_status": "warning"
 }

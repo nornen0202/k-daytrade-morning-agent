@@ -1,8 +1,6 @@
 {
-  "errors": [
-    "price-like claim lacks price_snapshot data_key"
-  ],
-  "status": "fail",
+  "errors": [],
+  "status": "warning",
   "warnings": [
     "report data_status is partial",
     "missing data was reported"
