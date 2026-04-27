@@ -1,5 +1,6 @@
 {
   "errors": [
+    "investment-pressure wording found",
     "numeric material claim lacks source_id or data_key"
   ],
   "status": "fail",
