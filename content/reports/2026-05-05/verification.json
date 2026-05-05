@@ -1,0 +1,9 @@
+{
+  "errors": [
+    "investment-pressure wording found",
+    "unknown source_id referenced: src_0374215c9e13, src_280c37842bcf, src_ed28c7791773",
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": []
+}
