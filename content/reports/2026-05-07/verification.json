@@ -1,0 +1,9 @@
+{
+  "errors": [
+    "investment-pressure wording found",
+    "price-like claim lacks price_snapshot data_key",
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": []
+}
