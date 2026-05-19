@@ -1,0 +1,9 @@
+{
+  "errors": [
+    "investment-pressure wording found",
+    "unknown symbol mentioned: 200500, 272000",
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": []
+}
