@@ -1,0 +1,11 @@
+{
+  "errors": [
+    "investment-pressure wording found",
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": [
+    "report data_status is partial",
+    "missing data was reported"
+  ]
+}
