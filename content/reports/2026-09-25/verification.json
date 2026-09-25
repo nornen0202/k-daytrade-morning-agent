@@ -1,0 +1,7 @@
+{
+  "errors": [
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": []
+}
