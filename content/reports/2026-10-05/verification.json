@@ -1,0 +1,12 @@
+{
+  "errors": [
+    "investment-pressure wording found",
+    "unknown source_id referenced: src_22b6804bb032, src_261079ff9d3b, src_37f2cdd11a73, src_6b60861e49e4, src_8cdc8560ecfc, src_dd57b9c72fee",
+    "numeric material claim lacks source_id or data_key"
+  ],
+  "status": "fail",
+  "warnings": [
+    "report data_status is partial",
+    "missing data was reported"
+  ]
+}
