@@ -1,0 +1,5275 @@
+{
+  "candidate_count": 10,
+  "candidates": [
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_d940ce5fe061",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "[기재정정]주요사항보고서(유상증자결정) (source_id: src_62a2c940a8db)",
+      "market": "KOSPI",
+      "name": "Blue Industrial Development",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.49,
+      "source_ids": [
+        "src_2743ae328f6a",
+        "src_62a2c940a8db",
+        "src_ce96a22002f5"
+      ],
+      "symbol": "006740"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_a9c8f7aadaf5",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "일괄신고추가서류(파생결합사채-주가연계파생결합사채) (source_id: src_b8ce54b827c4)",
+      "market": "KOSPI",
+      "name": "MIRAE ASSET SEC",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.48,
+      "source_ids": [
+        "src_7cd6c2c1e483",
+        "src_b8ce54b827c4"
+      ],
+      "symbol": "006800"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_e02359889549",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "증권발행실적보고서 (source_id: src_df47c0d73354)",
+      "market": "KOSPI",
+      "name": "H.I.S.C",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.25,
+      "source_ids": [
+        "src_5efd249c93ce",
+        "src_df47c0d73354"
+      ],
+      "symbol": "003530"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_9627628a30b7",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "투자설명서 (source_id: src_54aded1c5dbe)",
+      "market": "KOSPI",
+      "name": "PARADISE",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.25,
+      "source_ids": [
+        "src_54aded1c5dbe",
+        "src_615f4c12ef8b"
+      ],
+      "symbol": "034230"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_9d6bd9b3cbab",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "의결권대리행사권유참고서류 (source_id: src_e301bdc00db3)",
+      "market": "KOSPI",
+      "name": "KOAS",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.24,
+      "source_ids": [
+        "src_d661b4199dd3",
+        "src_e301bdc00db3"
+      ],
+      "symbol": "071950"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_4febdfc42bbc",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "부동산투자회사부동산임대               (source_id: src_cb73d539b009)",
+      "market": "KOSPI",
+      "name": "Hanwha REIT",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 8.24,
+      "source_ids": [
+        "src_2bc8eac2b6b2",
+        "src_cb73d539b009"
+      ],
+      "symbol": "451800"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_f876bd40d9ff",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "조회공시요구(풍문또는보도)               (source_id: src_80ad1325f095)",
+      "market": "KOSPI",
+      "name": "LG Energy Solution",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 7.84,
+      "source_ids": [
+        "src_80ad1325f095"
+      ],
+      "symbol": "373220"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_210ef44e15a7",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "주식등의대량보유상황보고서(약식) (source_id: src_03b2c0f9130e)",
+      "market": "KOSPI",
+      "name": "STX",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 7.54,
+      "source_ids": [
+        "src_03b2c0f9130e",
+        "src_ae35e40813f7"
+      ],
+      "symbol": "011810"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_595c18db649f",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "풍문또는보도에대한해명(미확정)               (source_id: src_b1101c1a869d)",
+      "market": "KOSPI",
+      "name": "L&F",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 7.39,
+      "source_ids": [
+        "src_b1101c1a869d"
+      ],
+      "symbol": "066970"
+    },
+    {
+      "categories": [
+        "corporate_disclosure"
+      ],
+      "data_key": "price_508e4284ccbc",
+      "invalidation_condition": "관련 뉴스/공시의 후속 확인이 약해지면 우선순위 하향.",
+      "main_reason": "증권신고서(합병) (source_id: src_a5c39e2dad58)",
+      "market": "KOSDAQ",
+      "name": "Alteogen",
+      "observation_condition": "2026-10-14T11:09:01.424007+09:00 기준 시세와 거래대금 재확인.",
+      "risk_flags": [
+        "none"
+      ],
+      "score": 7.08,
+      "source_ids": [
+        "src_a5c39e2dad58"
+      ],
+      "symbol": "196170"
+    }
+  ],
+  "data_as_of": "2026-10-14T11:09:01.424007+09:00",
+  "data_status": "partial",
+  "disclaimer": "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.",
+  "events": [
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_37411c3d87d1",
+      "published_at": "2026-10-14T11:04:00+09:00",
+      "source_id": "src_db18df1d9ed8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439159",
+      "summary": "최근 상법 개정과 밸류업 정책으로 지배구조 개선 기반이 마련된 만큼, 우선주 할인을 자본 배분 차원의 문제로 다뤄야 한다고 팰리서는 강조했다. 동일한 권리를 가진 주식을 싼값에 매입해 소각하면 적은 비용으로 더...",
+      "title": "英 팰리서, 삼성전자에 ADR 발행 제안…우선주 매입·소각에 활용"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_b4dcf63ed7f9",
+      "published_at": "2026-10-14T11:03:00+09:00",
+      "source_id": "src_0ef17c5bd5a2",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.edaily.co.kr/News/Read?newsId=03250486645612920&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "summary": "국민의힘은 김용범 전 대통령실 정책실장 등에 대한 증인 채택도 요구했지만 여야 합의에 이르지 못했다.... 국내주식 비중 확대에 대해 위원들 사이에 이견이 없었다. 당시 증권사 애널리스트 보고서 등을 통해서도 한국...",
+      "title": "국민연금 국감서 여야 '증시 부양' 공방…野 \"정권 동원\"vs與 \"시장 안정..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_af5e4501ebb6",
+      "published_at": "2026-10-14T11:02:00+09:00",
+      "source_id": "src_1289de842f1f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://weekly.hankooki.com/news/articleView.html?idxno=7188815",
+      "summary": "전 정책실장 출석을 요구했으나 민주당이 응하지 않았다. 국민연금이 왜 원칙을 깼는지 당사자에게 물을... 이달희 국민의힘 의원은 \"국민연금은 정권의 증시 부양 펀드가 아니다\"라며 \"주식 투자자 1500만명이 오늘...",
+      "title": "[국감2026] \"'국민연금 리밸런싱 유예' 회의록 공개하라\"\" 김용범 前 靑..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_093c7b1a3ecb",
+      "published_at": "2026-10-14T11:00:00+09:00",
+      "source_id": "src_cb47a9e1fbea",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.mk.co.kr/article/12175374",
+      "summary": "민생 정책부터 미래 산업까지, 이 의원은 민주당이 당장의 정치 현안을 넘어 국민의 삶과 한국 경제의 다음... 등 주식에 대한 불신까지 쌓이면서 이탈한 층이 있다고 본다. Q. 이들의 마음을 되돌리려면 민주당이 무엇을...",
+      "title": "이언주 “부동산 정책 1순위는 전월세 안정…3040 민심 돌아봐야” [요..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_93610894ef24",
+      "published_at": "2026-10-14T11:00:00+09:00",
+      "source_id": "src_be103f152229",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439155",
+      "summary": "스팟 시장에서는 외국인의 대규모 국내주식 매도에 따른 커스터디 달러 매수세와 숏커버 물량이 환율을... 그러나 견조한 국내 성장세와 우호적인 수급, 한국은행의 매파적인 통화정책 기조가 원화 강세를 뒷받침할...",
+      "title": "외국인 달러선물 올해 최대 순매수…달러-원 추세 전환엔 신중"
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_2d56b2168300",
+      "published_at": "2026-10-14T10:50:00+09:00",
+      "source_id": "src_0e6e4514df08",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://kpenews.com/View.aspx?No=4262701",
+      "summary": "한국정경신문 정아람 기­자 ottokaeee@gmail.com [한국정경신문=정아람 기자] 국민연금의 ESG 투자가 높은... 국민연금공단 본부(사진=국민연금공단) 국민연금이 직접 운용한 국내 주식의 ESG 등급별 누적 수익률은...",
+      "title": "ESG 169% 고수익 뒤 깜깜이 평가..국민연금, 핵심 지표 공개율 20% 밑돌아"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_e4e9c5d1df67",
+      "published_at": "2026-10-14T10:50:00+09:00",
+      "source_id": "src_ebfc955ca847",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.pennmike.com/news/articleView.html?idxno=129499",
+      "summary": "금융당국에 따르면 한국거래소는 최근 시가총액 기준 미달로 관리종목에 지정된 기업들의 후속 상장폐지... 따라 주식 거래 가능 여부가 갈린 것이다. 증시를 살리겠다며 서두른 정책이 정작 애꿎은 개미들의 자금부터...",
+      "title": "증시 띄운다며 상폐 밀어붙이더니…법원에 발목 잡힌 李정부 '속도전'"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_328fe3cc0227",
+      "published_at": "2026-10-14T10:45:00+09:00",
+      "source_id": "src_eec25a54be2b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.fnnews.com/news/202610141041578376",
+      "summary": "국민연금이 지난 5월 국내주식 전략적 자산배분(SAA) 허용범위를 기존의 ±3%포인트에서 ±6%포인트로 확대해... 기금운용위원회에서는 국내 투자를 확대하기로 한 국민연금의 논의 과정을 2030년에나 공개하기로 했다....",
+      "title": "국민연금, 국내주식 목표비중 14.4→28.8% 높인 회의록 공개 여야논란 [..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_07b137b3ef0a",
+      "published_at": "2026-10-14T10:44:00+09:00",
+      "source_id": "src_3b9a3980decf",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.kbanker.co.kr/news/articleView.html?idxno=226153",
+      "summary": "14일 한화투자증권에 따르면 최근 도쿄에서 GI캐피털매니지먼트 증권 부문 주식을 취득하는 주식매매계약을... 일본 자본시장 활성화 정책도 사업 기회를 넓히는 요인이다. 한국금융연구원 보고서에 따르면...",
+      "title": "한화투자증권, 일본으로 해외 금융거점 확대"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_b342cf18d2ce",
+      "published_at": "2026-10-14T10:24:00+09:00",
+      "source_id": "src_ed1c62f3ca90",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.economytalk.kr/news/articleView.html?idxno=424630",
+      "summary": "이에 발표가 있자마자 지난 12일 미국 증시에서 엔비디아(-1.29%), 마이크론(-.3.88%), AMD(-2.28%), TSMC(-1.97%) 등... 반도체 의존 산업, 경제정책에 대한 경고 반도체 호황에 도취한 듯 산업 경쟁력 약화를 외면하는 경제정책에...",
+      "title": "[코스피] 반도체 주도 성장률 상향 조정 날, 반도체 주가·코스피 급락이..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5c40ce8b427f",
+      "published_at": "2026-10-14T10:48:00+09:00",
+      "source_id": "src_cbf7936ae7b8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.weeklytoday.com/news/articleView.html?idxno=797950",
+      "summary": "자동차 산업 발전과 현지 사업 확대 방안을 논의했다고 밝혔다. 두 사람의 만남은 이번이 여덟 번째다. 정 회장은 2024년 현대차 인도법인 증시 상장 때도 모디 총리와 따로 만났다. 모디 총리는 제조업 육성과 글로벌...",
+      "title": "[위클리오늘] 정의선 현대차그룹 회장, 모디 총리와 면담···인도에 7년..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_159c7ec4d088",
+      "published_at": "2026-10-14T10:42:00+09:00",
+      "source_id": "src_101fc61c0632",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.lawtv.kr/news/articleView.html?idxno=61138",
+      "summary": "2차 판매를 앞둔 9월부터 이미 증시 분위기가 달라져 1차만큼의 흥행은 어려울 것이라는 관측이 나왔다.... 금융업계 관계자는 \"이번 2차 판매는 국민이 첨단산업 성장의 과실을 나눈다는 정책 취지가 시장 상황에...",
+      "title": "1차는 '완판', 2차는 부진... 국민성장펀드 흥행이 식은 이유"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_a8bc991e4723",
+      "published_at": "2026-10-14T10:40:00+09:00",
+      "source_id": "src_ea7a70d6f15b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.smarttimes.co.kr/news/articleView.html?idxno=49702",
+      "summary": "인도 정부의 지속적인 관심과 지원에 감사를 표했다. 이어 인도 사업 현황과 함께 세계에서 가장... 현지 정책과 산업 환경 변화에 대한 대응력을 높이고 장기적으로 인도 사업 기반을 강화한다는 구상이다....",
+      "title": "[ST PICK]정의선 회장, 모디 인도 총리 만나…\"7년간 155억 달러 투자\""
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_8b3c1d15a2ea",
+      "published_at": "2026-10-14T10:24:00+09:00",
+      "source_id": "src_7a55d0be2398",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=615257",
+      "summary": "그러나 한국 정부가 미국 에너지부와 주정부, 의회, 관련 업계 등을 대상으로 협의를 진행하면서 미국 시장 진출을 위한 합의가 마련됐다는 설명이다. 이 같은 사업 구상이 구체화될 경우 국내 원전 산업의...",
+      "title": "원전 관련주, 한미 1200억 달러 '프로젝트 파워' 주목…두산에너빌리티..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_7d014589610b",
+      "published_at": "2026-10-14T10:22:00+09:00",
+      "source_id": "src_e380417a18b7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsinside.kr/news/articleView.html?idxno=5023760",
+      "summary": "인도 증시 상장을 계기로 정 회장은 모디 총리와 별도 면담을 가졌다. 이 자리에서는 인도 자동차 산업의... 현지 생산 확대는 인도 정부의 제조업 육성 정책과도 맞물린다. 인도는 '메이크 인 인디아(Make in India)' 정책...",
+      "title": "[정해균의 Zoom-人] 모디와 여덟 번 만난 정의선…인도에 '진심'인 현대..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5ccf2b923950",
+      "published_at": "2026-10-14T10:02:00+09:00",
+      "source_id": "src_51a223a57dda",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439135",
+      "summary": "공급망과 산업 기반을 구축하고 있다는 진단이다. 13일(현지시간) 비즈니스인사이더에 따르면... 수출 기업은 글로벌 AI 투자 사이클과 지정학적 변수에 민감하게 반응하는 반면, 내수 기업은 중국 정부의 정책 방향과...",
+      "title": "골드만삭스 \"AI 투자, 양대 생태계로 분화…中 기술 격차 축소\""
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_eba3528fa37d",
+      "published_at": "2026-10-14T10:02:00+09:00",
+      "source_id": "src_8ce76b32c690",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.kukinews.com/article/view/kuk202610140039",
+      "summary": "인도 정부의 지속적인 관심과 지원에 대해 감사를 표했다. 정 회장과 모디 총리의 만남은 이번이 8번째다.... 이를 통해 현지 정책 및 산업 환경 변화에 대한 대응력을 높이고 장기적으로 인도 사업 기반도 한층...",
+      "title": "정의선 회장, 모디 총리 만나 “인도에 7년간 21조 투자”"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ee148defab7d",
+      "published_at": "2026-10-14T09:48:00+09:00",
+      "source_id": "src_54d1ece6772a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newspim.com/news/view/20261014000266",
+      "summary": "13일(현지시간) 미국 뉴욕증시 주요 지수는 일제히 하락 마감했다. 이날 다우존스30산업평균지수는 전... 통화정책의 역할을 일부 대신하고 있다고 진단했다. 특징주는 데이팅 앱 운영사 범블로, 13억 달러 규모로...",
+      "title": "[글로벌 마켓 리포트 10월 14일]"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ca0d8115339b",
+      "published_at": "2026-10-14T09:48:00+09:00",
+      "source_id": "src_8979a4b5b87f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=322178",
+      "summary": "정 회장은 현대차그룹이 1996년 인도 진출 이후 30년간 현지 시장과 함께 성장해 왔다며 인도 정부의 관심과... 연구개발과 신기술, 산업 생태계 전반의 투자 방향을 조율해 현지 정책과 산업 환경 변화에 대응한다는...",
+      "title": "정의선, 모디 총리 만나 인도 투자 설명…7년간 155억달러 투입"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_126845612fbb",
+      "published_at": "2026-09-06T09:42:00+09:00",
+      "source_id": "src_d4923f418e8c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.wikitree.co.kr/articles/1157542",
+      "summary": "2021년을 기준으로 이듬해인 2022년에는 김 후보자가 출마할 총선이 아니라 대선이 예정돼 있었다는 것이다.... 이후 제넨셀의 임상시험 승인 소식과 함께 세종메디칼은 코로나19 테마주로 묶여 주가가 요동쳤다.  두 달...",
+      "title": "'김승원-유흥주점 여사장 녹취록' 추가 공개... 갈수록 커지는 파문"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_98d51e6ebf1f",
+      "published_at": "2026-06-07T17:14:00+09:00",
+      "source_id": "src_1380f8d5317c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.namdonews.com/news/articleView.html?idxno=912829",
+      "summary": "다만 지방선거는 대통령선거나 총선과 달리 국가 정책의 직접적인 변화를 이끌어내는 선거가 아닌 만큼... 실제 지난 4일 지방선거 테마주로 분류된 천일고속과 동양고속은 장 초반 상한가를 기록하는 등 강세를 보였다....",
+      "title": "코스피 8000 시대, 지방선거 변수는?…정책 연속성에 시장 촉각"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_faaed3786c88",
+      "published_at": "2026-06-04T21:51:00+09:00",
+      "source_id": "src_1a16a756eef6",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ytn.co.kr/_ln/0101_202606042151296105",
+      "summary": "대선 때 코로나 국면에서 있었던 소쿠리 투표 사건 있지 않았습니까? 그때 그 사태에 책임을 지고 노정희 선관위원장이 사의를 하기는 했습니다마는 선거 관리에 있어서 핵심이 되는 보직 중 하나가 선관위의 선거 정책실...",
+      "title": "민주 12곳·국힘 4곳 승리...여야 내부 권력 구도 요동"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_1f7c215b77d2",
+      "published_at": "2026-05-15T08:26:00+09:00",
+      "source_id": "src_2d6e2cc4f2fa",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://daily.hankooki.com/news/articleView.html?idxno=1367190",
+      "summary": "통상적으로 선거를 3~4주 앞둔 시점부터는 유력 후보들과 이런저런 개인적 또는 정책적 연관성이 있다는... 최근 2년간 총선과 대선을 거치는 과정에서 정치 테마주의 끝이 항상 급락으로 끝난다는 것을 경험한 개인...",
+      "title": "역대급 강세장 속 정치테마주 '실종'…선거전 본격화에도 무덤덤"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ccd49f7130a5",
+      "published_at": "2026-01-01T20:52:00+09:00",
+      "source_id": "src_1674cc24042b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://news.cpbc.co.kr/article/1169534?division=NAVER",
+      "summary": "그런데 올해부터 2년 간격으로 지선, 총선, 대선이 있습니다. 요 6년 사이에 수많은 공약들이 던져질 거고, 이 중에 일부는 소음이고 일부는 실현될 것이다. 이거를 잘 걸러내시는 게 정책을 입안하는 사람 국회든 실천하는...",
+      "title": "[뉴스공감] 2026 도시 리포트…대한민국 공간 다시 묻다"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_1b9a4392f7f9",
+      "published_at": "2025-08-22T10:00:00+09:00",
+      "source_id": "src_42fea90a4836",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=343580",
+      "summary": "MB 정부 실세와 연결…'文 테마주' 분류도 진영을 가리지 않고 진보·보수 양쪽 모두에 공을 들였던 이... 같은 해 대선에 앞서 치러진 총선에서 문 전 대통령이 당선되자 직접 꽃다발을 전달한 인물도 이 회장인 것으로...",
+      "title": "서희건설, '정권 밀착'해 성장하다 '정권 유착'으로 휘청"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_497f7fd9d958",
+      "published_at": "2025-08-19T14:04:00+09:00",
+      "source_id": "src_26374e18d303",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.m-joongang.com/news/articleView.html?idxno=401465",
+      "summary": "바엔) 총선 져도 된다\"는 발언의 맥락은 나중에 비상계엄으로 수수께끼가 풀리게 된다. 계엄 실패 이후 윤 대통령은 탄핵과 구속이라는 정치적 낭떠러지로 추락했다. 6월 대선에서 정권을 탈환한 민주당의 이재명 정부는...",
+      "title": "\"내가 정권 잡으면…\" 尹 정부 망친 'V0(제로) 권력'의 추태"
+    },
+    {
+      "affected_sectors": [
+        "bio"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5911c60951a3",
+      "published_at": "2025-08-12T20:14:00+09:00",
+      "source_id": "src_12ac0a4ce16e",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://n.news.naver.com/mnews/article/214/0001442376?sid=100",
+      "summary": "지난 대선 때에도 사실 그분들이 대선 승리를 염두에 두고 활동을 한 게 아니잖아요. 당권 투쟁만 그때도 했단 말이죠. 그래서 당권을 잡게 되면 이제 내년 지방선거나 또 좀 더 나아가면 총선에 대한 공천 이런 거 관련된...",
+      "title": "[뉴스하이킥] 김현정 의원 \"웰바이오텍 주가보도 기준 의혹·전환사채 의혹, 김건..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_42f72d351e34",
+      "published_at": "2025-08-08T11:30:00+09:00",
+      "source_id": "src_efdc9b9a2ca9",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://radio.ytn.co.kr/program/?f=2&id=104258&s_mcd=0214&s_hcd=01",
+      "summary": "네이버, LG CNS, 카카오페이 이게 모두 AI 정책과 관련한 관련주의 일종의 테마주라고 하는 것이죠. 그럼 권성동... 지난 대선 과정 또는 총선 과정에서 조국혁신당이 비례대표만 해갖고 지역 내지 않고 이번에 대선 후보를...",
+      "title": "서용주 \"국힘, 권성동 탈당 안 시키나” 정광재 \"경중 따지면 이춘석이..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_3310f656a9e2",
+      "published_at": "2025-08-08T09:27:00+09:00",
+      "source_id": "src_b73bffbcb67f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ytn.co.kr/_ln/0101_202508080927528179",
+      "summary": "네이버, LG CNS, 카카오페이 이게 모두 AI 정책과 관련한 관련주의 일종의 테마주라고 하는 것이죠. 그럼 권성동... 지난 대선 과정 또는 총선 과정에서 조국혁신당이 비례대표만 해갖고 지역 내지 않고 이번에 대선 후보를...",
+      "title": "서용주 \"국힘, 권성동 탈당 안 시키나\" 정광재 \"경중 따지면 이춘석이 ..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "political_theme",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_7762cbb20e6f",
+      "published_at": "2026-09-23T15:27:32+09:00",
+      "source_id": "src_edd0446dc698",
+      "source_name": "Ohmynews.com",
+      "source_quality": 0.55,
+      "source_url": "https://www.ohmynews.com/NWS_Web/Series/series_premium_pg.aspx?CNTN_CD=A0003269942",
+      "summary": "2026년 들어 한국 주식시장은 놀라운 기록을 세웠다. 블룸버그 집계에 따르면, 6월 1일 한국 증시의 시가총액은 독일·영국·프랑스 등 주요 시장을 앞선 데 이어 인도를 넘어 세계 6위에 올랐다. 6월 19일 코스피는 장중 9,385.59까지 상승했다. 이후 시장은 조정을 받았고, 9월 21일에는 7,007.72로 마감했다.\n\n짧은 기간에 한국 주식시장이 시가총액 세계 6위까지 올라간 일은 한국 기업의 높아진 위상과 반도체 산업의 성과를 보여준다. 삼성전자와 …",
+      "title": "한국 주식시장은 완전히 달라져야 한다"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "006800"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_49cc20a94884",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b8ce54b827c4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000081",
+      "summary": "미래에셋증권 공시 접수. 원문 확인 필요.",
+      "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "008560"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_9ae6b5720a74",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ab02f3d1435a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000080",
+      "summary": "메리츠증권 공시 접수. 원문 확인 필요.",
+      "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "008560"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_3cbc83a6bba5",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7facd3904cc7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000079",
+      "summary": "메리츠증권 공시 접수. 원문 확인 필요.",
+      "title": "일괄신고추가서류(파생결합증권-주가연계증권)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_d1e1faae1c33",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2748a171a086",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000078",
+      "summary": "엘에스아이티씨 공시 접수. 원문 확인 필요.",
+      "title": "동일인등출자계열회사와의상품ㆍ용역거래변경"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "196170"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_3aabcfa8765b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a5c39e2dad58",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000077",
+      "summary": "알테오젠 공시 접수. 원문 확인 필요.",
+      "title": "증권신고서(합병)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_b17ce7d22924",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_79edb862fc4c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000075",
+      "summary": "제일주류 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_bdada9535950",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_1cff6f078527",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000074",
+      "summary": "엘에스아이티씨 공시 접수. 원문 확인 필요.",
+      "title": "동일인등출자계열회사와의상품ㆍ용역거래변경"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_95b4f514346c",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_599d91bf8ca0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000073",
+      "summary": "엘에스아이티씨 공시 접수. 원문 확인 필요.",
+      "title": "동일인등출자계열회사와의상품ㆍ용역거래변경"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_84fbcf4b75cd",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d0b39658c175",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000072",
+      "summary": "아이비케이투자증권 공시 접수. 원문 확인 필요.",
+      "title": "증권발행실적보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "071950"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_199791b3c3e7",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_e301bdc00db3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000071",
+      "summary": "코아스 공시 접수. 원문 확인 필요.",
+      "title": "의결권대리행사권유참고서류"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "019990"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_3ad0af6b0a47",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_059827c8cd2c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900109",
+      "summary": "에너토크 공시 접수. 원문 확인 필요.",
+      "title": "전환가액의조정              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "071950"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_a2292ac5883e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d661b4199dd3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000070",
+      "summary": "코아스 공시 접수. 원문 확인 필요.",
+      "title": "주주총회소집공고"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_e3fa2263bc6e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d889a27711a5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000069",
+      "summary": "혜영수산 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "162120"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_8a1f01d6f131",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0236b4877b96",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014600100",
+      "summary": "루켄테크놀러지스 공시 접수. 원문 확인 필요.",
+      "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_ed50799fd372",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_e3013cfe1aa5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000067",
+      "summary": "한국마이크로소프트 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_931365d02fde",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3e1cdc4873cd",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000010",
+      "summary": "알리안츠글로벌인베스터즈펀드 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]투자설명서(집합투자증권)(알리안츠글로벌인베스터즈펀드)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_1285b4636bb6",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7594eb18dc05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000032",
+      "summary": "핌코펀드:글로벌인베스터즈시리즈피엘씨 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]투자설명서(집합투자증권)(핌코펀드:글로벌인베스터즈시리즈피엘씨)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_f3d7ef4e7596",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_adf83c435d13",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000065",
+      "summary": "부영환경산업 공시 접수. 원문 확인 필요.",
+      "title": "특수관계인으로부터자금차입"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "226950"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_f73127e32ba6",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_312c1282c422",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900099",
+      "summary": "올릭스 공시 접수. 원문 확인 필요.",
+      "title": "기업설명회(IR)개최              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_a93eb3db5299",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ec42b83d6d7a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000063",
+      "summary": "서울바이오 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "451800"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_7311af44d7fa",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cb73d539b009",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800087",
+      "summary": "한화리츠 공시 접수. 원문 확인 필요.",
+      "title": "부동산투자회사부동산임대              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "451800"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_53f791bc188f",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2bc8eac2b6b2",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800086",
+      "summary": "한화리츠 공시 접수. 원문 확인 필요.",
+      "title": "부동산투자회사부동산임대              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "105840"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_e7a8e58c1a5c",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7db02c9ffbe3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000060",
+      "summary": "우진 공시 접수. 원문 확인 필요.",
+      "title": "주식등의대량보유상황보고서(일반)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_44ec8bbd2f7e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_24e86744dff0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000059",
+      "summary": "해브앤비 공시 접수. 원문 확인 필요.",
+      "title": "연결감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_8fcf7b3cac79",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0a4ba41e216a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000058",
+      "summary": "해브앤비 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "089030"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_c9783290a62d",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3fc2d448d0e6",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900085",
+      "summary": "테크윙 공시 접수. 원문 확인 필요.",
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "130740"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_ab6be6ad3ada",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_148f57163e02",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000041",
+      "summary": "티피씨글로벌 공시 접수. 원문 확인 필요.",
+      "title": "주요사항보고서(자기주식취득신탁계약체결결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_b8d25512e676",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_de0efa00994b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000052",
+      "summary": "발해 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_c5e331bc095b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d9b909c4fdb5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000049",
+      "summary": "페더럴모굴아시아인베스트먼츠홀딩코리아 공시 접수. 원문 확인 필요.",
+      "title": "연결감사보고서 (2025.12)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_9106d2f0e29e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ccacbe589842",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000047",
+      "summary": "페더럴모굴아시아인베스트먼츠홀딩코리아 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2025.12)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "039490"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_f0ee1536803f",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_73aca13a2e62",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000042",
+      "summary": "키움증권 공시 접수. 원문 확인 필요.",
+      "title": "증권발행실적보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_2001f4c6ecbb",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_546b14164f79",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000030",
+      "summary": "한화에너지 공시 접수. 원문 확인 필요.",
+      "title": "타인을위한채무보증결정"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "417790"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_49a57ea8658b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2c42bb6d4e95",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000029",
+      "summary": "트루엔 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "051160"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_6cc74fab9b26",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_20b181a71e73",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000026",
+      "summary": "지어소프트 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "102710"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_dd69af25a523",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5a9f3ce6f79c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000024",
+      "summary": "이엔에프테크놀로지 공시 접수. 원문 확인 필요.",
+      "title": "주식등의대량보유상황보고서(약식)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "161890"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_bf9dba2e8e1a",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_f41749f6d1a3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800077",
+      "summary": "한국콜마 공시 접수. 원문 확인 필요.",
+      "title": "기업설명회(IR)개최(안내공시)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "010400"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_28f060ce4b90",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_57d18d47c3c4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800068",
+      "summary": "우진아이엔에스 공시 접수. 원문 확인 필요.",
+      "title": "단일판매ㆍ공급계약체결              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "009900"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_50e81c7f9dad",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_99fc297e8329",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800075",
+      "summary": "명신산업 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]기업설명회(IR)개최(안내공시)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "010780"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_bbee1f5de7c2",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d21b36cd8aa4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000019",
+      "summary": "아이에스동서 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "203450"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_a77b1291e69c",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_273a73b9493b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000017",
+      "summary": "유니온바이오메트릭스 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_7df43c989e1f",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_660babfc7c20",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000014",
+      "summary": "한국캐피탈제구차유동화전문유한회사 공시 접수. 원문 확인 필요.",
+      "title": "투자설명서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "066970"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_de148b9d66be",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b1101c1a869d",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800059",
+      "summary": "엘앤에프 공시 접수. 원문 확인 필요.",
+      "title": "풍문또는보도에대한해명(미확정)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "006800"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_d36e7e93641e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7cd6c2c1e483",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000009",
+      "summary": "미래에셋증권 공시 접수. 원문 확인 필요.",
+      "title": "증권발행실적보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_d9fbe3c9cf8e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0ba876896b79",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000008",
+      "summary": "인텔리빅스 공시 접수. 원문 확인 필요.",
+      "title": "투자설명서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "003530"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_8c1d82437b24",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_df47c0d73354",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000006",
+      "summary": "한화투자증권 공시 접수. 원문 확인 필요.",
+      "title": "증권발행실적보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "003530"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_ae62a6bc897c",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5efd249c93ce",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000005",
+      "summary": "한화투자증권 공시 접수. 원문 확인 필요.",
+      "title": "증권발행실적보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "056190"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_b3f08260376b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d9b6225e2599",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000004",
+      "summary": "SFA 공시 접수. 원문 확인 필요.",
+      "title": "임원ㆍ주요주주특정증권등소유상황보고서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "034230"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_ac840612c4ed",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_54aded1c5dbe",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000002",
+      "summary": "파라다이스 공시 접수. 원문 확인 필요.",
+      "title": "투자설명서"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "373220"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_9625c9464e36",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_80ad1325f095",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800003",
+      "summary": "LG에너지솔루션 공시 접수. 원문 확인 필요.",
+      "title": "조회공시요구(풍문또는보도)              "
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "065650"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_4b67b3f51530",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0344f4a5d9ae",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000001",
+      "summary": "하이퍼코퍼레이션 공시 접수. 원문 확인 필요.",
+      "title": "주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_6dd4aa218ba3",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0ae15943655e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100039",
+      "summary": "KB자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.9.28. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_90a48afb9268",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0a0182541389",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100002",
+      "summary": "MiraeAssetGlobalDiscoveryFund 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 일괄신고서(집합투자증권-회사형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_63d9c26e2925",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_c9236bb176fe",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100035",
+      "summary": "대신자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_77c4a2e652b9",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_12b11815808f",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100034",
+      "summary": "대신자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_bf539768b661",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7f4c06e9f8d3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100040",
+      "summary": "마이다스에셋자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_89eb097abd63",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cf8f463488e5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100032",
+      "summary": "삼성자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.9.28. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_eb14e8ad821f",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_56889352d96e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100005",
+      "summary": "알리안츠글로벌인베스터즈펀드 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 일괄신고서(집합투자증권-회사형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_83cfaba0607d",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a0a324444e83",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100031",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_4f23f4b7ea2d",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_af2a0b8b97b4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100030",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_34eca66ab6b5",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_368ec41aa1f4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100029",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_442ec8d7ab53",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d337b9f07396",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100028",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_fbd4e9749fdb",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_91326a15a899",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100027",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_85d60569ffd6",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_78ddbf5fd4de",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100026",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_47a5c60b5aca",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_15828fa7fd5b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100025",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_a191d39d94bc",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b314afcd8952",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100024",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_c2ef7f7548bd",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_19be18f58ff5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100023",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_28f784dd9dcf",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_bd71828d6c66",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100022",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_107a17758f40",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7f38866c8a7a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100021",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_a1a3853f3dd1",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_36d58e09b8bf",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100020",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_2ff065a593a1",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a6d0015c6d05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100019",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_b4d4c641d732",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_44049df7e26e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100018",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_4846d9d278d8",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cbc3513e4360",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100017",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_1913ee1799fd",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_32c1dc061dfd",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100016",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_e45704766a4c",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_02d5788506ba",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100015",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_243a329446b3",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_248e769cb501",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100014",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_45cd0f11aa36",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_12f518ba25d0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100013",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_f42c0f4adc54",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_03e00096ced5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100012",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_bcc4a7e2438d",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3e496aaded66",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100011",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_2253822cbe3b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_8d1e1c87c398",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100010",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_d313eab6bcf1",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0dd1f5f5f9d8",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100009",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_8fe24a7336d3",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_023e5242d2b5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100008",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_3794b9aed015",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7378e679b832",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100007",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_6360fbb956b9",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5ca2134e10d7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100006",
+      "summary": "우리자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_dfe93051ffdd",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_8a99c1dec77a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260916100012",
+      "summary": "인텔리빅스 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.9.16. 제출 증권신고서(지분증권) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_69da627efcf2",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_1845f00a255f",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100004",
+      "summary": "캐피탈인터내셔널펀드 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 일괄신고서(집합투자증권-회사형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "034230"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_92b72f5cbe67",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_615f4c12ef8b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930100035",
+      "summary": "파라다이스 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.9.30. 제출 증권신고서(채무증권) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_d81affadbfeb",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7d0b29dc60f0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100038",
+      "summary": "피델리티자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_046dbe582ee7",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_6660d50583f5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100037",
+      "summary": "피델리티자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_5d9c2622ec92",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_be5b2e0b17b5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100036",
+      "summary": "피델리티자산운용 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.7. 제출 일괄신고서(집합투자증권-신탁형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_f3f1cf728a77",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_101ea0bc0edb",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100003",
+      "summary": "핌코펀드:글로벌인베스터즈시리즈피엘씨 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 일괄신고서(집합투자증권-회사형) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_e9c847659c80",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_20a09093c999",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100033",
+      "summary": "한국캐피탈제구차유동화전문유한회사 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.13. 제출 증권신고서(유동화증권) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_55b79cadf49d",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_85b2ea218a68",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002100007",
+      "summary": "한국캐피탈제구차유동화전문유한회사 공시 접수. 원문 확인 필요.",
+      "title": "효력발생안내( 2026.10.2. 제출 증권신고서(유동화증권) )"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "011810"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_326576ad5660",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_03b2c0f9130e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000430",
+      "summary": "STX 공시 접수. 원문 확인 필요.",
+      "title": "주식등의대량보유상황보고서(약식)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "corporate_disclosure",
+      "confidence": 0.4,
+      "data_status": "ok",
+      "event_id": "evt_acfdfd38dc48",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_22a984dc7d41",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000438",
+      "summary": "엔데버 공시 접수. 원문 확인 필요.",
+      "title": "감사보고서 (2026.06)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "006740"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_c97a316bacc8",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_62a2c940a8db",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000437",
+      "summary": "블루산업개발 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "006740"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_6bed23deb774",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ce96a22002f5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000436",
+      "summary": "블루산업개발 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "006740"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_9fa2cc9d86f1",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2743ae328f6a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000435",
+      "summary": "블루산업개발 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "012170"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_120681df9a7e",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_15251aff32ba",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000431",
+      "summary": "아센디오 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [
+        "011810"
+      ],
+      "category": "corporate_disclosure",
+      "confidence": 0.7,
+      "data_status": "ok",
+      "event_id": "evt_fa16231f0a8b",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ae35e40813f7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000428",
+      "summary": "STX 공시 접수. 원문 확인 필요.",
+      "title": "[기재정정]주요사항보고서(유상증자결정)"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "battery"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_de0ba9a23c08",
+      "published_at": "2026-10-14T11:06:00+09:00",
+      "source_id": "src_eb1a06510985",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.fntoday.co.kr/news/articleView.html?idxno=395255",
+      "summary": "특히 한국 증시 급락이 글로벌 반도체주에 부담을 주며 나스닥 하락을 이끌었습니다. 매그니센트 7... 반면 아마존(-0.37%), 테슬라(-0.74%), 엔비디아(+0.97%)는 변동성이 컸으며, 특히 테슬라는 법적 이슈와 전기차...",
+      "title": "미국시장 분석: 테오도르의 월스트리트 (10월 14일)"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_76e70cb7f789",
+      "published_at": "2026-10-14T10:12:00+09:00",
+      "source_id": "src_c8f2dcc2de6c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=97030",
+      "summary": "19% 떨어지는 등 미국 반도체주도 약세를 보였다. 필라델피아 반도체지수는 0.23% 하락했다. 다만 미국 연방준비제도(Fed·연준) 인사들의 금리 인상 신중론과 장기 국채금리 안정세가 국내 증시의 낙폭 과대...",
+      "title": "코스피, 6100선 회복했지만 상승폭 축소…외인 다시 '팔자'"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_6d30bede510c",
+      "published_at": "2026-10-14T10:06:00+09:00",
+      "source_id": "src_babfeaa37893",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.businesspost.co.kr/BP?command=article_view&num=449265",
+      "summary": "현지시각 13일 미국 증시도 장 초반 약세를 보였으나 미국 연방준비제도(Fed·연준) 인사들의 완화적 발언에 국채 장기물 금리 상승세가 진정되면서 장 후반 낙폭을 줄였다. 다우존스30산업평균지수는 0.02...",
+      "title": "코스피 장중 저가 매수세로 1%대 상승해 6150선, 코스닥은 830선 약보합"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_649d299bbc10",
+      "published_at": "2026-10-14T09:54:00+09:00",
+      "source_id": "src_56ac560c6ca4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.segye.com/newsView/20261014507419?OutUrl=naver",
+      "summary": "간밤 미국 뉴욕증시는 대형 은행 실적 경계감과 반도체주 약세로 3대 주가지수가 소폭 하락 마감했다. 다만 미 연방준비제도(Fed·연준) 주요 인사들의 통화 완화적 발언이 전해지며 추가 금리 인상 우려가 일부...",
+      "title": "5거래일 내리막 멈춘 코스피… 외인·기관 쌍끌이에 6100선 탈환"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_32a1bb554feb",
+      "published_at": "2026-10-14T09:36:00+09:00",
+      "source_id": "src_70287a4b9d20",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://biz.newdaily.co.kr/site/data/html/2026/10/14/2026101400062.html",
+      "summary": "원·달러 환율은 전 거래일 대비 3.90원 내린 1339.10원에 거래 중이다. 이날 국내 증시는 간밤 미국 증시... 61%) 등이 하락했고 필라델피아 반도체 지수는 5거래일 연속 떨어졌다. 시장에서는 향후 금리 경로를...",
+      "title": "美 반도체 하락에도 코스피 6100선 반등 … 삼전닉스 2%대↑"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_8b145000007a",
+      "published_at": "2026-10-14T09:34:00+09:00",
+      "source_id": "src_735a01c43593",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.mt.co.kr/stock/2026/10/14/2026101408500415294",
+      "summary": "예상하는 금리 선물 시장 전망보다 완화적인 견해로 풀이됐다. 한지영 키움증권 연구원은 \"국내 증시는 9월 소비자물가지수(CPI) 대기심리와 중국발 반도체 노이즈에도, 연준 인사들의 완화적인 발언 속 미국 증시의...",
+      "title": "지금이 싸게 살 기회? 코스피, 하루 만에 급반등…6100선 탈환"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_bfe08f261787",
+      "published_at": "2026-10-14T09:32:00+09:00",
+      "source_id": "src_688658af7bb5",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.dailian.co.kr/news/view/1701254/?sc=Naver",
+      "summary": "양현경 iM증권 연구원은 \"미국 증시는 메모리·반도체 장비주 약세와 엇갈린 은행 실적에 하락했다\"면서도 \"존 윌리엄스 뉴욕 연방준비은행(연은) 총재 발언 이후 국채금리가 안정되면서 장 후반 낙폭을 줄였다...",
+      "title": "투매 외국인, '찔끔 매수'하니…코스피 2%대 상승 출발 [시황]"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_bf26f9304362",
+      "published_at": "2026-10-14T09:28:00+09:00",
+      "source_id": "src_c3fbf8f940f7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://news.mtn.co.kr/article/2026101409264343217",
+      "summary": "간밤 미국 뉴욕증시는 중국의 메모리 반도체 업체의 기술 진전에 대한 우려로 반도체 종목을 중심으로... 고금리 환경이 장기화될 가능성이 있다\"며 \"향후 AI 투자 사이클은 지속될 가능성이 높지만 높은...",
+      "title": "코스피, 외인 '사자'에 장초반 1%대↑…해운주 동반 강세"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_df9e03fb47df",
+      "published_at": "2026-10-14T09:26:00+09:00",
+      "source_id": "src_aa9bf1acd4c4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ajunews.com/view/20261014092144397",
+      "summary": "2027년에 금리를 추가로 인상할 필요는 없을 것으로 본다고 밝혔다. 미국 뉴욕증시 3대 지수는 하락했다.... 민경원 우리은행 이코노미스트는 \"전날 뉴욕장에서 메모리 반도체 관련 주가가 이틀 연속 약세를...",
+      "title": "환율, 연준 추가 긴축 신중론에 1330원대 후반서 등락"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ca8073716da9",
+      "published_at": "2026-10-14T09:18:00+09:00",
+      "source_id": "src_2af096595b51",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.nocutnews.co.kr/news/6591041?utm_source=naver&utm_medium=article&utm_campaign=20261014091744",
+      "summary": "장기국채 금리 상승세가 진정되며 '전약 후강' 형태를 보였단 분석이다. 특히 한국시간으로 이날 밤엔... 중국발 반도체 노이즈에도 연준 인사들의 완화적인 발언 속 미국 증시의 장중 낙폭 축소, 최근 5거래일간...",
+      "title": "코스피 전날 폭락 딛고 반등할까…2%대 상승 중"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ac3089b26dd8",
+      "published_at": "2026-10-06T07:01:00+09:00",
+      "source_id": "src_51be46fee1dd",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://shindonga.donga.com/3/all/13/6405031/1",
+      "summary": "9월 들어 한국 증시는 그런 장면을 거듭 연출하고 있다. 7000선을 넘어섰던 코스피는 9월 11일 외국인과 기관이... “주식 5000만 원, 채권 3000만 원, 현금 1500만 원, 금·원자재 500만 원 정도로 생각할 수 있다. 주식은 국내...",
+      "title": "“코스피 6500~8500 밴드…다음 상승은 기업이익이 이끈다”"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_614eae48b844",
+      "published_at": "2026-09-24T19:48:00+09:00",
+      "source_id": "src_589d0b69872b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.g-enews.com/view.php?ud=202609241944321335e250e8e188_1",
+      "summary": "원자재 시장의 가격 급등도 부담을 키웠다. 국제 벤치마크인 브렌트유 선물 가격은 배럴당 105.21달러로 2.... 76% 상승 마감했으나, 중국 본토 CSI 300 지수는 1.73% 급락했고 호주 S&P/ASX 200 지수도 0.72% 내렸다. 한국 증시...",
+      "title": "美 국채금리 급등·유가 폭등 충격…뉴욕증시 선물 일제히 급락"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_0a117cfe4bdc",
+      "published_at": "2026-08-31T16:54:00+09:00",
+      "source_id": "src_30163bc410e8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ajunews.com/view/20260831164627327",
+      "summary": "당시는 중국을 필두로 한 글로벌 경기 호황 속에서 한국의 수출 실적이 사상 최대치를 경신하던 시기로 대규모 외국인 자금 유출 속에서도 기업들의 탄탄한 펀더멘털이 증시를 떠받쳤고 코스피는 사상 첫 2000선을...",
+      "title": "[양보연의 주(株)토피아] 美 9월 금리 인상이 국내증시에 미치는 영향이..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ebb5929c34ed",
+      "published_at": "2026-08-29T09:52:00+09:00",
+      "source_id": "src_64bb3c098ac8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.jejusori.net/news/articleView.html?idxno=505952",
+      "summary": "2022년(6.3%) 원자재, 에너지가격상승과 글로벌공급망 교란 등으로 영업이익률이 하락했다. 2023년(5.8%), 2024년... 2009년부터 대광경영자문차이나(삼화회계법인 중국지사) 대표를 맡아, 중국기업의 한국증시 상장과...",
+      "title": "짝퉁 천국에서 첨단기술 국가로 진화하는 중국"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_86fdeacb8a43",
+      "published_at": "2026-08-14T06:02:00+09:00",
+      "source_id": "src_0dc21b4edfea",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://magazine.hankyung.com/money/article/202607203251c",
+      "summary": "최근에는 무역과 공급망, 외교·안보 측면에서도 한국이 중국보다 미국·일본과의 협력을 강화하고 있는 만큼 이런 인식은 더욱 강해지고 있다.” - 하반기 세계 경기와 한국 경제는 어떻게 보나. 김 교수 “중요하게 봐야...",
+      "title": "\"선행지수 꺾이면 코스피도 같이 꺾인다\""
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_c64fbdd3b1ce",
+      "published_at": "2026-08-07T17:26:00+09:00",
+      "source_id": "src_370e05ceff7a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ajunews.com/view/20260807163427513",
+      "summary": "■ 승인 24시간 후, 붕괴하는 원자재·외환 시장 승인 발표 단 하루 만에 글로벌 금융 시장은 패닉에... 이들이 한국 증시를 낙관하는 이유는 분명합니다. 최근 폭락으로 빚내서 투자한 레버리지 거품이 상당 부분 빠졌고...",
+      "title": "[오늘의 ABC 뉴스룸] \"폭락장에도 코스피 1만2천 간다\" 월가의 충격 전망..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_358dbb0a50b5",
+      "published_at": "2026-08-07T10:32:00+09:00",
+      "source_id": "src_fb9213d8814b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=93426",
+      "summary": "갈등으로 원자재 가격과 시장금리가 높은 수준을 유지하고 있어 지수의 빠른 상승보다는 실적이 뒷받침되는 종목 중심의 선별적인 반등을 예상했다. 삼성증권은 최근 조정이 경기 침체보다 글로벌 증시의 반도체...",
+      "title": "여의도는 낮추는데 월가는 \"더 간다\"...'만스피' 향방 놓고 전망 '제각각..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ed068b6478a1",
+      "published_at": "2026-08-05T08:50:00+09:00",
+      "source_id": "src_996658a296fb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.datanews.co.kr/news/article.html?no=145872",
+      "summary": "이 여파로 한국 증시에서는 약 1조2000억 달러(약 1714조 5600억 원) 규모의 시가총액이 증발했다. 이는 소수... 메모리 반도체 역시, 역사상 모든 원자재가 겪었던 사이클을 똑같이 반복할 것이라는 주장이다. 즉, 높은...",
+      "title": "“AI로 흥한 한국, 놀라울 정도로 급격히 무너질수도”"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_3d29d5f408f6",
+      "published_at": "2026-08-04T07:27:00+09:00",
+      "source_id": "src_62d7a5fcc9e3",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202608040332&t=NN",
+      "summary": "미 증시 살펴보며 한국 증시 투자아이디어까지 찾는 마켓 무버입니다. 간밤 뉴욕 증시 3대지수 모두... 실무자들이 경기를 낙관함을 뜻합니다. 세부 응답들을 살펴보면요. 집적 회로와 메모리 부품을 포함한 여러 원자재...",
+      "title": "투자심리 되살린 아마존의 한 마디…잘 나와서 오히려 불안한 PMI [마켓..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_a1ebd179abba",
+      "published_at": "2026-07-30T15:04:00+09:00",
+      "source_id": "src_6f734ebe7fae",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsis.com/view/NISX20260730_0003729757",
+      "summary": "이후 한국 증시에서 나타난 급등락을 집중 조명했다. 신문은 비상계엄 사태 이후 정부가 증시 부양에... 반면 회의론자들은 과거 모든 원자재 사이클과 마찬가지로 공급 확대가 결국 가격과 수익성을 끌어내릴 것으로...",
+      "title": "\"국가자본주의와 투기가 결합된 실험장\"…외신이 본 코스피와 AI"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_74c6d2112ec4",
+      "published_at": "2026-10-14T09:12:00+09:00",
+      "source_id": "src_0cd5ea0036f1",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.jnilbo.com/news/articleView.html?idxno=90000073136",
+      "summary": "야간선물 지수는 1.7% 상승했다. 이에 국내 증시도 낙폭 과대에 따른 반발 매수세 유입을 기대할 수 있겠지만, 이는 외국인 매도세 진정과 반도체 대형주의 주가 회복에 달려 있을 것으로 보인다. 서 상무는 \"한국...",
+      "title": "코스피 5거래일 연속 급락…6000선 붕괴냐 반등이냐 갈림길"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_12951350220a",
+      "published_at": "2026-10-14T08:33:00+09:00",
+      "source_id": "src_54ea80d27492",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.chosun.com/economy/stock-finance/2026/10/14/J44HD4ESNNGCTCLIMW2VPJRODY/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+      "summary": "견주면 한국 유가증권시장은 3.8%, 대만 증시는 0.9%다. 외국인 순매도 차이는 지수 성적표에 반영됐다.... 반도체 위탁생산(파운드리) 세계 1위 TSMC가 시가총액의 40% 남짓을 차지한다. 파운드리는 엔비디아 같은...",
+      "title": "외국인, 韓증시서 시총 3.8% 매도…대만의 4배 던졌다. 왜?"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_b5d503b419ad",
+      "published_at": "2026-10-14T08:30:00+09:00",
+      "source_id": "src_1f6c29b24605",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202610140022&t=NN",
+      "summary": "어제는 한국 증시가 반도체 양사를 중심으로 큰 폭으로 떨어졌습니다만 오늘 미국 증시는 어떻게... 美 반도체 업계 비상, 인텔·엔비디아 등으로 번지나? Q. 당시 마이크론을 표적으로 삼았습니다만 중국의 반격은...",
+      "title": "美 증시, 韓 증시 반도체 악몽 없었다! | 창신 메모리 충격, 왜 삼성전자..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_b1703e45a58b",
+      "published_at": "2026-10-14T08:20:00+09:00",
+      "source_id": "src_cddd2aec3f6b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.kbmaeil.com/article/20261014500028",
+      "summary": "다만 엔비디아는 0.97%, 브로드컴은 0.73%, 인텔은 1.44% 올라 반도체 종목별 흐름은 엇갈렸다. 메타와... 한국 증시에 대한 해외 투자심리를 보여주는 MSCI 한국 증시 상장지수펀드는 2.09% 하락했다. 반면 코스피200...",
+      "title": "장중 무너진 6000피, 오늘은 버틸까…외국인 매도·반도체 반등이 관건"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_fbda2a5ab198",
+      "published_at": "2026-10-14T08:12:00+09:00",
+      "source_id": "src_af5c3bf350b5",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=65719",
+      "summary": "다만 브로드컴(0.73%)과 인텔(1.44%)은 상승했고, 메타(2.63%), 엔비디아(0.97%), 알파벳(0.30%) 등 주요 빅테크와 AI... 서상영 미래에셋증권 상무는 \"한국 증시의 반도체 관련 수급 불안은 당분간 지속될 것으로 예상되지만...",
+      "title": "[증시전망대] 6천선 위태로운 코스피, 반발 매수로 '기술적 숨고르기' 할..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_4df8e0480874",
+      "published_at": "2026-10-14T08:04:00+09:00",
+      "source_id": "src_e39a1e230f65",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.yna.co.kr/view/AKR20261014020200008?input=1195m",
+      "summary": "야간선물 지수는 1.7% 상승했다. 이에 국내 증시도 낙폭 과대에 따른 반발 매수세 유입을 기대할 수 있겠지만, 이는 외국인 매도세 진정과 반도체 대형주의 주가 회복에 달려 있을 것으로 보인다. 서 상무는 \"한국...",
+      "title": "[마켓뷰] 6천피 깨지나 반등하나…'급락' 코스피 향배는"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5c05232fc733",
+      "published_at": "2026-10-14T07:43:00+09:00",
+      "source_id": "src_027d7a9cb0b3",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202610140017&t=NN",
+      "summary": "다우지수는 0.35% 떨어진 5만1,670포인트로 거래를 마쳤습니다. 메모리 반도체주의 부진은 미 증시에서도... 엔비디아는 장 초반의 하락세를 딛고 장 후반 반등에 성공하며 상승 마감했습니다. 프랑스 파리를 방문한 젠슨...",
+      "title": "2분기보다 안 좋은 은행주, 하루 더 내려앉은 美 반도체…시간외에선 달..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_ad981cf2db17",
+      "published_at": "2026-10-14T07:31:00+09:00",
+      "source_id": "src_6bf085be58c4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "summary": "다만 미국에 상장된 MSCI 한국 증시 상장지수펀드(ETF)는 코스피 급락에도 불구하고 2.09% 하락하는 데 그쳤다. 코스피200 야간선물은 1.7% 상승했다. 서상영 미래에셋증권 연구원은 \"최근 반도체주의 급락 실제 수요...",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "global_issue",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_c9f1fde56e5e",
+      "published_at": "2026-10-14T06:40:00+09:00",
+      "source_id": "src_306f2bce2178",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=96996",
+      "summary": "특히 한국 증시다. 코스피 지수는 5거래일 연속 하락하며 6% 이상 급락했고, 7월 고점 대비로는 25%나 빠지며... 엔비디아의 지원을 받는 호주 데이터센터 운영사 퍼머스(Firmus)는 투자자들의 관심이 급격히 식으면서...",
+      "title": "금리 공포에 꺾인 'AI 랠리'…글로벌 반도체 투매 쇼크에 韓 증시 '휘청..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_35124e19caef",
+      "published_at": "2026-10-12T18:00:00+09:00",
+      "source_id": "src_d7e59b5bf54f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.hansbiz.co.kr/news/articleView.html?idxno=872004",
+      "summary": "특히 올해 상반기 코스피 등 국내 증시 급등 속 주식 거래대금이 유례없이 늘어난 가운데 하반기에는... 상품은 국내 ETF 시장에서 처음으로 MLCC와 AI 기판을 핵심 투자 테마로 제시한 상품\"이라며 \"AI 투자 영역을...",
+      "title": "[증권가H] 엘리스그룹, 일반 청약에 10조 몰려 등"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_7674ec47db51",
+      "published_at": "2026-10-08T10:58:00+09:00",
+      "source_id": "src_6e42046ac5bb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.getnews.co.kr/news/articleView.html?idxno=882992",
+      "summary": "넘게 급등해 현재 5.30% 수준에서 등락 중이다. 고유가 부담이 지속되는 가운데 연방준비제도(Fed)의 기준금리 인상 확률을 반영하며 8월 말부터 빠르게 상승했다. 미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며...",
+      "title": "증권업계 \"4분기 韓증시, 美금리 고공행진에 실적중심 선별 장세 전망\""
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_39500bb617d5",
+      "published_at": "2026-10-08T10:37:00+09:00",
+      "source_id": "src_d6562a37e592",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.yna.co.kr/view/AKR20261008061300008?input=1195m",
+      "summary": "넘게 급등해 현재 5.30% 수준에서 등락 중이다. 고유가 부담이 지속되는 가운데 연방준비제도(Fed)의 기준금리 인상 확률을 반영하며 8월 말부터 빠르게 상승했다. 미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며...",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\""
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_19a17bd1f333",
+      "published_at": "2026-09-17T14:18:00+09:00",
+      "source_id": "src_3e3e77ba67de",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.choicenews.co.kr/news/articleView.html?idxno=171432",
+      "summary": "15%) 등도 급등 또는 상승 거래 중이다. 미국 경제방송 CNBC에 따르면 16일(현지시간) 제네락은 아마존을... 특정 섹터 및 특정 기업에 대한 분석 내용과 이슈, 특정 테마는 지켜봐야 하는 경우가 많은 데다, 주식투자는...",
+      "title": "아마존발 전력시장 훈풍...LS일렉트릭·효성중공업 '장중 활짝'"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_172856ba2770",
+      "published_at": "2026-09-14T08:10:00+09:00",
+      "source_id": "src_6ddbaedfe9b7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300790",
+      "summary": "정보보안 테마가 상승했다. ▷ Fed 추가 금리 인상 전망 속 미국 국채금리 급등 영향으로 은행, 생명보험... 대표주 테마가 상승했다. 9월 11일 장 마감 후 시간외 거래에서는 인피니트헬스케어가 2026~2027년 현금배당...",
+      "title": "[박정식의 국내 주식시황] 미·일 금리 결정 앞두고 상승 동력 제한…중..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_eea694eb25cf",
+      "published_at": "2026-09-13T05:30:00+09:00",
+      "source_id": "src_379b0f890548",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.dt.co.kr/article/12083502?ref=naver",
+      "summary": "주식시장 관련 소식이 매일 쏟아지지만 뉴스에서 '개미'의 목소리를 찾기 쉽지 않습니다. 기사를 쓰는... 결국 손절 타이밍을 놓친 기존 주주들에게는 헛된 희망고문만 안겨주고 급등 테마를 좇는 순진한 개투들에게는...",
+      "title": "6개월 벌었다고 살아날까… 상폐 유예가 부른 또 다른 공포 [박진우의 ..."
+    },
+    {
+      "affected_sectors": [
+        "robotics",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_0fb2a1f2d4f2",
+      "published_at": "2026-09-11T08:26:00+09:00",
+      "source_id": "src_77fb9088013a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300710",
+      "summary": "관련주가 시간외에서 강세를 보였다. 다만 보안주는 뉴스 재료에 따른 단기 급등락이 큰 만큼 추격 매수보다는 거래대금과 지속성을 확인할 필요가 있다. 로봇·피지컬AI 테마도 관심권이다. 포항 영일만산단에 국내...",
+      "title": "[박정식의 국내 주식시황] 고유가·고금리 충격…코스피 7000선 방어 다시..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_bd8037baf294",
+      "published_at": "2026-09-10T08:20:00+09:00",
+      "source_id": "src_6b59acb58166",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300616",
+      "summary": "LNG 테마가 상승했다. 9월 9일 장 마감 후 시간외 거래에서는 바른손이앤에이가 엠아이컴퍼니 등 특수관계자를 대상으로 26억2900만원 규모 제3자배정 유상증자를 결정했다는 공시에 상한가를 기록했다. 샘표가 주식...",
+      "title": "[박정식의 국내 주식시황] 유가·금리 부담에 박스권 장세…반도체·2차..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_4ea924ea14c6",
+      "published_at": "2026-09-09T08:18:00+09:00",
+      "source_id": "src_ec4fd832ba56",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300517",
+      "summary": "비철금속 테마가 상승했다. 9월 8일 장 마감 후 시간외 거래에서는 두올이 50억원 규모 자사주 취득 신탁계약 체결에 상한가를 기록했다. 윙입푸드는 윙입푸드홀딩스그룹 ADR이 미국 프리마켓에서 급등세를 보인...",
+      "title": "[박정식의 국내 주식시황] 중동 리스크에도 반도체는 버틴다…코스피 7..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor",
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_dc624020b471",
+      "published_at": "2026-09-08T08:22:00+09:00",
+      "source_id": "src_b15e96b272bc",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300430",
+      "summary": "전일 급등에도 수급이 유지되고 있어 7000선은 무난히 넘어설 가능성이 있다. 코스닥은 820선 아래로 다시... 은행 테마가 상승했다. 9월 7일 장 마감 후 시간외 거래에서는 AI·메모리 반도체 수요 확대 기대감이...",
+      "title": "[박정식의 국내 주식시황] 외국인·기관 3일째 순매수…코스피 7200선 다..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_c2f7389efd82",
+      "published_at": "2026-09-27T00:03:00+09:00",
+      "source_id": "src_befbfc17b360",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.dt.co.kr/article/12085851?ref=naver",
+      "summary": "긴 연휴 동안 장전된 투자 심리와 명절 보너스·상여금 등 실탄이 맞물리며 '추석 직후 장세를 어떻게 잡아야... 명절 직전 관망세가 걷히고 거래대금이 살아나며 강한 반등을 만들어내는 '전약후강'(前弱後强) 흐름이...",
+      "title": "“추석 끝나면 돈 번다”… 1400만 개미를 위한 4분기 ‘필승 포트폴리..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_9ba4b7d079df",
+      "published_at": "2026-08-27T18:42:00+09:00",
+      "source_id": "src_64fe9bd1a0a6",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.biotimes.co.kr/news/articleView.html?idxno=34080",
+      "summary": "95%(2,510원) 오른 1만 890원에 장을 마감했으며, 거래량과 거래대금 모두 급증했다. 시장에서는 단순한 테마... 실탄을 장전했다는 뜻이다. 여기에 숨겨진 투자자산의 가치 재평가도 호재로 작용했다. 셀레믹스가 2021년...",
+      "title": "[특징주] 셀레믹스, 갑작스러운 상한가 배경은?"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_1cb86db11756",
+      "published_at": "2026-08-18T16:32:00+09:00",
+      "source_id": "src_9b4b34280c67",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ajunews.com/view/20260818145032431",
+      "summary": "유 본부장이 밝힌 실전 트레이딩의 핵심은 철저한 장전 준비와 주도 섹터 대장주 집중이다. 매일 아침 6시... 이어 정규장 개장 후인 오전 9시부터 10시 사이, 변동성과 수급이 극대화되는 시점에 상승률과 거래대금이...",
+      "title": "'투자대회 상위 0.32%' 유주완 위즈덤팔러 WM본부장 \"주식 시장은 예측 ..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_251e8a3b6d19",
+      "published_at": "2026-07-16T16:18:00+09:00",
+      "source_id": "src_ba29a2b37d09",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newspim.com/news/view/20260716001046",
+      "summary": "A주 시장 총 거래대금은 2조4189억 위안으로 전 거래일보다 1685억 위안 감소했으며, 전체 상장주 가운데 2800개 이상의 종목이 하락 마감했다. 업종 및 테마별로는 영화·극장, 돼지고기, 문화미디어, 숏폼...",
+      "title": "[중국증시 마감] CXMT 재료소멸 등으로 '이틀 연속 기술주 급락'"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_9feccf1952b2",
+      "published_at": "2026-07-09T16:32:00+09:00",
+      "source_id": "src_5bd4f0112b98",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newspim.com/news/view/20260709001180",
+      "summary": "A주 시장 총 거래대금은 2조9322억 위안으로 전 거래일보다 3497억 위안 증가했으며, 전체 상장주 가운데 2400여 개 종목이 상승했다. 섹터별로는 반도체, 메모리칩, 전자화학소재, CPO, 광섬유 테마, PCB...",
+      "title": "[중국증시 마감] 큰 폭 상승, 반도체株 주도로 '커촹50' 8%대 급등"
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_5c4e539bc5cd",
+      "published_at": "2026-06-01T15:24:00+09:00",
+      "source_id": "src_7c6707fbcb0b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.thevaluenews.co.kr/news/view.php?idx=199105",
+      "summary": "구성 종목은 보통주 시가총액 1000억원 이상, 3개월 일평균 거래대금 1억원 이상인 종목 중 선정된다. 지수... 미래에셋증권은 LG그룹의 피지컬 AI 산업 내 가치 재평가 움직임과 함께 관련 테마 전반으로 매기가...",
+      "title": "젠슨 황 방한 기대에 'LG그룹주' 급등...TIGER LG그룹플러스, 장초반 괴리..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_61b505de86ad",
+      "published_at": "2026-05-21T10:22:00+09:00",
+      "source_id": "src_db713d6f31fb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.financialreview.co.kr/news/articleView.html?idxno=42410",
+      "summary": "지난 3월 말 한국투자증권 모바일 트레이딩 시스템(MTS) '한국투자'를 통해 도입된 이 서비스는 장전, 장중... 지난해 10월 거래 개시 이후 거래량과 거래대금이 증가세를 보이고 있다. 신한투자증권은 지난해 10월 24X와...",
+      "title": "[오늘의 증권] 한국투자증권·하나증권·신한투자증권·교보증권·키움..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_771b4c80cdeb",
+      "published_at": "2026-03-18T11:10:00+09:00",
+      "source_id": "src_eb3dbf1557cf",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "http://www.4th.kr/news/articleView.html?idxno=2109199",
+      "summary": "한국거래소에 따르면 17일 종가 기준 'TIGER 반도체TOP10 ETF'의 순자산은 8조 1543억원으로, 국내 주식 테마형... 한국투자증권은 ELW 시장에서 거래대금과 상장 종목 수 기준 1위를 유지하고 있다. 회사 측은 다양한 상품...",
+      "title": "[경제소식] NH농협은행, 현장형 직무교육프로그램 운영"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_cfd8017b5430",
+      "published_at": "2026-02-16T10:54:00+09:00",
+      "source_id": "src_ee37b00276d8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=429976",
+      "summary": "이날 두나무 테마는 전일 대비 1.09% 상승하며 장을 마감했다. 가상자산 거래 대금 급증으로 두나무의 기업... 자본의 가뭄 속에서도 1.5조 원의 실탄을 장전한 DSC인베스트먼트의 시선은 이미 다음 세대의 혁신 기업을...",
+      "title": "초기 발굴하고 구주로 수익 내고… DSC인베스트먼트, '투트랙' 전략 통했..."
+    },
+    {
+      "affected_sectors": [
+        "ai"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_c882394eb37f",
+      "published_at": "2024-03-11T18:28:00+09:00",
+      "source_id": "src_8a5f0fe80ce9",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ngetnews.com/news/articleView.html?idxno=503020",
+      "summary": "'Sleepless in USA' 서비스는 미국 주식 장전(Pre market), 장후(After market) 시장에 맞춰 1일 2회 보고서를 제공해... 시가총액과 거래대금까지 고려해 최종 300개 종목을 선정했다. 국내 투자자 니즈와 시장 변화를 고려해...",
+      "title": "한화투자·하나·한국투자증권·삼성자산·미래에셋자산운용 [Daily Pick 증..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_62692e1a4f17",
+      "published_at": "2026-10-14T08:18:00+09:00",
+      "source_id": "src_4e98065552b2",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302562",
+      "summary": "오늘 국내증시는 중국 창신메모리테크놀로지(CXMT)발 메모리 경쟁 우려가 이어지는 가운데 단기 낙폭 과대에... 테마도 상승했다. 10월 13일 장 마감 후 애프터마켓에서는 엘컴텍이 20억원 규모 자사주 취득 결정에 급등했...",
+      "title": "[박정식의 국내 주식시황] 외국인 매도 폭탄에도 기관은 샀다…오늘 기..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_70abbf3aeaa0",
+      "published_at": "2026-10-13T17:38:00+09:00",
+      "source_id": "src_2cb3d3208d7e",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.mk.co.kr/article/12174716",
+      "summary": "착공 앞당겨지나 기대감에 호남 연고 기업들 동반 상승 급등락 속출, 투자 유의해야 국내 증시가 '삼전닉스'를 중심으로 일제히 급락세를 나타낸 가운데 호남 반도체 클러스터 테마주들이 '나홀로 급등세'를 연출했다....",
+      "title": "호남 반도체 테마株 '이상 과열'"
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_2dfeec9f588e",
+      "published_at": "2026-10-13T14:02:00+09:00",
+      "source_id": "src_32b641a9bd9f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.etnews.com/20261013000236",
+      "summary": "국내 증시가 약세를 이어가면서 투자자들의 자금이 파킹형 상장지수펀드(ETF)에 몰리고 있다. 증시... ETF CHECK 월간 투자 테마별 자금유입 현황에 따르면 머니마켓펀드(MMF) 자금유입은 8월 7192억원으로 7위를...",
+      "title": "코스피 하락에 '파킹형 ETF'로 3.6조원 몰렸다"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_d77486fa51b6",
+      "published_at": "2026-10-13T11:06:00+09:00",
+      "source_id": "src_59d7e6a7bc4a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.fntoday.co.kr/news/articleView.html?idxno=395152",
+      "summary": "10월 13일 오전 국내 증시는 코스피와 코스닥 모두 약세를 이어가며 업종별로 뚜렷한 차별화가 나타났습니다. 상승률 상위 종목들은 개별 테마와 재료에 힘입어 급등했고, 하락률 상위 종목들은 외국인 매도세와 업황...",
+      "title": "테오도르의 시장분석: 특징주와 테마주 \"코스닥 일부 반도체 장비와 2차..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_656c385d494e",
+      "published_at": "2026-10-13T08:26:00+09:00",
+      "source_id": "src_4e44f0081092",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302464",
+      "summary": "오늘 국내증시는 중국 CXMT발 메모리 경쟁 우려로 반도체 투자심리가 위축된 가운데 단기 낙폭 과대에 따른... ▷ 중동발 불안이 지속되는 가운데 해운 고운임이 장기화 국면에 진입할 것이라는 분석에 해운 테마가...",
+      "title": "[박정식의 국내 주식시황] 중국 메모리 추격에 반도체 투심 흔들…국내..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_474257ca126b",
+      "published_at": "2026-10-12T19:44:00+09:00",
+      "source_id": "src_b4caf67f6458",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.kbmaeil.com/article/20261012500787",
+      "summary": "주가가 급등한 반면, 삼성전자와 SK하이닉스 등 반도체 대형주를 비롯한 국내 증시는 큰 폭으로 하락했다.... 기대가 증시 전반의 투자심리를 끌어올리지 못한 가운데, 실제 사업 수혜 여부가 불확실한 테마주에...",
+      "title": "금호건설·금호전기는 왜 폭등했나…삼전닉스 호실적에도 코스피 급락했..."
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_e9f9f087251b",
+      "published_at": "2026-10-12T12:02:00+09:00",
+      "source_id": "src_b13d4e322836",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.ppss.kr/news/articleView.html?idxno=314979",
+      "summary": "동반 급등했다. 최태원 SK그룹 회장이 광주 군공항 부지를 직접 방문해 반도체 클러스터를 신속하게... 12일 국내 증시에서 광주에 본사를 둔 레미콘 제조업체 서산은 오전 9시 36분 기준 전 거래일보다 1560원(30.00%) 오른...",
+      "title": "[오늘의 특징주] 최태원發 호남 반도체 클러스터 기대감…서산 상한가·..."
+    },
+    {
+      "affected_sectors": [],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_c99dc133116e",
+      "published_at": "2026-10-12T09:33:00+09:00",
+      "source_id": "src_32b5162df462",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://biz.sbs.co.kr/article_hub/20000339268?division=NAVER",
+      "summary": "오늘(12일) 국내 증시 좀처럼 힘을 내지 못하고 있습니다. 코스피가 6,600선 마저 반납했습니다. 현재 1... 시장을 주도하는 테마, 종목별 시세 체크하시죠. 해운주가 해상운임 상승 영향으로 강세 기록 중입니다....",
+      "title": "[이 시각 시황] 코스피 6,600선 붕괴…외국인 매도 속 테마주 차별화"
+    },
+    {
+      "affected_sectors": [
+        "semiconductor"
+      ],
+      "candidate_symbols": [],
+      "category": "theme_surge",
+      "confidence": 0.5,
+      "data_status": "partial",
+      "event_id": "evt_e5ee012805b6",
+      "published_at": "2026-10-12T08:22:00+09:00",
+      "source_id": "src_61cfb031e001",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302363",
+      "summary": "전 영업일(10/8) 국내증시는 KOSPI 6625.93(-2.62%), KOSDAQ 892.27(-0.69%)으로 하락 마감했지만 오늘은 미국 대형... 등 테마 상승. ▷메모리 패키지 기판 추가 판가인상 전망 등에 반도체 기판(FC-BGA/PCB/MLB 등) 테마 상승....",
+      "title": "[박정식의 국내 주식시황] 코스피는 박스권 유지, 코스닥은 박스권 탈출..."
+    }
+  ],
+  "generated_at": "2026-10-14T11:09:01.424007+09:00",
+  "markdown_length": 1585,
+  "market_context": {},
+  "missing_data": [
+    "yfinance quote unavailable for 008560"
+  ],
+  "price_snapshots": [
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.0,
+      "data_key": "price_e02359889549",
+      "data_status": "ok",
+      "last_price": 4170.0,
+      "market": "KOSPI",
+      "name": "H.I.S.C",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "003530",
+      "trading_value": 896537490,
+      "volume": 214997
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.14,
+      "data_key": "price_d940ce5fe061",
+      "data_status": "ok",
+      "last_price": 3515.0,
+      "market": "KOSPI",
+      "name": "Blue Industrial Development",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "006740",
+      "trading_value": 33526070,
+      "volume": 9538
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.74,
+      "data_key": "price_a9c8f7aadaf5",
+      "data_status": "ok",
+      "last_price": 27300.0,
+      "market": "KOSPI",
+      "name": "MIRAE ASSET SEC",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "006800",
+      "trading_value": 13662366900,
+      "volume": 500453
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.24,
+      "data_key": "price_905f32067658",
+      "data_status": "ok",
+      "last_price": 8510.0,
+      "market": "KOSPI",
+      "name": "MS IND",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "009900",
+      "trading_value": 1124085900,
+      "volume": 132090
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -0.26,
+      "data_key": "price_ce4c65a6eae3",
+      "data_status": "ok",
+      "last_price": 3790.0,
+      "market": "KOSPI",
+      "name": "WOOJINI&S",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "010400",
+      "trading_value": 48458940,
+      "volume": 12786
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.77,
+      "data_key": "price_47fe04052e9e",
+      "data_status": "ok",
+      "last_price": 14450.0,
+      "market": "KOSPI",
+      "name": "IS DONGSEO",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "010780",
+      "trading_value": 293479500,
+      "volume": 20310
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "data_key": "price_210ef44e15a7",
+      "data_status": "ok",
+      "last_price": 3530.0,
+      "market": "KOSPI",
+      "name": "STX",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "011810",
+      "volume": 0
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 1.65,
+      "data_key": "price_7b6ef2f895c4",
+      "data_status": "ok",
+      "last_price": 3385.0,
+      "market": "KOSPI",
+      "name": "Ascendio",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "012170",
+      "trading_value": 44428125,
+      "volume": 13125
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 2.36,
+      "data_key": "price_856aee4dad1f",
+      "data_status": "ok",
+      "last_price": 4985.0,
+      "market": "KOSDAQ",
+      "name": "ENERTORK",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "019990",
+      "trading_value": 59062280,
+      "volume": 11848
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.53,
+      "data_key": "price_9627628a30b7",
+      "data_status": "ok",
+      "last_price": 9540.0,
+      "market": "KOSPI",
+      "name": "PARADISE",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "034230",
+      "trading_value": 817635240,
+      "volume": 85706
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -0.22,
+      "data_key": "price_8fc271ec5f8e",
+      "data_status": "ok",
+      "last_price": 227500.0,
+      "market": "KOSPI",
+      "name": "KIWOOM",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "039490",
+      "trading_value": 4277000000,
+      "volume": 18800
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 1.54,
+      "data_key": "price_3f92e686e745",
+      "data_status": "ok",
+      "last_price": 12540.0,
+      "market": "KOSDAQ",
+      "name": "GAEASOFT",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "051160",
+      "trading_value": 116634540,
+      "volume": 9301
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -0.82,
+      "data_key": "price_edcf184b9d47",
+      "data_status": "ok",
+      "last_price": 30400.0,
+      "market": "KOSDAQ",
+      "name": "SFA",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "056190",
+      "trading_value": 1628619200,
+      "volume": 53573
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 29.84,
+      "data_key": "price_3a264d7b5b93",
+      "data_status": "ok",
+      "last_price": 2515.0,
+      "market": "KOSDAQ",
+      "name": "Hyper Corporation",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "065650",
+      "trading_value": 124899930,
+      "volume": 49662
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 5.05,
+      "data_key": "price_595c18db649f",
+      "data_status": "ok",
+      "last_price": 114400.0,
+      "market": "KOSPI",
+      "name": "L&F",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "066970",
+      "trading_value": 44190317600,
+      "volume": 386279
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 4.84,
+      "data_key": "price_9d6bd9b3cbab",
+      "data_status": "ok",
+      "last_price": 1494.0,
+      "market": "KOSPI",
+      "name": "KOAS",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "071950",
+      "trading_value": 11006298,
+      "volume": 7367
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -4.49,
+      "data_key": "price_4cd468fa665d",
+      "data_status": "ok",
+      "last_price": 51100.0,
+      "market": "KOSDAQ",
+      "name": "Techwing",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "089030",
+      "trading_value": 23397923500,
+      "volume": 457885
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -3.85,
+      "data_key": "price_631b10a24f4b",
+      "data_status": "ok",
+      "last_price": 47500.0,
+      "market": "KOSDAQ",
+      "name": "ENF",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "102710",
+      "trading_value": 1335082500,
+      "volume": 28107
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 2.47,
+      "data_key": "price_541c21e06a6a",
+      "data_status": "ok",
+      "last_price": 11220.0,
+      "market": "KOSPI",
+      "name": "WOOJIN",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "105840",
+      "trading_value": 535934520,
+      "volume": 47766
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 15.63,
+      "data_key": "price_5666227d44ab",
+      "data_status": "ok",
+      "last_price": 1983.0,
+      "market": "KOSDAQ",
+      "name": "TPC Global",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "130740",
+      "trading_value": 284175798,
+      "volume": 143306
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -1.88,
+      "data_key": "price_993ffb59991f",
+      "data_status": "ok",
+      "last_price": 120000.0,
+      "market": "KOSPI",
+      "name": "KOLMAR KOREA",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "161890",
+      "trading_value": 11892960000,
+      "volume": 99108
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 54.06,
+      "data_key": "price_079520c3ea06",
+      "data_status": "ok",
+      "last_price": 6070.0,
+      "market": "KOSPI",
+      "name": "162120",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "162120",
+      "volume": 0
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.56,
+      "data_key": "price_508e4284ccbc",
+      "data_status": "ok",
+      "last_price": 224750.0,
+      "market": "KOSDAQ",
+      "name": "Alteogen",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "196170",
+      "trading_value": 23948461000,
+      "volume": 106556
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -2.06,
+      "data_key": "price_55d26bf3651d",
+      "data_status": "ok",
+      "last_price": 2620.0,
+      "market": "KOSDAQ",
+      "name": "UNION biometrics",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "203450",
+      "trading_value": 44042200,
+      "volume": 16810
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": -87.46,
+      "data_key": "price_8440b84148f5",
+      "data_status": "ok",
+      "last_price": 13320.0,
+      "market": "KOSPI",
+      "name": "226950",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "226950",
+      "volume": 0
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 2.44,
+      "data_key": "price_f876bd40d9ff",
+      "data_status": "ok",
+      "last_price": 420000.0,
+      "market": "KOSPI",
+      "name": "LG Energy Solution",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "373220",
+      "trading_value": 105886200000,
+      "volume": 252110
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 45.06,
+      "data_key": "price_5ecb7d2adc5c",
+      "data_status": "ok",
+      "last_price": 9690.0,
+      "market": "KOSPI",
+      "name": "417790",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "417790",
+      "volume": 0
+    },
+    {
+      "as_of": "2026-10-14T11:09:01.424007+09:00",
+      "change_rate": 0.75,
+      "data_key": "price_4febdfc42bbc",
+      "data_status": "ok",
+      "last_price": 5340.0,
+      "market": "KOSPI",
+      "name": "Hanwha REIT",
+      "provider": "yfinance",
+      "session_type": "regular",
+      "symbol": "451800",
+      "trading_value": 126146820,
+      "volume": 23623
+    }
+  ],
+  "report_date": "2026-10-14",
+  "sources": [
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:04:00+09:00",
+      "source_id": "src_db18df1d9ed8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439159"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:03:00+09:00",
+      "source_id": "src_0ef17c5bd5a2",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.edaily.co.kr/News/Read?newsId=03250486645612920&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:02:00+09:00",
+      "source_id": "src_1289de842f1f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://weekly.hankooki.com/news/articleView.html?idxno=7188815"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:00:00+09:00",
+      "source_id": "src_cb47a9e1fbea",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.mk.co.kr/article/12175374"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:00:00+09:00",
+      "source_id": "src_be103f152229",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439155"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:50:00+09:00",
+      "source_id": "src_0e6e4514df08",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://kpenews.com/View.aspx?No=4262701"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:50:00+09:00",
+      "source_id": "src_ebfc955ca847",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.pennmike.com/news/articleView.html?idxno=129499"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:45:00+09:00",
+      "source_id": "src_eec25a54be2b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.fnnews.com/news/202610141041578376"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:44:00+09:00",
+      "source_id": "src_3b9a3980decf",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.kbanker.co.kr/news/articleView.html?idxno=226153"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:24:00+09:00",
+      "source_id": "src_ed1c62f3ca90",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "http://www.economytalk.kr/news/articleView.html?idxno=424630"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:48:00+09:00",
+      "source_id": "src_cbf7936ae7b8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "http://www.weeklytoday.com/news/articleView.html?idxno=797950"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:42:00+09:00",
+      "source_id": "src_101fc61c0632",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.lawtv.kr/news/articleView.html?idxno=61138"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:40:00+09:00",
+      "source_id": "src_ea7a70d6f15b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "http://www.smarttimes.co.kr/news/articleView.html?idxno=49702"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:24:00+09:00",
+      "source_id": "src_7a55d0be2398",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.cbci.co.kr/news/articleView.html?idxno=615257"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:22:00+09:00",
+      "source_id": "src_e380417a18b7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.newsinside.kr/news/articleView.html?idxno=5023760"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:02:00+09:00",
+      "source_id": "src_51a223a57dda",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4439135"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:02:00+09:00",
+      "source_id": "src_8ce76b32c690",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.kukinews.com/article/view/kuk202610140039"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:48:00+09:00",
+      "source_id": "src_54d1ece6772a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.newspim.com/news/view/20261014000266"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:48:00+09:00",
+      "source_id": "src_8979a4b5b87f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=322178"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-06T09:42:00+09:00",
+      "source_id": "src_d4923f418e8c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.wikitree.co.kr/articles/1157542"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-06-07T17:14:00+09:00",
+      "source_id": "src_1380f8d5317c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.namdonews.com/news/articleView.html?idxno=912829"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-06-04T21:51:00+09:00",
+      "source_id": "src_1a16a756eef6",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.ytn.co.kr/_ln/0101_202606042151296105"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-05-15T08:26:00+09:00",
+      "source_id": "src_2d6e2cc4f2fa",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://daily.hankooki.com/news/articleView.html?idxno=1367190"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-01-01T20:52:00+09:00",
+      "source_id": "src_1674cc24042b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://news.cpbc.co.kr/article/1169534?division=NAVER"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2025-08-22T10:00:00+09:00",
+      "source_id": "src_42fea90a4836",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.sisajournal.com/news/articleView.html?idxno=343580"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2025-08-19T14:04:00+09:00",
+      "source_id": "src_26374e18d303",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.m-joongang.com/news/articleView.html?idxno=401465"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2025-08-12T20:14:00+09:00",
+      "source_id": "src_12ac0a4ce16e",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://n.news.naver.com/mnews/article/214/0001442376?sid=100"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2025-08-08T11:30:00+09:00",
+      "source_id": "src_efdc9b9a2ca9",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://radio.ytn.co.kr/program/?f=2&id=104258&s_mcd=0214&s_hcd=01"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2025-08-08T09:27:00+09:00",
+      "source_id": "src_b73bffbcb67f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "political_theme",
+      "source_url": "https://www.ytn.co.kr/_ln/0101_202508080927528179"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-23T15:27:32+09:00",
+      "source_id": "src_edd0446dc698",
+      "source_name": "Ohmynews.com",
+      "source_quality": 0.55,
+      "source_type": "political_theme",
+      "source_url": "https://www.ohmynews.com/NWS_Web/Series/series_premium_pg.aspx?CNTN_CD=A0003269942"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b8ce54b827c4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000081"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ab02f3d1435a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000080"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7facd3904cc7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000079"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2748a171a086",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000078"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a5c39e2dad58",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000077"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_79edb862fc4c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000075"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_1cff6f078527",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000074"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_599d91bf8ca0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000073"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d0b39658c175",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000072"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_e301bdc00db3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000071"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_059827c8cd2c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900109"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d661b4199dd3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000070"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d889a27711a5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000069"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0236b4877b96",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014600100"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_e3013cfe1aa5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000067"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3e1cdc4873cd",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000010"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7594eb18dc05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000032"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_adf83c435d13",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000065"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_312c1282c422",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900099"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ec42b83d6d7a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000063"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cb73d539b009",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800087"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2bc8eac2b6b2",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800086"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7db02c9ffbe3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000060"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_24e86744dff0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000059"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0a4ba41e216a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000058"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3fc2d448d0e6",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014900085"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_148f57163e02",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000041"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_de0efa00994b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000052"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d9b909c4fdb5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000049"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ccacbe589842",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000047"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_73aca13a2e62",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000042"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_546b14164f79",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000030"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2c42bb6d4e95",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000029"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_20b181a71e73",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000026"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5a9f3ce6f79c",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000024"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_f41749f6d1a3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800077"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_57d18d47c3c4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800068"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_99fc297e8329",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800075"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d21b36cd8aa4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000019"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_273a73b9493b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000017"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_660babfc7c20",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000014"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b1101c1a869d",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800059"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7cd6c2c1e483",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000009"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0ba876896b79",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000008"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_df47c0d73354",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000006"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5efd249c93ce",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000005"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d9b6225e2599",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000004"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_54aded1c5dbe",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000002"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_80ad1325f095",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800003"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0344f4a5d9ae",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014000001"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0ae15943655e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100039"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0a0182541389",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100002"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_c9236bb176fe",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100035"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_12b11815808f",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100034"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7f4c06e9f8d3",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100040"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cf8f463488e5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100032"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_56889352d96e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100005"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a0a324444e83",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100031"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_af2a0b8b97b4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100030"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_368ec41aa1f4",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100029"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_d337b9f07396",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100028"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_91326a15a899",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100027"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_78ddbf5fd4de",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100026"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_15828fa7fd5b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100025"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_b314afcd8952",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100024"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_19be18f58ff5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100023"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_bd71828d6c66",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100022"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7f38866c8a7a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100021"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_36d58e09b8bf",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100020"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_a6d0015c6d05",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100019"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_44049df7e26e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100018"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_cbc3513e4360",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100017"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_32c1dc061dfd",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100016"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_02d5788506ba",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100015"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_248e769cb501",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100014"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_12f518ba25d0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100013"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_03e00096ced5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100012"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_3e496aaded66",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100011"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_8d1e1c87c398",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100010"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_0dd1f5f5f9d8",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100009"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_023e5242d2b5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100008"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7378e679b832",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100007"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_5ca2134e10d7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100006"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_8a99c1dec77a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260916100012"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_1845f00a255f",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100004"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_615f4c12ef8b",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930100035"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_7d0b29dc60f0",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100038"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_6660d50583f5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100037"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_be5b2e0b17b5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100036"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_101ea0bc0edb",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100003"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_20a09093c999",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013100033"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_85b2ea218a68",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002100007"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_03b2c0f9130e",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000430"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_22a984dc7d41",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000438"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_62a2c940a8db",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000437"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ce96a22002f5",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000436"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_2743ae328f6a",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000435"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_15251aff32ba",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000431"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:45:00+09:00",
+      "source_id": "src_ae35e40813f7",
+      "source_name": "OpenDART",
+      "source_quality": 0.8,
+      "source_type": "disclosure",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000428"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T11:06:00+09:00",
+      "source_id": "src_eb1a06510985",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.fntoday.co.kr/news/articleView.html?idxno=395255"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:12:00+09:00",
+      "source_id": "src_c8f2dcc2de6c",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=97030"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T10:06:00+09:00",
+      "source_id": "src_babfeaa37893",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.businesspost.co.kr/BP?command=article_view&num=449265"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:54:00+09:00",
+      "source_id": "src_56ac560c6ca4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.segye.com/newsView/20261014507419?OutUrl=naver"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:36:00+09:00",
+      "source_id": "src_70287a4b9d20",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://biz.newdaily.co.kr/site/data/html/2026/10/14/2026101400062.html"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:34:00+09:00",
+      "source_id": "src_735a01c43593",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.mt.co.kr/stock/2026/10/14/2026101408500415294"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:32:00+09:00",
+      "source_id": "src_688658af7bb5",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.dailian.co.kr/news/view/1701254/?sc=Naver"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:28:00+09:00",
+      "source_id": "src_c3fbf8f940f7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://news.mtn.co.kr/article/2026101409264343217"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:26:00+09:00",
+      "source_id": "src_aa9bf1acd4c4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.ajunews.com/view/20261014092144397"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:18:00+09:00",
+      "source_id": "src_2af096595b51",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.nocutnews.co.kr/news/6591041?utm_source=naver&utm_medium=article&utm_campaign=20261014091744"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-06T07:01:00+09:00",
+      "source_id": "src_51be46fee1dd",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://shindonga.donga.com/3/all/13/6405031/1"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-24T19:48:00+09:00",
+      "source_id": "src_589d0b69872b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.g-enews.com/view.php?ud=202609241944321335e250e8e188_1"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-31T16:54:00+09:00",
+      "source_id": "src_30163bc410e8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.ajunews.com/view/20260831164627327"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-29T09:52:00+09:00",
+      "source_id": "src_64bb3c098ac8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.jejusori.net/news/articleView.html?idxno=505952"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-14T06:02:00+09:00",
+      "source_id": "src_0dc21b4edfea",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://magazine.hankyung.com/money/article/202607203251c"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-07T17:26:00+09:00",
+      "source_id": "src_370e05ceff7a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.ajunews.com/view/20260807163427513"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-07T10:32:00+09:00",
+      "source_id": "src_fb9213d8814b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=93426"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-05T08:50:00+09:00",
+      "source_id": "src_996658a296fb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.datanews.co.kr/news/article.html?no=145872"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-04T07:27:00+09:00",
+      "source_id": "src_62d7a5fcc9e3",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202608040332&t=NN"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-07-30T15:04:00+09:00",
+      "source_id": "src_6f734ebe7fae",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.newsis.com/view/NISX20260730_0003729757"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T09:12:00+09:00",
+      "source_id": "src_0cd5ea0036f1",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.jnilbo.com/news/articleView.html?idxno=90000073136"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:33:00+09:00",
+      "source_id": "src_54ea80d27492",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.chosun.com/economy/stock-finance/2026/10/14/J44HD4ESNNGCTCLIMW2VPJRODY/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:30:00+09:00",
+      "source_id": "src_1f6c29b24605",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202610140022&t=NN"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:20:00+09:00",
+      "source_id": "src_cddd2aec3f6b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.kbmaeil.com/article/20261014500028"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:12:00+09:00",
+      "source_id": "src_af5c3bf350b5",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.newsroad.co.kr/news/articleView.html?idxno=65719"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:04:00+09:00",
+      "source_id": "src_e39a1e230f65",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.yna.co.kr/view/AKR20261014020200008?input=1195m"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T07:43:00+09:00",
+      "source_id": "src_027d7a9cb0b3",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202610140017&t=NN"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T07:31:00+09:00",
+      "source_id": "src_6bf085be58c4",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "https://www.newsis.com/view/NISX20261014_0003824797"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T06:40:00+09:00",
+      "source_id": "src_306f2bce2178",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "global_issue",
+      "source_url": "http://www.newsian.co.kr/news/articleView.html?idxno=96996"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-12T18:00:00+09:00",
+      "source_id": "src_d7e59b5bf54f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "http://www.hansbiz.co.kr/news/articleView.html?idxno=872004"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-08T10:58:00+09:00",
+      "source_id": "src_6e42046ac5bb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.getnews.co.kr/news/articleView.html?idxno=882992"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-08T10:37:00+09:00",
+      "source_id": "src_d6562a37e592",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.yna.co.kr/view/AKR20261008061300008?input=1195m"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-17T14:18:00+09:00",
+      "source_id": "src_3e3e77ba67de",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "http://www.choicenews.co.kr/news/articleView.html?idxno=171432"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-14T08:10:00+09:00",
+      "source_id": "src_6ddbaedfe9b7",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300790"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-13T05:30:00+09:00",
+      "source_id": "src_379b0f890548",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.dt.co.kr/article/12083502?ref=naver"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-11T08:26:00+09:00",
+      "source_id": "src_77fb9088013a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300710"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-10T08:20:00+09:00",
+      "source_id": "src_6b59acb58166",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300616"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-09T08:18:00+09:00",
+      "source_id": "src_ec4fd832ba56",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300517"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-08T08:22:00+09:00",
+      "source_id": "src_b15e96b272bc",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=300430"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-09-27T00:03:00+09:00",
+      "source_id": "src_befbfc17b360",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.dt.co.kr/article/12085851?ref=naver"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-27T18:42:00+09:00",
+      "source_id": "src_64fe9bd1a0a6",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.biotimes.co.kr/news/articleView.html?idxno=34080"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-08-18T16:32:00+09:00",
+      "source_id": "src_9b4b34280c67",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.ajunews.com/view/20260818145032431"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-07-16T16:18:00+09:00",
+      "source_id": "src_ba29a2b37d09",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newspim.com/news/view/20260716001046"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-07-09T16:32:00+09:00",
+      "source_id": "src_5bd4f0112b98",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newspim.com/news/view/20260709001180"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-06-01T15:24:00+09:00",
+      "source_id": "src_7c6707fbcb0b",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "http://www.thevaluenews.co.kr/news/view.php?idx=199105"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-05-21T10:22:00+09:00",
+      "source_id": "src_db713d6f31fb",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "http://www.financialreview.co.kr/news/articleView.html?idxno=42410"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-03-18T11:10:00+09:00",
+      "source_id": "src_eb3dbf1557cf",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "http://www.4th.kr/news/articleView.html?idxno=2109199"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-02-16T10:54:00+09:00",
+      "source_id": "src_ee37b00276d8",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=429976"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2024-03-11T18:28:00+09:00",
+      "source_id": "src_8a5f0fe80ce9",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.ngetnews.com/news/articleView.html?idxno=503020"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-14T08:18:00+09:00",
+      "source_id": "src_4e98065552b2",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302562"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-13T17:38:00+09:00",
+      "source_id": "src_2cb3d3208d7e",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.mk.co.kr/article/12174716"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-13T14:02:00+09:00",
+      "source_id": "src_32b641a9bd9f",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.etnews.com/20261013000236"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-13T11:06:00+09:00",
+      "source_id": "src_59d7e6a7bc4a",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.fntoday.co.kr/news/articleView.html?idxno=395152"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-13T08:26:00+09:00",
+      "source_id": "src_4e44f0081092",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302464"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-12T19:44:00+09:00",
+      "source_id": "src_b4caf67f6458",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.kbmaeil.com/article/20261012500787"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-12T12:02:00+09:00",
+      "source_id": "src_b13d4e322836",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.ppss.kr/news/articleView.html?idxno=314979"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-12T09:33:00+09:00",
+      "source_id": "src_32b5162df462",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://biz.sbs.co.kr/article_hub/20000339268?division=NAVER"
+    },
+    {
+      "collected_at": "2026-10-14T11:09:01.424007+09:00",
+      "published_at": "2026-10-12T08:22:00+09:00",
+      "source_id": "src_61cfb031e001",
+      "source_name": "Naver News",
+      "source_quality": 0.65,
+      "source_type": "theme_surge",
+      "source_url": "https://www.newsquest.co.kr/news/articleView.html?idxno=302363"
+    }
+  ],
+  "top_event": {
+    "category": "corporate_disclosure",
+    "data_status": "ok",
+    "source_id": "src_b8ce54b827c4",
+    "summary": "미래에셋증권 공시 접수. 원문 확인 필요.",
+    "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)"
+  },
+  "top_risks": [
+    "데이터 부족"
+  ],
+  "top_theme": "corporate_disclosure",
+  "verification_status": "fail"
+}
