@@ -53,8 +53,9 @@ def test_site_builder_creates_expected_pages(tmp_path):
     report_html = (config.dist_dir / "reports" / "2026-04-27" / "index.html").read_text(
         encoding="utf-8"
     )
-    assert "오늘의 시장 분위기" in index_html
-    assert "통합 후보 Top 3" in index_html
+    assert "발행 현황" in index_html
+    assert "오늘의 시장 분위기" not in index_html
+    assert 'id="current-brief"' not in index_html
     assert 'href="/reports/' not in index_html
     assert 'href="/assets/' not in index_html
     assert "데이터 기준 시각" in report_html

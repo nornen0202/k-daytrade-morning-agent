@@ -1,6 +1,22 @@
 from __future__ import annotations
 
 import html
+import re
+
+
+def _inline(text: str) -> str:
+    escaped = html.escape(text)
+    escaped = re.sub(
+        r"source_id:\s*([A-Za-z0-9_-]+)",
+        r'<a class="evidence-link" href="#source-\1">원문 근거</a>', escaped,
+    )
+
+    def data_link(match: re.Match) -> str:
+        key = match.group(1)
+        target = "score-method" if key.startswith("score_") else f"data-{key}"
+        return f'<a class="evidence-link" href="#{target}">데이터 근거</a>'
+
+    return re.sub(r"data_key:\s*([A-Za-z0-9_-]+)", data_link, escaped)
 
 
 def markdown_to_html(markdown: str) -> str:
@@ -35,10 +51,10 @@ def markdown_to_html(markdown: str) -> str:
                 items.append(lines[index][2:].strip())
                 index += 1
             output.append("<ul>")
-            output.extend(f"<li>{html.escape(item)}</li>" for item in items)
+            output.extend(f"<li>{_inline(item)}</li>" for item in items)
             output.append("</ul>")
             continue
-        output.append(f"<p>{html.escape(line.strip())}</p>")
+        output.append(f"<p>{_inline(line.strip())}</p>")
         index += 1
     return "\n".join(output)
 
@@ -57,7 +73,7 @@ def _render_table(lines: list[str]) -> str:
         html_lines.append("</tr></thead><tbody>")
     for row in rows[2:] if len(rows) > 1 and set("".join(rows[1])) <= {"-", ":", " "} else rows[1:]:
         html_lines.append("<tr>")
-        html_lines.extend(f"<td>{html.escape(cell)}</td>" for cell in row)
+        html_lines.extend(f"<td>{_inline(cell)}</td>" for cell in row)
         html_lines.append("</tr>")
     html_lines.append("</tbody></table></div>")
     return "\n".join(html_lines)

@@ -2,12 +2,14 @@
 {% block title %}{{ report.report_date }} - K-Daytrade Morning Brief{% endblock %}
 {% block page_title %}{{ report.report_date }} 리포트{% endblock %}
 {% block content %}
-  <section class="band">
+  <section class="band" id="data-report_metadata">
+    <p class="notice">{{ report.notice }}</p>
     <p class="muted">
-      생성 시각 {{ report.summary.generated_at }} · 데이터 기준 시각 {{ report.summary.data_as_of }}
+      생성 시각 {{ report.summary.generated_at|kst_display }} · 데이터 기준 시각 {{ report.summary.data_as_of|kst_display }}
     </p>
     <p class="notice">{{ report.summary.disclaimer }}</p>
-    <div class="status {{ report.verification.status }}">검증 상태: {{ report.verification.status }}</div>
+    <div class="status {{ report.verification.status }}">검증 상태:
+      {{ {"pass": "통과", "warning": "제한 있음", "fail": "실패"}[report.verification.status] }}</div>
     {% if report.verification.errors %}
     <h2>검증 실패 이유</h2>
     <ul class="brief-list">
@@ -18,6 +20,7 @@
     {% endif %}
   </section>
 
+  {% if report.valid %}
   <section class="band">
     <h2>데이터 신뢰도</h2>
     <dl class="context-grid">
@@ -31,4 +34,22 @@
   <section class="band report-body">
     {{ report_html|safe }}
   </section>
+  <section class="band">
+    <h2>원문과 데이터 시각</h2>
+    <ul class="brief-list">{% for source in report.sources %}
+      <li id="source-{{ source.source_id }}">
+        {% if source.source_url %}<a href="{{ source.source_url }}" rel="noopener noreferrer">{{ source.title }}</a>
+        {% else %}{{ source.title }}{% endif %}
+        · {{ source.source_name }} · {{ source.published_at|kst_display }}
+        <details><summary>근거 식별자</summary>{{ source.source_id }}</details>
+      </li>{% endfor %}</ul>
+    {% for snapshot in report.summary.price_snapshots %}
+    <p id="data-{{ snapshot.data_key }}">{{ snapshot.name }} ({{ snapshot.symbol }})
+      · 기준 시각 {{ snapshot.as_of }} · {{ snapshot.provider }} · {{ snapshot.session_type }}
+      <details><summary>데이터 식별자</summary>{{ snapshot.data_key }}</details></p>
+    {% endfor %}
+    <p id="score-method">점수는 관찰 정렬을 위한 고정 휴리스틱입니다.
+      실제 관찰 효용과 예측 정확도는 미검증입니다.</p>
+  </section>
+  {% endif %}
 {% endblock %}

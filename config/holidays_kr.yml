@@ -1,0 +1,14 @@
+# XKRX supplies ordinary public/substitute holidays and exchange year-end closure.
+# Explicit amendments absent from exchange-calendars 4.13.2:
+coverage_years: [2026]
+reviewed_on: 2026-10-25
+official_calendar_url: https://open.krx.co.kr/contents/MKD/01/0110/01100305/MKD01100305.jsp
+official_live_fetch_status: unavailable_403
+supporting_notices:
+  - https://www.samsungpop.com/ux/kor/customer/notice/notice/noticeViewContent.do?MenuSeqNo=23996
+  - https://securities.miraeasset.com/bbs/board/message/view.do?categoryId=1539&messageId=2340801
+holidays:
+  - date: 2026-06-03
+    reason: 지방선거일
+  - date: 2026-07-17
+    reason: 제헌절

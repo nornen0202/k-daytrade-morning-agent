@@ -11,6 +11,7 @@ requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "k-daytrade-morning-agent maintainers" }]
 dependencies = [
+  "exchange-calendars>=4.11,<5",
   "Jinja2>=3.1.4",
   "openai>=1.93.0",
   "pydantic>=2.8.0",

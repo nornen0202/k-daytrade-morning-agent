@@ -13,7 +13,7 @@ def test_price_snapshot_uses_yfinance_when_quote_provider_missing(monkeypatch):
     monkeypatch.delenv("QUOTE_PROVIDER_API_KEY", raising=False)
 
     class FakeTicker:
-        info = {"shortName": "삼성전자"}
+        info = {"shortName": "삼성전자", "regularMarketTime": collected_at.timestamp() - 900}
         fast_info = {
             "last_price": 72000,
             "previous_close": 70000,
@@ -39,8 +39,9 @@ def test_price_snapshot_uses_yfinance_when_quote_provider_missing(monkeypatch):
 
     assert not result.missing_data
     assert result.price_snapshots[0].provider == "yfinance"
-    assert result.price_snapshots[0].as_of == collected_at
-    assert result.price_snapshots[0].trading_value == 72_000_000
+    assert result.price_snapshots[0].as_of.timestamp() == collected_at.timestamp() - 900
+    assert result.price_snapshots[0].session_type == "delayed_regular"
+    assert result.price_snapshots[0].trading_value is None
 
 
 def test_price_snapshot_sanitizes_yfinance_symbol_bundle_names(monkeypatch):
@@ -70,3 +71,5 @@ def test_price_snapshot_sanitizes_yfinance_symbol_bundle_names(monkeypatch):
     )
 
     assert result.price_snapshots[0].name == "065420"
+    assert result.price_snapshots[0].as_of is None
+    assert result.price_snapshots[0].data_status == "insufficient"

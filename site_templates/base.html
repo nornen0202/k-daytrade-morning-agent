@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}K-Daytrade Morning Brief{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset_href|default('assets/style.css') }}">
+    <script defer src="{{ asset_href|default('assets/style.css')|replace('style.css', 'status.js') }}"></script>
   </head>
   <body>
     <header class="site-header">
@@ -13,12 +14,13 @@
         <h1>{% block page_title %}K-Daytrade Morning Brief{% endblock %}</h1>
       </div>
       <nav>
-        <a href="{{ latest_href|default('index.html') }}">Latest</a>
-        <a href="{{ archive_href|default('reports/index.html') }}">Archive</a>
+        <a href="{{ latest_href|default('index.html') }}">발행 현황</a>
+        <a href="{{ archive_href|default('reports/index.html') }}">아카이브</a>
       </nav>
     </header>
     <main>
       {% block content %}{% endblock %}
+      <footer class="notice">{{ config.disclaimer }} 실제 판단 전 증권사 앱에서 가격과 시각을 재확인하세요.</footer>
     </main>
   </body>
 </html>

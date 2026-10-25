@@ -1,172 +1,164 @@
 from __future__ import annotations
 
 import re
+from decimal import Decimal
 
 from daytrade_agent.normalizers.event_schema import ReportContext, VerificationResult
+from daytrade_agent.normalizers.freshness import temporal_status
 
-DATA_GAP_TEXT = "\ub370\uc774\ud130 \ubd80\uc871"
-MARKET_CLOSED_TEXT = "\ud734\uc7a5"
-
-FORBIDDEN_TERMS = [
-    "\ubb34\uc870\uac74" + " " + "\ub9e4\uc218",
-    "\ud655\uc2e4\ud55c" + " " + "\uc218\uc775",
-    "\uc791\uc804" + "\uc8fc",
-    "\uc138\ub825" + "\uc8fc",
-    "\uc870" + "\uc791",
-]
-
-INVESTMENT_PRESSURE_PATTERNS = [
-    re.compile(r"\ub9e4\uc218\s*\ud558\ub77c"),
-    re.compile(r"\uc218\uc775\s*\ubcf4\uc7a5"),
-    re.compile(r"\uc0c1\ud55c\uac00\s*\ud655\uc815"),
-    re.compile(r"\uc989\uc2dc\s*\ub9e4\uc218"),
-    re.compile(r"\ub9e4\uc218\s*\ucd94\ucc9c"),
-    re.compile(r"\uc9c4\uc785\s*\ud558\ub77c"),
-    re.compile(r"\uac15\ub825\s*\ub9e4\uc218"),
-]
-
-SECRET_PATTERNS = [
-    re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
-    re.compile(r"(?i)(api[_-]?key|secret|token)\s*[:=]\s*[A-Za-z0-9_\-]{12,}"),
-    re.compile(r"\b\d{3,6}-\d{3,6}-\d{4,10}\b"),
-]
-
-CERTAINTY_PATTERNS = [
-    re.compile(DATA_GAP_TEXT + r".*\ud655\uc815"),
-    re.compile(DATA_GAP_TEXT + r".*\ubd84\uba85"),
-    re.compile(r"insufficient.*confirmed", re.IGNORECASE),
-]
-PRICE_LIKE_PATTERN = re.compile(r"\d[\d,]*(?:\uc6d0|%)")
+FORBIDDEN_TERMS = ["무조건 매수", "확실한 수익", "상한가 확정", "작전주", "세력주", "조작"]
+INVESTMENT_PRESSURE_PATTERNS = [re.compile(pattern) for pattern in (
+    r"매수\s*하라", r"수익\s*보장", r"상한가\s*확정", r"즉시\s*매수",
+    r"매수\s*추천", r"진입\s*하라", r"강력\s*매수",
+)]
+SECRET_PATTERNS = [re.compile(pattern, re.I) for pattern in (
+    r"sk-[A-Za-z0-9_-]{20,}",
+    r"(?:api[_-]?key|secret|token)\s*[:=]\s*[A-Za-z0-9_-]{12,}",
+    r"\b\d{3,6}-\d{3,6}-\d{4,10}\b",
+    r"(?:계좌번호|실제\s*보유\s*비중|보유수량)\s*[:=]?\s*\d+",
+)]
+REF_PATTERN = re.compile(r"(source_id|data_key):\s*([A-Za-z0-9_-]+)")
 SYMBOL_PATTERN = re.compile(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])")
-PRICE_CONTEXT_PATTERN = re.compile(
-    r"(\uac00\uaca9|\ud604\uc7ac\uac00|\uc2dc\uc138|\uc804\uc77c\ub300\ube44|"
-    r"\ub4f1\ub77d\ub960|\uc0c1\uc2b9\ub960|\ud558\ub77d\ub960|\uac70\ub798\ub300\uae08|"
-    r"last_price|change_rate|trading_value|price)",
-    re.IGNORECASE,
+NUMBER_PATTERN = re.compile(
+    r"(?<![A-Za-z_\d])([+-]?\d[\d,]*(?:\.\d+)?)\s*"
+    r"((?:조|억|만|천)?\s*(?:원|달러|%|주|배|명|건|년|월|일|시|분|포인트|bp))?"
 )
+PRICE_CONTEXT = re.compile(r"현재가|주가|시세|등락률|전일대비|거래대금|last_price|change_rate")
+PRICE_NUMBER = re.compile(r"[+-]?\d[\d,.]*\s*(?:원|%|달러)")
+
+
+def unsafe_public_text(text: str) -> bool:
+    return bool("\ufffd" in text or any(term in text for term in FORBIDDEN_TERMS)
+                or any(pattern.search(text) for pattern in
+                       [*INVESTMENT_PRESSURE_PATTERNS, *SECRET_PATTERNS]))
+
+
+def _numbers(text: str) -> set[tuple[Decimal, str]]:
+    text = REF_PATTERN.sub("", text)
+    text = re.sub(r"https?://\S+", "", text)
+    return {(Decimal(number.replace(",", "")), re.sub(r"\s", "", unit))
+            for number, unit in NUMBER_PATTERN.findall(text)}
+
+
+def evidence_index(context: ReportContext) -> dict[tuple[str, str], str]:
+    sources = {source.source_id: source for source in context.sources}
+    evidence: dict[tuple[str, str], str] = {}
+    for event in context.events:
+        source = sources.get(event.source_id)
+        if (source is None or event.data_status in {"stale", "insufficient"}
+                or temporal_status(event.published_at, context.generated_at) != "ok"
+                or temporal_status(source.published_at, context.generated_at) != "ok"
+                or temporal_status(source.collected_at, context.generated_at) != "ok"):
+            continue
+        key = ("source_id", event.source_id)
+        evidence[key] = evidence.get(key, "") + (
+            f" {event.title} {event.summary} {event.published_at.isoformat()}"
+        )
+    for snapshot in context.price_snapshots:
+        if (snapshot.data_status in {"stale", "insufficient"}
+                or temporal_status(snapshot.as_of, context.generated_at, 96) != "ok"):
+            continue
+        evidence[("data_key", snapshot.data_key)] = (
+            f"{snapshot.symbol} {snapshot.as_of.isoformat()} "
+            f"{snapshot.last_price}원 {snapshot.change_rate}% "
+            f"{snapshot.volume}주 {snapshot.trading_value}원"
+        )
+    for candidate in context.candidates:
+        if candidate.source_ids and all(("source_id", key) in evidence
+                                        for key in candidate.source_ids):
+            evidence[("data_key", f"score_{candidate.symbol}")] = (
+                f"{candidate.symbol} {candidate.score:.2f}/10 "
+                f"{candidate.observation_condition} {candidate.invalidation_condition}"
+            )
+    evidence[("data_key", "report_metadata")] = (
+        f"{context.report_date} {context.generated_at.isoformat()} "
+        + " ".join(context.missing_data)
+    )
+    return evidence
 
 
 def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
     errors: list[str] = []
     warnings: list[str] = []
-
-    _check_forbidden_terms(markdown, errors)
-    _check_symbols(context, markdown, errors)
-    _check_price_claims(context, markdown, errors)
-    _check_sources(context, markdown, errors)
-    _check_source_less_numeric_claims(markdown, errors)
-    _check_certainty(markdown, errors)
-    _check_data_status(context, warnings)
-
-    status = "fail" if errors else "warning" if warnings else "pass"
-    return VerificationResult(status=status, errors=errors, warnings=warnings)
-
-
-def _check_forbidden_terms(markdown: str, errors: list[str]) -> None:
-    for term in FORBIDDEN_TERMS:
-        if term in markdown:
-            errors.append("prohibited wording found")
-    for pattern in INVESTMENT_PRESSURE_PATTERNS:
-        if pattern.search(markdown):
-            errors.append("investment-pressure wording found")
-    for pattern in SECRET_PATTERNS:
-        if pattern.search(markdown):
-            errors.append("possible secret or account-like identifier found")
-
-
-def _check_symbols(context: ReportContext, markdown: str, errors: list[str]) -> None:
+    if any(term in markdown for term in FORBIDDEN_TERMS):
+        errors.append("prohibited wording found")
+    if any(pattern.search(markdown) for pattern in INVESTMENT_PRESSURE_PATTERNS):
+        errors.append("investment-pressure wording found")
+    if any(pattern.search(markdown) for pattern in SECRET_PATTERNS):
+        errors.append("possible secret or account-like identifier found")
+    if "\ufffd" in markdown:
+        errors.append("unreadable text encoding")
     known_symbols = {candidate.symbol for candidate in context.candidates}
-    known_symbols.update(symbol for event in context.events for symbol in event.candidate_symbols)
-    observed_symbols = set(SYMBOL_PATTERN.findall(markdown))
-    unknown = sorted(observed_symbols - known_symbols)
+    unknown = set(SYMBOL_PATTERN.findall(REF_PATTERN.sub("", markdown))) - known_symbols
     if unknown:
-        errors.append(f"unknown symbol mentioned: {', '.join(unknown)}")
+        errors.append(f"unknown symbol mentioned: {', '.join(sorted(unknown))}")
 
-
-def _check_price_claims(context: ReportContext, markdown: str, errors: list[str]) -> None:
-    data_keys = {
-        candidate.price_snapshot.data_key
-        for candidate in context.candidates
-        if candidate.price_snapshot is not None
-    }
-    price_lines = [
-        line
-        for line in markdown.splitlines()
-        if PRICE_LIKE_PATTERN.search(line)
-        and PRICE_CONTEXT_PATTERN.search(line)
-        and not line.startswith("#")
-    ]
-    for line in price_lines:
-        if (
-            "data_key:" not in line
-            and "source_id:" not in line
-            and not any(data_key in line for data_key in data_keys)
-        ):
-            errors.append("price-like claim lacks price_snapshot data_key")
-            return
-
-
-def _check_sources(context: ReportContext, markdown: str, errors: list[str]) -> None:
-    source_ids = {source.source_id for source in context.sources}
-    candidate_sources = {
-        source_id for candidate in context.candidates for source_id in candidate.source_ids
-    }
-    valid_sources = source_ids | candidate_sources
-    source_mentions = set(re.findall(r"source_id:\s*([A-Za-z0-9_\-]+)", markdown))
-    unknown = sorted(source_mentions - valid_sources)
-    if unknown:
-        errors.append(f"unknown source_id referenced: {', '.join(unknown)}")
-
-    key_sections = [
-        "\ud575\uc2ec \uc694\uc57d",
-        "\uc815\uce58\ud14c\ub9c8",
-        "\uae30\uc5c5\uacf5\uc2dc",
-        "\uae00\ub85c\ubc8c\uc774\uc288",
-        "\ud14c\ub9c8\uae09\ub4f1",
-    ]
-    for line in markdown.splitlines():
-        if not line.startswith("- "):
+    evidence = evidence_index(context)
+    snapshots = {snapshot.data_key: snapshot for snapshot in context.price_snapshots}
+    for number, line in enumerate(markdown.splitlines(), 1):
+        refs = REF_PATTERN.findall(line)
+        for ref_type, key in refs:
+            if (ref_type, key) not in evidence:
+                errors.append(f"line {number}: unknown or unusable {ref_type} referenced: {key}")
+        text = line.strip()
+        if not text:
             continue
-        if any(section in line for section in key_sections) and DATA_GAP_TEXT not in line:
-            if "source_id:" not in line and "data_key:" not in line:
-                errors.append("material bullet lacks source_id or data_key")
-                return
-
-
-def _check_source_less_numeric_claims(markdown: str, errors: list[str]) -> None:
-    for line in markdown.splitlines():
-        stripped = line.strip()
-        if not _is_material_claim_line(stripped):
-            continue
-        if (
-            DATA_GAP_TEXT in stripped
-            or MARKET_CLOSED_TEXT in stripped
-            or "market_closed" in stripped
+        if text.startswith("#"):
+            heading = re.sub(r"^#+\s*(?:\d+\.\s*)?", "", text)
+            if (heading == "5줄 핵심 요약" or context.report_date in heading
+                    or not _numbers(heading)):
+                continue
+        if text.startswith("> ") and text[2:] == (
+            "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다."
         ):
             continue
-        if not re.search(r"\d", stripped):
+        if re.fullmatch(r"\|[\s|:\-]+\|", text):
             continue
-        if "source_id:" not in stripped and "data_key:" not in stripped:
-            errors.append("numeric material claim lacks source_id or data_key")
-            return
+        if text == f"생성 시각: {context.generated_at.isoformat()}":
+            continue
+        if re.fullmatch(r"작성 경로: [A-Za-z ;_-]+", text):
+            continue
+        if text.startswith("|") and not _numbers(text) and not refs:
+            continue
+        if text in {"- 데이터 부족", "데이터 부족", "가격 확인 필요"}:
+            continue
+        if context.market_context.get("market_status") in {"closed", "unknown"}:
+            if not _numbers(text) and not refs:
+                continue
+        if text == "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.":
+            continue
+        if not refs:
+            label = "numeric material claim" if _numbers(text) else "material claim"
+            errors.append(f"line {number}: {label} lacks source_id or data_key")
+        else:
+            supported = set().union(*(_numbers(evidence.get(tuple(ref), "")) for ref in refs))
+            supported |= {(Decimal(symbol), "") for symbol in known_symbols if symbol.isdigit()}
+            if _numbers(text) - supported:
+                errors.append(f"line {number}: numeric value or unit not present in cited evidence")
 
+        quoted_subject = bool(PRICE_CONTEXT.search(text)) or any(
+            candidate.name in text or candidate.symbol in text for candidate in context.candidates
+        )
+        if quoted_subject and PRICE_NUMBER.search(text):
+            price_refs = [snapshots[key] for kind, key in refs
+                          if kind == "data_key" and key in snapshots
+                          and (kind, key) in evidence]
+            if not price_refs:
+                errors.append(f"line {number}: price-like claim lacks price_snapshot data_key")
+            elif not any(snapshot.as_of.isoformat() in text for snapshot in price_refs):
+                errors.append(f"line {number}: price timestamp missing from claim")
+            elif SYMBOL_PATTERN.search(text) and not any(
+                snapshot.symbol in SYMBOL_PATTERN.findall(text) for snapshot in price_refs
+            ):
+                errors.append(f"line {number}: price snapshot belongs to a different symbol")
 
-def _is_material_claim_line(line: str) -> bool:
-    if line.startswith("- "):
-        return True
-    if line.startswith("|") and "---" not in line:
-        return True
-    return False
+        if (context.data_status != "ok" and re.search(r"확정|분명|반드시.*상승", text)
+                and "데이터 부족" in text):
+            errors.append(f"line {number}: certainty wording used with insufficient data")
 
-
-def _check_certainty(markdown: str, errors: list[str]) -> None:
-    for pattern in CERTAINTY_PATTERNS:
-        if pattern.search(markdown):
-            errors.append("certainty wording used with insufficient data")
-
-
-def _check_data_status(context: ReportContext, warnings: list[str]) -> None:
-    if context.data_status != "ok":
+    if context.data_status != "ok" and context.market_context.get("market_status") != "closed":
         warnings.append(f"report data_status is {context.data_status}")
-    if context.missing_data:
+    if context.missing_data and context.market_context.get("market_status") != "closed":
         warnings.append("missing data was reported")
+    status = "fail" if errors else "warning" if warnings else "pass"
+    return VerificationResult(status=status, errors=sorted(set(errors)), warnings=warnings)

@@ -15,7 +15,14 @@ VerificationStatus = Literal["pass", "fail", "warning"]
 
 
 class StrictBaseModel(BaseModel):
-    model_config = ConfigDict(extra="forbid", validate_assignment=True)
+    model_config = ConfigDict(extra="forbid", validate_assignment=True, allow_inf_nan=False)
+
+    @field_validator("*", mode="after")
+    @classmethod
+    def require_aware_datetimes(cls, value: Any) -> Any:
+        if isinstance(value, datetime) and value.utcoffset() is None:
+            raise ValueError("timestamp must include a timezone offset")
+        return value
 
 
 class Source(StrictBaseModel):
@@ -135,7 +142,7 @@ def parse_datetime(value: str | datetime | None) -> datetime | None:
     if parsed is None:
         return None
     if parsed.tzinfo is None:
-        return parsed.replace(tzinfo=ZoneInfo(KST_TIMEZONE))
+        return None
     return parsed.astimezone(ZoneInfo(KST_TIMEZONE))
 
 

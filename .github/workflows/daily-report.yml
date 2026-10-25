@@ -11,11 +11,14 @@ on:
         description: "Report date in YYYY-MM-DD. Defaults to current Asia/Seoul date."
         required: false
         type: string
+      rebuild_only:
+        description: "Rebuild verified archives without collecting or rewriting a report."
+        required: false
+        default: false
+        type: boolean
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 concurrency:
   group: pages-daily-report
@@ -23,6 +26,8 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: write
     # Defaults to GitHub-hosted runners. Set repository variable REPORT_RUNS_ON to
     # ["self-hosted","Windows","X64","codex","k-daytrade"] to use the local
     # Codex-enabled self-hosted runner.
@@ -60,9 +65,6 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -76,8 +78,10 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Resolve report date
+        env:
+          REQUESTED_DATE: ${{ inputs.date }}
         run: |
-          $reportDate = "${{ github.event.inputs.date }}"
+          $reportDate = $env:REQUESTED_DATE
           if ([string]::IsNullOrWhiteSpace($reportDate)) {
             $reportDate = python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Seoul')).date().isoformat())"
           }
@@ -167,7 +171,7 @@ jobs:
 
           $workspaceDir = $env:CODEX_WORKSPACE_DIR
           if ([string]::IsNullOrWhiteSpace($workspaceDir)) {
-            $workspaceDir = Join-Path $env:GITHUB_WORKSPACE ".codex-preflight"
+            $workspaceDir = Join-Path $env:RUNNER_TEMP "daytrade-codex-preflight"
           }
 
           $script = @"
@@ -238,11 +242,13 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Generate report
+        if: ${{ !inputs.rebuild_only }}
         run: |
           python -m daytrade_agent.cli run --date "$env:REPORT_DATE"
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Verify report
+        if: ${{ !inputs.rebuild_only }}
         continue-on-error: true
         run: |
           python -m daytrade_agent.cli verify --date "$env:REPORT_DATE"
@@ -253,6 +259,7 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Commit report content
+        if: ${{ !inputs.rebuild_only }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -267,13 +274,48 @@ jobs:
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
           }
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload verified site files
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-site
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Remove temporary Codex credentials
+        if: always()
+        run: |
+          $target = Join-Path $env:RUNNER_TEMP "daytrade-codex-preflight"
+          if (Test-Path -LiteralPath $target) {
+            $resolved = (Resolve-Path -LiteralPath $target).Path
+            $parent = (Resolve-Path -LiteralPath $env:RUNNER_TEMP).Path
+            if (-not $resolved.StartsWith($parent + [IO.Path]::DirectorySeparatorChar)) {
+              throw "Credential cleanup path is outside runner temp"
+            }
+            Remove-Item -LiteralPath $resolved -Recurse -Force
+          }
+
+  package:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: verified-site
+          path: dist
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
-    needs: build
+    needs: package
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     environment:
       name: github-pages

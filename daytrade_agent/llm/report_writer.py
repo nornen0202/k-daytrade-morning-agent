@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import Counter
 from datetime import datetime
 
@@ -30,20 +31,26 @@ def write_report_markdown(
         _write_private_debug(config, context.report_date, "prompt.md", prompt)
 
     if dry_run:
+        context.market_context["writer_provider"] = "template_fixture"
         return _template_report(config, context, note="dry-run mock writer")
 
     provider = (config.env("REPORT_LLM_PROVIDER", "codex") or "codex").lower()
     if provider == "codex":
         response = _try_codex(prompt, config)
         if response:
+            context.market_context["writer_provider"] = "codex"
             return response
+        context.market_context["writer_provider"] = "template"
+        context.market_context["writer_fallback"] = True
         return _template_report(config, context, note="codex unavailable; template fallback")
 
     if provider == "openai" and config.env("OPENAI_API_KEY"):
         response = _try_openai(prompt, config)
         if response:
+            context.market_context["writer_provider"] = "openai"
             return response
 
+    context.market_context["writer_provider"] = "template"
     return _template_report(config, context, note="llm unavailable; template fallback")
 
 
@@ -52,19 +59,34 @@ def build_summary(
     markdown: str,
     verification_status: str,
 ) -> dict[str, object]:
+    publishable = verification_status != "fail" and bool(context.events)
     return {
         "report_date": context.report_date,
         "generated_at": context.generated_at.isoformat(),
         "data_as_of": _data_as_of(context),
         "data_status": context.data_status,
         "verification_status": verification_status,
+        "run_mode": context.market_context.get("run_mode", "legacy"),
+        "report_kind": "research" if publishable else "notice",
+        "metrics": {
+            "category_events": dict(Counter(event.category for event in context.events)),
+            "grounded_candidates": len(context.candidates) if publishable else 0,
+            "premarket_on_time": context.generated_at.hour < 9,
+            "writer_fallback": context.market_context.get("writer_fallback", False),
+            "writer_provider": context.market_context.get("writer_provider"),
+        },
         "market_context": context.market_context,
         "missing_data": context.missing_data,
-        "candidate_count": len(context.candidates),
-        "top_event": _top_event(context),
-        "top_theme": _top_theme(context),
-        "top_risks": _top_risks(context),
-        "events": [model_dump_json_safe(event) for event in context.events],
+        "candidate_count": len(context.candidates) if publishable else 0,
+        "top_event": _top_event(context) if publishable else {},
+        "key_changes": [
+            {"title": _event_text(event.title), "source_id": event.source_id,
+             "published_at": event.published_at.isoformat() if event.published_at else None}
+            for event in context.events[:3] if publishable
+        ],
+        "top_theme": _top_theme(context) if publishable else "데이터 부족",
+        "top_risks": _top_risks(context) if publishable else [],
+        "events": [model_dump_json_safe(event) for event in context.events if publishable],
         "candidates": [
             {
                 "symbol": candidate.symbol,
@@ -79,7 +101,7 @@ def build_summary(
                 "observation_condition": candidate.observation_condition,
                 "invalidation_condition": candidate.invalidation_condition,
             }
-            for candidate in context.candidates
+            for candidate in context.candidates if publishable
         ],
         "sources": [
             {
@@ -91,10 +113,10 @@ def build_summary(
                 "collected_at": source.collected_at.isoformat(),
                 "source_quality": source.source_quality,
             }
-            for source in context.sources
+            for source in context.sources if publishable
         ],
         "price_snapshots": [
-            model_dump_json_safe(snapshot) for snapshot in context.price_snapshots
+            model_dump_json_safe(snapshot) for snapshot in context.price_snapshots if publishable
         ],
         "disclaimer": config_disclaimer(),
         "markdown_length": len(markdown),
@@ -181,9 +203,7 @@ def failure_report_markdown(
     lines.extend(
         [
             "",
-            "## 공개 가능한 후보 요약",
-            "",
-            _candidate_table(context.candidates),
+            "검증을 통과한 연구 내용이 없어 후보와 점수를 공개하지 않습니다.",
             "",
             "## 데이터 누락 및 확인 필요 사항",
             "",
@@ -197,7 +217,8 @@ def failure_report_markdown(
 def market_closed_report_markdown(config: AppConfig, context: ReportContext) -> str:
     return "\n".join(
         [
-            f"# Market Closed Note - {context.report_date}",
+            "# " + ("Market Closed Note" if context.market_context.get("market_status") == "closed"
+                    else "거래일 확인 필요") + f" - {context.report_date}",
             "",
             f"생성 시각: {context.generated_at.isoformat()}",
             "",
@@ -205,12 +226,12 @@ def market_closed_report_markdown(config: AppConfig, context: ReportContext) -> 
             "",
             "## 휴장 안내",
             "",
-            "- market_closed: 해당 날짜는 KRX 정규 거래일로 확인되지 않았습니다.",
+            "- 해당 날짜는 KRX 정규 거래일로 확인되지 않았습니다.",
             "- 데이터 부족: 장전 후보 수집과 가격 스냅샷 생성을 수행하지 않았습니다.",
             "",
             "## 확인 필요",
             "",
-            "- config/holidays_kr.yml을 운영 환경에 맞게 관리하세요.",
+            "- 거래일은 XKRX 달력 및 검토된 변경 공지를 기준으로 판단합니다.",
             "",
         ]
     )
@@ -237,12 +258,11 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
         "## 1. 5줄 핵심 요약",
         "",
     ]
-    top = context.candidates[:5]
+    top = context.events[:5]
     if top:
         lines.extend(
-            f"- {candidate.name}({candidate.symbol}) 관찰 우선순위 {candidate.score:.2f}/10 "
-            f"- source_id: {', '.join(candidate.source_ids)}"
-            for candidate in top
+            f"- {_event_text(event.title)} (source_id: {event.source_id})"
+            for event in top
         )
     else:
         lines.append("- 데이터 부족")
@@ -267,16 +287,16 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
         if not events:
             lines.append("- 데이터 부족")
             continue
-        for event in events:
+        for event in events[:5]:
             lines.append(
-                f"- {event.title}: {event.summary} "
+                f"- {_event_text(event.title)}: {_event_text(event.summary)} "
                 f"(source_id: {event.source_id}, data_status: {event.data_status})"
             )
 
     lines.extend(["", "## 7. 통합 관심 후보 Top N", "", _candidate_table(context.candidates), ""])
     lines.extend(["## 8. 후보별 관찰 조건/트리거/무효화 조건/리스크", ""])
     for candidate in context.candidates:
-        data_key = candidate.price_snapshot.data_key if candidate.price_snapshot else "데이터 부족"
+        data_key = f"score_{candidate.symbol}"
         lines.append(
             f"- {candidate.name}({candidate.symbol}) | 관찰: {candidate.observation_condition} | "
             f"트리거: 공식 시세와 거래대금 재확인 후 변동성 관리 | "
@@ -299,7 +319,8 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
             "",
         ]
     )
-    lines.extend(f"- {item}" for item in context.missing_data or ["데이터 부족"])
+    lines.extend(f"- {item} (data_key: report_metadata)"
+                 for item in context.missing_data or ["데이터 부족"])
     lines.extend(["", "## 12. 투자 참고용 고지", "", config.disclaimer, ""])
     return "\n".join(lines)
 
@@ -386,19 +407,17 @@ def _candidate_table(candidates: list[Candidate]) -> str:
         "| --- | ---: | --- | --- |",
     ]
     for candidate in candidates:
-        refs = ", ".join(candidate.source_ids)
-        data_key = candidate.price_snapshot.data_key if candidate.price_snapshot else "데이터 부족"
+        refs = "; ".join(f"source_id: {key}" for key in candidate.source_ids)
+        data_key = f"score_{candidate.symbol}"
         lines.append(
             f"| {candidate.name}({candidate.symbol}) | {candidate.score:.2f} | "
-            f"source_id: {refs}; data_key: {data_key} | {', '.join(candidate.risk_flags)} |"
+            f"{refs}; data_key: {data_key} | {', '.join(candidate.risk_flags)} |"
         )
     return "\n".join(lines)
 
 
 def _market_context_text(context: ReportContext) -> str:
-    if not context.market_context:
-        return "데이터 부족"
-    return json.dumps(context.market_context, ensure_ascii=False, sort_keys=True)
+    return "데이터 부족"
 
 
 def _caution_text(candidates: list[Candidate]) -> str:
@@ -407,6 +426,27 @@ def _caution_text(candidates: list[Candidate]) -> str:
         return "- 데이터 부족"
     return "\n".join(
         f"- {candidate.name}({candidate.symbol}): {', '.join(candidate.risk_flags)} "
-        f"(source_id: {', '.join(candidate.source_ids)})"
+        f"(data_key: score_{candidate.symbol})"
         for candidate in caution
     )
+
+
+def _public_fact(text: str) -> str:
+    from daytrade_agent.collectors.news_provider import _PUBLIC_REPLACEMENTS
+
+    for original, replacement in _PUBLIC_REPLACEMENTS.items():
+        text = text.replace(original, replacement)
+    text = re.sub(r"매수\s*추천|강력\s*매수|즉시\s*매수|매수\s*하라", "가격 확인 필요", text)
+    return text.replace("\n", " ").replace("|", "/")
+
+
+def _event_text(text: str) -> str:
+    from daytrade_agent.llm.report_verifier import PRICE_CONTEXT, PRICE_NUMBER
+
+    if PRICE_CONTEXT.search(text) and PRICE_NUMBER.search(text):
+        return "가격 관련 보도 수치 생략. 가격 확인 필요."
+    return _public_fact(text)
+
+
+def verified_facts_markdown(config: AppConfig, context: ReportContext) -> str:
+    return _template_report(config, context, note="verified facts template")

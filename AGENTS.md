@@ -127,6 +127,17 @@ Private:
 
 ## Done When
 
+Operational recovery must distinguish report verification from deployment success.
+Keep existing schedules and TradingAgents ownership intact. Coordinate before changing shared
+runner services, Codex login, or another repository. Only this repository's workflow and
+artifacts belong to this session.
+
+Never label a failed, fixture, expired, or archived report as current research.
+Both the writer and site builder enforce provenance. A known citation alone does not justify
+an arbitrary number, unit, symbol, or price timestamp.
+Do not backdate live collection. XKRX calendar amendments and coverage must be reviewed annually;
+unknown coverage fails closed. Do not replace the operating calendar with its example file.
+
 A change is complete only when:
 
 - `ruff check .` passes.

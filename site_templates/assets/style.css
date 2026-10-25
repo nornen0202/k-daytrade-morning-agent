@@ -43,7 +43,7 @@ a {
 
 .site-header h1 {
   margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-size: 1.8rem;
   letter-spacing: 0;
 }
 
@@ -68,8 +68,7 @@ main {
 .band {
   margin-bottom: 18px;
   padding: clamp(18px, 3vw, 28px);
-  background: var(--surface);
-  border: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .section-heading {
@@ -166,8 +165,12 @@ th {
 
 .context-grid div {
   padding: 12px;
-  border: 1px solid var(--line);
+  min-width: 0;
 }
+
+p, li, h1, h2, td { overflow-wrap: anywhere; }
+nav { flex-wrap: wrap; }
+[hidden] { display: none !important; }
 
 .context-grid dt {
   font-weight: 800;

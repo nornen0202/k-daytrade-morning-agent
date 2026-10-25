@@ -26,10 +26,11 @@ def _context() -> ReportContext:
 
 def test_verifier_passes_fixture_report():
     context = _context()
+    candidate = next(item for item in context.candidates if item.symbol == "005930")
     markdown = (
         "# Report\n"
-        "- Samsung Electronics(005930) 관찰 우선순위 6.50/10 "
-        "- source_id: src_policy_001; data_key: price_005930_20260427_0835\n"
+        f"- Samsung Electronics(005930) 관찰 우선순위 {candidate.score:.2f}/10 "
+        "- source_id: src_policy_001; data_key: score_005930\n"
     )
     result = verify_report(context, markdown)
 

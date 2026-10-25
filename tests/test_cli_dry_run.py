@@ -17,6 +17,13 @@ def test_cli_dry_run_and_build_site(tmp_path):
         check=False,
     )
     assert run.returncode == 0, run.stderr
+    import json
+
+    verification = json.loads(
+        (tmp_path / "content" / "reports" / "2026-04-27" / "verification.json")
+        .read_text(encoding="utf-8")
+    )
+    assert verification["status"] != "fail", verification
 
     build = subprocess.run(
         [sys.executable, "-m", "daytrade_agent.cli", "build-site"],

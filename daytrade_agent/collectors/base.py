@@ -34,3 +34,9 @@ def read_fixture(path: Path) -> dict[str, Any]:
 def insufficient_result(category: str, reason: str) -> CollectorResult:
     return CollectorResult(missing_data=[f"{category}: {reason}"])
 
+
+def response_json(response: Any) -> Any:
+    # Some news endpoints advertise a legacy charset despite returning UTF-8 JSON.
+    body = getattr(response, "content", None)
+    return json.loads(body.decode("utf-8-sig")) if isinstance(body, bytes) else response.json()
+

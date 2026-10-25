@@ -33,10 +33,6 @@ class CodexStructuredOutputError(CodexAppServerError):
 
 _CODEX_HOME_SEED_FILES = (
     "auth.json",
-    "config.toml",
-    "models_cache.json",
-    ".codex-global-state.json",
-    "installation_id",
 )
 
 
@@ -120,6 +116,10 @@ class CodexAppServerSession:
                 proc.wait(timeout=2)
             except Exception:
                 proc.kill()
+                proc.wait(timeout=2)
+            # Only our session copy is removed; the shared login is never modified.
+            auth_copy = Path(self.workspace_dir) / ".codex-home" / "auth.json"
+            auth_copy.unlink(missing_ok=True)
 
     def account_read(self) -> dict[str, Any]:
         return self.request("account/read", {"refreshToken": False})

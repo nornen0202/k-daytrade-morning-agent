@@ -9,7 +9,7 @@ from xml.etree import ElementTree
 
 import requests
 
-from daytrade_agent.collectors.base import CollectorResult, insufficient_result
+from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.config import AppConfig
 from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_datetime, stable_id
 
@@ -127,7 +127,7 @@ def _collect_naver(
             timeout=15,
         )
         response.raise_for_status()
-        payload = response.json()
+        payload = response_json(response)
         for item in payload.get("items", []) if isinstance(payload, dict) else []:
             if not isinstance(item, dict):
                 continue
@@ -164,7 +164,7 @@ def _collect_newsapi(
             timeout=15,
         )
         response.raise_for_status()
-        payload = response.json()
+        payload = response_json(response)
         for item in payload.get("articles", []) if isinstance(payload, dict) else []:
             if not isinstance(item, dict):
                 continue
@@ -205,7 +205,7 @@ def _collect_alpha_vantage(
         timeout=20,
     )
     response.raise_for_status()
-    payload = response.json()
+    payload = response_json(response)
     feed = payload.get("feed", []) if isinstance(payload, dict) else []
     events: list[MarketEvent] = []
     sources: list[Source] = []
@@ -362,7 +362,7 @@ def _parse_alpha_datetime(value: object) -> datetime | None:
     if not text:
         return None
     try:
-        return parse_datetime(datetime.strptime(text, "%Y%m%dT%H%M%S"))
+        return parse_datetime(datetime.strptime(text, "%Y%m%dT%H%M%S").replace(tzinfo=UTC))
     except ValueError:
         return parse_datetime(text)
 

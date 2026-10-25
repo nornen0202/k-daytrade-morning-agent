@@ -7,7 +7,7 @@ from datetime import date, datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from daytrade_agent.calendar.trading_calendar import is_trading_day, load_holidays
+from daytrade_agent.calendar.trading_calendar import load_holidays, trading_status
 from daytrade_agent.collectors import (
     corporate_disclosure,
     global_issue,
@@ -33,6 +33,7 @@ from daytrade_agent.normalizers.event_schema import (
     Source,
     parse_datetime,
 )
+from daytrade_agent.normalizers.freshness import temporal_status
 from daytrade_agent.render.site_builder import build_site
 from daytrade_agent.scoring.candidate_score import score_candidates
 from daytrade_agent.storage.report_store import load_report, save_report
@@ -74,6 +75,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 def run_command(config: AppConfig, report_date: str | None, *, dry_run: bool) -> int:
     selected_date = _report_date(report_date, config)
+    today = datetime.now(tz=ZoneInfo(config.timezone)).date().isoformat()
+    if not dry_run and selected_date != today:
+        print("Live collection requires the current KST date; use --dry-run for fixtures.")
+        return 2
     generated_at = _generated_at(selected_date, config)
     if not _is_open_trading_day(config, selected_date):
         context = _market_closed_context(config, selected_date, generated_at)
@@ -86,9 +91,18 @@ def run_command(config: AppConfig, report_date: str | None, *, dry_run: bool) ->
 
     collected = _collect_all(config, selected_date, generated_at, dry_run=dry_run)
     context = _build_context(config, selected_date, generated_at, collected)
+    context.market_context["run_mode"] = "fixture" if dry_run else "live"
+    context.market_context["market_status"] = "open"
 
     markdown = write_report_markdown(config, context, dry_run=dry_run)
     verification = verify_report(context, markdown)
+    if verification.status == "fail":
+        # A rejected LLM draft may only be replaced by independently verified facts.
+        from daytrade_agent.llm.report_writer import verified_facts_markdown
+
+        context.market_context["writer_fallback"] = True
+        markdown = verified_facts_markdown(config, context)
+        verification = verify_report(context, markdown)
     if verification.status == "fail":
         markdown = failure_report_markdown(
             config,
@@ -149,6 +163,8 @@ def _collect_all(
             symbol
             for result in event_results
             for event in result.events
+            if event.data_status not in {"stale", "insufficient"}
+            and temporal_status(event.published_at, generated_at) == "ok"
             for symbol in event.candidate_symbols
         }
     )
@@ -162,12 +178,30 @@ def _build_context(
     generated_at: datetime,
     results: list[CollectorResult],
 ) -> ReportContext:
-    events = deduplicate_events([event for result in results for event in result.events])
+    raw_events = [event for result in results for event in result.events]
     sources = _dedupe_sources([source for result in results for source in result.sources])
-    snapshots = _dedupe_snapshots(
+    raw_snapshots = _dedupe_snapshots(
         [snapshot for result in results for snapshot in result.price_snapshots]
     )
     missing_data = [item for result in results for item in result.missing_data]
+    source_ids = {source.source_id for source in sources}
+    events = deduplicate_events([
+        event for event in raw_events
+        if event.source_id in source_ids
+        and event.data_status not in {"stale", "insufficient"}
+        and temporal_status(event.published_at, generated_at,
+                            float(config.risk_rules.get("stale_hours", 48))) == "ok"
+        and "\ufffd" not in event.title + event.summary
+    ])
+    snapshots = [snapshot for snapshot in raw_snapshots
+                 if snapshot.last_price is not None
+                 and snapshot.data_status not in {"stale", "insufficient"}
+                 and temporal_status(snapshot.as_of, generated_at, 96) == "ok"]
+    rejected = len(raw_events) - len(events)
+    if rejected:
+        missing_data.append(f"제외된 뉴스/공시: {rejected}건 (시각·출처·문자 인코딩 확인 필요)")
+    if len(snapshots) != len(raw_snapshots):
+        missing_data.append("시각 또는 유효성이 확인되지 않은 가격 스냅샷 제외")
     market_context = _merge_market_context(results)
     candidates = score_candidates(config, events, snapshots, generated_at)
     data_status = _data_status(events, snapshots, missing_data)
@@ -285,7 +319,9 @@ def _data_status(
         return "insufficient"
     if missing_data or not snapshots:
         return "partial"
-    if any(event.data_status in {"insufficient", "stale"} for event in events):
+    if any(event.data_status != "ok" for event in events):
+        return "partial"
+    if any(snapshot.data_status != "ok" for snapshot in snapshots):
         return "partial"
     return "ok"
 
@@ -293,9 +329,7 @@ def _data_status(
 def _is_open_trading_day(config: AppConfig, report_date: str) -> bool:
     value = date.fromisoformat(report_date)
     holidays_path = config.root / "config" / "holidays_kr.yml"
-    if not holidays_path.exists():
-        holidays_path = config.root / "config" / "holidays_kr.example.yml"
-    return is_trading_day(value, load_holidays(holidays_path))
+    return trading_status(value, load_holidays(holidays_path)) == "open"
 
 
 def _market_closed_context(
@@ -312,7 +346,10 @@ def _market_closed_context(
         sources=[],
         price_snapshots=[],
         candidates=[],
-        market_context={"market_status": "closed"},
+        market_context={
+            "market_status": trading_status(date.fromisoformat(report_date)),
+            "calendar_provider": "XKRX + reviewed amendments",
+        },
         missing_data=[f"market_closed: {report_date} is not an open KRX trading day"],
     )
 

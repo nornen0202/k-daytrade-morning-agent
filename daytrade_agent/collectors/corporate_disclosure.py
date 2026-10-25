@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
-from daytrade_agent.collectors.base import CollectorResult, insufficient_result
+from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.collectors.mock import collect_category_mock
 from daytrade_agent.config import AppConfig
 from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_datetime, stable_id
@@ -24,18 +24,21 @@ def collect(
 
     yyyymmdd = report_date.replace("-", "")
     url = str(config.data_sources["opendart"]["list_url"])
-    response = requests.get(
-        url,
-        params={
-            "crtfc_key": api_key,
-            "bgn_de": yyyymmdd,
-            "end_de": yyyymmdd,
-            "page_count": 100,
-        },
-        timeout=20,
-    )
-    response.raise_for_status()
-    payload = response.json()
+    try:
+        response = requests.get(
+            url,
+            params={
+                "crtfc_key": api_key,
+                "bgn_de": (collected_at - timedelta(days=4)).strftime("%Y%m%d"),
+                "end_de": yyyymmdd,
+                "page_count": 100,
+            },
+            timeout=20,
+        )
+        response.raise_for_status()
+        payload = response_json(response)
+    except Exception as exc:
+        return insufficient_result("corporate_disclosure", type(exc).__name__)
     rows = payload.get("list", []) if isinstance(payload, dict) else []
 
     events: list[MarketEvent] = []
@@ -65,7 +68,7 @@ def collect(
             affected_sectors=[],
             candidate_symbols=[stock_code] if stock_code else [],
             confidence=0.7 if stock_code else 0.4,
-            data_status="ok",
+            data_status="ok" if published else "insufficient",
         )
         events.append(event)
         sources.append(
@@ -79,14 +82,23 @@ def collect(
                 source_quality=0.8,
             )
         )
-    return CollectorResult(events=events, sources=sources)
+    missing = []
+    if any(event.published_at is None for event in events):
+        missing.append("OpenDART 접수일만 제공: 공시 시각 확인 필요. 순위 근거에서 제외.")
+    if isinstance(payload, dict) and int(payload.get("total_page", 1)) > 1:
+        missing.append("OpenDART 조회 결과 일부만 수집됨: 추가 페이지 확인 필요.")
+    if not rows:
+        missing.append("OpenDART 공시 데이터 부족 또는 응답 상태 확인 필요")
+    return CollectorResult(events=events, sources=sources, missing_data=missing)
 
 
 def _receipt_time(date_value: object, time_value: object) -> str | None:
     date_text = str(date_value or "").strip()
     if len(date_text) != 8:
         return None
-    time_text = str(time_value or "084500").strip().zfill(6)[:6]
+    if not time_value:
+        return None
+    time_text = str(time_value).strip().zfill(6)[:6]
     return (
         f"{date_text[:4]}-{date_text[4:6]}-{date_text[6:8]}"
         f"T{time_text[:2]}:{time_text[2:4]}:{time_text[4:6]}+09:00"

@@ -5,6 +5,7 @@ from datetime import datetime
 
 from daytrade_agent.config import AppConfig
 from daytrade_agent.normalizers.event_schema import Candidate, MarketEvent, PriceSnapshot
+from daytrade_agent.normalizers.freshness import temporal_status
 from daytrade_agent.normalizers.symbol_resolver import resolve_symbol_names
 from daytrade_agent.scoring.risk_flags import risk_flags_for, risk_penalty
 
@@ -18,10 +19,18 @@ def score_candidates(
 ) -> list[Candidate]:
     events_by_symbol: dict[str, list[MarketEvent]] = defaultdict(list)
     for event in events:
+        if event.data_status in {"insufficient", "stale"} or temporal_status(
+            event.published_at, generated_at, float(config.risk_rules.get("stale_hours", 48))
+        ) != "ok":
+            continue
         for symbol in event.candidate_symbols:
             events_by_symbol[symbol].append(event)
 
-    snapshots_by_symbol = {snapshot.symbol: snapshot for snapshot in price_snapshots}
+    snapshots_by_symbol = {
+        snapshot.symbol: snapshot for snapshot in price_snapshots
+        if snapshot.data_status not in {"insufficient", "stale"}
+        and temporal_status(snapshot.as_of, generated_at, 96) == "ok"
+    }
     names = resolve_symbol_names(events, price_snapshots)
     candidates: list[Candidate] = []
 
@@ -106,9 +115,12 @@ def _freshness_score(events: list[MarketEvent], generated_at: datetime) -> float
     scores: list[float] = []
     for event in events:
         if event.data_status in {"insufficient", "stale"} or event.published_at is None:
-            scores.append(2.0)
+            scores.append(0.0)
             continue
-        age_hours = max(0.0, (generated_at - event.published_at).total_seconds() / 3600)
+        if temporal_status(event.published_at, generated_at) != "ok":
+            scores.append(0.0)
+            continue
+        age_hours = (generated_at - event.published_at).total_seconds() / 3600
         if age_hours <= 12:
             scores.append(10.0)
         elif age_hours <= 24:

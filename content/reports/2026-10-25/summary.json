@@ -1,0 +1,32 @@
+{
+  "candidate_count": 0,
+  "candidates": [],
+  "data_as_of": "데이터 부족",
+  "data_status": "insufficient",
+  "disclaimer": "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.",
+  "events": [],
+  "generated_at": "2026-10-25T23:24:56.446674+09:00",
+  "markdown_length": 259,
+  "market_context": {
+    "calendar_provider": "XKRX + reviewed amendments",
+    "market_status": "closed"
+  },
+  "metrics": {
+    "category_events": {},
+    "grounded_candidates": 0,
+    "premarket_on_time": false,
+    "writer_fallback": false
+  },
+  "missing_data": [
+    "market_closed: 2026-10-25 is not an open KRX trading day"
+  ],
+  "price_snapshots": [],
+  "report_date": "2026-10-25",
+  "report_kind": "notice",
+  "run_mode": "legacy",
+  "sources": [],
+  "top_event": {},
+  "top_risks": [],
+  "top_theme": "데이터 부족",
+  "verification_status": "pass"
+}

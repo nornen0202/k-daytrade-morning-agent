@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import UTC, datetime
 from importlib import import_module
 from typing import Any
 
@@ -66,8 +66,16 @@ def _collect_provider_quote(
 
     raw_snapshots = payload.get("snapshots", []) if isinstance(payload, dict) else []
     market_context = payload.get("market_context", {}) if isinstance(payload, dict) else {}
-    snapshots = [_snapshot_from_raw(item) for item in raw_snapshots if isinstance(item, dict)]
-    return CollectorResult(price_snapshots=snapshots, market_context=market_context)
+    snapshots = []
+    missing = []
+    for item in raw_snapshots:
+        try:
+            snapshots.append(_snapshot_from_raw(item))
+        except (ValueError, KeyError, TypeError):
+            missing.append("quote provider snapshot schema invalid")
+    return CollectorResult(
+        price_snapshots=snapshots, market_context=market_context, missing_data=missing
+    )
 
 
 def _collect_yfinance_quotes(symbols: list[str], collected_at: datetime) -> CollectorResult:
@@ -81,7 +89,10 @@ def _collect_yfinance_quotes(symbols: list[str], collected_at: datetime) -> Coll
     snapshots: list[PriceSnapshot] = []
     missing: list[str] = []
     for symbol in sorted(set(symbols)):
-        snapshot = _yfinance_snapshot(yf, symbol, collected_at)
+        try:
+            snapshot = _yfinance_snapshot(yf, symbol, collected_at)
+        except Exception:
+            snapshot = None
         if snapshot:
             snapshots.append(snapshot)
         else:
@@ -92,6 +103,11 @@ def _collect_yfinance_quotes(symbols: list[str], collected_at: datetime) -> Coll
 def _yfinance_snapshot(module: Any, symbol: str, collected_at: datetime) -> PriceSnapshot | None:
     for yahoo_symbol in _yahoo_candidates(symbol):
         ticker = module.Ticker(yahoo_symbol)
+        info = getattr(ticker, "info", {}) or {}
+        quote_time = info.get("regularMarketTime")
+        as_of = datetime.fromtimestamp(quote_time, UTC) if isinstance(
+            quote_time, (int, float)
+        ) else None
         fast_info = getattr(ticker, "fast_info", {}) or {}
         last_price = _float_or_none(_fast_info_get(fast_info, "last_price", "lastPrice"))
         previous_close = _float_or_none(
@@ -113,7 +129,8 @@ def _yfinance_snapshot(module: Any, symbol: str, collected_at: datetime) -> Pric
         change_rate = None
         if previous_close and previous_close > 0:
             change_rate = round(((last_price - previous_close) / previous_close) * 100, 2)
-        trading_value = int(last_price * volume) if volume else None
+        # Turnover is not last-price * cumulative-volume. Yahoo does not supply it here.
+        trading_value = None
         market = _market_from_yahoo(yahoo_symbol)
         return PriceSnapshot(
             symbol=symbol,
@@ -123,11 +140,11 @@ def _yfinance_snapshot(module: Any, symbol: str, collected_at: datetime) -> Pric
             change_rate=change_rate,
             volume=volume,
             trading_value=trading_value,
-            session_type="regular",
-            as_of=collected_at,
+            session_type="delayed_regular",
+            as_of=as_of,
             provider="yfinance",
             data_key=stable_id("price", "yfinance", yahoo_symbol, collected_at.isoformat()),
-            data_status="ok",
+            data_status="partial" if as_of else "insufficient",
         )
     return None
 

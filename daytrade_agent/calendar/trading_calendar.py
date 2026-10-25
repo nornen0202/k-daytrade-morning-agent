@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
+import exchange_calendars
 import yaml
 
 
@@ -24,5 +25,23 @@ def load_holidays(path: Path) -> set[date]:
 
 
 def is_trading_day(value: date, holidays: set[date] | None = None) -> bool:
-    return is_weekday(value) and value not in (holidays or set())
+    return trading_status(value, holidays) == "open"
+
+
+def trading_status(value: date, holidays: set[date] | None = None) -> str:
+    amendments = Path(__file__).resolve().parents[2] / "config" / "holidays_kr.yml"
+    if not amendments.exists():
+        return "unknown"
+    config = yaml.safe_load(amendments.read_text(encoding="utf-8"))
+    if value.year not in config.get("coverage_years", []):
+        return "unknown"
+    holidays = (holidays or set()) | load_holidays(amendments)
+    if not is_weekday(value) or value in (holidays or set()):
+        return "closed"
+    try:
+        calendar = exchange_calendars.get_calendar("XKRX")
+        return "open" if calendar.is_session(value.isoformat()) else "closed"
+    except (ValueError, OverflowError):
+        # Unknown calendar coverage must never become an assumed trading session.
+        return "unknown"
 
