@@ -28,6 +28,7 @@ from daytrade_agent.normalizers.deduplicate import deduplicate_events
 from daytrade_agent.normalizers.event_schema import (
     Candidate,
     MarketEvent,
+    MarketMetric,
     PriceSnapshot,
     ReportContext,
     Source,
@@ -87,6 +88,25 @@ def run_command(config: AppConfig, report_date: str | None, *, dry_run: bool) ->
         summary = build_summary(context, markdown, verification.status)
         save_report(config.content_dir, selected_date, markdown, summary, verification)
         print(f"saved market-closed report {selected_date} status={verification.status}")
+        return 0
+    if not dry_run and generated_at.hour >= 9:
+        context = ReportContext(
+            report_date=selected_date, generated_at=generated_at, data_status="insufficient",
+            events=[], sources=[], price_snapshots=[], candidates=[],
+            market_context={"market_status": "missed", "run_mode": "live"},
+            missing_data=["장전 발행 마감 경과: 정규장 시작 이후 후보 생성을 수행하지 않음"],
+        )
+        markdown = (
+            f"# 장전 발행 지연 안내 - {selected_date}\n\n"
+            f"생성 시각: {generated_at.isoformat()}\n\n"
+            f"> {config.disclaimer}\n\n"
+            "- 장전 발행 마감이 지나 관찰 후보를 생성하지 않았습니다. "
+            "data_key: report_metadata\n"
+        )
+        result = verify_report(context, markdown)
+        save_report(config.content_dir, selected_date, markdown,
+                    build_summary(context, markdown, result.status), result)
+        print(f"saved missed-premarket notice {selected_date}")
         return 0
 
     collected = _collect_all(config, selected_date, generated_at, dry_run=dry_run)
@@ -203,6 +223,9 @@ def _build_context(
     if len(snapshots) != len(raw_snapshots):
         missing_data.append("시각 또는 유효성이 확인되지 않은 가격 스냅샷 제외")
     market_context = _merge_market_context(results)
+    market_context = {key: value for key, value in market_context.items()
+                      if temporal_status(parse_datetime(value.get("as_of")),
+                                         generated_at, 96) == "ok"}
     candidates = score_candidates(config, events, snapshots, generated_at)
     data_status = _data_status(events, snapshots, missing_data)
     return ReportContext(
@@ -306,7 +329,13 @@ def _dedupe_snapshots(snapshots: list[PriceSnapshot]) -> list[PriceSnapshot]:
 def _merge_market_context(results: list[CollectorResult]) -> dict[str, object]:
     merged: dict[str, object] = {}
     for result in results:
-        merged.update(result.market_context)
+        for key, value in result.market_context.items():
+            if key not in {"kospi", "kosdaq", "usdkrw", "sp500", "nasdaq"}:
+                continue
+            try:
+                merged[key] = MarketMetric.model_validate(value).model_dump(mode="json")
+            except ValueError:
+                continue
     return merged
 
 

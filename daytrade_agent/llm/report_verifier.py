@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from decimal import Decimal
 
 from daytrade_agent.normalizers.event_schema import ReportContext, VerificationResult
@@ -16,6 +17,7 @@ SECRET_PATTERNS = [re.compile(pattern, re.I) for pattern in (
     r"(?:api[_-]?key|secret|token)\s*[:=]\s*[A-Za-z0-9_-]{12,}",
     r"\b\d{3,6}-\d{3,6}-\d{4,10}\b",
     r"(?:계좌번호|실제\s*보유\s*비중|보유수량)\s*[:=]?\s*\d+",
+    r"(?:gh[pousr]_|github_pat_)[A-Za-z0-9_]{20,}",
 )]
 REF_PATTERN = re.compile(r"(source_id|data_key):\s*([A-Za-z0-9_-]+)")
 SYMBOL_PATTERN = re.compile(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])")
@@ -28,9 +30,16 @@ PRICE_NUMBER = re.compile(r"[+-]?\d[\d,.]*\s*(?:원|%|달러)")
 
 
 def unsafe_public_text(text: str) -> bool:
-    return bool("\ufffd" in text or any(term in text for term in FORBIDDEN_TERMS)
+    text = _normalized(text)
+    compact = re.sub(r"\s+", "", text)
+    return bool("\ufffd" in text or any(term.replace(" ", "") in compact
+                                      for term in FORBIDDEN_TERMS)
                 or any(pattern.search(text) for pattern in
                        [*INVESTMENT_PRESSURE_PATTERNS, *SECRET_PATTERNS]))
+
+
+def _normalized(text: str) -> str:
+    return re.sub(r"[\u200b-\u200f\ufeff]", "", unicodedata.normalize("NFKC", text))
 
 
 def _numbers(text: str) -> set[tuple[Decimal, str]]:
@@ -78,9 +87,10 @@ def evidence_index(context: ReportContext) -> dict[tuple[str, str], str]:
 
 
 def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
+    markdown = _normalized(markdown)
     errors: list[str] = []
     warnings: list[str] = []
-    if any(term in markdown for term in FORBIDDEN_TERMS):
+    if any(term.replace(" ", "") in re.sub(r"\s+", "", markdown) for term in FORBIDDEN_TERMS):
         errors.append("prohibited wording found")
     if any(pattern.search(markdown) for pattern in INVESTMENT_PRESSURE_PATTERNS):
         errors.append("investment-pressure wording found")
@@ -105,7 +115,13 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
             continue
         if text.startswith("#"):
             heading = re.sub(r"^#+\s*(?:\d+\.\s*)?", "", text)
-            if (heading == "5줄 핵심 요약" or context.report_date in heading
+            titles = {
+                f"K-Daytrade Morning Brief - {context.report_date}",
+                f"Market Closed Note - {context.report_date}",
+                f"거래일 확인 필요 - {context.report_date}",
+                f"장전 발행 지연 안내 - {context.report_date}",
+            }
+            if (heading == "5줄 핵심 요약" or heading in titles
                     or not _numbers(heading)):
                 continue
         if text.startswith("> ") and text[2:] == (

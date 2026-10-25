@@ -5,7 +5,7 @@
 <section class="band">
   <h2>발행 현황</h2>
   <p class="muted">사이트 갱신 {{ state.as_of|kst_display }}</p>
-  <p class="notice" id="freshness-notice">현재 유효한 장전 연구:
+  <p class="notice" id="freshness-notice" data-as-of="{{ state.as_of }}">현재 유효한 장전 연구:
     {{ current.report_date if current else "없음" }}.
     {{ {"closed": "휴장일", "open": "거래일", "unknown": "거래일 확인 필요"}[state.market_status] }}.</p>
   <dl class="context-grid">

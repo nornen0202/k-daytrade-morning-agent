@@ -56,6 +56,13 @@ class MarketEvent(StrictBaseModel):
         return [symbol.strip() for symbol in value if symbol and symbol.strip()]
 
 
+class MarketMetric(StrictBaseModel):
+    value: float
+    as_of: datetime
+    data_key: str
+    provider: str = "quote_provider"
+
+
 class PriceSnapshot(StrictBaseModel):
     symbol: str
     name: str

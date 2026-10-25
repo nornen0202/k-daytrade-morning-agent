@@ -22,6 +22,7 @@ from tests.test_report_verifier import _context
     "- 데이터 부족이지만 현재가 9,999원 투자 조언이 아닙니다.",
     "지원 규모 5억원",
     "# 현재가 10,000원",
+    "# 2026-04-27 현재가 10,000원",
     "- 정책 확인 source_id: src_fabricated",
 ])
 def test_claims_cannot_bypass_evidence(text):
@@ -109,3 +110,8 @@ def test_wrong_symbol_cannot_reuse_another_snapshot():
         f"data_key: {snapshot.data_key}"
     )
     assert verify_report(context, text).status == "fail"
+
+
+@pytest.mark.parametrize("text", ["무조건매수", "무조건\u200b 매수", "상 한 가 확 정"])
+def test_prohibited_spacing_cannot_bypass_verifier(text):
+    assert verify_report(_context(), "- " + text + " source_id: src_policy_001").status == "fail"

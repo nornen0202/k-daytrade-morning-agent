@@ -45,10 +45,12 @@ def build_site(config: AppConfig, *, now: datetime | None = None) -> list[Path]:
     valid = next((report for report in reports if report["valid"]), None)
     current = next((report for report in reports if report["current"]), None)
     state = {
+        "schema_version": 1,
         "as_of": now.isoformat(),
         "market_status": trading_status(now.date()),
         "latest_attempt": latest["report_date"] if latest else None,
         "latest_attempt_status": latest["verification"]["status"] if latest else None,
+        "latest_attempt_kind": latest["summary"].get("report_kind", "legacy") if latest else None,
         "last_valid_research": valid["report_date"] if valid else None,
         "current_research": current["report_date"] if current else None,
         "expires_at": current["expires_at"] if current else None,
@@ -131,11 +133,18 @@ def _publication_gate(report: dict, now: datetime) -> None:
     try:
         context = context_from_summary(summary)
         result = verify_report(context, report["markdown"])
+        report["verification"] = result.model_dump()
         if result.status == "fail" or unsafe_public_text(
             json.dumps(summary, ensure_ascii=False)
         ):
             report["verification"] = result.model_dump()
             report["verification"]["status"] = "fail"
+            if not report["verification"]["errors"]:
+                report["verification"]["errors"] = ["공개 자료 안전성 검사 실패"]
+            return
+        if context.market_context.get("market_status") == "missed":
+            report["kind_label"] = "장전 발행 지연"
+            report["notice"] = "장전 발행 마감이 지나 후보를 생성하지 않은 기록입니다."
             return
         if context.market_context.get("market_status") in {"closed", "unknown"}:
             report["kind_label"] = (
