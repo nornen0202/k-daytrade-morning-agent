@@ -108,27 +108,12 @@ def _yfinance_snapshot(module: Any, symbol: str, collected_at: datetime) -> Pric
         as_of = datetime.fromtimestamp(quote_time, UTC) if isinstance(
             quote_time, (int, float)
         ) else None
-        fast_info = getattr(ticker, "fast_info", {}) or {}
-        last_price = _float_or_none(_fast_info_get(fast_info, "last_price", "lastPrice"))
-        previous_close = _float_or_none(
-            _fast_info_get(
-                fast_info,
-                "previous_close",
-                "previousClose",
-                "regularMarketPreviousClose",
-            )
-        )
-        volume = _int_or_none(_fast_info_get(fast_info, "last_volume", "lastVolume"))
-        if last_price is None:
-            history_data = _history_data(ticker)
-            last_price = history_data.get("last_price")
-            previous_close = previous_close or history_data.get("previous_close")
-            volume = volume or _int_or_none(history_data.get("volume"))
+        # Price, timestamp and volume must come from the same quote payload.
+        last_price = _float_or_none(info.get("regularMarketPrice"))
+        volume = _int_or_none(info.get("regularMarketVolume"))
         if last_price is None:
             continue
-        change_rate = None
-        if previous_close and previous_close > 0:
-            change_rate = round(((last_price - previous_close) / previous_close) * 100, 2)
+        change_rate = _float_or_none(info.get("regularMarketChangePercent"))
         # Turnover is not last-price * cumulative-volume. Yahoo does not supply it here.
         trading_value = None
         market = _market_from_yahoo(yahoo_symbol)

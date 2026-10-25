@@ -140,3 +140,19 @@ def test_news_provider_uses_yfinance(monkeypatch):
 
     assert result.events[0].source_name == "Yahoo Finance"
     assert result.events[0].candidate_symbols == ["005930"]
+
+
+def test_rss_publication_time_preserves_explicit_offset(monkeypatch):
+    from daytrade_agent.collectors.news_provider import _collect_rss
+
+    response = _FakeResponse({})
+    response.text = (
+        "<rss><channel><item><title>Policy update</title>"
+        "<link>https://example.test/article</link>"
+        "<pubDate>Mon, 27 Apr 2026 08:10:00 +0900</pubDate>"
+        "</item></channel></rss>"
+    )
+    monkeypatch.setattr(requests, "get", lambda *args, **kwargs: response)
+    stamp = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    result = _collect_rss("political_theme", ["https://example.test/rss"], stamp)
+    assert result.events[0].published_at.isoformat() == "2026-04-27T08:10:00+09:00"

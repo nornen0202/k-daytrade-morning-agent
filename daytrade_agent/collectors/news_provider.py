@@ -89,7 +89,7 @@ def _collect_rss(category: str, rss_urls: list[str], collected_at: datetime) -> 
     for url in rss_urls:
         response = requests.get(url, timeout=15)
         response.raise_for_status()
-        root = ElementTree.fromstring(response.text)
+        root = ElementTree.fromstring(getattr(response, "content", None) or response.text)
         for item in root.findall(".//item")[:10]:
             event, source = _event_and_source(
                 category=category,
@@ -97,7 +97,7 @@ def _collect_rss(category: str, rss_urls: list[str], collected_at: datetime) -> 
                 title=_strip_html(item.findtext("title") or "데이터 부족"),
                 summary=_strip_html(item.findtext("description") or "데이터 부족"),
                 url=item.findtext("link") or url,
-                published=parse_datetime(item.findtext("pubDate")),
+                published=_parse_pubdate(item.findtext("pubDate")),
                 collected_at=collected_at,
                 source_quality=0.55,
             )
