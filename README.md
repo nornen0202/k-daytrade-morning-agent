@@ -57,7 +57,7 @@ GitHub Actions에서 Codex provider를 기본으로 쓰려면 repository variabl
 Codex 실행 환경이 없으면 템플릿 작성기로 안전하게 fallback합니다.
 
 - `REPORT_LLM_PROVIDER`: `codex`
-- `CODEX_REPORT_MODEL`: `gpt-5.5`
+- `CODEX_REPORT_MODEL`: `gpt-6.1-sol`
 
 ## GitHub Pages 설정
 
@@ -77,13 +77,22 @@ GitHub Actions cron은 기본적으로 UTC입니다. KST 평일 08:45 실행을 
 
 `daily-report.yml`의 기본 리포트 생성 job은 `ubuntu-latest`에서 실행되어 self-hosted runner가
 없어도 Pages 배포까지 진행됩니다. `REPORT_LLM_PROVIDER=codex`이고 runner에 Codex CLI와 로그인이
-준비되어 있으면 `codex app-server` preflight 후 `gpt-5.5` 모델로 리포트를 생성합니다. Codex
+준비되어 있으면 `codex app-server` preflight 후 `gpt-6.1-sol` 모델로 리포트를 생성합니다. Codex
 binary/login/model 접근이 불가능한 환경에서는 템플릿 작성기로 fallback해 배포를 계속합니다.
 
 이 저장소는 현재 `REPORT_RUNS_ON=["self-hosted","Windows","X64","codex","k-daytrade"]`
 변수로 전용 Windows runner를 선택합니다. `CODEX_BINARY`는 실제 실행 가능한 CLI 경로,
 `CODEX_HOME`은 로그인 환경입니다. 특정 확장의 버전 경로는 업데이트 후 확인해야 합니다.
 모델 접근은 preflight로 확인합니다. TradingAgents 인증·서비스·예약은 이 저장소가 관리하지 않습니다.
+
+Codex 작성 모델의 기본 정본은 `config/data_sources.yml`의 `llm.default_codex_model`입니다.
+`CODEX_REPORT_MODEL` 환경변수/repository variable은 명시적 override입니다.
+2026-10-26 승인에 따라 이 저장소의 운영 override도 `gpt-6.1-sol`로 설정합니다.
+`medium` effort와 요청 제한 180초를 유지합니다. API 결제 경로는 활성화하지 않습니다.
+API용 `OPENAI_REPORT_MODEL` 및 선택 PR 리뷰 workflow는 이 Codex 로그인 경로와 별개입니다.
+수동 `model_probe=true`는 실제 작성기를 한 번 호출하고 원고·상세 영수증을 private_artifacts에만
+남깁니다. 이 모드에서는 리포트 커밋·Pages 배포를 하지 않으며 summary에 실제 모델·fallback·검증
+상태만 표시합니다. Codex 자식 프로세스에는 수집 API 키나 OPENAI_API_KEY를 전달하지 않습니다.
 
 Windows build는 일반 artifact로 `dist/`만 전달합니다. Ubuntu package job이
 `download-artifact → configure-pages → upload-pages-artifact`를 수행하고 deploy job이 게시합니다.

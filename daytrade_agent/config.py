@@ -83,6 +83,11 @@ class AppConfig:
         return self.env("OPENAI_REPORT_MODEL", str(default_model)) or "gpt-5.5"
 
     @property
+    def codex_model(self) -> str:
+        settings = self.data_sources.get("llm", {})
+        return self.env("CODEX_REPORT_MODEL") or str(settings["default_codex_model"])
+
+    @property
     def debug_artifacts_enabled(self) -> bool:
         return (self.env("REPORT_DEBUG_ARTIFACTS", "false") or "false").lower() == "true"
 

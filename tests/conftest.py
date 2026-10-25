@@ -1,4 +1,5 @@
 import socket
+from functools import wraps
 
 import pytest
 import requests
@@ -19,5 +20,9 @@ def offline_tests(monkeypatch):
 
     monkeypatch.setattr(requests.Session, "request", reject)
     monkeypatch.setattr(report_writer, "_try_openai", reject)
-    monkeypatch.setattr(report_writer, "_try_codex", reject)
+    @wraps(report_writer._try_codex)
+    def reject_codex(*args, **kwargs):
+        return reject(*args, **kwargs)
+
+    monkeypatch.setattr(report_writer, "_try_codex", reject_codex)
     monkeypatch.setattr(socket, "create_connection", reject)

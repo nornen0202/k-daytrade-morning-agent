@@ -39,6 +39,7 @@ def write_report_markdown(
         response = _try_codex(prompt, config)
         if response:
             context.market_context["writer_provider"] = "codex"
+            context.market_context["writer_model"] = config.codex_model
             return response
         context.market_context["writer_provider"] = "template"
         context.market_context["writer_fallback"] = True
@@ -74,6 +75,7 @@ def build_summary(
             "premarket_on_time": context.generated_at.hour < 9,
             "writer_fallback": context.market_context.get("writer_fallback", False),
             "writer_provider": context.market_context.get("writer_provider"),
+            "writer_model": context.market_context.get("writer_model"),
         },
         "market_context": context.market_context,
         "missing_data": context.missing_data,
@@ -340,7 +342,7 @@ def _try_openai(prompt: str, config: AppConfig) -> str | None:
 
 
 def _try_codex(prompt: str, config: AppConfig) -> str | None:
-    model = config.env("CODEX_REPORT_MODEL", "gpt-5.5") or "gpt-5.5"
+    model = config.codex_model
     timeout = float(config.env("CODEX_REQUEST_TIMEOUT", "180") or "180")
     workspace_dir = config.env(
         "CODEX_WORKSPACE_DIR",

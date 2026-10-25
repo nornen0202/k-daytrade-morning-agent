@@ -36,6 +36,16 @@ _CODEX_HOME_SEED_FILES = (
 )
 
 
+def codex_process_environment() -> dict[str, str]:
+    # The report model needs its ChatGPT login, not collector/API credentials.
+    private_names = ("API_KEY", "APP_KEY", "SECRET", "TOKEN", "PASSWORD", "AUTHORIZATION")
+    return {
+        key: value for key, value in os.environ.items()
+        if not any(name in key.upper() for name in private_names)
+        and key.upper() != "NAVER_CLIENT_ID"
+    }
+
+
 @dataclass(slots=True)
 class CodexInvocationResult:
     final_text: str
@@ -77,7 +87,7 @@ class CodexAppServerSession:
             codex_home = Path(self.workspace_dir) / ".codex-home"
             codex_home.mkdir(parents=True, exist_ok=True)
             self._seed_codex_home(codex_home)
-            proc_env = os.environ.copy()
+            proc_env = codex_process_environment()
             proc_env["CODEX_HOME"] = str(codex_home)
 
             try:

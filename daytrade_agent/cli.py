@@ -121,6 +121,9 @@ def run_command(config: AppConfig, report_date: str | None, *, dry_run: bool) ->
         from daytrade_agent.llm.report_writer import verified_facts_markdown
 
         context.market_context["writer_fallback"] = True
+        context.market_context["rejected_writer_model"] = context.market_context.get("writer_model")
+        context.market_context["writer_provider"] = "template"
+        context.market_context["writer_model"] = None
         markdown = verified_facts_markdown(config, context)
         verification = verify_report(context, markdown)
     if verification.status == "fail":

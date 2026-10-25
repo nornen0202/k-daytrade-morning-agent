@@ -64,3 +64,30 @@ def test_future_events_cannot_raise_candidate_rank():
     assert score_candidates(
         AppConfig.load(), context.events, context.price_snapshots, context.generated_at
     ) == []
+
+
+def test_rejected_model_draft_is_not_reported_as_codex_output(monkeypatch, tmp_path):
+    class Clock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+
+    context = _context()
+    monkeypatch.setattr(cli, "datetime", Clock)
+    monkeypatch.setattr(cli, "_collect_all", lambda *args, **kwargs: [CollectorResult(
+        events=context.events, sources=context.sources, price_snapshots=context.price_snapshots,
+    )])
+
+    def rejected_draft(config, context, **kwargs):
+        context.market_context["writer_provider"] = "codex"
+        context.market_context["writer_model"] = "gpt-6.1-sol"
+        return "- unsupported quantity 12345"
+
+    monkeypatch.setattr(cli, "write_report_markdown", rejected_draft)
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    assert cli.run_command(config, "2026-04-27", dry_run=False) == 0
+    summary = cli.load_report(config.content_dir, "2026-04-27")["summary"]
+    assert summary["metrics"]["writer_provider"] == "template"
+    assert summary["metrics"]["writer_model"] is None
+    assert summary["metrics"]["writer_fallback"] is True
+    assert summary["market_context"]["rejected_writer_model"] == "gpt-6.1-sol"

@@ -55,4 +55,4 @@ llm:
   provider_env: REPORT_LLM_PROVIDER
   default_provider: codex
   codex_model_env: CODEX_REPORT_MODEL
-  default_codex_model: gpt-5.5
+  default_codex_model: gpt-6.1-sol

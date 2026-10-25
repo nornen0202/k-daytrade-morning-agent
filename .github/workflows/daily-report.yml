@@ -16,6 +16,11 @@ on:
         required: false
         default: false
         type: boolean
+      model_probe:
+        description: "One private model generation check; no report commits or Pages deployment."
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -39,7 +44,7 @@ jobs:
       PYTHONUTF8: "1"
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
       REPORT_LLM_PROVIDER: ${{ vars.REPORT_LLM_PROVIDER || 'codex' }}
-      CODEX_REPORT_MODEL: ${{ vars.CODEX_REPORT_MODEL || 'gpt-5.5' }}
+      CODEX_REPORT_MODEL: ${{ vars.CODEX_REPORT_MODEL }}
       CODEX_BINARY: ${{ vars.CODEX_BINARY }}
       CODEX_HOME: ${{ vars.CODEX_HOME }}
       CODEX_WORKSPACE_DIR: ${{ vars.CODEX_WORKSPACE_DIR }}
@@ -181,6 +186,7 @@ jobs:
               CodexAppServerBinaryError,
           )
           from daytrade_agent.llm.codex_preflight import run_codex_preflight
+          from daytrade_agent.config import AppConfig
 
           summary_path = os.getenv("GITHUB_STEP_SUMMARY")
 
@@ -193,7 +199,7 @@ jobs:
           try:
               result = run_codex_preflight(
                   codex_binary=None,
-                  model=os.getenv("CODEX_REPORT_MODEL", "gpt-5.5"),
+                  model=AppConfig.load().codex_model,
                   request_timeout=30.0,
                   workspace_dir=r"$workspaceDir",
                   cleanup_threads=True,
@@ -241,25 +247,33 @@ jobs:
           $script | python -
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
+      - name: Verify private Codex generation
+        if: ${{ inputs.model_probe }}
+        timeout-minutes: 5
+        run: |
+          python scripts/verify_codex_runtime.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+
       - name: Generate report
-        if: ${{ !inputs.rebuild_only }}
+        if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
         run: |
           python -m daytrade_agent.cli run --date "$env:REPORT_DATE"
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Verify report
-        if: ${{ !inputs.rebuild_only }}
+        if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
         continue-on-error: true
         run: |
           python -m daytrade_agent.cli verify --date "$env:REPORT_DATE"
 
       - name: Build site
+        if: ${{ !inputs.model_probe }}
         run: |
           python -m daytrade_agent.cli build-site
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Commit report content
-        if: ${{ !inputs.rebuild_only }}
+        if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -275,6 +289,7 @@ jobs:
           }
 
       - name: Upload verified site files
+        if: ${{ !inputs.model_probe }}
         uses: actions/upload-artifact@v4
         with:
           name: verified-site
@@ -296,6 +311,7 @@ jobs:
           }
 
   package:
+    if: ${{ !inputs.model_probe }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
