@@ -1,6 +1,7 @@
 """One private Codex generation check, with no public report or Pages writes."""
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -14,10 +15,31 @@ from daytrade_agent.config import AppConfig
 from daytrade_agent.llm import report_writer
 from daytrade_agent.llm.codex_app_server import CodexAppServerSession
 from daytrade_agent.llm.report_verifier import verify_report
+from daytrade_agent.normalizers.event_schema import ReportContext
 
 
 def main() -> int:
     config = AppConfig.load()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--reverify", type=Path)
+    args = parser.parse_args()
+    if args.reverify:
+        folder = args.reverify.resolve()
+        if not folder.is_relative_to(config.private_artifacts_dir.resolve()):
+            parser.error("Replay input must be in this project's private artifacts")
+        context = ReportContext.model_validate_json((folder / "context.json").read_text("utf-8"))
+        markdown = (folder / "draft.md").read_text("utf-8")
+        verification = verify_report(context, markdown)
+        result = {
+            "mode": "offline_reverification", "model_invocations": 0,
+            "output_sha256": hashlib.sha256(markdown.encode()).hexdigest(),
+            "verification": verification.model_dump(),
+        }
+        (folder / "reverification.json").write_text(
+            json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8",
+        )
+        print(json.dumps(result, ensure_ascii=False))
+        return 1 if verification.status == "fail" else 0
     stamp = datetime.now(ZoneInfo("Asia/Seoul"))
     folder = config.private_artifacts_dir / "codex-model-probe" / stamp.strftime("%Y%m%d-%H%M%S")
     folder.mkdir(parents=True, exist_ok=False)
@@ -37,6 +59,7 @@ def main() -> int:
     context.price_snapshots = []
     context.market_context = {"run_mode": "private_model_probe"}
     context.missing_data.append("비공개 모델 연결 점검. 장전 발행이나 오늘의 연구 결과가 아님.")
+    (folder / "context.json").write_text(context.model_dump_json(indent=2), encoding="utf-8")
     receipt = {
         "purpose": "private_model_probe", "public_report_written": False,
         "started_at": stamp.isoformat(), "selected_model": config.codex_model,

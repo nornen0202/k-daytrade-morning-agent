@@ -1,6 +1,8 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from daytrade_agent.collectors.mock import collect_mock
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.report_verifier import verify_report
@@ -72,3 +74,27 @@ def test_verifier_rejects_unsourced_price_like_claim():
 
     assert result.status == "fail"
     assert any("price-like claim" in error for error in result.errors)
+
+
+@pytest.mark.parametrize("text", [
+    "현재 시장 방향을 확정할 수 없다. 지수 확인은 데이터 부족이다.",
+    "특정 정책의 확정, 수혜 업종을 뒷받침하는 정보는 데이터 부족이며 확장하지 않는다.",
+    "데이터 부족으로 상승 방향을 확정하지 않는다.",
+])
+def test_data_gap_qualifications_are_not_certainty_assertions(text):
+    context = _context()
+    context.data_status = "partial"
+    result = verify_report(context, f"- {text} (source_id: src_policy_001)")
+    assert result.status == "warning", result.errors
+
+
+@pytest.mark.parametrize("text", [
+    "데이터 부족이지만 상승은 확정이다.",
+    "데이터 부족이지만 주가 방향은 분명하다.",
+    "데이터 부족으로 확정할 수 없다. 그러나 상승 확정.",
+])
+def test_affirmative_certainty_stays_blocked(text):
+    context = _context()
+    context.data_status = "partial"
+    result = verify_report(context, f"- {text} (source_id: src_policy_001)")
+    assert any("certainty wording" in error for error in result.errors)

@@ -27,6 +27,12 @@ NUMBER_PATTERN = re.compile(
 )
 PRICE_CONTEXT = re.compile(r"현재가|주가|시세|등락률|전일대비|거래대금|last_price|change_rate")
 PRICE_NUMBER = re.compile(r"[+-]?\d[\d,.]*\s*(?:원|%|달러)")
+CERTAINTY_ASSERTION = re.compile(
+    r"확정(?:이(?:다|고|며)|입니다|됐|되었|된다|됩니다|했|한다|합니다|할\s*것)"
+    r"|분명(?:하다|합니다|히\s*(?:상승|수익))|반드시.*상승"
+    r"|(?:상승|하락|수익|이익|방향|국면)\s*(?:은|는|이|가)?\s*확정"
+    r"(?!할\s*수\s*없|하지\s*않|하지\s*못|이\s*아니)"
+)
 
 
 def unsafe_public_text(text: str) -> bool:
@@ -168,7 +174,7 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
             ):
                 errors.append(f"line {number}: price snapshot belongs to a different symbol")
 
-        if (context.data_status != "ok" and re.search(r"확정|분명|반드시.*상승", text)
+        if (context.data_status != "ok" and CERTAINTY_ASSERTION.search(text)
                 and "데이터 부족" in text):
             errors.append(f"line {number}: certainty wording used with insufficient data")
 
