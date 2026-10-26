@@ -1,0 +1,8 @@
+{
+  "errors": [],
+  "status": "warning",
+  "warnings": [
+    "report data_status is insufficient",
+    "missing data was reported"
+  ]
+}
