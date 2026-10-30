@@ -1,0 +1,35 @@
+{
+  "candidate_count": 0,
+  "candidates": [],
+  "data_as_of": "데이터 부족",
+  "data_status": "insufficient",
+  "disclaimer": "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.",
+  "events": [],
+  "generated_at": "2026-10-30T11:56:19.125639+09:00",
+  "key_changes": [],
+  "markdown_length": 175,
+  "market_context": {
+    "market_status": "missed",
+    "run_mode": "live"
+  },
+  "metrics": {
+    "category_events": {},
+    "grounded_candidates": 0,
+    "premarket_on_time": false,
+    "writer_fallback": false,
+    "writer_model": null,
+    "writer_provider": null
+  },
+  "missing_data": [
+    "장전 발행 마감 경과: 정규장 시작 이후 후보 생성을 수행하지 않음"
+  ],
+  "price_snapshots": [],
+  "report_date": "2026-10-30",
+  "report_kind": "notice",
+  "run_mode": "live",
+  "sources": [],
+  "top_event": {},
+  "top_risks": [],
+  "top_theme": "데이터 부족",
+  "verification_status": "warning"
+}
