@@ -59,6 +59,21 @@ def test_calendar_unreviewed_year_is_unknown():
     assert trading_status(datetime(2027, 1, 4).date()) == "unknown"
 
 
+def test_calendar_malformed_or_empty_yaml_fails_closed(tmp_path):
+    from daytrade_agent.calendar.trading_calendar import (
+        _holidays_from_config,
+        _load_holidays_config,
+    )
+
+    empty_file = tmp_path / "empty.yml"
+    empty_file.write_text("", encoding="utf-8")
+    bad_file = tmp_path / "bad.yml"
+    bad_file.write_text("- not-a-mapping\n", encoding="utf-8")
+    assert _load_holidays_config(empty_file) == {}
+    assert _load_holidays_config(bad_file) == {}
+    assert _holidays_from_config({"holidays": "invalid"}) == set()
+
+
 def test_failure_gate_never_offers_candidates():
     report = {
         "report_date": "2026-10-23", "summary": {"candidates": [{"name": "sentinel"}]},
@@ -115,3 +130,14 @@ def test_wrong_symbol_cannot_reuse_another_snapshot():
 @pytest.mark.parametrize("text", ["무조건매수", "무조건\u200b 매수", "상 한 가 확 정"])
 def test_prohibited_spacing_cannot_bypass_verifier(text):
     assert verify_report(_context(), "- " + text + " source_id: src_policy_001").status == "fail"
+
+
+def test_sanitize_public_text_neutralizes_obfuscated_terms_and_spoofed_refs():
+    from daytrade_agent.llm.report_verifier import sanitize_public_text, unsafe_public_text
+
+    raw = "무조건\u200b매수 | 매수 추천 source_id: src_fake sk-1234567890abcdefghij1234"
+    cleaned = sanitize_public_text(raw)
+    assert not unsafe_public_text(cleaned)
+    assert "source_id:" not in cleaned
+    assert "sk-1234567890abcdefghij1234" not in cleaned
+    assert "|" not in cleaned

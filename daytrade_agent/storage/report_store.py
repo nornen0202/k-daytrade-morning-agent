@@ -2,10 +2,13 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any
 
 from daytrade_agent.normalizers.event_schema import VerificationResult
+
+_DATE_DIR_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 
 
 def save_report(
@@ -40,7 +43,7 @@ def discover_reports(content_dir: Path) -> list[dict[str, Any]]:
         return []
     reports: list[dict[str, Any]] = []
     for directory in content_dir.iterdir():
-        if not directory.is_dir():
+        if not directory.is_dir() or not _DATE_DIR_RE.fullmatch(directory.name):
             continue
         summary_path = directory / "summary.json"
         verification_path = directory / "verification.json"
@@ -51,14 +54,28 @@ def discover_reports(content_dir: Path) -> list[dict[str, Any]]:
             or not markdown_path.exists()
         ):
             continue
-        reports.append(
-            {
-                "report_date": directory.name,
-                "summary": _read_json(summary_path),
-                "verification": _read_json(verification_path),
-                "markdown": markdown_path.read_text(encoding="utf-8"),
-            }
-        )
+        try:
+            reports.append(
+                {
+                    "report_date": directory.name,
+                    "summary": _read_json(summary_path),
+                    "verification": _read_json(verification_path),
+                    "markdown": markdown_path.read_text(encoding="utf-8"),
+                }
+            )
+        except (ValueError, OSError):
+            reports.append(
+                {
+                    "report_date": directory.name,
+                    "summary": {"report_date": directory.name, "report_kind": "notice"},
+                    "verification": {
+                        "status": "fail",
+                        "errors": ["stored report artifact could not be parsed"],
+                        "warnings": [],
+                    },
+                    "markdown": "",
+                }
+            )
     return sorted(reports, key=lambda item: item["report_date"], reverse=True)
 
 
@@ -80,8 +97,14 @@ def _read_json(path: Path) -> dict[str, Any]:
 def _check_public_boundary(markdown: str, summary: dict[str, Any]) -> None:
     text = markdown + json.dumps(summary, ensure_ascii=False)
     for key, value in os.environ.items():
-        if (any(marker in key.upper() for marker in ("API_KEY", "APP_KEY", "SECRET", "TOKEN"))
-                and len(value) >= 8 and value in text):
+        if (
+            any(
+                marker in key.upper()
+                for marker in ("API_KEY", "APP_KEY", "SECRET", "TOKEN", "PASSWORD", "PRIVATE_KEY")
+            )
+            and len(value) >= 8
+            and value in text
+        ):
             raise ValueError("public artifact contains a configured credential")
 
     forbidden = {"raw_response", "raw_prompt", "access_token", "refresh_token", "authorization",

@@ -93,3 +93,60 @@ def test_yfinance_never_pairs_current_time_with_an_old_history_close(monkeypatch
 
     assert _yfinance_snapshot(SimpleNamespace(Ticker=lambda symbol: Ticker()), "005930", stamp) \
         is None
+
+
+def test_quote_provider_failure_and_market_context_preserved_on_yfinance_fallback(monkeypatch):
+    import requests
+
+    config = AppConfig.load()
+    collected_at = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    monkeypatch.setenv("QUOTE_PROVIDER_URL", "https://quote.example.test/v1")
+
+    class FakeTicker:
+        info = {
+            "shortName": "삼성전자",
+            "regularMarketTime": collected_at.timestamp() - 600,
+            "regularMarketPrice": 72000,
+            "regularMarketVolume": 1000,
+            "regularMarketChangePercent": 1.5,
+        }
+
+        def __init__(self, ticker):
+            self.ticker = ticker
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "yfinance",
+        SimpleNamespace(Ticker=FakeTicker),
+    )
+
+    def fail_get(*args, **kwargs):
+        raise requests.Timeout("timeout")
+
+    monkeypatch.setattr(requests, "get", fail_get)
+    res_fail = collect(config, "2026-04-27", collected_at, dry_run=False, symbols=["005930"])
+    assert res_fail.price_snapshots
+    assert any("quote provider failed: Timeout" in item for item in res_fail.missing_data)
+
+    class OkResp:
+        content = (
+            b'{"snapshots": [], "market_context": '
+            b'{"kospi": {"value": 2700, "as_of": "2026-04-27T08:30:00+09:00", "data_key": "k1"}}}'
+        )
+
+        def raise_for_status(self):
+            return None
+
+    monkeypatch.setattr(requests, "get", lambda *args, **kwargs: OkResp())
+    res_ctx = collect(config, "2026-04-27", collected_at, dry_run=False, symbols=["005930"])
+    assert res_ctx.price_snapshots
+    assert "kospi" in res_ctx.market_context
+
+
+def test_non_finite_yfinance_numbers_are_ignored():
+    from daytrade_agent.collectors.price_snapshot import _float_or_none, _int_or_none
+
+    assert _float_or_none(float("nan")) is None
+    assert _float_or_none(float("inf")) is None
+    assert _int_or_none(float("nan")) is None
+    assert _int_or_none(float("inf")) is None

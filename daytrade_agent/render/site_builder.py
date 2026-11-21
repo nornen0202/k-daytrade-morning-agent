@@ -17,7 +17,8 @@ from daytrade_agent.storage.report_store import discover_reports
 
 
 def build_site(config: AppConfig, *, now: datetime | None = None) -> list[Path]:
-    now = now or datetime.now(ZoneInfo("Asia/Seoul"))
+    kst = ZoneInfo("Asia/Seoul")
+    now = (now or datetime.now(kst)).astimezone(kst)
     reports = discover_reports(config.content_dir)
     for report in reports:
         _publication_gate(report, now)
@@ -154,20 +155,23 @@ def _publication_gate(report: dict, now: datetime) -> None:
             report["notice"] = "휴장 안내" if context.market_context["market_status"] == "closed" \
                 else "거래일 달력 확인 필요. 데이터 부족."
             return
+        kst = ZoneInfo("Asia/Seoul")
+        generated_kst = context.generated_at.astimezone(kst)
+        now_kst = now.astimezone(kst)
         if (not context.events or summary.get("run_mode") == "fixture"
                 or any("mock" in source.source_name.lower()
                        or "example.com" in str(source.source_url) for source in context.sources)
-                or trading_status(context.generated_at.date()) != "open"):
+                or trading_status(generated_kst.date()) != "open"):
             report["notice"] = "보관 기록입니다. 현재 장전 연구 자료로 제공하지 않습니다."
             return
         report["valid"] = True
         report["kind_label"] = "검증된 연구 · 보관"
-        expiry = datetime.combine(context.generated_at.date(), time(9), ZoneInfo("Asia/Seoul"))
+        expiry = datetime.combine(generated_kst.date(), time(9), kst)
         report["expires_at"] = expiry.isoformat()
         report["current"] = (
             summary.get("run_mode") == "live"
-            and context.generated_at.date() == now.date()
-            and context.generated_at <= now < expiry
+            and generated_kst.date() == now_kst.date()
+            and generated_kst <= now_kst < expiry
         )
         report["notice"] = (
             "당시 자료를 보존한 기록입니다. 현재 시세·오늘의 브리핑으로 사용하지 마세요."

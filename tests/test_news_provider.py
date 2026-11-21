@@ -156,3 +156,119 @@ def test_rss_publication_time_preserves_explicit_offset(monkeypatch):
     stamp = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
     result = _collect_rss("political_theme", ["https://example.test/rss"], stamp)
     assert result.events[0].published_at.isoformat() == "2026-04-27T08:10:00+09:00"
+
+
+def test_rss_isolates_failed_feed_and_parses_atom_deduped(monkeypatch):
+    from daytrade_agent.collectors.news_provider import _collect_rss
+
+    class BrokenResponse:
+        def raise_for_status(self):
+            raise requests.HTTPError("503")
+
+    class AtomResponse:
+        text = (
+            '<feed xmlns="http://www.w3.org/2005/Atom">'
+            "<entry><title>Atom Policy</title>"
+            '<link href="https://example.test/atom-1"/>'
+            "<published>2026-04-27T08:15:00+09:00</published>"
+            "<summary>Atom summary</summary></entry>"
+            "<entry><title>Atom Policy</title>"
+            '<link href="https://example.test/atom-1"/>'
+            "<published>2026-04-27T08:15:00+09:00</published>"
+            "<summary>Atom summary</summary></entry>"
+            "</feed>"
+        )
+
+        def raise_for_status(self):
+            return None
+
+    def fake_get(url, timeout=None):
+        if "broken" in url:
+            return BrokenResponse()
+        return AtomResponse()
+
+    monkeypatch.setattr(requests, "get", fake_get)
+    stamp = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    result = _collect_rss(
+        "political_theme",
+        ["https://example.test/broken", "https://example.test/atom"],
+        stamp,
+    )
+    assert len(result.events) == 1
+    assert result.events[0].title == "Atom Policy"
+    assert result.events[0].published_at.isoformat() == "2026-04-27T08:15:00+09:00"
+    assert any("rss feed failed" in item for item in result.missing_data)
+
+
+def test_naver_partial_query_failure_preserves_other_queries(monkeypatch):
+    config = AppConfig.load()
+    collected_at = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    config.data_sources["news"]["provider_priority"] = ["naver"]
+    config.data_sources["news"]["query_map"]["political_theme"] = ["ok_query", "bad_query"]
+    monkeypatch.setenv("NAVER_CLIENT_ID", "cid")
+    monkeypatch.setenv("NAVER_CLIENT_SECRET", "csec")
+
+    def fake_get(url, *, headers=None, params=None, timeout=None):
+        if params["query"] == "bad_query":
+            raise requests.Timeout("timeout")
+        return _FakeResponse(
+            {
+                "items": [
+                    {
+                        "title": "첫번째 질의 뉴스",
+                        "description": "유효 본문",
+                        "originallink": "https://example.test/ok",
+                        "pubDate": "Mon, 27 Apr 2026 08:10:00 +0900",
+                    }
+                ]
+            }
+        )
+
+    monkeypatch.setattr(requests, "get", fake_get)
+    result = collect_news_category(config, "political_theme", collected_at)
+    assert len(result.events) == 1
+    assert result.events[0].title == "첫번째 질의 뉴스"
+    assert any("naver query failed" in item for item in result.missing_data)
+
+
+def test_corporate_disclosure_checks_api_status_and_sanitizes_fields(monkeypatch):
+    from daytrade_agent.collectors import corporate_disclosure
+
+    config = AppConfig.load()
+    collected_at = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    monkeypatch.setenv("OPENDART_API_KEY", "dart-key")
+
+    monkeypatch.setattr(
+        requests,
+        "get",
+        lambda *args, **kwargs: _FakeResponse({"status": "020", "message": "limit"}),
+    )
+    err_res = corporate_disclosure.collect(config, "2026-04-27", collected_at, dry_run=False)
+    assert not err_res.events
+    assert any("OpenDART error status=020" in item for item in err_res.missing_data)
+
+    monkeypatch.setattr(
+        requests,
+        "get",
+        lambda *args, **kwargs: _FakeResponse(
+            {
+                "status": "000",
+                "total_page": None,
+                "list": [
+                    {
+                        "stock_code": "005930",
+                        "corp_name": "삼성|전자",
+                        "report_nm": "공시 123456 | 정정",
+                        "rcept_no": "20260427000001",
+                        "rcept_dt": "20260427",
+                        "rcept_time": "081000",
+                    }
+                ],
+            }
+        ),
+    )
+    ok_res = corporate_disclosure.collect(config, "2026-04-27", collected_at, dry_run=False)
+    assert len(ok_res.events) == 1
+    assert "|" not in ok_res.events[0].title
+    assert "123456" not in ok_res.events[0].title
+    assert "|" not in ok_res.events[0].summary

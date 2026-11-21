@@ -53,7 +53,11 @@ def score_candidates(
             + 0.15 * detail["theme_strength_score"]
             + 0.10 * detail["source_quality_score"]
             + 0.05 * detail["liquidity_score"]
-            - risk_penalty(flags)
+            - risk_penalty(
+                flags,
+                missing_price_penalty=float(config.risk_rules.get("missing_price_penalty", 1.0)),
+                high_risk_penalty=float(config.risk_rules.get("high_risk_penalty", 1.5)),
+            )
         )
         score = max(0.0, min(10.0, round(total_score, 2)))
         categories = sorted({event.category for event in symbol_events})
@@ -86,7 +90,8 @@ def _score_detail(
     generated_at: datetime,
 ) -> dict[str, float]:
     category_weights = config.category_weights
-    freshness_score = _freshness_score(events, generated_at)
+    stale_hours = float(config.risk_rules.get("stale_hours", 48))
+    freshness_score = _freshness_score(events, generated_at, stale_hours=stale_hours)
     materiality_score = min(
         10.0,
         sum(6.0 * category_weights.get(event.category, 1.0) * event.confidence for event in events),
@@ -111,13 +116,18 @@ def _score_detail(
     }
 
 
-def _freshness_score(events: list[MarketEvent], generated_at: datetime) -> float:
+def _freshness_score(
+    events: list[MarketEvent],
+    generated_at: datetime,
+    *,
+    stale_hours: float = 48,
+) -> float:
     scores: list[float] = []
     for event in events:
         if event.data_status in {"insufficient", "stale"} or event.published_at is None:
             scores.append(0.0)
             continue
-        if temporal_status(event.published_at, generated_at) != "ok":
+        if temporal_status(event.published_at, generated_at, stale_hours) != "ok":
             scores.append(0.0)
             continue
         age_hours = (generated_at - event.published_at).total_seconds() / 3600

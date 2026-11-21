@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import json
-import re
 from collections import Counter
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from openai import OpenAI
 
@@ -12,10 +12,12 @@ from daytrade_agent.llm.codex_app_server import CodexAppServerSession
 from daytrade_agent.llm.prompt_builder import build_prompt
 from daytrade_agent.normalizers.event_schema import (
     Candidate,
+    MarketMetric,
     ReportContext,
     model_dump_json_safe,
     parse_datetime,
 )
+from daytrade_agent.normalizers.freshness import temporal_status
 
 
 def write_report_markdown(
@@ -49,9 +51,11 @@ def write_report_markdown(
         response = _try_openai(prompt, config)
         if response:
             context.market_context["writer_provider"] = "openai"
+            context.market_context["writer_model"] = config.openai_model
             return response
 
     context.market_context["writer_provider"] = "template"
+    context.market_context["writer_fallback"] = True
     return _template_report(config, context, note="llm unavailable; template fallback")
 
 
@@ -72,7 +76,7 @@ def build_summary(
         "metrics": {
             "category_events": dict(Counter(event.category for event in context.events)),
             "grounded_candidates": len(context.candidates) if publishable else 0,
-            "premarket_on_time": context.generated_at.hour < 9,
+            "premarket_on_time": context.generated_at.astimezone(ZoneInfo("Asia/Seoul")).hour < 9,
             "writer_fallback": context.market_context.get("writer_fallback", False),
             "writer_provider": context.market_context.get("writer_provider"),
             "writer_model": context.market_context.get("writer_model"),
@@ -82,7 +86,7 @@ def build_summary(
         "candidate_count": len(context.candidates) if publishable else 0,
         "top_event": _top_event(context) if publishable else {},
         "key_changes": [
-            {"title": _event_text(event.title), "source_id": event.source_id,
+            {"title": _event_text(event.title, context.candidates), "source_id": event.source_id,
              "published_at": event.published_at.isoformat() if event.published_at else None}
             for event in context.events[:3] if publishable
         ],
@@ -263,7 +267,7 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
     top = context.events[:5]
     if top:
         lines.extend(
-            f"- {_event_text(event.title)} (source_id: {event.source_id})"
+            f"- {_event_text(event.title, context.candidates)} (source_id: {event.source_id})"
             for event in top
         )
     else:
@@ -291,7 +295,8 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
             continue
         for event in events[:5]:
             lines.append(
-                f"- {_event_text(event.title)}: {_event_text(event.summary)} "
+                f"- {_event_text(event.title, context.candidates)}: "
+                f"{_event_text(event.summary, context.candidates)} "
                 f"(source_id: {event.source_id}, data_status: {event.data_status})"
             )
 
@@ -419,7 +424,30 @@ def _candidate_table(candidates: list[Candidate]) -> str:
 
 
 def _market_context_text(context: ReportContext) -> str:
-    return "데이터 부족"
+    labels = {
+        "kospi": "KOSPI",
+        "kosdaq": "KOSDAQ",
+        "usdkrw": "USD/KRW",
+        "sp500": "SP500",
+        "nasdaq": "NASDAQ",
+    }
+    lines: list[str] = []
+    for key, label in labels.items():
+        raw_metric = context.market_context.get(key)
+        if not isinstance(raw_metric, dict):
+            continue
+        try:
+            metric = MarketMetric.model_validate(raw_metric)
+        except ValueError:
+            continue
+        if temporal_status(metric.as_of, context.generated_at, 96) != "ok":
+            continue
+        change_part = f" ({metric.change_rate:+}%," if metric.change_rate is not None else " ("
+        lines.append(
+            f"- {label}: {metric.value:,}{change_part} "
+            f"기준 시각: {metric.as_of.isoformat()}, data_key: {metric.data_key})"
+        )
+    return "\n".join(lines) if lines else "데이터 부족"
 
 
 def _caution_text(candidates: list[Candidate]) -> str:
@@ -434,20 +462,26 @@ def _caution_text(candidates: list[Candidate]) -> str:
 
 
 def _public_fact(text: str) -> str:
-    from daytrade_agent.collectors.news_provider import _PUBLIC_REPLACEMENTS
+    from daytrade_agent.llm.report_verifier import sanitize_public_text
 
-    for original, replacement in _PUBLIC_REPLACEMENTS.items():
-        text = text.replace(original, replacement)
-    text = re.sub(r"매수\s*추천|강력\s*매수|즉시\s*매수|매수\s*하라", "가격 확인 필요", text)
-    return text.replace("\n", " ").replace("|", "/")
+    return sanitize_public_text(text)
 
 
-def _event_text(text: str) -> str:
-    from daytrade_agent.llm.report_verifier import PRICE_CONTEXT, PRICE_NUMBER
+def _event_text(text: str, candidates: list[Candidate] | None = None) -> str:
+    from daytrade_agent.llm.report_verifier import (
+        PRICE_CONTEXT,
+        PRICE_NUMBER,
+        _normalized,
+    )
 
-    if PRICE_CONTEXT.search(text) and PRICE_NUMBER.search(text):
+    normalized = _normalized(text)
+    has_candidate_ref = any(
+        candidate.name in normalized or candidate.symbol in normalized
+        for candidate in (candidates or [])
+    )
+    if (PRICE_CONTEXT.search(normalized) or has_candidate_ref) and PRICE_NUMBER.search(normalized):
         return "가격 관련 보도 수치 생략. 가격 확인 필요."
-    return _public_fact(text)
+    return _public_fact(normalized)
 
 
 def verified_facts_markdown(config: AppConfig, context: ReportContext) -> str:

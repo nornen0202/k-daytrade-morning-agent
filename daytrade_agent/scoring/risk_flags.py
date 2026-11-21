@@ -29,14 +29,19 @@ def risk_flags_for(
     return flags or ["none"]
 
 
-def risk_penalty(flags: list[str]) -> float:
+def risk_penalty(
+    flags: list[str],
+    *,
+    missing_price_penalty: float = 1.0,
+    high_risk_penalty: float = 1.5,
+) -> float:
     penalty_map = {
         "data_gap": 1.0,
         "low_source_quality": 0.7,
         "low_confidence": 0.7,
-        "missing_price_snapshot": 1.0,
+        "missing_price_snapshot": missing_price_penalty,
         "missing_price_timestamp": 0.8,
-        "high_volatility": 1.5,
+        "high_volatility": high_risk_penalty,
         "no_event_support": 1.0,
     }
     return sum(penalty_map.get(flag, 0.0) for flag in flags)

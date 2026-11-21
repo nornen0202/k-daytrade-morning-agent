@@ -22,3 +22,18 @@ def test_candidate_score_is_deterministic():
 
     missing_price = next(candidate for candidate in first if candidate.symbol == "277810")
     assert "가격 확인 필요" in missing_price.observation_condition
+
+
+def test_candidate_score_honors_risk_rule_penalties():
+    from dataclasses import replace
+
+    config = AppConfig.load()
+    generated_at = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    result = collect_mock(config, "2026-04-27", generated_at)
+    base = score_candidates(config, result.events, result.price_snapshots, generated_at)
+    base_score = next(item.score for item in base if item.symbol == "277810")
+
+    harsher = replace(config, risk_rules={**config.risk_rules, "missing_price_penalty": 3.0})
+    updated = score_candidates(harsher, result.events, result.price_snapshots, generated_at)
+    updated_score = next(item.score for item in updated if item.symbol == "277810")
+    assert updated_score < base_score

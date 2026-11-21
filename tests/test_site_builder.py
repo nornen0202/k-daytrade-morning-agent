@@ -59,3 +59,65 @@ def test_site_builder_creates_expected_pages(tmp_path):
     assert 'href="/reports/' not in index_html
     assert 'href="/assets/' not in index_html
     assert "데이터 기준 시각" in report_html
+
+    status_js = (config.dist_dir / "assets" / "status.js").read_text(encoding="utf-8")
+    assert "Number.isFinite" in status_js
+
+
+def test_site_builder_isolates_corrupt_report_and_handles_utc_timestamp(tmp_path):
+    from datetime import UTC, timedelta
+
+    from daytrade_agent.render.site_builder import _publication_gate
+
+    config = AppConfig.load()
+    config = AppConfig(
+        **{
+            **config.__dict__,
+            "content_dir": tmp_path / "content" / "reports",
+            "dist_dir": tmp_path / "dist",
+        }
+    )
+    corrupt_dir = config.content_dir / "2026-04-28"
+    corrupt_dir.mkdir(parents=True)
+    (corrupt_dir / "summary.json").write_text("{corrupt", encoding="utf-8")
+    (corrupt_dir / "verification.json").write_text('{"status": "pass"}', encoding="utf-8")
+    (corrupt_dir / "report.md").write_text("# Broken", encoding="utf-8")
+
+    generated_at = datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+    result = collect_mock(config, "2026-04-27", generated_at)
+    context = ReportContext(
+        report_date="2026-04-27",
+        generated_at=generated_at,
+        data_status="ok",
+        events=result.events,
+        sources=result.sources,
+        price_snapshots=result.price_snapshots,
+        candidates=score_candidates(config, result.events, result.price_snapshots, generated_at),
+        market_context=result.market_context,
+    )
+    for source in context.sources:
+        source.source_name = "Evidence fixture"
+        source.source_url = "https://news.example.test/article"
+    markdown = write_report_markdown(config, context, dry_run=True)
+    verification = verify_report(context, markdown)
+    summary = build_summary(context, markdown, verification.status)
+    summary["run_mode"] = "live"
+    save_report(config.content_dir, "2026-04-27", markdown, summary, verification)
+
+    build_site(config, now=generated_at.astimezone(UTC) + timedelta(minutes=5))
+    assert (config.dist_dir / "reports" / "2026-04-28" / "index.html").exists()
+    valid_report_html = (
+        config.dist_dir / "reports" / "2026-04-27" / "index.html"
+    ).read_text(encoding="utf-8")
+    assert '<div class="snapshot-item"' in valid_report_html
+
+    utc_summary = dict(summary)
+    utc_summary["generated_at"] = generated_at.astimezone(UTC).isoformat()
+    report = {
+        "report_date": "2026-04-27",
+        "summary": utc_summary,
+        "markdown": markdown,
+        "verification": verification.model_dump(),
+    }
+    _publication_gate(report, generated_at.astimezone(UTC) + timedelta(minutes=5))
+    assert report["valid"] and report["current"]

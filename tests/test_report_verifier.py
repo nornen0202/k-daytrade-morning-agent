@@ -98,3 +98,56 @@ def test_affirmative_certainty_stays_blocked(text):
     context.data_status = "partial"
     result = verify_report(context, f"- {text} (source_id: src_policy_001)")
     assert any("certainty wording" in error for error in result.errors)
+
+
+def test_market_certainty_blocked_even_without_data_gap_phrase():
+    context = _context()
+    context.data_status = "partial"
+    result = verify_report(context, "- 삼성전자 내일 상승은 확정이다. (source_id: src_policy_001)")
+    assert result.status == "fail"
+    assert any("certainty wording" in error for error in result.errors)
+
+
+def test_candidate_name_with_digits_and_top_n_heading_pass_verifier():
+    context = _context()
+    context.candidates[0].name = "하나30호스팩"
+    key = f"score_{context.candidates[0].symbol}"
+    markdown = (
+        "## 7. 통합 관심 후보 Top 10\n"
+        f"- 하나30호스팩({context.candidates[0].symbol}): none (data_key: {key})\n"
+    )
+    result = verify_report(context, markdown)
+    assert result.status == "pass", result.errors
+
+
+def test_market_context_metric_is_verified_and_rendered():
+    from daytrade_agent.llm.report_writer import verified_facts_markdown
+
+    context = _context()
+    markdown = verified_facts_markdown(AppConfig.load(), context)
+    assert "KOSPI: 2,748.12" in markdown
+    assert "data_key: mk_kospi_20260427" in markdown
+    result = verify_report(context, markdown)
+    assert result.status == "pass", result.errors
+
+
+def test_missing_data_referencing_event_symbol_outside_top_n_passes():
+    context = _context()
+    context.candidates = [c for c in context.candidates if c.symbol != "277810"]
+    context.missing_data = ["yfinance quote unavailable for 277810"]
+    markdown = "- yfinance quote unavailable for 277810 (data_key: report_metadata)\n"
+    result = verify_report(context, markdown)
+    assert result.status == "warning", result.errors
+
+
+def test_template_writer_redacts_candidate_price_news_and_passes_verifier():
+    from daytrade_agent.llm.report_writer import build_summary, verified_facts_markdown
+
+    context = _context()
+    context.events[0].title = "Samsung Electronics 영업이익 10.5% 증가 보도"
+    context.events[0].summary = "Samsung Electronics 관련 75,000원 전망 언급"
+    markdown = verified_facts_markdown(AppConfig.load(), context)
+    result = verify_report(context, markdown)
+    assert result.status == "pass", result.errors
+    summary = build_summary(context, markdown, result.status)
+    assert summary["key_changes"][0]["title"] == "가격 관련 보도 수치 생략. 가격 확인 필요."

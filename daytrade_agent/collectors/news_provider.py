@@ -11,21 +11,13 @@ import requests
 
 from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.config import AppConfig
+from daytrade_agent.llm.report_verifier import PUBLIC_REPLACEMENTS, sanitize_public_text
 from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_datetime, stable_id
 
 _NAVER_ENDPOINT = "https://openapi.naver.com/v1/search/news.json"
 _NEWSAPI_ENDPOINT = "https://newsapi.org/v2/everything"
 _ALPHA_VANTAGE_ENDPOINT = "https://www.alphavantage.co/query"
-_PUBLIC_REPLACEMENTS = {
-    "무조건 매수": "매수 강요 표현",
-    "확실한 수익": "수익 보장성 표현",
-    "상한가 확정": "가격 급등 확정 표현",
-    "작전주": "근거 부족 테마",
-    "세력주": "수급 집중 관련 표현",
-    "조작": "보도 기준 의혹",
-    "계좌": "금융계정 관련 표현",
-    "보유비중": "비중 정보",
-}
+_PUBLIC_REPLACEMENTS = PUBLIC_REPLACEMENTS
 
 
 def collect_news_category(
@@ -44,10 +36,12 @@ def collect_news_category(
             continue
         if result.events:
             results.append(result)
+            if result.missing_data:
+                failure_reasons.extend(result.missing_data)
         elif result.missing_data:
             failure_reasons.extend(result.missing_data)
 
-    merged = _merge_results(results)
+    merged = _merge_results(results, failure_reasons)
     if merged.events:
         return merged
 
@@ -86,24 +80,71 @@ def _collect_provider(
 def _collect_rss(category: str, rss_urls: list[str], collected_at: datetime) -> CollectorResult:
     events: list[MarketEvent] = []
     sources: list[Source] = []
+    missing_data: list[str] = []
+    atom_ns = "{http://www.w3.org/2005/Atom}"
     for url in rss_urls:
-        response = requests.get(url, timeout=15)
-        response.raise_for_status()
-        root = ElementTree.fromstring(getattr(response, "content", None) or response.text)
-        for item in root.findall(".//item")[:10]:
+        try:
+            response = requests.get(url, timeout=15)
+            response.raise_for_status()
+            root = ElementTree.fromstring(getattr(response, "content", None) or response.text)
+        except Exception as exc:
+            missing_data.append(f"rss feed failed ({type(exc).__name__})")
+            continue
+        items = root.findall(".//item")[:10]
+        if items:
+            for item in items:
+                event, source = _event_and_source(
+                    category=category,
+                    provider="rss",
+                    title=_strip_html(item.findtext("title") or "데이터 부족"),
+                    summary=_strip_html(item.findtext("description") or "데이터 부족"),
+                    url=item.findtext("link") or url,
+                    published=_parse_pubdate(item.findtext("pubDate")),
+                    collected_at=collected_at,
+                    source_quality=0.55,
+                )
+                events.append(event)
+                sources.append(source)
+            continue
+        entries = (root.findall(f".//{atom_ns}entry") or root.findall(".//entry"))[:10]
+        for entry in entries:
+            title_text = _atom_text(entry, atom_ns, "title") or "데이터 부족"
+            summary_text = (
+                _atom_text(entry, atom_ns, "summary", "content") or "데이터 부족"
+            )
+            pub_text = _atom_text(entry, atom_ns, "published", "updated")
+            link_node = entry.find(f"{atom_ns}link")
+            if link_node is None:
+                link_node = entry.find("link")
+            entry_url = (
+                (link_node.attrib.get("href") or link_node.text or url)
+                if link_node is not None
+                else url
+            )
+            published = parse_datetime(pub_text) or _parse_pubdate(pub_text)
             event, source = _event_and_source(
                 category=category,
                 provider="rss",
-                title=_strip_html(item.findtext("title") or "데이터 부족"),
-                summary=_strip_html(item.findtext("description") or "데이터 부족"),
-                url=item.findtext("link") or url,
-                published=_parse_pubdate(item.findtext("pubDate")),
+                title=_strip_html(title_text),
+                summary=_strip_html(summary_text),
+                url=entry_url,
+                published=published,
                 collected_at=collected_at,
                 source_quality=0.55,
             )
             events.append(event)
             sources.append(source)
-    return CollectorResult(events=events, sources=sources)
+    return _dedupe_result(events, sources, missing_data=missing_data)
+
+
+def _atom_text(entry: ElementTree.Element, atom_ns: str, *tags: str) -> str | None:
+    for tag in tags:
+        node = entry.find(f"{atom_ns}{tag}")
+        if node is None:
+            node = entry.find(tag)
+        if node is not None and node.text:
+            return node.text
+    return None
 
 
 def _collect_naver(
@@ -119,15 +160,20 @@ def _collect_naver(
     endpoint = str(config.data_sources.get("news", {}).get("naver_endpoint") or _NAVER_ENDPOINT)
     events: list[MarketEvent] = []
     sources: list[Source] = []
+    missing_data: list[str] = []
     for query in queries:
-        response = requests.get(
-            endpoint,
-            headers=headers,
-            params={"query": query, "display": 10, "sort": "date"},
-            timeout=15,
-        )
-        response.raise_for_status()
-        payload = response_json(response)
+        try:
+            response = requests.get(
+                endpoint,
+                headers=headers,
+                params={"query": query, "display": 10, "sort": "date"},
+                timeout=15,
+            )
+            response.raise_for_status()
+            payload = response_json(response)
+        except Exception as exc:
+            missing_data.append(f"naver query failed ({type(exc).__name__})")
+            continue
         for item in payload.get("items", []) if isinstance(payload, dict) else []:
             if not isinstance(item, dict):
                 continue
@@ -143,7 +189,7 @@ def _collect_naver(
             )
             events.append(event)
             sources.append(source)
-    return _dedupe_result(events, sources)
+    return _dedupe_result(events, sources, missing_data=missing_data)
 
 
 def _collect_newsapi(
@@ -156,15 +202,20 @@ def _collect_newsapi(
     headers = {"X-Api-Key": config.env("NEWS_API_KEY") or ""}
     events: list[MarketEvent] = []
     sources: list[Source] = []
+    missing_data: list[str] = []
     for query in queries:
-        response = requests.get(
-            endpoint,
-            headers=headers,
-            params={"q": query, "pageSize": 10, "sortBy": "publishedAt", "language": "ko"},
-            timeout=15,
-        )
-        response.raise_for_status()
-        payload = response_json(response)
+        try:
+            response = requests.get(
+                endpoint,
+                headers=headers,
+                params={"q": query, "pageSize": 10, "sortBy": "publishedAt", "language": "ko"},
+                timeout=15,
+            )
+            response.raise_for_status()
+            payload = response_json(response)
+        except Exception as exc:
+            missing_data.append(f"newsapi query failed ({type(exc).__name__})")
+            continue
         for item in payload.get("articles", []) if isinstance(payload, dict) else []:
             if not isinstance(item, dict):
                 continue
@@ -181,7 +232,7 @@ def _collect_newsapi(
             )
             events.append(event)
             sources.append(source)
-    return _dedupe_result(events, sources)
+    return _dedupe_result(events, sources, missing_data=missing_data)
 
 
 def _collect_alpha_vantage(
@@ -240,8 +291,13 @@ def _collect_yfinance(
 
     events: list[MarketEvent] = []
     sources: list[Source] = []
+    missing_data: list[str] = []
     for ticker in _yfinance_tickers(config, category):
-        news = yf.Ticker(ticker).get_news(count=8)
+        try:
+            news = yf.Ticker(ticker).get_news(count=8)
+        except Exception as exc:
+            missing_data.append(f"yfinance news failed ({type(exc).__name__})")
+            continue
         for item in news or []:
             if not isinstance(item, dict):
                 continue
@@ -259,7 +315,7 @@ def _collect_yfinance(
             )
             events.append(event)
             sources.append(source)
-    return _dedupe_result(events, sources)
+    return _dedupe_result(events, sources, missing_data=missing_data)
 
 
 def _event_and_source(
@@ -303,19 +359,32 @@ def _event_and_source(
     return event, source
 
 
-def _merge_results(results: list[CollectorResult]) -> CollectorResult:
+def _merge_results(
+    results: list[CollectorResult],
+    missing_data: list[str] | None = None,
+) -> CollectorResult:
     events: list[MarketEvent] = []
     sources: list[Source] = []
     for result in results:
         events.extend(result.events)
         sources.extend(result.sources)
-    return _dedupe_result(events, sources)
+    return _dedupe_result(events, sources, missing_data=missing_data)
 
 
-def _dedupe_result(events: list[MarketEvent], sources: list[Source]) -> CollectorResult:
+def _dedupe_result(
+    events: list[MarketEvent],
+    sources: list[Source],
+    *,
+    missing_data: list[str] | None = None,
+) -> CollectorResult:
     by_event_id = {event.event_id: event for event in events}
     by_source_id = {source.source_id: source for source in sources}
-    return CollectorResult(events=list(by_event_id.values()), sources=list(by_source_id.values()))
+    unique_missing = list(dict.fromkeys(missing_data or []))
+    return CollectorResult(
+        events=list(by_event_id.values()),
+        sources=list(by_source_id.values()),
+        missing_data=unique_missing,
+    )
 
 
 def _provider_priority(config: AppConfig) -> list[str]:
@@ -369,9 +438,7 @@ def _parse_alpha_datetime(value: object) -> datetime | None:
 
 def _strip_html(text: str) -> str:
     sanitized = re.sub(r"<[^>]+>", "", html.unescape(text or "")).strip()
-    for forbidden, replacement in _PUBLIC_REPLACEMENTS.items():
-        sanitized = sanitized.replace(forbidden, replacement)
-    return re.sub(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])", "종목코드 확인 필요", sanitized)
+    return sanitize_public_text(sanitized, mask_symbols=True)
 
 
 def _affected_sectors(title: str, summary: str) -> list[str]:
@@ -437,7 +504,9 @@ def _yfinance_article_fields(article: dict[str, object]) -> dict[str, object]:
             "summary": str(content.get("summary") or "데이터 부족"),
             "provider": str(provider.get("displayName") or "yfinance"),
             "url": str(url_payload.get("url") or ""),
-            "published": parse_datetime(content.get("pubDate")),
+            "published": parse_datetime(content.get("pubDate")) or _parse_pubdate(
+                content.get("pubDate")
+            ),
         }
     published = article.get("providerPublishTime")
     if isinstance(published, (int, float)):

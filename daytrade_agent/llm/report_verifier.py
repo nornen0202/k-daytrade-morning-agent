@@ -4,10 +4,24 @@ import re
 import unicodedata
 from decimal import Decimal
 
-from daytrade_agent.normalizers.event_schema import ReportContext, VerificationResult
+from daytrade_agent.normalizers.event_schema import (
+    MarketMetric,
+    ReportContext,
+    VerificationResult,
+)
 from daytrade_agent.normalizers.freshness import temporal_status
 
 FORBIDDEN_TERMS = ["무조건 매수", "확실한 수익", "상한가 확정", "작전주", "세력주", "조작"]
+PUBLIC_REPLACEMENTS = {
+    "무조건 매수": "매수 강요 표현",
+    "확실한 수익": "수익 보장성 표현",
+    "상한가 확정": "가격 급등 확정 표현",
+    "작전주": "근거 부족 테마",
+    "세력주": "수급 집중 관련 표현",
+    "조작": "보도 기준 의혹",
+    "계좌": "금융계정 관련 표현",
+    "보유비중": "비중 정보",
+}
 INVESTMENT_PRESSURE_PATTERNS = [re.compile(pattern) for pattern in (
     r"매수\s*하라", r"수익\s*보장", r"상한가\s*확정", r"즉시\s*매수",
     r"매수\s*추천", r"진입\s*하라", r"강력\s*매수",
@@ -33,6 +47,34 @@ CERTAINTY_ASSERTION = re.compile(
     r"|(?:상승|하락|수익|이익|방향|국면)\s*(?:은|는|이|가)?\s*확정"
     r"(?!할\s*수\s*없|하지\s*않|하지\s*못|이\s*아니)"
 )
+MARKET_CERTAINTY_ASSERTION = re.compile(
+    r"확정(?:이(?:다|고|며)|입니다|할\s*것)"
+    r"|분명히\s*(?:상승|하락|수익)|반드시.*상승"
+    r"|(?:상승|하락|수익|이익|방향|국면)\s*(?:은|는|이|가)?\s*확정"
+    r"(?!할\s*수\s*없|하지\s*않|하지\s*못|이\s*아니)"
+)
+_OBFUSCATED_TERM_PATTERNS = [
+    (re.compile(r"\s*".join(re.escape(ch) for ch in term.replace(" ", ""))), replacement)
+    for term, replacement in PUBLIC_REPLACEMENTS.items()
+    if term in FORBIDDEN_TERMS
+]
+
+
+def sanitize_public_text(text: str, *, mask_symbols: bool = False) -> str:
+    """Normalize and redact prohibited, secret, or spoofed-reference text for public output."""
+    sanitized = _normalized(text).replace("\r", " ").replace("\n", " ").replace("|", "/")
+    for original, replacement in PUBLIC_REPLACEMENTS.items():
+        sanitized = sanitized.replace(original, replacement)
+    for pattern, replacement in _OBFUSCATED_TERM_PATTERNS:
+        sanitized = pattern.sub(replacement, sanitized)
+    for pattern in INVESTMENT_PRESSURE_PATTERNS:
+        sanitized = pattern.sub("가격 확인 필요", sanitized)
+    for pattern in SECRET_PATTERNS:
+        sanitized = pattern.sub("[비공개 정보 제외]", sanitized)
+    sanitized = REF_PATTERN.sub(r"\1_ref_\2", sanitized)
+    if mask_symbols:
+        sanitized = SYMBOL_PATTERN.sub("종목코드 확인 필요", sanitized)
+    return re.sub(r"\s{2,}", " ", sanitized).strip()
 
 
 def unsafe_public_text(text: str) -> bool:
@@ -82,9 +124,25 @@ def evidence_index(context: ReportContext) -> dict[tuple[str, str], str]:
         if candidate.source_ids and all(("source_id", key) in evidence
                                         for key in candidate.source_ids):
             evidence[("data_key", f"score_{candidate.symbol}")] = (
-                f"{candidate.symbol} {candidate.score:.2f}/10 "
+                f"{candidate.name} {candidate.symbol} {candidate.score:.2f}/10 "
                 f"{candidate.observation_condition} {candidate.invalidation_condition}"
             )
+    for metric_name, raw_metric in context.market_context.items():
+        if (
+            metric_name not in {"kospi", "kosdaq", "usdkrw", "sp500", "nasdaq"}
+            or not isinstance(raw_metric, dict)
+        ):
+            continue
+        try:
+            metric = MarketMetric.model_validate(raw_metric)
+        except ValueError:
+            continue
+        if temporal_status(metric.as_of, context.generated_at, 96) != "ok":
+            continue
+        change_part = f" {metric.change_rate}%" if metric.change_rate is not None else ""
+        evidence[("data_key", metric.data_key)] = (
+            f"{metric_name} {metric.value}{change_part} {metric.as_of.isoformat()}"
+        )
     evidence[("data_key", "report_metadata")] = (
         f"{context.report_date} {context.generated_at.isoformat()} "
         + " ".join(context.missing_data)
@@ -104,7 +162,11 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
         errors.append("possible secret or account-like identifier found")
     if "\ufffd" in markdown:
         errors.append("unreadable text encoding")
-    known_symbols = {candidate.symbol for candidate in context.candidates}
+    known_symbols = (
+        {candidate.symbol for candidate in context.candidates}
+        | {symbol for event in context.events for symbol in event.candidate_symbols}
+        | {snapshot.symbol for snapshot in context.price_snapshots}
+    )
     unknown = set(SYMBOL_PATTERN.findall(REF_PATTERN.sub("", markdown))) - known_symbols
     if unknown:
         errors.append(f"unknown symbol mentioned: {', '.join(sorted(unknown))}")
@@ -127,8 +189,12 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
                 f"거래일 확인 필요 - {context.report_date}",
                 f"장전 발행 지연 안내 - {context.report_date}",
             }
-            if (heading == "5줄 핵심 요약" or heading in titles
-                    or not _numbers(heading)):
+            if (
+                heading == "5줄 핵심 요약"
+                or heading in titles
+                or re.fullmatch(r"통합 관심 후보 Top \d+", heading)
+                or not _numbers(heading)
+            ):
                 continue
         if text.startswith("> ") and text[2:] == (
             "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다."
@@ -174,8 +240,10 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
             ):
                 errors.append(f"line {number}: price snapshot belongs to a different symbol")
 
-        if (context.data_status != "ok" and CERTAINTY_ASSERTION.search(text)
-                and "데이터 부족" in text):
+        if context.data_status != "ok" and (
+            MARKET_CERTAINTY_ASSERTION.search(text)
+            or (CERTAINTY_ASSERTION.search(text) and "데이터 부족" in text)
+        ):
             errors.append(f"line {number}: certainty wording used with insufficient data")
 
     if context.data_status != "ok" and context.market_context.get("market_status") != "closed":

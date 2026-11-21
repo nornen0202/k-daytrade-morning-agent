@@ -91,3 +91,65 @@ def test_rejected_model_draft_is_not_reported_as_codex_output(monkeypatch, tmp_p
     assert summary["metrics"]["writer_model"] is None
     assert summary["metrics"]["writer_fallback"] is True
     assert summary["market_context"]["rejected_writer_model"] == "gpt-6.1-sol"
+
+
+def test_build_context_does_not_flag_deduplicated_events_as_rejected():
+    context = _context()
+    dup_event = context.events[0].model_copy(deep=True)
+    result = CollectorResult(
+        events=[*context.events, dup_event],
+        sources=context.sources,
+        price_snapshots=context.price_snapshots,
+        market_context=context.market_context,
+    )
+    built = cli._build_context(AppConfig.load(), "2026-04-27", context.generated_at, [result])
+    assert len(built.events) == len(context.events)
+    assert not any("제외된 뉴스/공시" in item for item in built.missing_data)
+
+
+def test_verify_command_fails_closed_when_summary_contains_unsafe_text(tmp_path):
+    context = _context()
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    markdown = "- Samsung Electronics(005930) 관찰 우선순위 - source_id: src_policy_001"
+    from daytrade_agent.llm.report_writer import build_summary
+
+    summary = build_summary(context, markdown, "pass")
+    summary["events"][0]["summary"] = "무조건 매수 추천 텍스트"
+    save_report(
+        config.content_dir,
+        "2026-04-27",
+        markdown,
+        summary,
+        VerificationResult(status="pass"),
+    )
+
+    assert cli.verify_command(config, "2026-04-27") == 1
+    reloaded = cli.load_report(config.content_dir, "2026-04-27")
+    assert reloaded["verification"]["status"] == "fail"
+    assert reloaded["summary"]["candidates"] == []
+    assert reloaded["summary"]["report_kind"] == "notice"
+    assert "데이터 검증 실패 리포트" in reloaded["markdown"]
+
+
+def test_verify_command_handles_malformed_summary_without_crashing(tmp_path):
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    save_report(
+        config.content_dir,
+        "2026-04-27",
+        "# Broken",
+        {"report_date": "2026-04-27", "generated_at": "not-a-timestamp"},
+        VerificationResult(status="pass"),
+    )
+    assert cli.verify_command(config, "2026-04-27") == 1
+
+
+def test_public_store_rejects_password_credential(monkeypatch, tmp_path):
+    monkeypatch.setenv("SERVICE_PASSWORD", "fixture-password-value-1234")
+    with pytest.raises(ValueError, match="configured credential"):
+        save_report(
+            tmp_path,
+            "2026-10-25",
+            "fixture-password-value-1234",
+            {},
+            VerificationResult(status="pass"),
+        )

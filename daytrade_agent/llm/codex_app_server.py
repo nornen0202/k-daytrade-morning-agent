@@ -73,6 +73,7 @@ class CodexAppServerSession:
         self._stderr_lines: deque[str] = deque(maxlen=200)
         self._lock = threading.RLock()
         self._request_lock = threading.RLock()
+        self._seeded_auth = False
 
     def start(self) -> None:
         with self._lock:
@@ -103,33 +104,36 @@ class CodexAppServerSession:
                     bufsize=1,
                 )
             except OSError as exc:
+                self._cleanup_seeded_auth()
                 raise CodexAppServerBinaryError(
                     f"Failed to start Codex app-server with binary '{binary}': {exc}"
                 ) from exc
 
-            self._start_reader_threads()
-            self._initialize()
+            try:
+                self._start_reader_threads()
+                self._initialize()
+            except Exception:
+                self.close()
+                raise
 
     def close(self) -> None:
         with self._lock:
             proc = self._proc
             self._proc = None
-            if proc is None:
-                return
-            try:
-                if proc.stdin:
-                    proc.stdin.close()
-            except OSError:
-                pass
-            try:
-                proc.terminate()
-                proc.wait(timeout=2)
-            except Exception:
-                proc.kill()
-                proc.wait(timeout=2)
+            if proc is not None:
+                try:
+                    if proc.stdin:
+                        proc.stdin.close()
+                except OSError:
+                    pass
+                try:
+                    proc.terminate()
+                    proc.wait(timeout=2)
+                except Exception:
+                    proc.kill()
+                    proc.wait(timeout=2)
             # Only our session copy is removed; the shared login is never modified.
-            auth_copy = Path(self.workspace_dir) / ".codex-home" / "auth.json"
-            auth_copy.unlink(missing_ok=True)
+            self._cleanup_seeded_auth()
 
     def account_read(self) -> dict[str, Any]:
         return self.request("account/read", {"refreshToken": False})
@@ -225,11 +229,20 @@ class CodexAppServerSession:
                 continue
             try:
                 shutil.copyfile(source, codex_home / filename)
+                if filename == "auth.json":
+                    self._seeded_auth = True
             except OSError as exc:
                 if filename == "auth.json":
                     raise CodexAppServerAuthError(
                         f"Failed to seed Codex auth from '{source}' to '{codex_home}': {exc}"
                     ) from exc
+
+    def _cleanup_seeded_auth(self) -> None:
+        if not self._seeded_auth:
+            return
+        auth_copy = Path(self.workspace_dir) / ".codex-home" / "auth.json"
+        auth_copy.unlink(missing_ok=True)
+        self._seeded_auth = False
 
     def _initialize(self) -> None:
         response = self.request(

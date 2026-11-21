@@ -58,6 +58,7 @@ class MarketEvent(StrictBaseModel):
 
 class MarketMetric(StrictBaseModel):
     value: float
+    change_rate: float | None = None
     as_of: datetime
     data_key: str
     provider: str = "quote_provider"

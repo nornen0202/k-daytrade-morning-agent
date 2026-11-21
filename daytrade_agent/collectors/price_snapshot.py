@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import re
 from datetime import UTC, datetime
 from importlib import import_module
@@ -7,7 +8,7 @@ from typing import Any
 
 import requests
 
-from daytrade_agent.collectors.base import CollectorResult, insufficient_result
+from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.collectors.mock import collect_mock_prices
 from daytrade_agent.config import AppConfig
 from daytrade_agent.normalizers.event_schema import PriceSnapshot, parse_datetime, stable_id
@@ -23,13 +24,22 @@ def collect(
     if dry_run:
         return collect_mock_prices(config, collected_at)
 
+    provider_configured = bool(config.env("QUOTE_PROVIDER_URL"))
     provider_result = _collect_provider_quote(config, report_date, symbols)
     if provider_result.price_snapshots:
         return provider_result
 
     yfinance_result = _collect_yfinance_quotes(symbols or [], collected_at)
-    if yfinance_result.price_snapshots:
-        return yfinance_result
+    combined_missing = [
+        *(provider_result.missing_data if provider_configured else []),
+        *yfinance_result.missing_data,
+    ]
+    if yfinance_result.price_snapshots or provider_result.market_context:
+        return CollectorResult(
+            price_snapshots=yfinance_result.price_snapshots,
+            market_context=provider_result.market_context,
+            missing_data=combined_missing,
+        )
 
     reasons = [*provider_result.missing_data, *yfinance_result.missing_data]
     return insufficient_result(
@@ -60,7 +70,7 @@ def _collect_provider_quote(
             timeout=20,
         )
         response.raise_for_status()
-        payload = response.json()
+        payload = response_json(response)
     except Exception as exc:
         return CollectorResult(missing_data=[f"quote provider failed: {type(exc).__name__}"])
 
@@ -169,36 +179,6 @@ def _market_from_yahoo(yahoo_symbol: str) -> str:
     return "KRX"
 
 
-def _fast_info_get(info: object, *keys: str) -> object:
-    for key in keys:
-        try:
-            if isinstance(info, dict) and key in info:
-                return info[key]
-            value = getattr(info, key)
-        except (AttributeError, KeyError, TypeError):
-            continue
-        if value is not None:
-            return value
-    return None
-
-
-def _history_data(ticker: object) -> dict[str, float | int | None]:
-    try:
-        history = ticker.history(period="5d")
-    except Exception:
-        return {}
-    if history is None or getattr(history, "empty", True):
-        return {}
-    closes = history["Close"].dropna()
-    volumes = history["Volume"].dropna() if "Volume" in history else []
-    if len(closes) == 0:
-        return {}
-    last_price = _float_or_none(closes.iloc[-1])
-    previous_close = _float_or_none(closes.iloc[-2]) if len(closes) >= 2 else None
-    volume = _int_or_none(volumes.iloc[-1]) if len(volumes) else None
-    return {"last_price": last_price, "previous_close": previous_close, "volume": volume}
-
-
 def _name_from_ticker(ticker: object, fallback: str) -> str:
     try:
         info = getattr(ticker, "info", {}) or {}
@@ -223,13 +203,17 @@ def _looks_like_symbol_bundle(name: str, fallback: str) -> bool:
 
 def _float_or_none(value: object) -> float | None:
     try:
-        return float(value)
+        parsed = float(value)  # type: ignore[arg-type]
     except (TypeError, ValueError):
         return None
+    return parsed if math.isfinite(parsed) else None
 
 
 def _int_or_none(value: object) -> int | None:
     try:
-        return int(float(value))
-    except (TypeError, ValueError):
+        parsed = float(value)  # type: ignore[arg-type]
+        if not math.isfinite(parsed):
+            return None
+        return int(parsed)
+    except (TypeError, ValueError, OverflowError):
         return None

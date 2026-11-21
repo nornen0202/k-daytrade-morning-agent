@@ -44,9 +44,9 @@
         <details><summary>근거 식별자</summary>{{ source.source_id }}</details>
       </li>{% endfor %}</ul>
     {% for snapshot in report.summary.price_snapshots %}
-    <p id="data-{{ snapshot.data_key }}">{{ snapshot.name }} ({{ snapshot.symbol }})
+    <div class="snapshot-item" id="data-{{ snapshot.data_key }}">{{ snapshot.name }} ({{ snapshot.symbol }})
       · 기준 시각 {{ snapshot.as_of }} · {{ snapshot.provider }} · {{ snapshot.session_type }}
-      <details><summary>데이터 식별자</summary>{{ snapshot.data_key }}</details></p>
+      <details><summary>데이터 식별자</summary>{{ snapshot.data_key }}</details></div>
     {% endfor %}
     <p id="score-method">점수는 관찰 정렬을 위한 고정 휴리스틱입니다.
       실제 관찰 효용과 예측 정확도는 미검증입니다.</p>

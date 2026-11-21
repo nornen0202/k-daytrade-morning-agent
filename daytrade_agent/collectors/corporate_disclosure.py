@@ -7,6 +7,7 @@ import requests
 from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.collectors.mock import collect_category_mock
 from daytrade_agent.config import AppConfig
+from daytrade_agent.llm.report_verifier import sanitize_public_text
 from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_datetime, stable_id
 
 
@@ -39,6 +40,12 @@ def collect(
         payload = response_json(response)
     except Exception as exc:
         return insufficient_result("corporate_disclosure", type(exc).__name__)
+    if isinstance(payload, dict):
+        api_status = str(payload.get("status") or "").strip()
+        if api_status and api_status not in {"000", "013"}:
+            return insufficient_result(
+                "corporate_disclosure", f"OpenDART error status={api_status}"
+            )
     rows = payload.get("list", []) if isinstance(payload, dict) else []
 
     events: list[MarketEvent] = []
@@ -47,8 +54,12 @@ def collect(
         if not isinstance(row, dict):
             continue
         stock_code = str(row.get("stock_code") or "").strip()
-        corp_name = str(row.get("corp_name") or stock_code or "UNKNOWN")
-        title = str(row.get("report_nm") or "공시")
+        corp_name = sanitize_public_text(
+            str(row.get("corp_name") or stock_code or "UNKNOWN"),
+            mask_symbols=True,
+        ) or "UNKNOWN"
+        raw_title = str(row.get("report_nm") or "공시")
+        title = sanitize_public_text(raw_title, mask_symbols=True) or "공시"
         receipt_no = str(row.get("rcept_no") or "")
         source_url = (
             f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt_no}" if receipt_no else None
@@ -85,11 +96,18 @@ def collect(
     missing = []
     if any(event.published_at is None for event in events):
         missing.append("OpenDART 접수일만 제공: 공시 시각 확인 필요. 순위 근거에서 제외.")
-    if isinstance(payload, dict) and int(payload.get("total_page", 1)) > 1:
+    if isinstance(payload, dict) and _safe_int(payload.get("total_page"), 1) > 1:
         missing.append("OpenDART 조회 결과 일부만 수집됨: 추가 페이지 확인 필요.")
     if not rows:
         missing.append("OpenDART 공시 데이터 부족 또는 응답 상태 확인 필요")
     return CollectorResult(events=events, sources=sources, missing_data=missing)
+
+
+def _safe_int(value: object, default: int = 0) -> int:
+    try:
+        return int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return default
 
 
 def _receipt_time(date_value: object, time_value: object) -> str | None:

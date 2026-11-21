@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from collections.abc import Sequence
 from datetime import date, datetime, time
@@ -17,7 +18,7 @@ from daytrade_agent.collectors import (
 )
 from daytrade_agent.collectors.base import CollectorResult
 from daytrade_agent.config import AppConfig
-from daytrade_agent.llm.report_verifier import verify_report
+from daytrade_agent.llm.report_verifier import unsafe_public_text, verify_report
 from daytrade_agent.llm.report_writer import (
     build_summary,
     failure_report_markdown,
@@ -26,15 +27,16 @@ from daytrade_agent.llm.report_writer import (
 )
 from daytrade_agent.normalizers.deduplicate import deduplicate_events
 from daytrade_agent.normalizers.event_schema import (
-    Candidate,
     MarketEvent,
     MarketMetric,
     PriceSnapshot,
     ReportContext,
     Source,
+    VerificationResult,
     parse_datetime,
 )
 from daytrade_agent.normalizers.freshness import temporal_status
+from daytrade_agent.normalizers.report_context import context_from_summary
 from daytrade_agent.render.site_builder import build_site
 from daytrade_agent.scoring.candidate_score import score_candidates
 from daytrade_agent.storage.report_store import load_report, save_report
@@ -149,11 +151,32 @@ def verify_command(config: AppConfig, report_date: str) -> int:
             print(f"ERROR: {error}")
         return 1
 
-    context = _context_from_summary(stored["summary"])
+    try:
+        context = context_from_summary(stored["summary"])
+    except (ValueError, KeyError, TypeError) as exc:
+        result = VerificationResult(
+            status="fail",
+            errors=[f"invalid stored summary schema: {type(exc).__name__}"],
+        )
+        print(f"verification {report_date} status=fail")
+        for error in result.errors:
+            print(f"ERROR: {error}")
+        return 1
+
     result = verify_report(context, stored["markdown"])
-    summary = dict(stored["summary"])
-    summary["verification_status"] = result.status
-    save_report(config.content_dir, report_date, stored["markdown"], summary, result)
+    if unsafe_public_text(json.dumps(stored["summary"], ensure_ascii=False)):
+        errors = sorted({*result.errors, "public summary failed safety check"})
+        result = VerificationResult(status="fail", errors=errors, warnings=result.warnings)
+
+    markdown = stored["markdown"]
+    if result.status == "fail":
+        markdown = failure_report_markdown(config, context, result.errors, result.warnings)
+        summary = build_summary(context, markdown, result.status)
+    else:
+        summary = dict(stored["summary"])
+        summary["verification_status"] = result.status
+
+    save_report(config.content_dir, report_date, markdown, summary, result)
     print(f"verification {report_date} status={result.status}")
     for error in result.errors:
         print(f"ERROR: {error}")
@@ -181,13 +204,15 @@ def _collect_all(
         global_issue.collect(config, report_date, generated_at, dry_run),
         theme_surge.collect(config, report_date, generated_at, dry_run),
     ]
+    stale_hours = float(config.risk_rules.get("stale_hours", 48))
     symbols = sorted(
         {
             symbol
             for result in event_results
             for event in result.events
             if event.data_status not in {"stale", "insufficient"}
-            and temporal_status(event.published_at, generated_at) == "ok"
+            and temporal_status(event.published_at, generated_at, stale_hours) == "ok"
+            and "\ufffd" not in event.title + event.summary
             for symbol in event.candidate_symbols
         }
     )
@@ -208,19 +233,20 @@ def _build_context(
     )
     missing_data = [item for result in results for item in result.missing_data]
     source_ids = {source.source_id for source in sources}
-    events = deduplicate_events([
+    stale_hours = float(config.risk_rules.get("stale_hours", 48))
+    valid_events = [
         event for event in raw_events
         if event.source_id in source_ids
         and event.data_status not in {"stale", "insufficient"}
-        and temporal_status(event.published_at, generated_at,
-                            float(config.risk_rules.get("stale_hours", 48))) == "ok"
+        and temporal_status(event.published_at, generated_at, stale_hours) == "ok"
         and "\ufffd" not in event.title + event.summary
-    ])
+    ]
+    events = deduplicate_events(valid_events)
     snapshots = [snapshot for snapshot in raw_snapshots
                  if snapshot.last_price is not None
                  and snapshot.data_status not in {"stale", "insufficient"}
                  and temporal_status(snapshot.as_of, generated_at, 96) == "ok"]
-    rejected = len(raw_events) - len(events)
+    rejected = len(raw_events) - len(valid_events)
     if rejected:
         missing_data.append(f"제외된 뉴스/공시: {rejected}건 (시각·출처·문자 인코딩 확인 필요)")
     if len(snapshots) != len(raw_snapshots):
@@ -241,59 +267,6 @@ def _build_context(
         candidates=candidates,
         market_context=market_context,
         missing_data=missing_data,
-    )
-
-
-def _context_from_summary(summary: dict[str, object]) -> ReportContext:
-    snapshots = [
-        PriceSnapshot.model_validate(item)
-        for item in summary.get("price_snapshots", [])
-        if isinstance(item, dict)
-    ]
-    snapshots_by_key = {snapshot.data_key: snapshot for snapshot in snapshots}
-    candidates: list[Candidate] = []
-    for item in summary.get("candidates", []):
-        if not isinstance(item, dict):
-            continue
-        data_key = item.get("data_key")
-        candidates.append(
-            Candidate(
-                symbol=str(item["symbol"]),
-                name=str(item["name"]),
-                market=str(item.get("market", "KRX")),
-                categories=item.get("categories", []),
-                score=float(item.get("score", 0)),
-                main_reason=str(item.get("main_reason", "데이터 부족")),
-                source_ids=item.get("source_ids", []),
-                price_snapshot=snapshots_by_key.get(data_key) if data_key else None,
-                risk_flags=item.get("risk_flags", []),
-                observation_condition=str(item.get("observation_condition", "데이터 부족")),
-                invalidation_condition=str(item.get("invalidation_condition", "데이터 부족")),
-            )
-        )
-    return ReportContext(
-        report_date=str(summary["report_date"]),
-        generated_at=parse_datetime(str(summary["generated_at"]))
-        or datetime.now(tz=ZoneInfo("Asia/Seoul")),
-        data_status=summary.get("data_status", "insufficient"),
-        events=[
-            MarketEvent.model_validate(item)
-            for item in summary.get("events", [])
-            if isinstance(item, dict)
-        ],
-        sources=[
-            Source.model_validate(item)
-            for item in summary.get("sources", [])
-            if isinstance(item, dict)
-        ],
-        price_snapshots=snapshots,
-        candidates=candidates,
-        market_context=summary.get("market_context", {})
-        if isinstance(summary.get("market_context"), dict)
-        else {},
-        missing_data=[
-            str(item) for item in summary.get("missing_data", []) if isinstance(item, str)
-        ],
     )
 
 
