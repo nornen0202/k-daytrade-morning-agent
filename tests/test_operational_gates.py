@@ -153,3 +153,21 @@ def test_public_store_rejects_password_credential(monkeypatch, tmp_path):
             {},
             VerificationResult(status="pass"),
         )
+
+
+def test_trading_calendar_covers_2027_holidays_and_blocks_uncovered_years():
+    from datetime import date
+
+    from daytrade_agent.calendar.trading_calendar import trading_status
+
+    # Covered 2027 statutory substitute holidays and XKRX closures
+    assert trading_status(date(2027, 1, 1)) == "closed"
+    assert trading_status(date(2027, 5, 3)) == "closed"
+    assert trading_status(date(2027, 7, 19)) == "closed"
+    assert trading_status(date(2027, 12, 27)) == "closed"
+    assert trading_status(date(2027, 12, 31)) == "closed"
+    # Covered 2027 ordinary trading weekdays (including late December beyond 1-year horizon)
+    assert trading_status(date(2027, 5, 4)) == "open"
+    assert trading_status(date(2027, 12, 1)) == "open"
+    # Uncovered future years remain fail-closed
+    assert trading_status(date(2028, 1, 4)) == "unknown"

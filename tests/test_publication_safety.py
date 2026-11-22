@@ -56,7 +56,7 @@ def test_calendar_closures(day):
 
 
 def test_calendar_unreviewed_year_is_unknown():
-    assert trading_status(datetime(2027, 1, 4).date()) == "unknown"
+    assert trading_status(datetime(2028, 1, 4).date()) == "unknown"
 
 
 def test_calendar_malformed_or_empty_yaml_fails_closed(tmp_path):

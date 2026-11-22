@@ -1,7 +1,7 @@
 # XKRX supplies ordinary public/substitute holidays and exchange year-end closure.
 # Explicit amendments absent from exchange-calendars 4.13.2:
-coverage_years: [2026]
-reviewed_on: 2026-10-25
+coverage_years: [2026, 2027]
+reviewed_on: 2026-11-22
 official_calendar_url: https://open.krx.co.kr/contents/MKD/01/0110/01100305/MKD01100305.jsp
 official_live_fetch_status: unavailable_403
 supporting_notices:
@@ -12,3 +12,7 @@ holidays:
     reason: 지방선거일
   - date: 2026-07-17
     reason: 제헌절
+  - date: 2027-05-03
+    reason: 노동절(근로자의 날) 대체공휴일 (공휴일에 관한 법률 개정)
+  - date: 2027-07-19
+    reason: 제헌절 대체공휴일 (공휴일에 관한 법률 개정)

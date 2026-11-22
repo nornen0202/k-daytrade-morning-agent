@@ -159,8 +159,15 @@ jobs:
           Write-Host "Resolved Codex binary: $resolvedBinary"
 
           $resolvedHome = $env:CODEX_HOME
-          if ([string]::IsNullOrWhiteSpace($resolvedHome) -and $resolvedBinary -like "*.codex\.sandbox-bin\codex.exe") {
-            $resolvedHome = Split-Path (Split-Path $resolvedBinary -Parent) -Parent
+          if ([string]::IsNullOrWhiteSpace($resolvedHome)) {
+            if ($resolvedBinary -like "*.codex\.sandbox-bin\codex.exe") {
+              $resolvedHome = Split-Path (Split-Path $resolvedBinary -Parent) -Parent
+            } else {
+              $defaultCodexHome = Join-Path $env:USERPROFILE ".codex"
+              if (Test-Path -LiteralPath $defaultCodexHome -PathType Container) {
+                $resolvedHome = $defaultCodexHome
+              }
+            }
           }
           if (-not [string]::IsNullOrWhiteSpace($resolvedHome)) {
             Add-Content -Path $env:GITHUB_ENV -Value "CODEX_HOME=$resolvedHome"
@@ -283,6 +290,8 @@ jobs:
             Write-Host "No report content changes."
           } else {
             git commit -m "chore: add daily report $env:REPORT_DATE"
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+            git pull --rebase --autostash origin main
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             git push
             if ($LASTEXITCODE) { exit $LASTEXITCODE }

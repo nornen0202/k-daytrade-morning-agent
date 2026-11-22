@@ -35,9 +35,11 @@ def load_holidays(path: Path) -> set[date]:
     return _holidays_from_config(_load_holidays_config(path))
 
 
-@lru_cache(maxsize=1)
-def _xkrx_calendar():
-    return exchange_calendars.get_calendar("XKRX")
+@lru_cache(maxsize=4)
+def _xkrx_calendar(end_year: int | None = None):
+    if end_year is None:
+        return exchange_calendars.get_calendar("XKRX")
+    return exchange_calendars.get_calendar("XKRX", end=f"{end_year}-12-31")
 
 
 def is_trading_day(value: date, holidays: set[date] | None = None) -> bool:
@@ -56,7 +58,9 @@ def trading_status(value: date, holidays: set[date] | None = None) -> str:
     if not is_weekday(value) or value in merged_holidays:
         return "closed"
     try:
-        return "open" if _xkrx_calendar().is_session(value.isoformat()) else "closed"
+        max_year = max((y for y in coverage_years if isinstance(y, int)), default=value.year)
+        cal = _xkrx_calendar(max(max_year, date.today().year + 1) + 1)
+        return "open" if cal.is_session(value.isoformat()) else "closed"
     except (ValueError, OverflowError):
         # Unknown calendar coverage must never become an assumed trading session.
         return "unknown"
