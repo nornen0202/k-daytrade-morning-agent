@@ -1,28 +1,36 @@
 (() => {
   const brief = document.getElementById("current-brief");
   const notice = document.getElementById("freshness-notice");
-  function expire() {
-    if (notice) {
-      const asOfMs = Date.parse(notice.dataset.asOf || "");
-      const date = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
-      });
-      if (!Number.isFinite(asOfMs) || date.format(new Date()) !== date.format(new Date(asOfMs))) {
-        if (brief) brief.hidden = true;
-        notice.textContent = "사이트 갱신이 지연됐습니다. 현재 유효한 장전 연구와 거래일 상태를 확인할 수 없습니다.";
-        return;
-      }
+  if (!notice) return;
+  const date = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  const asOfMs = Date.parse(notice.dataset.asOf || "");
+  const expiresMs = Date.parse(brief?.dataset.expires || "");
+  const cutoffMs = Date.parse(`${brief?.dataset.reportDate}T09:00:00+09:00`);
+  let timer;
+  function refresh() {
+    clearTimeout(timer);
+    const now = Date.now();
+    if (!Number.isFinite(asOfMs) || now < asOfMs || date.format(now) !== date.format(asOfMs)) {
+      if (brief) brief.hidden = true;
+      notice.textContent = "사이트 갱신 시각을 확인할 수 없습니다. 현재 유효한 장전 연구가 없습니다.";
+      return;
     }
     if (brief) {
-      const expiresMs = Date.parse(brief.dataset.expires || "");
-      if (!Number.isFinite(expiresMs) || Date.now() >= expiresMs) {
-        brief.hidden = true;
-        if (notice) {
-          notice.textContent = "장전 자료의 유효 기한이 지났습니다. 현재 유효한 장전 연구가 없습니다.";
-        }
-      }
+      const remaining = expiresMs - now;
+      const valid = expiresMs === cutoffMs && remaining > 0
+        && date.format(expiresMs) === date.format(asOfMs);
+      brief.hidden = !valid;
+      notice.textContent = valid
+        ? `현재 유효한 장전 연구: ${brief.dataset.reportDate}. 거래일.`
+        : "장전 자료의 유효 기한이 지났습니다. 현재 유효한 장전 연구가 없습니다.";
+      timer = setTimeout(refresh, valid ? Math.min(remaining, 60000) : 60000);
+    } else {
+      timer = setTimeout(refresh, 60000);
     }
   }
-  expire();
-  setInterval(expire, 60000);
+  refresh();
+  document.addEventListener("visibilitychange", refresh);
+  window.addEventListener("pageshow", refresh);
 })();

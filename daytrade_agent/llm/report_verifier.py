@@ -37,7 +37,12 @@ REF_PATTERN = re.compile(r"(source_id|data_key):\s*([A-Za-z0-9_-]+)")
 SYMBOL_PATTERN = re.compile(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])")
 NUMBER_PATTERN = re.compile(
     r"(?<![A-Za-z_\d])([+-]?\d[\d,]*(?:\.\d+)?)\s*"
-    r"((?:조|억|만|천)?\s*(?:원|달러|%|주|배|명|건|년|월|일|시|분|포인트|bp))?"
+    r"((?:조|억|만|천)?\s*(?:원|달러|%|주|배|명|건|년|월|일|시|분기|분|포인트|bp))?"
+)
+ISO_DATE_PATTERN = re.compile(
+    r"(?<![A-Za-z_\d-])\d{4}-\d{2}-\d{2}"
+    r"(?:[Tt ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:[Zz]|[+-]\d{2}:?\d{2})?)?"
+    r"(?![\d:-])"
 )
 PRICE_CONTEXT = re.compile(r"현재가|주가|시세|등락률|전일대비|거래대금|last_price|change_rate")
 PRICE_NUMBER = re.compile(r"[+-]?\d[\d,.]*\s*(?:원|%|달러)")
@@ -90,11 +95,16 @@ def _normalized(text: str) -> str:
     return re.sub(r"[\u200b-\u200f\ufeff]", "", unicodedata.normalize("NFKC", text))
 
 
-def _numbers(text: str) -> set[tuple[Decimal, str]]:
+def _numeric_claims(text: str) -> set[tuple[Decimal | str, str]]:
     text = REF_PATTERN.sub("", text)
     text = re.sub(r"https?://\S+", "", text)
-    return {(Decimal(number.replace(",", "")), re.sub(r"\s", "", unit))
-            for number, unit in NUMBER_PATTERN.findall(text)}
+    dates = {(stamp.replace(" ", "T").upper(), "iso_date")
+             for stamp in ISO_DATE_PATTERN.findall(text)}
+    # A timestamp can also support its own calendar date, but never its component numbers.
+    dates.update((stamp[:10], unit) for stamp, unit in tuple(dates))
+    numbers = NUMBER_PATTERN.findall(ISO_DATE_PATTERN.sub(" ", text))
+    return dates | {(Decimal(number.replace(",", "")), re.sub(r"\s", "", unit))
+                    for number, unit in numbers}
 
 
 def evidence_index(context: ReportContext) -> dict[tuple[str, str], str]:
@@ -193,7 +203,7 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
                 heading == "5줄 핵심 요약"
                 or heading in titles
                 or re.fullmatch(r"통합 관심 후보 Top \d+", heading)
-                or not _numbers(heading)
+                or not _numeric_claims(heading)
             ):
                 continue
         if text.startswith("> ") and text[2:] == (
@@ -206,22 +216,24 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
             continue
         if re.fullmatch(r"작성 경로: [A-Za-z ;_-]+", text):
             continue
-        if text.startswith("|") and not _numbers(text) and not refs:
+        if text.startswith("|") and not _numeric_claims(text) and not refs:
             continue
         if text in {"- 데이터 부족", "데이터 부족", "가격 확인 필요"}:
             continue
         if context.market_context.get("market_status") in {"closed", "unknown"}:
-            if not _numbers(text) and not refs:
+            if not _numeric_claims(text) and not refs:
                 continue
         if text == "이 리포트는 공개 데이터 기반 의사결정 보조 자료이며 투자 조언이 아닙니다.":
             continue
         if not refs:
-            label = "numeric material claim" if _numbers(text) else "material claim"
+            label = "numeric material claim" if _numeric_claims(text) else "material claim"
             errors.append(f"line {number}: {label} lacks source_id or data_key")
         else:
-            supported = set().union(*(_numbers(evidence.get(tuple(ref), "")) for ref in refs))
+            supported = set().union(*(
+                _numeric_claims(evidence.get(tuple(ref), "")) for ref in refs
+            ))
             supported |= {(Decimal(symbol), "") for symbol in known_symbols if symbol.isdigit()}
-            if _numbers(text) - supported:
+            if _numeric_claims(text) - supported:
                 errors.append(f"line {number}: numeric value or unit not present in cited evidence")
 
         quoted_subject = bool(PRICE_CONTEXT.search(text)) or any(

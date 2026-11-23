@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -67,7 +68,7 @@ def test_site_builder_creates_expected_pages(tmp_path):
 def test_site_builder_isolates_corrupt_report_and_handles_utc_timestamp(tmp_path):
     from datetime import UTC, timedelta
 
-    from daytrade_agent.render.site_builder import _publication_gate
+    from daytrade_agent.render.site_builder import apply_publication_gate
 
     config = AppConfig.load()
     config = AppConfig(
@@ -100,12 +101,14 @@ def test_site_builder_isolates_corrupt_report_and_handles_utc_timestamp(tmp_path
         source.source_url = "https://news.example.test/article"
     markdown = write_report_markdown(config, context, dry_run=True)
     verification = verify_report(context, markdown)
+    context.market_context.update(run_mode="live", market_status="open")
     summary = build_summary(context, markdown, verification.status)
-    summary["run_mode"] = "live"
     save_report(config.content_dir, "2026-04-27", markdown, summary, verification)
 
     build_site(config, now=generated_at.astimezone(UTC) + timedelta(minutes=5))
     assert (config.dist_dir / "reports" / "2026-04-28" / "index.html").exists()
+    home = config.dist_dir / "index.html"
+    assert 'data-report-date="2026-04-27" hidden' in home.read_text(encoding="utf-8")
     valid_report_html = (
         config.dist_dir / "reports" / "2026-04-27" / "index.html"
     ).read_text(encoding="utf-8")
@@ -119,5 +122,30 @@ def test_site_builder_isolates_corrupt_report_and_handles_utc_timestamp(tmp_path
         "markdown": markdown,
         "verification": verification.model_dump(),
     }
-    _publication_gate(report, generated_at.astimezone(UTC) + timedelta(minutes=5))
+    apply_publication_gate(report, generated_at.astimezone(UTC) + timedelta(minutes=5))
     assert report["valid"] and report["current"]
+
+    build_site(config, now=generated_at.replace(hour=9, minute=0))
+    assert 'id="current-brief"' not in home.read_text(encoding="utf-8")
+    assert "통합 관찰 후보 Top 3" not in home.read_text(encoding="utf-8")
+
+    forged = {**summary, "data_as_of": {"raw_response": "synthetic-private-field"}}
+    (config.content_dir / "2026-04-27" / "summary.json").write_text(
+        json.dumps(forged, ensure_ascii=False), encoding="utf-8",
+    )
+    build_site(config, now=generated_at.replace(hour=9, minute=0))
+    assert "synthetic-private-field" not in (
+        config.dist_dir / "reports" / "2026-04-27" / "index.html"
+    ).read_text(encoding="utf-8")
+
+    save_report(config.content_dir, "2026-04-27", markdown, summary,
+                verification.model_copy(update={"status": "fail"}))
+    build_site(config, now=generated_at + timedelta(minutes=5))
+    failed_html = (config.dist_dir / "reports" / "2026-04-27" / "index.html").read_text(
+        encoding="utf-8",
+    )
+    assert 'id="current-brief"' not in home.read_text(encoding="utf-8")
+    assert "Samsung Electronics" not in failed_html
+    assert "검증 실패 이유" in failed_html
+    state = json.loads((config.dist_dir / "status.json").read_text(encoding="utf-8"))
+    assert state["latest_attempt_kind"] == "notice"

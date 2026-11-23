@@ -4,6 +4,7 @@ from collections import defaultdict
 from datetime import datetime
 
 from daytrade_agent.config import AppConfig
+from daytrade_agent.normalizers.deduplicate import independent_events
 from daytrade_agent.normalizers.event_schema import Candidate, MarketEvent, PriceSnapshot
 from daytrade_agent.normalizers.freshness import temporal_status
 from daytrade_agent.normalizers.symbol_resolver import resolve_symbol_names
@@ -23,7 +24,7 @@ def score_candidates(
             event.published_at, generated_at, float(config.risk_rules.get("stale_hours", 48))
         ) != "ok":
             continue
-        for symbol in event.candidate_symbols:
+        for symbol in dict.fromkeys(event.candidate_symbols):
             events_by_symbol[symbol].append(event)
 
     snapshots_by_symbol = {
@@ -31,13 +32,14 @@ def score_candidates(
         if snapshot.data_status not in {"insufficient", "stale"}
         and temporal_status(snapshot.as_of, generated_at, 96) == "ok"
     }
-    names = resolve_symbol_names(events, price_snapshots)
+    names = resolve_symbol_names(events, price_snapshots, config.news_symbol_names)
     candidates: list[Candidate] = []
 
     for symbol, symbol_events in events_by_symbol.items():
         snapshot = snapshots_by_symbol.get(symbol)
+        unique_events = independent_events(symbol_events)
         flags = risk_flags_for(
-            symbol_events,
+            unique_events,
             snapshot,
             high_volatility_abs=float(
                 config.risk_rules.get("high_volatility_change_rate_abs", 8.0)
@@ -45,7 +47,7 @@ def score_candidates(
             low_source_quality_below=float(config.risk_rules.get("low_source_quality_below", 0.4)),
             low_confidence_below=float(config.risk_rules.get("low_confidence_below", 0.45)),
         )
-        detail = _score_detail(config, symbol_events, snapshot, generated_at)
+        detail = _score_detail(config, unique_events, snapshot, generated_at)
         total_score = (
             0.25 * detail["freshness_score"]
             + 0.25 * detail["materiality_score"]

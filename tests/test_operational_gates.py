@@ -7,6 +7,7 @@ import pytest
 from daytrade_agent import cli
 from daytrade_agent.collectors.base import CollectorResult
 from daytrade_agent.config import AppConfig
+from daytrade_agent.llm.report_writer import build_summary, verified_facts_markdown
 from daytrade_agent.normalizers.event_schema import VerificationResult
 from daytrade_agent.scoring.candidate_score import score_candidates
 from daytrade_agent.storage.report_store import save_report
@@ -111,8 +112,6 @@ def test_verify_command_fails_closed_when_summary_contains_unsafe_text(tmp_path)
     context = _context()
     config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
     markdown = "- Samsung Electronics(005930) 관찰 우선순위 - source_id: src_policy_001"
-    from daytrade_agent.llm.report_writer import build_summary
-
     summary = build_summary(context, markdown, "pass")
     summary["events"][0]["summary"] = "무조건 매수 추천 텍스트"
     save_report(
@@ -141,6 +140,74 @@ def test_verify_command_handles_malformed_summary_without_crashing(tmp_path):
         VerificationResult(status="pass"),
     )
     assert cli.verify_command(config, "2026-04-27") == 1
+    stored = cli.load_report(config.content_dir, "2026-04-27")
+    assert stored["verification"]["status"] == "fail"
+    assert stored["summary"]["candidates"] == []
+    assert "Broken" not in stored["markdown"]
+    assert cli.verify_command(config, "2026-04-27") == 1
+    assert cli.load_report(config.content_dir, "2026-04-27") == stored
+
+
+@pytest.mark.parametrize("crosses_during", ["collection", "writing"])
+def test_live_run_crossing_cutoff_saves_notice(monkeypatch, tmp_path, crosses_during):
+    context = _context()
+    premarket = context.generated_at.replace(hour=8, minute=59, second=59)
+    cutoff = context.generated_at.replace(hour=9, minute=0)
+    stamps = iter([premarket, cutoff] if crosses_during == "collection"
+                  else [premarket, premarket, cutoff])
+
+    class Clock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return next(stamps)
+
+    def write(config, context, **kwargs):
+        assert crosses_during == "writing"
+        return "- 합성 뉴스 source_id: src_policy_001"
+
+    monkeypatch.setattr(cli, "datetime", Clock)
+    monkeypatch.setattr(cli, "_collect_all", lambda *args, **kwargs: [CollectorResult(
+        events=context.events, sources=context.sources, price_snapshots=context.price_snapshots,
+    )])
+    monkeypatch.setattr(cli, "write_report_markdown", write)
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    assert cli.run_command(config, context.report_date, dry_run=False) == 0
+    summary = cli.load_report(config.content_dir, context.report_date)["summary"]
+    assert summary["market_context"]["market_status"] == "missed"
+    assert summary["events"] == summary["candidates"] == []
+
+
+def test_dry_run_cannot_overwrite_live_report(tmp_path):
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    day = "2026-04-27"
+    save_report(config.content_dir, day, "already published", {"run_mode": "live"},
+                VerificationResult(status="pass"))
+    assert cli.run_command(config, day, dry_run=True) == 2
+    assert cli.load_report(config.content_dir, day)["markdown"] == "already published"
+
+
+def test_late_retry_preserves_a_verified_premarket_archive(monkeypatch, tmp_path):
+    context = _context()
+    context.market_context.update(run_mode="live", market_status="open")
+    for index, source in enumerate(context.sources):
+        source.source_name = "Synthetic Publisher"
+        source.source_url = f"https://synthetic.example.test/article-{index}"
+
+    class Clock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return context.generated_at.replace(hour=9, minute=0)
+
+    config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
+    markdown = verified_facts_markdown(config, context)
+    result = cli.verify_report(context, markdown)
+    assert result.ok
+    save_report(config.content_dir, context.report_date, markdown,
+                build_summary(context, markdown, result.status), result)
+    before = cli.load_report(config.content_dir, context.report_date)
+    monkeypatch.setattr(cli, "datetime", Clock)
+    assert cli.run_command(config, context.report_date, dry_run=False) == 0
+    assert cli.load_report(config.content_dir, context.report_date) == before
 
 
 def test_public_store_rejects_password_credential(monkeypatch, tmp_path):
@@ -169,5 +236,6 @@ def test_trading_calendar_covers_2027_holidays_and_blocks_uncovered_years():
     # Covered 2027 ordinary trading weekdays (including late December beyond 1-year horizon)
     assert trading_status(date(2027, 5, 4)) == "open"
     assert trading_status(date(2027, 12, 1)) == "open"
+    assert trading_status(date(2027, 12, 30)) == "open"
     # Uncovered future years remain fail-closed
     assert trading_status(date(2028, 1, 4)) == "unknown"

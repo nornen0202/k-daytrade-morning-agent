@@ -13,10 +13,11 @@ def is_weekday(value: date) -> bool:
 
 
 def _load_holidays_config(path: Path) -> dict:
-    if not path.exists():
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            data = yaml.safe_load(file)
+    except (OSError, ValueError, yaml.YAMLError):
         return {}
-    with path.open("r", encoding="utf-8") as file:
-        data = yaml.safe_load(file)
     return data if isinstance(data, dict) else {}
 
 
@@ -36,10 +37,8 @@ def load_holidays(path: Path) -> set[date]:
 
 
 @lru_cache(maxsize=4)
-def _xkrx_calendar(end_year: int | None = None):
-    if end_year is None:
-        return exchange_calendars.get_calendar("XKRX")
-    return exchange_calendars.get_calendar("XKRX", end=f"{end_year}-12-31")
+def _xkrx_calendar(year: int):
+    return exchange_calendars.get_calendar("XKRX", start=f"{year}-01-01", end=f"{year}-12-31")
 
 
 def is_trading_day(value: date, holidays: set[date] | None = None) -> bool:
@@ -54,13 +53,14 @@ def trading_status(value: date, holidays: set[date] | None = None) -> str:
     coverage_years = config.get("coverage_years", [])
     if not isinstance(coverage_years, list) or value.year not in coverage_years:
         return "unknown"
-    merged_holidays = (holidays or set()) | _holidays_from_config(config)
-    if not is_weekday(value) or value in merged_holidays:
+    if not is_weekday(value) or value in (holidays or set()):
         return "closed"
     try:
-        max_year = max((y for y in coverage_years if isinstance(y, int)), default=value.year)
-        cal = _xkrx_calendar(max(max_year, date.today().year + 1) + 1)
-        return "open" if cal.is_session(value.isoformat()) else "closed"
+        if value in _holidays_from_config(config):
+            return "closed"
+        cal = _xkrx_calendar(value.year)
+        # is_session rejects holidays before the first session or after the last session.
+        return "open" if value.isoformat() in cal.sessions else "closed"
     except (ValueError, OverflowError):
         # Unknown calendar coverage must never become an assumed trading session.
         return "unknown"

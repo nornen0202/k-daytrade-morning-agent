@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from typing import Any
 
 from daytrade_agent.collectors.base import CollectorResult, read_fixture
@@ -13,21 +13,50 @@ from daytrade_agent.normalizers.event_schema import (
     stable_id,
 )
 
+FIXTURE_VARIANTS = ("standard", "no-quotes", "mixed-timestamps", "stale")
 
-def collect_mock(config: AppConfig, report_date: str, collected_at: datetime) -> CollectorResult:
+
+def collect_mock(
+    config: AppConfig, report_date: str, collected_at: datetime, *, variant: str = "standard",
+) -> CollectorResult:
+    if variant not in FIXTURE_VARIANTS:
+        raise ValueError(f"unknown fixture: {variant}")
     fixture = read_fixture(config.fixture_dir / "sample_events.json")
-    events = [_event_from_raw(item, collected_at) for item in fixture.get("events", [])]
+    anchor = date.fromisoformat(fixture["anchor_date"])
+    selected = date.fromisoformat(report_date)
+    delta = selected - anchor
+    if variant == "stale":
+        delta -= timedelta(days=7)
+
+    def shifted(raw: dict[str, Any], time_field: str) -> dict[str, Any]:
+        item = dict(raw)
+        value = parse_datetime(item.get(time_field))
+        if value is not None:
+            item[time_field] = (value + delta).isoformat()
+        for name in ("event_id", "data_key"):
+            if name in item:
+                item[name] = item[name].replace(anchor.strftime("%Y%m%d"),
+                                                selected.strftime("%Y%m%d"))
+        return item
+
+    events = [_event_from_raw(shifted(item, "published_at")) for item in fixture["events"]]
+    if variant == "mixed-timestamps":
+        for event, offset in zip(events, [timedelta(seconds=1), -timedelta(days=7)], strict=False):
+            event.published_at = collected_at + offset
     sources = [_source_from_event(event, collected_at) for event in events]
-    snapshots = [_snapshot_from_raw(item) for item in fixture.get("price_snapshots", [])]
-    market_context = fixture.get("market_context", {})
-    if not isinstance(market_context, dict):
-        market_context = {}
+    snapshots = []
+    market_context = {}
+    if variant != "no-quotes":
+        snapshots = [_snapshot_from_raw(shifted(item, "as_of"))
+                     for item in fixture["price_snapshots"]]
+        market_context = {key: shifted(item, "as_of")
+                          for key, item in fixture["market_context"].items()}
     return CollectorResult(
         events=events,
         sources=sources,
         price_snapshots=snapshots,
         market_context=market_context,
-        missing_data=[],
+        missing_data=["합성 fixture 시세 없음"] if variant == "no-quotes" else [],
     )
 
 
@@ -36,7 +65,7 @@ def collect_category_mock(
     category: str,
     collected_at: datetime,
 ) -> CollectorResult:
-    full = collect_mock(config, "mock", collected_at)
+    full = collect_mock(config, collected_at.date().isoformat(), collected_at)
     events = [event for event in full.events if event.category == category]
     source_ids = {event.source_id for event in events}
     sources = [source for source in full.sources if source.source_id in source_ids]
@@ -44,15 +73,14 @@ def collect_category_mock(
 
 
 def collect_mock_prices(config: AppConfig, collected_at: datetime) -> CollectorResult:
-    _ = collected_at
-    full = collect_mock(config, "mock", datetime.now().astimezone())
+    full = collect_mock(config, collected_at.date().isoformat(), collected_at)
     return CollectorResult(
         price_snapshots=full.price_snapshots,
         market_context=full.market_context,
     )
 
 
-def _event_from_raw(raw: dict[str, Any], collected_at: datetime) -> MarketEvent:
+def _event_from_raw(raw: dict[str, Any]) -> MarketEvent:
     source_id = str(raw.get("source_id") or stable_id("src", raw.get("title", "")))
     return MarketEvent(
         event_id=str(raw.get("event_id") or stable_id("evt", source_id, raw.get("title", ""))),

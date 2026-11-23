@@ -12,7 +12,9 @@ import requests
 from daytrade_agent.collectors.base import CollectorResult, insufficient_result, response_json
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.report_verifier import PUBLIC_REPLACEMENTS, sanitize_public_text
+from daytrade_agent.normalizers.deduplicate import deduplicate_events
 from daytrade_agent.normalizers.event_schema import MarketEvent, Source, parse_datetime, stable_id
+from daytrade_agent.normalizers.symbol_resolver import news_symbol_mentions
 
 _NAVER_ENDPOINT = "https://openapi.naver.com/v1/search/news.json"
 _NEWSAPI_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -43,6 +45,12 @@ def collect_news_category(
 
     merged = _merge_results(results, failure_reasons)
     if merged.events:
+        symbol_names = config.news_symbol_names
+        for event in merged.events:
+            event.candidate_symbols = sorted({
+                *event.candidate_symbols,
+                *news_symbol_mentions(event.title, event.summary, symbol_names),
+            })
         return merged
 
     reason = "; ".join(failure_reasons) if failure_reasons else "no news provider configured"
@@ -98,7 +106,7 @@ def _collect_rss(category: str, rss_urls: list[str], collected_at: datetime) -> 
                     provider="rss",
                     title=_strip_html(item.findtext("title") or "데이터 부족"),
                     summary=_strip_html(item.findtext("description") or "데이터 부족"),
-                    url=item.findtext("link") or url,
+                    url=item.findtext("link") or "",
                     published=_parse_pubdate(item.findtext("pubDate")),
                     collected_at=collected_at,
                     source_quality=0.55,
@@ -116,11 +124,8 @@ def _collect_rss(category: str, rss_urls: list[str], collected_at: datetime) -> 
             link_node = entry.find(f"{atom_ns}link")
             if link_node is None:
                 link_node = entry.find("link")
-            entry_url = (
-                (link_node.attrib.get("href") or link_node.text or url)
-                if link_node is not None
-                else url
-            )
+            entry_url = (link_node.attrib.get("href") or link_node.text or ""
+                         if link_node is not None else "")
             published = parse_datetime(pub_text) or _parse_pubdate(pub_text)
             event, source = _event_and_source(
                 category=category,
@@ -377,11 +382,15 @@ def _dedupe_result(
     *,
     missing_data: list[str] | None = None,
 ) -> CollectorResult:
-    by_event_id = {event.event_id: event for event in events}
-    by_source_id = {source.source_id: source for source in sources}
+    by_source_id: dict[str, Source] = {}
+    for source in sources:
+        previous = by_source_id.get(source.source_id)
+        if (previous is None or (source.published_at is not None, source.source_quality)
+                > (previous.published_at is not None, previous.source_quality)):
+            by_source_id[source.source_id] = source
     unique_missing = list(dict.fromkeys(missing_data or []))
     return CollectorResult(
-        events=list(by_event_id.values()),
+        events=deduplicate_events(events),
         sources=list(by_source_id.values()),
         missing_data=unique_missing,
     )

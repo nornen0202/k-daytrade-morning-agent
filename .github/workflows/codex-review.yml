@@ -5,19 +5,31 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   codex-review:
     runs-on: ubuntu-latest
     steps:
+      - name: Check optional review key
+        id: review-key
+        env:
+          REVIEW_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -n "$REVIEW_KEY" ]; then echo 'available=true' >> "$GITHUB_OUTPUT"; fi
       - uses: actions/checkout@v4
+        if: ${{ steps.review-key.outputs.available == 'true' }}
+        with:
+          persist-credentials: false
+          fetch-depth: 2
       - name: Codex code review
+        if: ${{ steps.review-key.outputs.available == 'true' }}
         uses: openai/codex-action@v1
         with:
-          mode: review
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          sandbox: read-only
           model: gpt-5.5
-          prompt: "Review this PR for correctness, security, tests, and publishing safety. Do not modify files."
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          prompt: "Review git diff HEAD^1 HEAD for correctness, security, tests, and publishing safety. Do not modify files."
+      - name: Log optional review status
+        if: ${{ steps.review-key.outputs.available != 'true' }}
+        run: echo 'Codex API review skipped because the repository review key is unavailable.'
 

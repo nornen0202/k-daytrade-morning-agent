@@ -16,14 +16,16 @@ pip install -e ".[dev]"
 
 Run dry report:
 
-```bash
-python -m daytrade_agent.cli run --dry-run --date 2026-04-27
+```powershell
+$env:DAYTRADE_CONTENT_DIR = '.runtime/dry-run/reports'
+$env:DAYTRADE_DIST_DIR = '.runtime/dry-run/dist'
+python -m daytrade_agent.cli run --dry-run --date 2026-11-20
 ```
 
 Verify:
 
 ```bash
-python -m daytrade_agent.cli verify --date 2026-04-27
+python -m daytrade_agent.cli verify --date 2026-11-20
 ```
 
 Build site:

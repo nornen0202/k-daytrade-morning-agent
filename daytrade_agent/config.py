@@ -74,6 +74,11 @@ class AppConfig:
         return value or None
 
     @property
+    def news_symbol_names(self) -> dict[str, str]:
+        names = self.data_sources.get("news", {}).get("symbol_names")
+        return names if isinstance(names, dict) else {}
+
+    @property
     def openai_model(self) -> str:
         default_model = (
             self.data_sources.get("openai", {}).get("default_model")
