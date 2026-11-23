@@ -151,3 +151,21 @@ def test_template_writer_redacts_candidate_price_news_and_passes_verifier():
     assert result.status == "pass", result.errors
     summary = build_summary(context, markdown, result.status)
     assert summary["key_changes"][0]["title"] == "가격 관련 보도 수치 생략. 가격 확인 필요."
+
+
+@pytest.mark.parametrize(("claim", "expected"), [
+    ("실적은 1분기 발표", "pass"),
+    ("실적은 1분 뒤 발표", "fail"),
+    ("실적은 2분기 발표", "fail"),
+    ("발표 기준일 2026-04-27", "pass"),
+    ("발표 기준일 2026-04-26", "fail"),
+    ("발표 시각 2026-04-27T07:10:00+09:00", "pass"),
+    ("발표 시각 2026-04-27T07:00:10+09:00", "fail"),
+    ("관심도 35", "fail"),
+])
+def test_temporal_tokens_cannot_supply_unrelated_numbers(claim, expected):
+    context = _context()
+    context.events[0].summary = "1분기 실적 발표"
+    assert verify_report(context, (
+        f"- {claim} source_id: src_policy_001 data_key: price_005930_20260427_0835"
+    )).status == expected

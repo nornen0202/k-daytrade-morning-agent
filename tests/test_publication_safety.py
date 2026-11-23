@@ -10,7 +10,7 @@ from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.report_verifier import verify_report
 from daytrade_agent.llm.report_writer import build_summary, verified_facts_markdown
 from daytrade_agent.normalizers.freshness import temporal_status
-from daytrade_agent.render.site_builder import _publication_gate
+from daytrade_agent.render.site_builder import apply_publication_gate
 from tests.test_report_verifier import _context
 
 
@@ -79,7 +79,7 @@ def test_failure_gate_never_offers_candidates():
         "report_date": "2026-10-23", "summary": {"candidates": [{"name": "sentinel"}]},
         "markdown": "sentinel", "verification": {"status": "fail", "errors": ["bad evidence"]},
     }
-    _publication_gate(report, datetime.now(ZoneInfo("Asia/Seoul")))
+    apply_publication_gate(report, datetime.now(ZoneInfo("Asia/Seoul")))
     assert not report["valid"]
     assert not report["current"]
 
@@ -100,6 +100,7 @@ def test_current_gate_expires_and_archives_remain_dated():
         source.source_name = "Evidence fixture"
         source.source_url = "https://news.example.test/article"
     context.market_context["run_mode"] = "live"
+    context.market_context["market_status"] = "open"
     markdown = verified_facts_markdown(AppConfig.load(), context)
     result = verify_report(context, markdown)
     assert result.status != "fail", result.errors
@@ -109,11 +110,11 @@ def test_current_gate_expires_and_archives_remain_dated():
         "report_date": context.report_date, "summary": summary, "markdown": markdown,
         "verification": result.model_dump(),
     }
-    _publication_gate(report, context.generated_at + timedelta(minutes=5))
+    apply_publication_gate(report, context.generated_at + timedelta(minutes=5))
     assert report["valid"] and report["current"]
-    _publication_gate(report, context.generated_at.replace(hour=9, minute=0))
+    apply_publication_gate(report, context.generated_at.replace(hour=9, minute=0))
     assert report["valid"] and not report["current"]
-    _publication_gate(report, context.generated_at + timedelta(days=1))
+    apply_publication_gate(report, context.generated_at + timedelta(days=1))
     assert not report["current"]
 
 

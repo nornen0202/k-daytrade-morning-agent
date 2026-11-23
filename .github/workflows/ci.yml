@@ -19,7 +19,11 @@ jobs:
       - name: Pytest
         run: pytest
       - name: Dry-run report
-        run: python -m daytrade_agent.cli run --dry-run --date 2026-04-27
+        env:
+          DAYTRADE_CONTENT_DIR: ${{ runner.temp }}/daytrade-fixture-reports
+        run: python -m daytrade_agent.cli run --dry-run --date 2026-11-20
       - name: Dry-run site build
+        env:
+          DAYTRADE_CONTENT_DIR: ${{ runner.temp }}/daytrade-fixture-reports
         run: python -m daytrade_agent.cli build-site
 

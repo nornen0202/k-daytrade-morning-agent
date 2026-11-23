@@ -7,7 +7,7 @@
     <p class="muted">
       생성 시각 {{ report.summary.generated_at|kst_display }} · 데이터 기준 시각 {{ report.summary.data_as_of|kst_display }}
     </p>
-    <p class="notice">{{ report.summary.disclaimer }}</p>
+    <p class="notice">{{ config.disclaimer }}</p>
     <div class="status {{ report.verification.status }}">검증 상태:
       {{ {"pass": "통과", "warning": "제한 있음", "fail": "실패"}[report.verification.status] }}</div>
     {% if report.verification.errors %}

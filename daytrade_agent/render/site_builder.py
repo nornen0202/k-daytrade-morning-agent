@@ -10,7 +10,12 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from daytrade_agent.calendar.trading_calendar import trading_status
 from daytrade_agent.config import AppConfig
-from daytrade_agent.llm.report_verifier import unsafe_public_text, verify_report
+from daytrade_agent.llm.report_verifier import (
+    sanitize_public_text,
+    unsafe_public_text,
+    verify_report,
+)
+from daytrade_agent.llm.report_writer import build_summary
 from daytrade_agent.normalizers.report_context import context_from_summary
 from daytrade_agent.render.markdown import markdown_to_html
 from daytrade_agent.storage.report_store import discover_reports
@@ -21,13 +26,13 @@ def build_site(config: AppConfig, *, now: datetime | None = None) -> list[Path]:
     now = (now or datetime.now(kst)).astimezone(kst)
     reports = discover_reports(config.content_dir)
     for report in reports:
-        _publication_gate(report, now)
+        apply_publication_gate(report, now)
     dist = config.dist_dir
     resolved = dist.resolve()
-    if (resolved == config.root.resolve()
-            or config.root.resolve().is_relative_to(resolved)
-            or config.content_dir.resolve().is_relative_to(resolved)
-            or config.private_artifacts_dir.resolve().is_relative_to(resolved)):
+    protected = (config.content_dir.resolve(), config.private_artifacts_dir.resolve())
+    if config.root.resolve().is_relative_to(resolved) or any(
+        path.is_relative_to(resolved) or resolved.is_relative_to(path) for path in protected
+    ):
         raise ValueError("site output overlaps source or private data")
     if dist.exists():
         shutil.rmtree(dist)
@@ -51,7 +56,9 @@ def build_site(config: AppConfig, *, now: datetime | None = None) -> list[Path]:
         "market_status": trading_status(now.date()),
         "latest_attempt": latest["report_date"] if latest else None,
         "latest_attempt_status": latest["verification"]["status"] if latest else None,
-        "latest_attempt_kind": latest["summary"].get("report_kind", "legacy") if latest else None,
+        "latest_attempt_kind": (
+            latest["summary"].get("report_kind", "legacy") if latest["valid"] else "notice"
+        ) if latest else None,
         "last_valid_research": valid["report_date"] if valid else None,
         "current_research": current["report_date"] if current else None,
         "expires_at": current["expires_at"] if current else None,
@@ -122,17 +129,22 @@ def _render(env: Environment, template_name: str, path: Path, **context: object)
     return path
 
 
-def _publication_gate(report: dict, now: datetime) -> None:
+def apply_publication_gate(report: dict, now: datetime) -> None:
     summary = report["summary"]
     report["valid"] = False
     report["current"] = False
     report["sources"] = []
     report["kind_label"] = "검증 실패"
     report["notice"] = "검증을 통과한 연구 내용이 없어 후보와 점수를 표시하지 않습니다."
-    if report["verification"].get("status") == "fail":
+    if report["verification"].get("status") not in ("pass", "warning"):
+        report["verification"] = {
+            "status": "fail", "errors": ["저장된 보고서의 근거 검증 실패"], "warnings": [],
+        }
         return
     try:
         context = context_from_summary(summary)
+        if context.report_date != report["report_date"]:
+            raise ValueError("report date mismatch")
         result = verify_report(context, report["markdown"])
         report["verification"] = result.model_dump()
         if result.status == "fail" or unsafe_public_text(
@@ -142,6 +154,8 @@ def _publication_gate(report: dict, now: datetime) -> None:
             report["verification"]["status"] = "fail"
             if not report["verification"]["errors"]:
                 report["verification"]["errors"] = ["공개 자료 안전성 검사 실패"]
+            report["verification"]["errors"] = [sanitize_public_text(error, mask_symbols=True)
+                                                for error in report["verification"]["errors"]]
             return
         if context.market_context.get("market_status") == "missed":
             report["kind_label"] = "장전 발행 지연"
@@ -158,21 +172,39 @@ def _publication_gate(report: dict, now: datetime) -> None:
         kst = ZoneInfo("Asia/Seoul")
         generated_kst = context.generated_at.astimezone(kst)
         now_kst = now.astimezone(kst)
-        if (not context.events or summary.get("run_mode") == "fixture"
+        generated_date = generated_kst.date()
+        matching_date = generated_date.isoformat() == report["report_date"]
+        expiry = datetime.combine(generated_date, time(9), kst)
+        if (summary.get("run_mode") == "fixture"
+                or context.market_context.get("run_mode") == "fixture"
                 or any("mock" in source.source_name.lower()
-                       or "example.com" in str(source.source_url) for source in context.sources)
-                or trading_status(generated_kst.date()) != "open"):
+                       or "example.com" in str(source.source_url) for source in context.sources)):
+            report["kind_label"] = "테스트 자료"
+            report["notice"] = "합성 테스트 자료입니다. 관찰 후보를 공개하지 않습니다."
+            return
+        calendar_status = trading_status(generated_date)
+        if calendar_status == "closed" and matching_date:
+            report["kind_label"] = report["notice"] = "휴장 안내"
+            return
+        if (not context.events
+                or not matching_date
+                or generated_kst >= expiry or generated_kst > now_kst
+                or calendar_status != "open"):
+            report["kind_label"] = "공개 제외"
             report["notice"] = "보관 기록입니다. 현재 장전 연구 자료로 제공하지 않습니다."
             return
         report["valid"] = True
         report["kind_label"] = "검증된 연구 · 보관"
-        expiry = datetime.combine(generated_kst.date(), time(9), kst)
         report["expires_at"] = expiry.isoformat()
         report["current"] = (
             summary.get("run_mode") == "live"
-            and generated_kst.date() == now_kst.date()
-            and generated_kst <= now_kst < expiry
+            and summary.get("report_kind") == "research"
+            and context.market_context.get("market_status") == "open"
+            and generated_date == now_kst.date()
+            and now_kst < expiry
         )
+        if report["current"]:
+            report["summary"] = build_summary(context, report["markdown"], result.status)
         report["notice"] = (
             "당시 자료를 보존한 기록입니다. 현재 시세·오늘의 브리핑으로 사용하지 마세요."
         )
@@ -182,6 +214,7 @@ def _publication_gate(report: dict, now: datetime) -> None:
             title=by_source.get(source.source_id, source.source_name)
         ) for source in context.sources if source.source_id in by_source]
     except (ValueError, KeyError, TypeError):
+        report["valid"] = report["current"] = False
         report["verification"] = {
             "status": "fail", "errors": ["보관 데이터 스키마 또는 근거 재검증 실패"], "warnings": []
         }

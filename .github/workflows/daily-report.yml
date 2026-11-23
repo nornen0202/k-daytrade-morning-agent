@@ -31,6 +31,9 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.ref == 'refs/heads/main' || inputs.model_probe }}
+    outputs:
+      source_sha: ${{ steps.commit.outputs.source_sha }}
     permissions:
       contents: write
     # Defaults to GitHub-hosted runners. Set repository variable REPORT_RUNS_ON to
@@ -83,17 +86,32 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
       - name: Resolve report date
+        id: timing
+        if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
         env:
           REQUESTED_DATE: ${{ inputs.date }}
         run: |
-          $reportDate = $env:REQUESTED_DATE
-          if ([string]::IsNullOrWhiteSpace($reportDate)) {
-            $reportDate = python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Seoul')).date().isoformat())"
-          }
+          $reportDate, $preMarket = @'
+          import os
+          from datetime import date, datetime
+          from zoneinfo import ZoneInfo
+          from daytrade_agent.calendar.trading_calendar import trading_status
+
+          now = datetime.now(ZoneInfo('Asia/Seoul'))
+          requested = os.environ.get('REQUESTED_DATE', '').strip()
+          selected = date.fromisoformat(requested) if requested else now.date()
+          if selected != now.date():
+              raise SystemExit('Live collection requires the current KST date')
+          print(selected.isoformat())
+          print(str(now.hour < 9 and trading_status(selected) == 'open').lower())
+          '@ | python -
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           Add-Content -Path $env:GITHUB_ENV -Value "REPORT_DATE=$reportDate"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "pre_market=$preMarket"
           Write-Host "REPORT_DATE=$reportDate"
 
       - name: Resolve Codex runtime
+        if: ${{ inputs.model_probe || steps.timing.outputs.pre_market == 'true' }}
         run: |
           if ($env:REPORT_LLM_PROVIDER -ne "codex") {
             Write-Host "REPORT_LLM_PROVIDER=$env:REPORT_LLM_PROVIDER; skipping Codex runtime resolution."
@@ -175,6 +193,7 @@ jobs:
           }
 
       - name: Verify Codex login and model availability
+        if: ${{ inputs.model_probe || steps.timing.outputs.pre_market == 'true' }}
         run: |
           if ($env:REPORT_LLM_PROVIDER -ne "codex") {
             Write-Host "REPORT_LLM_PROVIDER=$env:REPORT_LLM_PROVIDER; skipping Codex preflight."
@@ -269,42 +288,43 @@ jobs:
 
       - name: Verify report
         if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
-        continue-on-error: true
         run: |
           python -m daytrade_agent.cli verify --date "$env:REPORT_DATE"
-
-      - name: Build site
-        if: ${{ !inputs.model_probe }}
-        run: |
-          python -m daytrade_agent.cli build-site
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          if ($LASTEXITCODE -gt 1) { exit $LASTEXITCODE }
+          if ($LASTEXITCODE -eq 1) { Write-Warning 'Evidence verification failed; publishing the failure notice.' }
+          exit 0
 
       - name: Commit report content
-        if: ${{ !inputs.rebuild_only && !inputs.model_probe }}
+        id: commit
+        if: ${{ !inputs.model_probe }}
+        env:
+          REBUILD_ONLY: ${{ inputs.rebuild_only }}
         run: |
+          if ($env:REBUILD_ONLY -eq 'true') {
+            Add-Content -Path $env:GITHUB_OUTPUT -Value "source_sha=$(git rev-parse HEAD)"
+            exit 0
+          }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/reports
+          git add -- "content/reports/$env:REPORT_DATE/report.md" "content/reports/$env:REPORT_DATE/summary.json" "content/reports/$env:REPORT_DATE/verification.json"
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           git diff --cached --quiet
-          if ($LASTEXITCODE -eq 0) {
+          $diffExit = $LASTEXITCODE
+          if ($diffExit -gt 1) { exit $diffExit }
+          if ($diffExit -eq 0) {
             Write-Host "No report content changes."
           } else {
             git commit -m "chore: add daily report $env:REPORT_DATE"
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
-            git pull --rebase --autostash origin main
-            if ($LASTEXITCODE) { exit $LASTEXITCODE }
-            git push
+            for ($attempt = 0; $attempt -lt 2; $attempt++) {
+              git pull --rebase --autostash origin main
+              if ($LASTEXITCODE) { exit $LASTEXITCODE }
+              git push origin HEAD:main
+              if ($LASTEXITCODE -eq 0) { break }
+            }
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
           }
-
-      - name: Upload verified site files
-        if: ${{ !inputs.model_probe }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: verified-site
-          path: dist
-          if-no-files-found: error
-          retention-days: 1
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "source_sha=$(git rev-parse HEAD)"
 
       - name: Remove temporary Codex credentials
         if: always()
@@ -327,10 +347,17 @@ jobs:
       contents: read
       pages: read
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v4
         with:
-          name: verified-site
-          path: dist
+          ref: ${{ needs.build.outputs.source_sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python -m pip install -e .
+      - name: Build site at packaging time
+        run: python -m daytrade_agent.cli build-site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

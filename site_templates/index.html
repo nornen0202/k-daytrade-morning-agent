@@ -5,8 +5,8 @@
 <section class="band">
   <h2>발행 현황</h2>
   <p class="muted">사이트 갱신 {{ state.as_of|kst_display }}</p>
-  <p class="notice" id="freshness-notice" data-as-of="{{ state.as_of }}">현재 유효한 장전 연구:
-    {{ current.report_date if current else "없음" }}.
+  <p class="notice" id="freshness-notice" data-as-of="{{ state.as_of }}">{% if current %}현재 장전 연구 유효 시간 확인 필요.
+    {% else %}현재 유효한 장전 연구: 없음. {% endif %}
     {{ {"closed": "휴장일", "open": "거래일", "unknown": "거래일 확인 필요"}[state.market_status] }}.</p>
   <dl class="context-grid">
     <div><dt>마지막 생성 기록</dt><dd>{% if latest %}
@@ -20,7 +20,7 @@
      장전 자료의 유효 기한은 해당 거래일 정규장 시작 전까지입니다.</p>
 </section>
 {% if current %}
-<div id="current-brief" data-expires="{{ current.expires_at }}">
+<div id="current-brief" data-expires="{{ current.expires_at }}" data-report-date="{{ current.report_date }}" hidden>
   <section class="band">
     <h2>{{ current.report_date }} 확인된 핵심 변화</h2>
     <ul class="brief-list">{% for event in current.summary.key_changes or [] %}

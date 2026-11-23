@@ -22,11 +22,13 @@ python -m pip install -e ".[dev]"
 
 ## 로컬 dry-run
 
-API 키 없이 fixture/mock 데이터만 사용합니다.
+API 키 없이 합성 fixture를 사용합니다. 기존 운영 기록과 구분된 경로를 지정하세요.
 
 ```powershell
-python -m daytrade_agent.cli run --dry-run --date 2026-04-27
-python -m daytrade_agent.cli verify --date 2026-04-27
+$env:DAYTRADE_CONTENT_DIR = '.runtime/dry-run/reports'
+$env:DAYTRADE_DIST_DIR = '.runtime/dry-run/dist'
+python -m daytrade_agent.cli run --dry-run --date 2026-11-20 --fixture standard
+python -m daytrade_agent.cli verify --date 2026-11-20
 python -m daytrade_agent.cli build-site
 ```
 
@@ -38,6 +40,9 @@ python -m daytrade_agent.cli build-site
 - `dist/`
 
 비공개 디버그 파일은 `private_artifacts/`에만 저장되며 gitignore 대상입니다.
+`--fixture`는 `standard`(기본), `no-quotes`, `mixed-timestamps`, `stale`을 지원합니다.
+데이터 시각은 선택한 거래일 08:45 KST를 기준으로 이동합니다. 휴장·미검토일에는 안내만 생성합니다.
+dry-run은 기존 실수집 보고서를 덮어쓰지 않습니다. 같은 경로에서 다음 사례를 실행하면 해당 fixture 날짜가 갱신됩니다.
 
 ## GitHub Secrets
 
@@ -94,28 +99,30 @@ API용 `OPENAI_REPORT_MODEL` 및 선택 PR 리뷰 workflow는 이 Codex 로그�
 남깁니다. 이 모드에서는 리포트 커밋·Pages 배포를 하지 않으며 summary에 실제 모델·fallback·검증
 상태만 표시합니다. Codex 자식 프로세스에는 수집 API 키나 OPENAI_API_KEY를 전달하지 않습니다.
 
-Windows build는 일반 artifact로 `dist/`만 전달합니다. Ubuntu package job이
-`download-artifact → configure-pages → upload-pages-artifact`를 수행하고 deploy job이 게시합니다.
+보고서 job은 현재 날짜의 검증된 연구 또는 안내를 커밋합니다. Ubuntu package job은 해당 커밋을
+체크아웃해 패키징 시각에 보고서를 재검증하고 `dist/`를 만든 뒤, deploy job이 Pages에 게시합니다.
 Windows 서비스 PATH의 Git Bash에 의존하지 않습니다. 기존 cron은 유지합니다.
 GitHub schedule은 지연될 수 있으며 08:45 도착을 보장하지 않습니다. 09:00 이후 생성된 기록은
 장전 마감 준수로 집계하지 않습니다.
 거래일 09:00 이후 실행되면 추가 수집·LLM 호출 없이 발행 지연 안내만 생성합니다.
-이 상태는 새 연구 생성 성공으로 집계하지 않습니다.
+수집·작성 중 09:00을 넘겨도 지연 안내로 전환합니다. 같은 날짜의 검증된 장전 기록이 이미 있으면
+지연 재시도에서 아카이브로 보존합니다. 이 경우 새 연구 생성 성공으로 집계하지 않습니다.
 
 수동 실행의 `rebuild_only=true`는 수집·원고·과거 기록을 변경하지 않고 사이트만 복구합니다.
 실수집은 현재 KST 날짜만 허용합니다. 과거 날짜 테스트에는 `--dry-run`을 사용하세요.
 
-검증 실패 시에도 Pages 배포는 계속됩니다. 이 경우 상세 페이지는 데이터 검증 실패 리포트를
-표시하고 실패 이유를 공개합니다.
+근거 검증 실패를 안내 파일로 저장한 경우 Pages 배포를 계속합니다. 파일 누락이나 저장 오류로
+검증을 완료하지 못하면 작업을 실패로 처리합니다. 검증 실패 상세 페이지에는 후보 없이 상태와 이유를 표시합니다.
+선택적 Codex API PR 리뷰는 리포지토리 리뷰 키가 있을 때만 실행됩니다.
 
 ## 휴장일 설정
 
 거래일은 `exchange-calendars`의 XKRX와 `config/holidays_kr.yml`의 검토된 변경일을 합칩니다.
 2026년 지방선거·제헌절 변경을 반영했습니다. 예제 달력은 운영 근거로 사용하지 않습니다.
 검토 범위 밖 연도는 `unknown`으로 처리하고 수집·후보 생성을 하지 않습니다.
-연말 전에 KRX 공지와 대조하고 coverage_years를 갱신해야 합니다.
-공식 KRX 페이지는 2026-10-25 직접 조회에서 403이었으므로 공식 실시간 달력 API로
-표현하지 않습니다. 참고 공지 URL과 한계는 설정 파일에 기록돼 있습니다.
+2027년 5월 3일과 7월 19일은 우주항공청 월력요항에 명시된 대체공휴일이며 XKRX 4.13.2에
+누락되어 변경일로 반영했습니다. 2027년 연말 휴장은 KRX 일반 휴장 규정을 적용한 일정입니다.
+거래소의 연간 운영 공지와 임시 휴장을 추후 대조해야 합니다. 근거 URL은 설정 파일에 기록돼 있습니다.
 휴장일에는 외부 수집기를 호출하지 않고 `Market Closed Note`를 생성합니다.
 
 ## 데이터 소스
@@ -129,7 +136,8 @@ GitHub schedule은 지연될 수 있으며 08:45 도착을 보장하지 않습�
 데이터가 없거나 오래되면 값을 만들지 않고 `insufficient` 상태와 "데이터 부족" 문구를 사용합니다.
 
 뉴스 수집은 `NEWS_RSS_URLS`, Naver Search News, NewsAPI.org, Alpha Vantage, yfinance를
-순서대로 시도하고 provider별 결과를 dedupe합니다. TradingAgents처럼 yfinance는 키 없이 쓰는
+순서대로 시도합니다. 설정의 회사명을 뉴스에 명시한 경우 KRX 코드에 연결합니다. 같은 기사 제목이나
+원문 주소는 후보 점수에서 한 번 반영하며 관련 출처 ID는 보존합니다. yfinance는 키 없이 쓰는
 보조 provider로 남겨두고, 한국어 뉴스 적합성이 높은 Naver Search API와 NewsAPI.org를 우선
 사용합니다. 시세는 `QUOTE_PROVIDER_URL`이 있으면 우선 사용하고, 없으면 yfinance quote fallback을
 사용합니다.
@@ -139,8 +147,6 @@ GitHub schedule은 지연될 수 있으며 08:45 도착을 보장하지 않습�
 ```powershell
 ruff check .
 pytest
-python -m daytrade_agent.cli run --dry-run --date 2026-04-27
-python -m daytrade_agent.cli build-site
 ```
 
 ## 검증 정책
@@ -152,14 +158,16 @@ provider 응답, secret, 개인 자산 정보, 포트폴리오 비중을 포함�
 quote provider의 시장 문맥은 정해진 지표 스키마만 허용합니다.
 
 수치와 단위가 인용된 이벤트/시세와 일치해야 합니다. 가격에는 스냅샷 ID와 기준 시각을
-요구합니다. 미래·시각 불명·48시간 초과 뉴스는 순위에서 제외합니다. 지연 정규장 시세는
+요구합니다. ISO 날짜와 시각은 통째로 검증하며 `1분기`와 `1분`을 구별합니다.
+미래·시각 불명·48시간 초과 뉴스는 순위에서 제외합니다. 지연 정규장 시세는
 주말을 감안해 최대 96시간 이내만 참고하고 장전 예상체결로 표현하지 않습니다.
 OpenDART list가 접수일만 주면 시각을 생성하지 않으며 공시를 순위에서 제외합니다.
 LLM 원고 실패 시 같은 입력의 결정적 facts writer를 독립 검증하고 이것도 실패하면 공지만 게시합니다.
 실패 공지에는 후보·점수를 싣지 않습니다. 사이트 빌드에서도 기존 통과 원고를 재검증합니다.
 홈과 `status.json`은 마지막 생성, 마지막 검증 연구, 현재 유효 연구를 구별합니다.
-날짜가 맞고 09:00 전일 때만 현재 후보를 표시하며 브라우저에서도 만료를 적용합니다.
-fixture 리포트는 실시간 연구로 표시하지 않습니다.
+거래일 09:00 KST 전에 만든 검증된 장전 연구만 홈에서 활성화됩니다. 09:00 이후 패키징한 홈에는
+후보 HTML이 생성되지 않습니다. 먼저 패키징한 페이지는 접속 시각 확인 뒤 후보를 표시하고 정각에 숨깁니다.
+검증된 과거 연구는 날짜가 붙은 상세 페이지에서 열 수 있습니다. 합성 fixture는 후보를 공개하지 않습니다.
 
 ## 운영 책임과 확인
 

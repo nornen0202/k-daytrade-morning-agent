@@ -15,6 +15,13 @@ news:
     - alpha_vantage
     - yfinance
   alpha_vantage_endpoint: https://www.alphavantage.co/query
+  # Exact, unambiguous company names used to link Korean news to known KRX codes.
+  symbol_names:
+    "005930": 삼성전자
+    "000660": SK하이닉스
+    "039030": 이오테크닉스
+    "277810": 레인보우로보틱스
+    "042700": 한미반도체
   yfinance_tickers:
     political_theme:
       - "005930.KS"
