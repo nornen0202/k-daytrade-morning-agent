@@ -56,9 +56,7 @@ def build_site(config: AppConfig, *, now: datetime | None = None) -> list[Path]:
         "market_status": trading_status(now.date()),
         "latest_attempt": latest["report_date"] if latest else None,
         "latest_attempt_status": latest["verification"]["status"] if latest else None,
-        "latest_attempt_kind": (
-            latest["summary"].get("report_kind", "legacy") if latest["valid"] else "notice"
-        ) if latest else None,
+        "latest_attempt_kind": latest["public_kind"] if latest else None,
         "last_valid_research": valid["report_date"] if valid else None,
         "current_research": current["report_date"] if current else None,
         "expires_at": current["expires_at"] if current else None,
@@ -134,6 +132,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
     report["valid"] = False
     report["current"] = False
     report["sources"] = []
+    report["public_kind"] = "notice"
     report["kind_label"] = "검증 실패"
     report["notice"] = "검증을 통과한 연구 내용이 없어 후보와 점수를 표시하지 않습니다."
     if report["verification"].get("status") not in ("pass", "warning"):
@@ -194,6 +193,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
             report["notice"] = "보관 기록입니다. 현재 장전 연구 자료로 제공하지 않습니다."
             return
         report["valid"] = True
+        report["public_kind"] = "research" if summary.get("run_mode") == "live" else "legacy"
         report["kind_label"] = "검증된 연구 · 보관"
         report["expires_at"] = expiry.isoformat()
         report["current"] = (
@@ -203,8 +203,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
             and generated_date == now_kst.date()
             and now_kst < expiry
         )
-        if report["current"]:
-            report["summary"] = build_summary(context, report["markdown"], result.status)
+        report["summary"] = build_summary(context, report["markdown"], result.status)
         report["notice"] = (
             "당시 자료를 보존한 기록입니다. 현재 시세·오늘의 브리핑으로 사용하지 마세요."
         )
@@ -215,6 +214,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
         ) for source in context.sources if source.source_id in by_source]
     except (ValueError, KeyError, TypeError):
         report["valid"] = report["current"] = False
+        report["public_kind"] = "notice"
         report["verification"] = {
             "status": "fail", "errors": ["보관 데이터 스키마 또는 근거 재검증 실패"], "warnings": []
         }
