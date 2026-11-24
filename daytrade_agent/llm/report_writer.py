@@ -3,10 +3,10 @@ from __future__ import annotations
 import json
 from collections import Counter
 from datetime import datetime
-from zoneinfo import ZoneInfo
 
 from openai import OpenAI
 
+from daytrade_agent.calendar.trading_calendar import SEOUL, premarket_cutoff
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.codex_app_server import CodexAppServerSession
 from daytrade_agent.llm.prompt_builder import build_prompt
@@ -65,6 +65,7 @@ def build_summary(
     verification_status: str,
 ) -> dict[str, object]:
     publishable = verification_status != "fail" and bool(context.events)
+    generated_kst = context.generated_at.astimezone(SEOUL)
     return {
         "report_date": context.report_date,
         "generated_at": context.generated_at.isoformat(),
@@ -76,7 +77,9 @@ def build_summary(
         "metrics": {
             "category_events": dict(Counter(event.category for event in context.events)),
             "grounded_candidates": len(context.candidates) if publishable else 0,
-            "premarket_on_time": context.generated_at.astimezone(ZoneInfo("Asia/Seoul")).hour < 9,
+            "premarket_on_time": publishable and generated_kst < premarket_cutoff(
+                generated_kst.date()
+            ),
             "writer_fallback": context.market_context.get("writer_fallback", False),
             "writer_provider": context.market_context.get("writer_provider"),
             "writer_model": context.market_context.get("writer_model"),

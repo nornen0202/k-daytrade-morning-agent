@@ -30,7 +30,7 @@ class AppConfig:
 
     @classmethod
     def load(cls, root: Path | None = None) -> AppConfig:
-        load_dotenv()
+        load_dotenv(os.getenv("DAYTRADE_ENV_FILE") or None)
         base = project_root(root)
         app = _load_yaml(base / "config" / "app.yml")
         return cls(

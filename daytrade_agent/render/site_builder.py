@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import json
 import shutil
-from datetime import datetime, time
+from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from daytrade_agent.calendar.trading_calendar import trading_status
+from daytrade_agent.calendar.trading_calendar import premarket_cutoff, trading_status
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.report_verifier import (
     sanitize_public_text,
@@ -173,7 +173,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
         now_kst = now.astimezone(kst)
         generated_date = generated_kst.date()
         matching_date = generated_date.isoformat() == report["report_date"]
-        expiry = datetime.combine(generated_date, time(9), kst)
+        expiry = premarket_cutoff(generated_date)
         if (summary.get("run_mode") == "fixture"
                 or context.market_context.get("run_mode") == "fixture"
                 or any("mock" in source.source_name.lower()

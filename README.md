@@ -68,7 +68,7 @@ Codex 실행 환경이 없으면 템플릿 작성기로 안전하게 fallback합
 
 1. Repository Settings에서 Pages source를 GitHub Actions로 설정합니다.
 2. 위 Secrets를 필요한 만큼 등록합니다.
-3. `.github/workflows/daily-report.yml`가 `dist/`를 Pages artifact로 업로드하고 배포합니다.
+3. `.github/workflows/morning-report.yml`가 선택된 커밋의 `dist/`를 Pages 아티팩트로 업로드하고 배포합니다.
 4. Actions 권한은 repository Settings에서 "Read and write permissions"가 허용되어야 `content/reports` 커밋이 가능합니다.
 
 Private repository에서 Pages가 막히는 플랜이면 GitHub API가 Pages 설정을 거부할 수 있습니다. 이 경우
@@ -76,14 +76,14 @@ Private repository에서 Pages가 막히는 플랜이면 GitHub API가 Pages 설
 
 ## Daily workflow
 
-GitHub Actions cron은 기본적으로 UTC입니다. KST 평일 08:45 실행을 위해 fallback cron은
-`45 23 * * 0-4`입니다. 수동 실행은 `workflow_dispatch`로 지원하며 날짜 입력을 받을 수
-있습니다.
+Windows 작업 스케줄러가 평일 08:45 Asia/Seoul에 전용 체크아웃에서 수집을 직접 시작합니다.
+09:00과 09:05에는 장전 결과가 없는 경우 지연 안내를 선택하거나 앞선 Git 푸시를 복구합니다.
+기존 GitHub cron `45 23 * * 0-4`는 보조 수집 경로입니다. 두 시작 경로는 동일한 XKRX
+거래일 판정과 수집·검증 코드로 진입합니다. 주말에는 건너뛰고 평일 휴장에는 수집 없이 안내를 생성합니다.
 
-`daily-report.yml`의 기본 리포트 생성 job은 `ubuntu-latest`에서 실행되어 self-hosted runner가
-없어도 Pages 배포까지 진행됩니다. `REPORT_LLM_PROVIDER=codex`이고 runner에 Codex CLI와 로그인이
-준비되어 있으면 `codex app-server` preflight 후 `gpt-6.1-sol` 모델로 리포트를 생성합니다. Codex
-binary/login/model 접근이 불가능한 환경에서는 템플릿 작성기로 fallback해 배포를 계속합니다.
+GitHub 보조 수집 job의 기본 runner는 `ubuntu-latest`입니다. `REPORT_LLM_PROVIDER=codex`이고
+Codex CLI, 로그인, 모델 접근이 준비되어 있으면 작성기가 `codex app-server`를 사용합니다.
+작성 환경이 없으면 템플릿 작성기로 전환합니다.
 
 이 저장소는 현재 `REPORT_RUNS_ON=["self-hosted","Windows","X64","codex","k-daytrade"]`
 변수로 전용 Windows runner를 선택합니다. `CODEX_BINARY`는 실제 실행 가능한 CLI 경로,
@@ -99,21 +99,53 @@ API용 `OPENAI_REPORT_MODEL` 및 선택 PR 리뷰 workflow는 이 Codex 로그�
 남깁니다. 이 모드에서는 리포트 커밋·Pages 배포를 하지 않으며 summary에 실제 모델·fallback·검증
 상태만 표시합니다. Codex 자식 프로세스에는 수집 API 키나 OPENAI_API_KEY를 전달하지 않습니다.
 
-보고서 job은 현재 날짜의 검증된 연구 또는 안내를 커밋합니다. Ubuntu package job은 해당 커밋을
-체크아웃해 패키징 시각에 보고서를 재검증하고 `dist/`를 만든 뒤, deploy job이 Pages에 게시합니다.
-Windows 서비스 PATH의 Git Bash에 의존하지 않습니다. 기존 cron은 유지합니다.
-GitHub schedule은 지연될 수 있으며 08:45 도착을 보장하지 않습니다. 09:00 이후 생성된 기록은
-장전 마감 준수로 집계하지 않습니다.
-거래일 09:00 이후 실행되면 추가 수집·LLM 호출 없이 발행 지연 안내만 생성합니다.
-수집·작성 중 09:00을 넘겨도 지연 안내로 전환합니다. 같은 날짜의 검증된 장전 기록이 이미 있으면
-지연 재시도에서 아카이브로 보존합니다. 이 경우 새 연구 생성 성공으로 집계하지 않습니다.
+수집 결과는 각 실행 경로의 `private_artifacts/morning/`에 저장합니다. 두 경로는 같은
+`main` HEAD를 조건으로 보고서 파일 3개와 `content/publication/morning.json`을 한 커밋에서
+갱신합니다. 경쟁하거나 Git 푸시 응답을 잃으면 원격 상태를 재조회합니다. 날짜별 결과는 한 번
+선택되며, 늦은 안내가 선택된 연구를 바꾸거나 이전 날짜가 최신 포인터를 되돌릴 수 없습니다.
 
-수동 실행의 `rebuild_only=true`는 수집·원고·과거 기록을 변경하지 않고 사이트만 복구합니다.
-실수집은 현재 KST 날짜만 허용합니다. 과거 날짜 테스트에는 `--dry-run`을 사용하세요.
+09:00 전에 검증과 결과 선택을 마친 연구만 장전 대상입니다. 검증된 장전 연구가 없으면 재시도할
+수 있으며, 09:00부터는 수집기와 작성기를 호출하지 않고 기존 지연 안내를 사용합니다.
+사이트가 09:00부터 홈의 당일 후보를 숨기는 기존 정책은 계속 적용됩니다. 실수집은 현재 KST
+날짜만 허용합니다. 과거 날짜 테스트에는 `--dry-run`을 사용하세요.
 
-근거 검증 실패를 안내 파일로 저장한 경우 Pages 배포를 계속합니다. 파일 누락이나 저장 오류로
-검증을 완료하지 못하면 작업을 실패로 처리합니다. 검증 실패 상세 페이지에는 후보 없이 상태와 이유를 표시합니다.
+Windows의 결과 커밋 푸시가 Pages workflow를 시작합니다. GitHub의 예약 수집은 같은 실행에서
+Pages 단계로 이어집니다. Ubuntu job은 최신 선택 커밋을 체크아웃하고 패키징 시점에 재검증합니다.
+`dist/publication.json`은 선택 커밋 SHA와 보고서 SHA-256을 노출합니다.
+`daytrade-pages-receipts` 브랜치는 시도별 아티팩트 ID·다이제스트, Pages 배포 버전·ID,
+관측 시각과 성공 여부를 Git 이력으로 보존합니다. `confirmed_before_cutoff`는 09:00 전에
+당일 Pages 성공을 실제로 조회한 경우에만 참이며, 별도로 공개 URL도 대조할 수 있습니다.
+
+`rebuild_only=true`는 미완료 Pages 배포를 복구합니다. 성공 영수증이 있는 결과는 그대로 유지합니다.
+Pages 응답이 소실되면 기록된 배포 버전을 조회합니다. 공급자가 명시적으로 실패를 확정하면 새 버전으로
+재시도할 수 있습니다. 조회에서 빈 상태나 404만 반환되면 해당 요청이 적용됐는지 확인할 수 없으므로
+새 POST를 보내지 않습니다. 이 경우 기존 버전의 Pages 상태를 다시 확인하고 해소된 뒤 workflow를 재실행하세요.
 선택적 Codex API PR 리뷰는 리포지토리 리뷰 키가 있을 때만 실행됩니다.
+
+### Windows 등록 및 전환
+
+전용 설치 경로에서 checkout과 Python 3.12 가상환경을 준비하고 `python -m pip install -e .`를
+실행합니다. 수집 API 환경 파일은 기존 Daytrade 전용 비공개 파일을 재사용합니다. 등록은 비활성 상태에서
+시작하며 현재 Windows 사용자, KST 고정 오프셋 및 기존 단일 작업 ID를 사용합니다.
+
+```powershell
+.\scripts\Set-MorningReportTask.ps1 -Mode RegisterDisabled -Checkout $checkout -Python $python -EnvironmentFile $privateEnv
+.\scripts\Set-MorningReportTask.ps1 -Mode Status
+```
+
+등록 계정은 로그온 상태여야 합니다. 잠금 화면에서는 실행할 수 있습니다. 등록 계정은 GitHub에
+대한 비대화식 Git 인증과 푸시·workflow 실행 권한도 갖춰야 합니다. Task Scheduler의 기록과
+`private_artifacts/morning/logs/windows-YYYY-MM-DD.log`에서 실제 시작 시각을 확인하세요.
+
+1. 거래일 정규 발행이 끝난 뒤 기존 `daily-report.yml` workflow를 비활성화하고 진행·대기 중인 실행을 모두 정리합니다. 전환 전의 workflow 실행은 다시 실행하지 않습니다.
+2. 공통 게이트와 동일 cron을 가진 `morning-report.yml`을 기본 브랜치에 올립니다. 새 workflow가 활성 상태이고 이전 workflow가 비활성 상태인지 확인합니다.
+3. 전용 체크아웃을 `origin/main`과 맞춘 뒤 `Set-MorningReportTask.ps1 -Mode Enable`을 실행합니다. 다음 실행 시각이 다음 거래 예정 평일의 08:45 KST인지 확인합니다.
+4. 첫 거래일에는 08:45 시작 로그, 선택 SHA와 SHA-256, 아티팩트 ID·다이제스트, Pages 성공 영수증, 공개 `publication.json`과 `status.json`을 확인합니다.
+
+Windows만 되돌릴 때는 `-Mode Disable`을 사용하면 공통 게이트가 있는 GitHub cron이 계속 운영됩니다.
+완전 롤백은 Windows 작업을 비활성화하고 진행 중인 수집과 Pages 요청의 종결을 확인한 뒤 새 workflow를
+비활성화합니다. 다음 거래일부터 이전 cron을 복원하며 기존 영수증과 당일 결과는 보존합니다.
+`-Mode Unregister`는 비활성 작업만 제거합니다.
 
 ## 휴장일 설정
 

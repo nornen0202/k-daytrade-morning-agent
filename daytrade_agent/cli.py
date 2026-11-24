@@ -4,11 +4,11 @@ import argparse
 import json
 import sys
 from collections.abc import Sequence
-from datetime import date, datetime, time
+from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from daytrade_agent.calendar.trading_calendar import trading_status
+from daytrade_agent.calendar.trading_calendar import MORNING_START, premarket_cutoff, trading_status
 from daytrade_agent.collectors import (
     corporate_disclosure,
     global_issue,
@@ -117,7 +117,7 @@ def run_command(
         save_report(config.content_dir, selected_date, markdown, summary, verification)
         print(f"saved market-closed report {selected_date} status={verification.status}")
         return 0
-    cutoff = generated_at.replace(hour=9, minute=0, second=0, microsecond=0)
+    cutoff = premarket_cutoff(generated_at.date())
     if not dry_run and generated_at >= cutoff:
         return _save_missed_notice(config, selected_date, generated_at)
 
@@ -303,7 +303,7 @@ def _generated_at(report_date: str, config: AppConfig, *, fixture: bool = False)
         return today
     return datetime.combine(
         date.fromisoformat(report_date),
-        time(hour=8, minute=45),
+        MORNING_START,
         ZoneInfo(config.timezone),
     )
 
