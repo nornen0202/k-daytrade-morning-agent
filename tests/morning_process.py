@@ -8,6 +8,7 @@ import time
 from dataclasses import replace
 from datetime import datetime, timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 from daytrade_agent import cli
 from daytrade_agent.collectors.mock import collect_mock
@@ -66,7 +67,7 @@ def run() -> None:
     morning.now_kst = lambda: Clock.now(morning.SEOUL)
     pages.now_kst = morning.now_kst
     if entry == "pages":
-        pages.time.sleep = lambda _: None
+        pages.time = SimpleNamespace(sleep=lambda _: None)
         if os.getenv("TEST_MORNING_CRASH_AFTER_POST"):
             original_record = pages.record
 

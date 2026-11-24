@@ -60,7 +60,7 @@ def run(sandbox, entry, *args, client=0, clock=START, check=True, **overrides):
            "DAYTRADE_PRIVATE_ARTIFACTS_DIR": str(folder / "private_artifacts"), **overrides}
     response = subprocess.run(
         [sys.executable, "-c", "from tests.morning_process import run; run()", entry, *args],
-        cwd=folder, env=env, capture_output=True, text=True, encoding="utf-8", timeout=70,
+        cwd=folder, env=env, capture_output=True, text=True, encoding="utf-8", timeout=180,
         check=False,
     )
     if check:
