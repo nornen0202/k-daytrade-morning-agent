@@ -71,6 +71,16 @@ jobs:
           python-version: "3.12"
       - name: Install
         run: python -m pip install -e .
+      - name: Resolve default Codex home
+        if: env.REPORT_LLM_PROVIDER == 'codex' && env.CODEX_HOME == ''
+        run: |
+          $resolvedHome = Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex'
+          if ($env:CODEX_BINARY -like '*\.codex\.sandbox-bin\codex.exe') {
+            $resolvedHome = Split-Path (Split-Path $env:CODEX_BINARY -Parent) -Parent
+          }
+          if (Test-Path -LiteralPath $resolvedHome -PathType Container) {
+            Add-Content -Path $env:GITHUB_ENV -Value "CODEX_HOME=$resolvedHome"
+          }
       - name: Verify private Codex generation
         if: ${{ inputs.model_probe }}
         timeout-minutes: 5
@@ -136,7 +146,7 @@ jobs:
           retention-days: 7
 
   deploy:
-    if: needs.package.outputs.artifact_id != ''
+    if: ${{ !cancelled() && needs.package.result == 'success' && needs.package.outputs.artifact_id != '' }}
     needs: package
     permissions:
       contents: write

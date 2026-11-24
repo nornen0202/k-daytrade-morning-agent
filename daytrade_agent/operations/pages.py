@@ -30,7 +30,7 @@ from daytrade_agent.render.site_builder import build_site
 RECEIPT = "receipt.json"
 TERMINAL_FAILURE = {
     "deployment_failed", "deployment_perms_error", "deployment_content_failed",
-    "deployment_cancelled",
+    "deployment_cancelled", "deployment_lost",
 }
 
 
@@ -103,7 +103,7 @@ class Pages:
             json={"artifact_id": receipt.artifact_id, "pages_build_version": receipt.version,
                   "oidc_token": oidc},
         )
-        if response.status_code in {400, 401, 403, 404}:
+        if response.status_code in {400, 401, 403, 404, 422}:
             return None, f"http_{response.status_code}"
         response.raise_for_status()
         data = response.json()
@@ -232,7 +232,9 @@ def deploy(git: GitStore, pages: Pages, target: str, artifact_id: int) -> None:
             raise RuntimeError("Pages deployment failed after a lost response") from None
         return
     if rejection:
-        record(git, base, replace(receipt, phase="failed", status=rejection))
+        record(git, base, replace(
+            receipt, phase="failed", status=rejection, observed_at=now_kst().isoformat(),
+        ))
         raise RuntimeError(f"Pages rejected the request ({rejection})")
     receipt = replace(receipt, phase="submitted", deployment_id=deployment_id)
     base = record(git, base, receipt)

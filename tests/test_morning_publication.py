@@ -187,11 +187,14 @@ def provider():
             payload = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             version = payload["pages_build_version"]
             state["calls"].append(version)
+            if state["mode"] == "rejected":
+                self.send(422, {"message": "Validation failed"})
+                return
             if state["mode"] == "unresolved":
                 self.connection.shutdown(socket.SHUT_RDWR)
                 return
             state["statuses"][version] = (
-                "deployment_failed" if state["mode"] == "terminal_failure" else "succeed"
+                "deployment_lost" if state["mode"] == "terminal_failure" else "succeed"
             )
             if state["mode"] == "lose_response":
                 self.connection.shutdown(socket.SHUT_RDWR)
@@ -247,24 +250,29 @@ def test_pages_terminal_failure_retries_and_previous_date_cannot_follow_newer_re
     state, env = provider
     collect(sandbox, "github")
     first, _ = selected(sandbox)
-    state["mode"] = "terminal_failure"
+    state["mode"] = "rejected"
     attempt = ("deploy", "--sha", first, "--artifact-id", "17")
     assert run(sandbox, "pages", *attempt, **env, check=False).returncode == 1
     origin = GitStore(sandbox[0])
-    assert journal(origin)[1].phase == "failed"
+    rejected = journal(origin)[1]
+    assert (rejected.phase, rejected.status) == ("failed", "http_422")
+    state["mode"] = "terminal_failure"
+    assert run(sandbox, "pages", *attempt, **env, check=False).returncode == 1
+    terminal = journal(origin)[1]
+    assert (terminal.phase, terminal.status) == ("failed", "deployment_lost")
     state["mode"] = "success"
     run(sandbox, "pages", *attempt, **env, client=1)
     retry = journal(origin)[1]
-    assert retry.phase == "shipped" and retry.attempt == 2
+    assert retry.phase == "shipped" and retry.attempt == 3
     assert retry.source_sha == first and retry.version != first
     tomorrow = "2026-04-28T08:45:00+09:00"
     collect(sandbox, "windows", clock=tomorrow)
     latest, _ = selected(sandbox)
     run(sandbox, "pages", "deploy", "--sha", latest, "--artifact-id", "18", **env, clock=tomorrow)
     run(sandbox, "pages", *attempt, **env, client=1)
-    assert state["calls"] == [first, retry.version, latest]
+    assert state["calls"] == [first, terminal.version, retry.version, latest]
     assert journal(origin)[1].source_sha == latest
-    assert git(sandbox[2], "rev-list", "--count", PAGES_JOURNAL) == "9"
+    assert git(sandbox[2], "rev-list", "--count", PAGES_JOURNAL) == "11"
 
 
 def test_two_pages_processes_can_only_send_one_publication_request(sandbox, provider, tmp_path):
