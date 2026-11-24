@@ -39,6 +39,7 @@ class Receipt:
     source_sha: str
     report_date: str
     sha256: str
+    kind: str
     phase: str
     version: str
     attempt: int
@@ -144,7 +145,8 @@ def reconcile(
                 receipt, phase="shipped" if status == "succeed" else "failed",
                 status=status, observed_at=observed.isoformat(),
                 confirmed_before_cutoff=(
-                    status == "succeed"
+                    receipt.kind == "research"
+                    and status == "succeed"
                     and observed.date().isoformat() == receipt.report_date
                     and observed < premarket_cutoff(date.fromisoformat(receipt.report_date))
                 ),
@@ -207,8 +209,17 @@ def deploy(git: GitStore, pages: Pages, target: str, artifact_id: int) -> None:
     attempt = previous.attempt + 1 if previous and previous.source_sha == sha else 1
     version = sha if attempt == 1 else hashlib.sha1(f"pages:{sha}:{attempt}".encode()).hexdigest()
     receipt = Receipt(
-        sha, publication.report_date, publication.sha256, "intent", version, attempt,
-        artifact_id, pages.artifact_digest(artifact_id), os.environ["GITHUB_RUN_ID"], uuid4().hex,
+        source_sha=sha,
+        report_date=publication.report_date,
+        sha256=publication.sha256,
+        kind=publication.kind,
+        phase="intent",
+        version=version,
+        attempt=attempt,
+        artifact_id=artifact_id,
+        artifact_digest=pages.artifact_digest(artifact_id),
+        run_id=os.environ["GITHUB_RUN_ID"],
+        operation_id=uuid4().hex,
     )
     oidc = pages.oidc()
     base = record(git, base, receipt)

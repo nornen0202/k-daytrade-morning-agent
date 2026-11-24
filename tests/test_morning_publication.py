@@ -115,7 +115,7 @@ def test_two_processes_race_for_one_git_result_then_next_day_is_monotonic(sandbo
     ("2026-04-27T08:59:59+09:00", "1", "missed", True),
     (AFTER, "", "missed", False),
 ])
-def test_calendar_cutoff_and_late_first(sandbox, stamp, cross, status, had_collection):
+def test_calendar_cutoff_and_late_first(sandbox, provider, stamp, cross, status, had_collection):
     output = collect(sandbox, "windows", clock=stamp, TEST_MORNING_CROSS_CUTOFF=cross).stdout
     assert ("simulated upstream" in output) == had_collection
     picked = selected(sandbox)
@@ -131,6 +131,11 @@ def test_calendar_cutoff_and_late_first(sandbox, stamp, cross, status, had_colle
     retry_time = AFTER if status == "missed" else stamp
     assert "simulated upstream" not in collect(sandbox, "github", clock=retry_time).stdout
     assert selected(sandbox) == picked
+    if status == "closed":
+        _, env = provider
+        run(sandbox, "pages", "deploy", "--sha", sha, "--artifact-id", "20", clock=stamp, **env)
+        receipt = journal(GitStore(sandbox[0]))[1]
+        assert receipt.phase == "shipped" and not receipt.confirmed_before_cutoff
 
 
 def test_precommit_failure_recovers_staged_result_and_lost_git_ack(sandbox):
@@ -215,6 +220,7 @@ def test_pages_ack_reconciles_by_version_without_a_second_post(sandbox, provider
     run(sandbox, "pages", "package", "--source", str(source), "--output", str(dist), "--sha", sha)
     status = json.loads((dist / "status.json").read_bytes())
     assert status["latest_attempt"] == publication.report_date
+    assert status["current_research"] is None
     assert json.loads((dist / "publication.json").read_bytes())["sha256"] == publication.sha256
     state, env = provider
     state["mode"] = loss
