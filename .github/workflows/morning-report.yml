@@ -4,6 +4,8 @@ on:
   # 08:45 Asia/Seoul on weekdays. Windows Task Scheduler starts collection independently.
   schedule:
     - cron: "45 23 * * 0-4"
+    # Reconcile or publish the delayed notice if the primary run deferred.
+    - cron: "5 0 * * 1-5"
   push:
     branches: [main]
     paths: [content/publication/morning.json]

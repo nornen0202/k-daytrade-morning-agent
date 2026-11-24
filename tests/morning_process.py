@@ -12,7 +12,7 @@ from pathlib import Path
 from daytrade_agent import cli
 from daytrade_agent.collectors.mock import collect_mock
 from daytrade_agent.operations import morning, pages
-from daytrade_agent.operations.git_store import MAIN, GitStore
+from daytrade_agent.operations.git_store import MAIN, PAGES_JOURNAL, GitStore
 
 _ROOT = Path(__file__).resolve().parents[1]
 
@@ -45,8 +45,8 @@ def run() -> None:
     original_push = GitStore.push
 
     def push(self, commit, ref, parent):
-        barrier = os.getenv("TEST_MORNING_RACE")
-        if barrier and ref == MAIN:
+        barrier = os.getenv("TEST_MORNING_RACE" if ref == MAIN else "TEST_PAGES_RACE")
+        if barrier and ref in {MAIN, PAGES_JOURNAL}:
             root = Path(barrier)
             (root / str(os.getpid())).touch()
             for _ in range(300):

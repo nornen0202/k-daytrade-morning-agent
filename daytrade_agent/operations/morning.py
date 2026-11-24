@@ -138,7 +138,7 @@ def publish(
             return
         reports = git.output("ls-tree", "-d", tip, "--", "content/reports")
         existing = git.output(
-            "ls-tree", "--name-only", f"{tip}:content/reports",
+            "ls-tree", "-d", "--name-only", f"{tip}:content/reports",
         ).decode().split() if reports else []
         if any(name >= day for name in existing if len(name) == len(day)):
             print(f"morning preserved existing report at or after {day}")

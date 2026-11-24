@@ -78,7 +78,9 @@ Private repository에서 Pages가 막히는 플랜이면 GitHub API가 Pages 설
 
 Windows 작업 스케줄러가 평일 08:45 Asia/Seoul에 전용 체크아웃에서 수집을 직접 시작합니다.
 09:00과 09:05에는 장전 결과가 없는 경우 지연 안내를 선택하거나 앞선 Git 푸시를 복구합니다.
-기존 GitHub cron `45 23 * * 0-4`는 보조 수집 경로입니다. 두 시작 경로는 동일한 XKRX
+기존 GitHub cron `45 23 * * 0-4`는 보조 수집 경로입니다. GitHub의 09:05 KST 재시도
+(`5 0 * * 1-5`)는 Windows가 비활성 상태여도 지연 안내 또는 Pages 복구를 시도합니다.
+두 시작 경로는 동일한 XKRX
 거래일 판정과 수집·검증 코드로 진입합니다. 주말에는 건너뛰고 평일 휴장에는 수집 없이 안내를 생성합니다.
 
 GitHub 보조 수집 job의 기본 runner는 `ubuntu-latest`입니다. `REPORT_LLM_PROVIDER=codex`이고

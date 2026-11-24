@@ -13,8 +13,11 @@ $taskName = 'K-Daytrade Morning 08-45 (1221924070)'
 $taskPath = '\'
 $account = [Security.Principal.WindowsIdentity]::GetCurrent()
 $task = Get-ScheduledTask -TaskName $taskName -TaskPath $taskPath -ErrorAction SilentlyContinue
-if ($task -and $task.Principal.UserId -notin @($account.Name, $account.User.Value)) {
-    throw "Daytrade task is owned by another account"
+if ($task -and $task.Principal.UserId -ne $account.User.Value) {
+    $principalAccount = [Security.Principal.NTAccount]::new($task.Principal.UserId)
+    if ($principalAccount.Translate([Security.Principal.SecurityIdentifier]) -ne $account.User) {
+        throw "Daytrade task is owned by another account"
+    }
 }
 if ($Mode -eq 'Unregister') {
     if ($task -and $task.State -ne 'Disabled') { throw 'Disable the Daytrade task first' }
@@ -107,9 +110,9 @@ if ($task) {
     $info = Get-ScheduledTaskInfo -InputObject $task
     [pscustomobject]@{
         Task = $task.TaskName
-        State = $task.State
+        State = [string]$task.State
         Account = $task.Principal.UserId
-        Logon = $task.Principal.LogonType
+        Logon = [string]$task.Principal.LogonType
         TimeZone = (Get-TimeZone).Id
         Boundaries = @($task.Triggers.StartBoundary)
         NextRunTime = $info.NextRunTime

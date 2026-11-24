@@ -128,7 +128,8 @@ def test_calendar_cutoff_and_late_first(sandbox, stamp, cross, status, had_colle
     assert report.kind == "notice"
     assert summary["market_context"]["market_status"] == status
     assert summary["candidates"] == []
-    assert "simulated upstream" not in collect(sandbox, "github", clock=stamp).stdout
+    retry_time = AFTER if status == "missed" else stamp
+    assert "simulated upstream" not in collect(sandbox, "github", clock=retry_time).stdout
     assert selected(sandbox) == picked
 
 
@@ -258,3 +259,21 @@ def test_pages_terminal_failure_retries_and_previous_date_cannot_follow_newer_re
     assert state["calls"] == [first, retry.version, latest]
     assert journal(origin)[1].source_sha == latest
     assert git(sandbox[2], "rev-list", "--count", PAGES_JOURNAL) == "9"
+
+
+def test_two_pages_processes_can_only_send_one_publication_request(sandbox, provider, tmp_path):
+    collect(sandbox, "windows")
+    sha, publication = selected(sandbox)
+    state, env = provider
+    barrier = tmp_path / "pages_barrier"
+    barrier.mkdir()
+    command = ("pages", "deploy", "--sha", sha, "--artifact-id", "17")
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        jobs = [executor.submit(run, sandbox, *command, client=client, check=False,
+                                TEST_PAGES_RACE=str(barrier), **env)
+                for client in (0, 1)]
+    assert sorted(job.result().returncode for job in jobs) == [0, 1]
+    assert len(list(barrier.iterdir())) == 2
+    assert state["calls"] == [sha]
+    receipt = journal(GitStore(sandbox[0]))[1]
+    assert (receipt.phase, receipt.sha256) == ("shipped", publication.sha256)
