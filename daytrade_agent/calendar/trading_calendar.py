@@ -1,11 +1,19 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime, time
 from functools import lru_cache
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import exchange_calendars
 import yaml
+
+SEOUL = ZoneInfo("Asia/Seoul")
+MORNING_START = time(8, 45)
+
+
+def premarket_cutoff(value: date) -> datetime:
+    return datetime.combine(value, time(9), SEOUL)
 
 
 def is_weekday(value: date) -> bool:
