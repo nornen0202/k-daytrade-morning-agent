@@ -61,14 +61,59 @@ def test_public_gate_checks_stored_fields_without_rendering_blocked_values():
     markdown = verified_facts_markdown(AppConfig.load(), context)
     verification = verify_report(context, markdown)
     summary = build_summary(context, markdown, verification.status)
-    summary["sources"][0]["source_url"] = "https://news.example.test/article/123-456-7890"
+    assert public_artifact_issues(
+        "",
+        {"sources": [{"source_url": "https://news.example.test/article/2026-1125-12345"}]},
+    ) == []
+    assert public_artifact_issues(
+        "",
+        {"sources": [{"source_url": "https://news.example.test/article/123-456-7890"}]},
+    ) == []
+    summary["sources"][0]["source_name"] = "문의 계좌 123-456-7890"
     report = {"report_date": context.report_date, "summary": summary, "markdown": markdown,
               "verification": verification.model_dump()}
     apply_publication_gate(report, context.generated_at)
     assert not report["valid"] and not report["current"] and report["sources"] == []
     assert report["verification"]["errors"] == [
-        "public_safety field=summary.sources[].source_url code=account_like_identifier",
+        "public_safety field=summary.sources[].source_name code=account_like_identifier",
     ]
+
+
+def test_single_noisy_external_event_is_isolated_without_blocking_report(monkeypatch, tmp_path):
+    batch = _context()
+
+    class Clock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return datetime(2026, 4, 27, 8, 45, tzinfo=ZoneInfo("Asia/Seoul")).astimezone(tz)
+
+    noisy_source = batch.sources[0].model_copy(update={
+        "source_id": "src_noisy_external",
+        "source_url": "https://news.example.test/article/2026-1125-12345",
+    })
+    noisy_event = batch.events[0].model_copy(update={
+        "event_id": "evt_noisy_external",
+        "source_id": "src_noisy_external",
+        "source_url": "https://news.example.test/article/2026-1125-12345",
+        "summary": "증권가 무조건 매수 추천 문의 031-200-1234",
+    })
+    batch.sources[0].source_url = "https://news.example.test/article/2026-1125-99999"
+    monkeypatch.setattr(cli, "datetime", Clock)
+    monkeypatch.setenv("REPORT_LLM_PROVIDER", "template")
+    monkeypatch.setattr(cli, "_collect_all", lambda *args, **kwargs: [
+        CollectorResult(
+            events=[*batch.events, noisy_event],
+            sources=[*batch.sources, noisy_source],
+            price_snapshots=batch.price_snapshots,
+        ),
+    ])
+    config = replace(AppConfig.load(), content_dir=tmp_path)
+    assert cli.run_command(config, batch.report_date, dry_run=False) == 0
+    assert cli.verify_command(config, batch.report_date) == 0
+    saved = cli.load_report(config.content_dir, batch.report_date)
+    assert saved["summary"]["data_status"] == "partial"
+    assert "031-200-1234" not in str(saved)
+    assert "src_noisy_external" not in str(saved)
 
 
 def test_evidence_errors_never_echo_untrusted_refs_or_symbols():

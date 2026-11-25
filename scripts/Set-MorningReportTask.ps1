@@ -50,7 +50,7 @@ if ($Mode -eq 'Disable') {
         $arguments = '-NoProfile -NonInteractive -File "{0}" -Checkout "{1}" -Python "{2}" -EnvironmentFile "{3}"' -f
             $launcher, $Checkout, $Python, $EnvironmentFile
         $action = New-ScheduledTaskAction -Execute $pwsh -Argument $arguments -WorkingDirectory $Checkout
-        $triggers = foreach ($stamp in @('08:45', '09:00', '09:05')) {
+        $triggers = foreach ($stamp in @('08:45', '08:52', '09:00', '09:05')) {
             $at = [datetime]::Today.Add([TimeSpan]::Parse($stamp))
             $trigger = New-ScheduledTaskTrigger -Weekly -WeeksInterval 1 -At $at -DaysOfWeek Monday,Tuesday,Wednesday,Thursday,Friday
             $trigger.StartBoundary = $at.ToString('yyyy-MM-ddTHH:mm:ss') + '+09:00'

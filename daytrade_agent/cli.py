@@ -42,6 +42,7 @@ from daytrade_agent.scoring.candidate_score import score_candidates
 from daytrade_agent.storage.public_safety import (
     PublicSafetyError,
     PublicSafetyIssue,
+    is_isolatable_item_issues,
     public_artifact_issues,
     stored_safety_messages,
 )
@@ -264,15 +265,29 @@ def _build_context(
         [snapshot for result in results for snapshot in result.price_snapshots]
     )
     missing_data = [item for result in results for item in result.missing_data]
-    source_ids = {source.source_id for source in sources}
+    source_by_id = {source.source_id: source for source in sources}
     stale_hours = float(config.risk_rules.get("stale_hours", 48))
-    valid_events = [
+    temporal_events = [
         event for event in raw_events
-        if event.source_id in source_ids
+        if event.source_id in source_by_id
         and event.data_status not in {"stale", "insufficient"}
         and temporal_status(event.published_at, generated_at, stale_hours) == "ok"
         and "\ufffd" not in event.title + event.summary
     ]
+    valid_events: list[MarketEvent] = []
+    isolated_safety = 0
+    for event in temporal_events:
+        item_issues = public_artifact_issues(
+            "",
+            {
+                "events": [event.model_dump(mode="json")],
+                "sources": [source_by_id[event.source_id].model_dump(mode="json")],
+            },
+        )
+        if is_isolatable_item_issues(item_issues):
+            isolated_safety += 1
+            continue
+        valid_events.append(event)
     events = deduplicate_events(valid_events)
     used_source_ids = {event.source_id for event in events}
     sources = [source for source in sources if source.source_id in used_source_ids]
@@ -280,9 +295,13 @@ def _build_context(
                  if snapshot.last_price is not None
                  and snapshot.data_status not in {"stale", "insufficient"}
                  and temporal_status(snapshot.as_of, generated_at, 96) == "ok"]
-    rejected = len(raw_events) - len(valid_events)
+    rejected = len(raw_events) - len(temporal_events)
     if rejected:
         missing_data.append(f"제외된 뉴스/공시: {rejected}건 (시각·출처·문자 인코딩 확인 필요)")
+    if isolated_safety:
+        missing_data.append(
+            f"제외된 뉴스/공시: {isolated_safety}건 (공개 안전 기준 미충족 항목 격리)"
+        )
     if len(snapshots) != len(raw_snapshots):
         missing_data.append("시각 또는 유효성이 확인되지 않은 가격 스냅샷 제외")
     market_context = _merge_market_context(results)
