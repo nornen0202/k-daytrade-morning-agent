@@ -14,11 +14,8 @@ from daytrade_agent.calendar.trading_calendar import (
     premarket_cutoff,
     trading_status,
 )
-from daytrade_agent.cli import run_command, verify_command
 from daytrade_agent.config import AppConfig
 from daytrade_agent.operations.git_store import MAIN, SHA, GitError, GitStore
-from daytrade_agent.render.site_builder import apply_publication_gate
-from daytrade_agent.storage.report_store import load_report
 
 PROTOCOL_FILE = ".github/daytrade-publication-v1"
 PROTOCOL = b"morning-publication-v1"
@@ -79,6 +76,10 @@ def latest_publication(git: GitStore, tip: str) -> tuple[str, Publication] | Non
 
 
 def staged_report(config: AppConfig, day: str, trigger: str, market: str) -> Path | None:
+    from daytrade_agent.cli import run_command, verify_command
+    from daytrade_agent.render.site_builder import apply_publication_gate
+    from daytrade_agent.storage.report_store import load_report
+
     # Completed directories are durable across process restarts. A late invocation uses a
     # separate slot and can never reuse an unpublished premarket capture.
     late = market == "open" and now_kst() >= premarket_cutoff(date.fromisoformat(day))
@@ -117,24 +118,40 @@ def collect(config: AppConfig, trigger: str, requested_date: str | None) -> None
     if start.time() < MORNING_START or start.weekday() >= 5:
         print(f"morning skipped trigger={trigger} at={start.isoformat()}")
         return
+    git = GitStore(config.root)
+    if start >= premarket_cutoff(start.date()):
+        try:
+            latest = latest_publication(git, main_tip(git))
+        except GitError:
+            latest = None
+        if _already_selected(latest, day):
+            return
     market = trading_status(start.date())
     slot = staged_report(config, day, trigger, market)
     if slot is None:
         print(f"morning deferred trigger={trigger} day={day} reason=no_verified_research")
         return
-    publish(config, GitStore(config.root), day, trigger, market, slot)
+    publish(config, git, day, trigger, market, slot)
+
+
+def _already_selected(latest: tuple[str, Publication] | None, day: str) -> bool:
+    if latest is None or latest[1].report_date < day:
+        return False
+    commit, item = latest
+    print(f"morning already selected date={item.report_date} sha={commit} sha256={item.sha256}")
+    return True
 
 
 def publish(
     config: AppConfig, git: GitStore, day: str, trigger: str, market: str, slot: Path,
 ) -> None:
+    from daytrade_agent.render.site_builder import apply_publication_gate
+    from daytrade_agent.storage.report_store import load_report
+
     for _ in range(4):
         tip = main_tip(git)
         latest = latest_publication(git, tip)
-        if latest and latest[1].report_date >= day:
-            commit, item = latest
-            print(f"morning already selected date={item.report_date} sha={commit} "
-                  f"sha256={item.sha256}")
+        if _already_selected(latest, day):
             return
         reports = git.output("ls-tree", "-d", tip, "--", "content/reports")
         existing = git.output(

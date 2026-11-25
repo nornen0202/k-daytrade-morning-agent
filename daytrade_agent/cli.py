@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from collections.abc import Sequence
 from datetime import date, datetime
@@ -19,11 +18,7 @@ from daytrade_agent.collectors import (
 from daytrade_agent.collectors.base import CollectorResult
 from daytrade_agent.collectors.mock import FIXTURE_VARIANTS, collect_mock
 from daytrade_agent.config import AppConfig
-from daytrade_agent.llm.report_verifier import (
-    sanitize_public_text,
-    unsafe_public_text,
-    verify_report,
-)
+from daytrade_agent.llm.report_verifier import verify_report
 from daytrade_agent.llm.report_writer import (
     build_summary,
     failure_report_markdown,
@@ -44,6 +39,12 @@ from daytrade_agent.normalizers.freshness import temporal_status
 from daytrade_agent.normalizers.report_context import context_from_summary
 from daytrade_agent.render.site_builder import apply_publication_gate, build_site
 from daytrade_agent.scoring.candidate_score import score_candidates
+from daytrade_agent.storage.public_safety import (
+    PublicSafetyError,
+    PublicSafetyIssue,
+    public_artifact_issues,
+    stored_safety_messages,
+)
 from daytrade_agent.storage.report_store import load_report, save_report
 
 
@@ -131,6 +132,9 @@ def run_command(
 
     if not dry_run and (now := datetime.now(ZoneInfo(config.timezone))) >= cutoff:
         return _save_missed_notice(config, selected_date, now)
+    issues = public_artifact_issues("", build_summary(context, "", "pass"))
+    if issues:
+        return _block_artifact(config, context, issues)
     markdown = write_report_markdown(config, context, dry_run=dry_run)
     verification = verify_report(context, markdown)
     if verification.status == "fail":
@@ -146,12 +150,18 @@ def run_command(
     if not dry_run and (now := datetime.now(ZoneInfo(config.timezone))) >= cutoff:
         return _save_missed_notice(config, selected_date, now)
     if verification.status == "fail":
+        issues = public_artifact_issues(markdown, {})
+        if issues:
+            return _block_artifact(config, context, issues)
         _save_verification_failure(config, context, verification)
         print(f"saved report {selected_date} status=fail")
         return 0
 
     summary = build_summary(context, markdown, verification.status)
-    save_report(config.content_dir, selected_date, markdown, summary, verification)
+    try:
+        save_report(config.content_dir, selected_date, markdown, summary, verification)
+    except PublicSafetyError as exc:
+        return _block_artifact(config, context, exc.issues)
     print(f"saved report {selected_date} status={verification.status}")
     return 0
 
@@ -171,10 +181,10 @@ def verify_command(config: AppConfig, report_date: str) -> int:
         context = context_from_summary(stored["summary"])
         if context.report_date != report_date:
             raise ValueError("report date mismatch")
-    except (ValueError, KeyError, TypeError) as exc:
+    except (ValueError, KeyError, TypeError):
         result = VerificationResult(
             status="fail",
-            errors=[f"invalid stored summary schema: {type(exc).__name__}"],
+            errors=[PublicSafetyIssue("summary", "invalid_schema").message()],
         )
         context = ReportContext(
             report_date=report_date, generated_at=_generated_at(report_date, config),
@@ -184,13 +194,14 @@ def verify_command(config: AppConfig, report_date: str) -> int:
         if previous.get("status") in ("pass", "warning"):
             result = verify_report(context, stored["markdown"])
         else:
-            try:
-                result = VerificationResult.model_validate(previous)
-            except ValueError:
-                result = VerificationResult(status="fail", errors=["stored verification failed"])
-    if unsafe_public_text(json.dumps(stored["summary"], ensure_ascii=False)):
-        errors = sorted({*result.errors, "public summary failed safety check"})
-        result = VerificationResult(status="fail", errors=errors, warnings=result.warnings)
+            errors = stored_safety_messages(previous.get("errors"))
+            result = VerificationResult(
+                status="fail",
+                errors=errors or ["stored verification failed"],
+            )
+    issues = public_artifact_issues(stored["markdown"], stored["summary"], previous)
+    if issues:
+        result = VerificationResult(status="fail", errors=[issue.message() for issue in issues])
 
     if result.status == "fail":
         result = _save_verification_failure(config, context, result)
@@ -263,6 +274,8 @@ def _build_context(
         and "\ufffd" not in event.title + event.summary
     ]
     events = deduplicate_events(valid_events)
+    used_source_ids = {event.source_id for event in events}
+    sources = [source for source in sources if source.source_id in used_source_ids]
     snapshots = [snapshot for snapshot in raw_snapshots
                  if snapshot.last_price is not None
                  and snapshot.data_status not in {"stale", "insufficient"}
@@ -383,8 +396,6 @@ def _save_missed_notice(config: AppConfig, report_date: str, now: datetime) -> i
 def _save_verification_failure(
     config: AppConfig, context: ReportContext, result: VerificationResult,
 ) -> VerificationResult:
-    errors = [sanitize_public_text(error, mask_symbols=True) for error in result.errors]
-    warnings = [sanitize_public_text(warning, mask_symbols=True) for warning in result.warnings]
     context = ReportContext(
         report_date=context.report_date, generated_at=context.generated_at,
         data_status="insufficient", events=[], sources=[], price_snapshots=[], candidates=[],
@@ -392,11 +403,21 @@ def _save_verification_failure(
                         if ((key == "run_mode" and value in ("fixture", "live")) or
                             (key == "market_status" and value in ("closed", "unknown", "missed")))},
     )
-    result = VerificationResult(status="fail", errors=errors, warnings=warnings)
-    markdown = failure_report_markdown(config, context, errors, warnings)
+    markdown = failure_report_markdown(config, context, result.errors, result.warnings)
     save_report(config.content_dir, context.report_date, markdown,
                 build_summary(context, markdown, result.status), result)
     return result
+
+
+def _block_artifact(
+    config: AppConfig, context: ReportContext, issues: list[PublicSafetyIssue],
+) -> int:
+    errors = [issue.message() for issue in issues]
+    _save_verification_failure(config, context, VerificationResult(status="fail", errors=errors))
+    for error in errors:
+        print(f"ERROR: {error}")
+    print(f"saved report {context.report_date} status=fail")
+    return 0
 
 
 def _market_closed_context(

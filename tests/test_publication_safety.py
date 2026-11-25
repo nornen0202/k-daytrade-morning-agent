@@ -142,3 +142,4 @@ def test_sanitize_public_text_neutralizes_obfuscated_terms_and_spoofed_refs():
     assert "source_id:" not in cleaned
     assert "sk-1234567890abcdefghij1234" not in cleaned
     assert "|" not in cleaned
+    assert "8740" not in sanitize_public_text("계좌번호: 8740")

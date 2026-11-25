@@ -10,14 +10,11 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from daytrade_agent.calendar.trading_calendar import premarket_cutoff, trading_status
 from daytrade_agent.config import AppConfig
-from daytrade_agent.llm.report_verifier import (
-    sanitize_public_text,
-    unsafe_public_text,
-    verify_report,
-)
+from daytrade_agent.llm.report_verifier import verify_report
 from daytrade_agent.llm.report_writer import build_summary
 from daytrade_agent.normalizers.report_context import context_from_summary
 from daytrade_agent.render.markdown import markdown_to_html
+from daytrade_agent.storage.public_safety import public_artifact_issues, stored_safety_messages
 from daytrade_agent.storage.report_store import discover_reports
 
 
@@ -135,9 +132,16 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
     report["public_kind"] = "notice"
     report["kind_label"] = "검증 실패"
     report["notice"] = "검증을 통과한 연구 내용이 없어 후보와 점수를 표시하지 않습니다."
-    if report["verification"].get("status") not in ("pass", "warning"):
+    previous = report["verification"]
+    issues = public_artifact_issues(report["markdown"], summary, previous)
+    if issues or previous.get("status") not in ("pass", "warning"):
+        errors = [issue.message() for issue in issues] or stored_safety_messages(
+            previous.get("errors")
+        )
         report["verification"] = {
-            "status": "fail", "errors": ["저장된 보고서의 근거 검증 실패"], "warnings": [],
+            "status": "fail",
+            "errors": errors or ["저장된 보고서의 근거 검증 실패"],
+            "warnings": [],
         }
         return
     try:
@@ -146,15 +150,7 @@ def apply_publication_gate(report: dict, now: datetime) -> None:
             raise ValueError("report date mismatch")
         result = verify_report(context, report["markdown"])
         report["verification"] = result.model_dump()
-        if result.status == "fail" or unsafe_public_text(
-            json.dumps(summary, ensure_ascii=False)
-        ):
-            report["verification"] = result.model_dump()
-            report["verification"]["status"] = "fail"
-            if not report["verification"]["errors"]:
-                report["verification"]["errors"] = ["공개 자료 안전성 검사 실패"]
-            report["verification"]["errors"] = [sanitize_public_text(error, mask_symbols=True)
-                                                for error in report["verification"]["errors"]]
+        if result.status == "fail":
             return
         if context.market_context.get("market_status") == "missed":
             report["kind_label"] = "장전 발행 지연"

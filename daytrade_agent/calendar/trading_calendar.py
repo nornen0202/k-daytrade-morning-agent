@@ -5,7 +5,6 @@ from functools import lru_cache
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-import exchange_calendars
 import yaml
 
 SEOUL = ZoneInfo("Asia/Seoul")
@@ -46,6 +45,8 @@ def load_holidays(path: Path) -> set[date]:
 
 @lru_cache(maxsize=4)
 def _xkrx_calendar(year: int):
+    import exchange_calendars
+
     return exchange_calendars.get_calendar("XKRX", start=f"{year}-01-01", end=f"{year}-12-31")
 
 
