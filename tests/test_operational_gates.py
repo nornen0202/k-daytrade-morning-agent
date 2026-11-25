@@ -1,3 +1,4 @@
+import json
 from dataclasses import replace
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -37,14 +38,14 @@ def test_late_live_run_never_collects_or_generates_candidates(monkeypatch, tmp_p
 
 def test_public_store_rejects_actual_configured_secret(monkeypatch, tmp_path):
     monkeypatch.setenv("QUOTE_PROVIDER_API_KEY", "fixture-secret-for-public-boundary-test")
-    with pytest.raises(ValueError, match="configured credential"):
+    with pytest.raises(ValueError, match="field=markdown code=configured_credential"):
         save_report(tmp_path, "2026-10-25", "fixture-secret-for-public-boundary-test",
                     {}, VerificationResult(status="pass"))
     assert not (tmp_path / "2026-10-25").exists()
 
 
 def test_public_store_rejects_nested_raw_payload(tmp_path):
-    with pytest.raises(ValueError, match="private payload"):
+    with pytest.raises(ValueError, match="field=summary.market_context.raw_response"):
         save_report(tmp_path, "2026-10-25", "notice",
                     {"market_context": {"raw_response": {"unexpected": "payload"}}},
                     VerificationResult(status="pass"))
@@ -108,19 +109,22 @@ def test_build_context_does_not_flag_deduplicated_events_as_rejected():
     assert not any("제외된 뉴스/공시" in item for item in built.missing_data)
 
 
-def test_verify_command_fails_closed_when_summary_contains_unsafe_text(tmp_path):
+def test_verify_command_fails_closed_when_summary_contains_unsafe_text(tmp_path, capsys):
     context = _context()
     config = replace(AppConfig.load(), content_dir=tmp_path / "reports")
     markdown = "- Samsung Electronics(005930) 관찰 우선순위 - source_id: src_policy_001"
     summary = build_summary(context, markdown, "pass")
-    summary["events"][0]["summary"] = "무조건 매수 추천 텍스트"
-    save_report(
+    directory = save_report(
         config.content_dir,
         "2026-04-27",
         markdown,
         summary,
         VerificationResult(status="pass"),
     )
+    # Simulate tampering with a previously saved summary after the write gate.
+    sentinel = "무조건 매수 추천 테스트 표식"
+    summary["events"][0]["summary"] = sentinel
+    (directory / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
 
     assert cli.verify_command(config, "2026-04-27") == 1
     reloaded = cli.load_report(config.content_dir, "2026-04-27")
@@ -128,6 +132,9 @@ def test_verify_command_fails_closed_when_summary_contains_unsafe_text(tmp_path)
     assert reloaded["summary"]["candidates"] == []
     assert reloaded["summary"]["report_kind"] == "notice"
     assert "데이터 검증 실패 리포트" in reloaded["markdown"]
+    output = capsys.readouterr().out
+    assert "field=summary.events[].summary code=prohibited_wording" in output
+    assert sentinel not in output and sentinel not in str(reloaded)
 
 
 def test_verify_command_handles_malformed_summary_without_crashing(tmp_path):
@@ -212,7 +219,7 @@ def test_late_retry_preserves_a_verified_premarket_archive(monkeypatch, tmp_path
 
 def test_public_store_rejects_password_credential(monkeypatch, tmp_path):
     monkeypatch.setenv("SERVICE_PASSWORD", "fixture-password-value-1234")
-    with pytest.raises(ValueError, match="configured credential"):
+    with pytest.raises(ValueError, match="field=markdown code=configured_credential"):
         save_report(
             tmp_path,
             "2026-10-25",

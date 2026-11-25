@@ -10,9 +10,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
 
-from daytrade_agent import cli
-from daytrade_agent.collectors.mock import collect_mock
-from daytrade_agent.operations import morning, pages
+from daytrade_agent.operations import morning
 from daytrade_agent.operations.git_store import MAIN, PAGES_JOURNAL, GitStore
 
 _ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +26,22 @@ def run() -> None:
         def now(cls, tz=None):
             return moment.astimezone(tz)
 
+    git = GitStore(Path.cwd())
+    origin = git.output("remote", "get-url", "origin").decode().strip()
+    if origin != os.environ["TEST_MORNING_ORIGIN"]:
+        raise RuntimeError("these tests require the isolated Git remote")
+    morning.now_kst = lambda: Clock.now(morning.SEOUL)
+    if entry == "late_without_report_imports":
+        morning.main()
+        assert {"openai", "pydantic", "exchange_calendars", "daytrade_agent.cli"}.isdisjoint(
+            sys.modules
+        )
+        return
+
+    from daytrade_agent import cli
+    from daytrade_agent.collectors.mock import collect_mock
+    from daytrade_agent.operations import pages
+
     def capture(config, day, started, *, dry_run):
         nonlocal moment
         print(f"simulated upstream collection at {started.isoformat()}", flush=True)
@@ -37,12 +51,20 @@ def run() -> None:
         for index, source in enumerate(result.sources):
             source.source_name = "Synthetic Publisher"
             source.source_url = f"https://synthetic.example.test/article-{index}"
+        case = os.getenv("TEST_MORNING_SOURCE_CASE")
+        if case == "orphan":
+            stale = started - timedelta(days=3)
+            source = result.sources[0].model_copy(update={
+                "source_id": "src_unused_replay", "published_at": stale, "source_name": "\ufffd",
+            })
+            result.sources.append(source)
+            result.events.append(result.events[0].model_copy(update={
+                "source_id": source.source_id, "published_at": stale,
+            }))
+        elif case == "account_link":
+            result.sources[0].source_url = "https://synthetic.example.test/article/123-456-7890"
         return [result]
 
-    git = GitStore(Path.cwd())
-    origin = git.output("remote", "get-url", "origin").decode().strip()
-    if origin != os.environ["TEST_MORNING_ORIGIN"]:
-        raise RuntimeError("these tests require the isolated Git remote")
     original_push = GitStore.push
 
     def push(self, commit, ref, parent):
@@ -64,7 +86,6 @@ def run() -> None:
     GitStore.push = push
     cli.datetime = Clock
     cli._collect_all = capture
-    morning.now_kst = lambda: Clock.now(morning.SEOUL)
     pages.now_kst = morning.now_kst
     if entry == "pages":
         pages.time = SimpleNamespace(sleep=lambda _: None)

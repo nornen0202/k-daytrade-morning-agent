@@ -4,8 +4,6 @@ import json
 from collections import Counter
 from datetime import datetime
 
-from openai import OpenAI
-
 from daytrade_agent.calendar.trading_calendar import SEOUL, premarket_cutoff
 from daytrade_agent.config import AppConfig
 from daytrade_agent.llm.codex_app_server import CodexAppServerSession
@@ -337,6 +335,8 @@ def _template_report(config: AppConfig, context: ReportContext, note: str) -> st
 
 def _try_openai(prompt: str, config: AppConfig) -> str | None:
     try:
+        from openai import OpenAI
+
         client = OpenAI(api_key=config.env("OPENAI_API_KEY"))
         response = client.responses.create(model=config.openai_model, input=prompt)
     except Exception:

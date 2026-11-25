@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 from pathlib import Path
 from typing import Any
 
 from daytrade_agent.normalizers.event_schema import VerificationResult
+from daytrade_agent.storage.public_safety import PublicSafetyError, public_artifact_issues
 
 _DATE_DIR_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 
@@ -18,7 +18,9 @@ def save_report(
     summary: dict[str, Any],
     verification: VerificationResult,
 ) -> Path:
-    _check_public_boundary(markdown, summary)
+    issues = public_artifact_issues(markdown, summary, verification.model_dump(mode="json"))
+    if issues:
+        raise PublicSafetyError(issues)
     destination = content_dir / report_date
     destination.mkdir(parents=True, exist_ok=True)
     (destination / "report.md").write_text(markdown, encoding="utf-8")
@@ -92,32 +94,3 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"Expected JSON object at {path}")
     return data
-
-
-def _check_public_boundary(markdown: str, summary: dict[str, Any]) -> None:
-    text = markdown + json.dumps(summary, ensure_ascii=False)
-    for key, value in os.environ.items():
-        if (
-            any(
-                marker in key.upper()
-                for marker in ("API_KEY", "APP_KEY", "SECRET", "TOKEN", "PASSWORD", "PRIVATE_KEY")
-            )
-            and len(value) >= 8
-            and value in text
-        ):
-            raise ValueError("public artifact contains a configured credential")
-
-    forbidden = {"raw_response", "raw_prompt", "access_token", "refresh_token", "authorization",
-                 "account_number", "holdings", "api_key", "app_secret"}
-
-    def check(value: Any) -> None:
-        if isinstance(value, dict):
-            if forbidden.intersection(key.lower() for key in value):
-                raise ValueError("public artifact contains private payload fields")
-            for child in value.values():
-                check(child)
-        elif isinstance(value, list):
-            for child in value:
-                check(child)
-
-    check(summary)

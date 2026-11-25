@@ -94,19 +94,43 @@ def test_two_processes_race_for_one_git_result_then_next_day_is_monotonic(sandbo
     barrier = tmp_path / "barrier"
     barrier.mkdir()
     with ThreadPoolExecutor(max_workers=2) as executor:
-        jobs = [executor.submit(collect, sandbox, origin, TEST_MORNING_RACE=str(barrier))
+        jobs = [executor.submit(collect, sandbox, origin, TEST_MORNING_RACE=str(barrier),
+                                TEST_MORNING_SOURCE_CASE="orphan")
                 for origin in ("windows", "github")]
         outputs = [job.result().stdout for job in jobs]
     assert all("simulated upstream" in output for output in outputs)
     assert sum("morning selected" in output for output in outputs) == 1
     assert len(list(barrier.iterdir())) == 2
     older = selected(sandbox)
+    assert older[1].kind == "research"
+    raw = git(sandbox[2], "show", f"{older[0]}:content/reports/{DAY}/summary.json")
+    summary = json.loads(raw)
+    assert summary["data_status"] == "partial"
+    assert "\ufffd" not in raw and "src_unused_replay" not in raw
     tomorrow = "2026-04-28T08:45:00+09:00"
     collect(sandbox, "windows", clock=tomorrow)
     newer = selected(sandbox)
     collect(sandbox, "github", clock=AFTER)
     assert selected(sandbox) == newer and newer[1].report_date > older[1].report_date
     assert git(sandbox[2], "rev-list", "--count", MAIN) == "3"
+
+
+def test_link_safety_block_defers_then_late_retry_keeps_same_notice_without_imports(sandbox):
+    blocked = collect(sandbox, "windows", TEST_MORNING_SOURCE_CASE="account_link").stdout
+    assert "field=summary.sources[].source_url code=account_like_identifier" in blocked
+    assert "123-456-7890" not in blocked
+    assert "morning deferred" in blocked and selected(sandbox) is None
+
+    assert "simulated upstream" not in collect(sandbox, "windows", clock=AFTER).stdout
+    before = selected(sandbox)
+    assert before[1].kind == "notice"
+    result = run(sandbox, "late_without_report_imports", "--trigger", "github", client=1,
+                 clock=AFTER)
+    assert "morning already selected" in result.stdout and "morning start" not in result.stdout
+    assert selected(sandbox) == before
+    assert git(sandbox[2], "rev-list", "--count", MAIN) == "2"
+    raw = git(sandbox[2], "show", f"{before[0]}:content/reports/{DAY}/summary.json")
+    assert json.loads(raw)["candidates"] == [] and "123-456-7890" not in raw
 
 
 @pytest.mark.parametrize(("stamp", "cross", "status", "had_collection"), [

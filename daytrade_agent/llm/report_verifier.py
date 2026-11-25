@@ -26,13 +26,23 @@ INVESTMENT_PRESSURE_PATTERNS = [re.compile(pattern) for pattern in (
     r"매수\s*하라", r"수익\s*보장", r"상한가\s*확정", r"즉시\s*매수",
     r"매수\s*추천", r"진입\s*하라", r"강력\s*매수",
 )]
-SECRET_PATTERNS = [re.compile(pattern, re.I) for pattern in (
+CREDENTIAL_PATTERNS = [re.compile(pattern, re.I) for pattern in (
     r"sk-[A-Za-z0-9_-]{20,}",
     r"(?:api[_-]?key|secret|token)\s*[:=]\s*[A-Za-z0-9_-]{12,}",
-    r"\b\d{3,6}-\d{3,6}-\d{4,10}\b",
-    r"(?:계좌번호|실제\s*보유\s*비중|보유수량)\s*[:=]?\s*\d+",
     r"(?:gh[pousr]_|github_pat_)[A-Za-z0-9_]{20,}",
 )]
+ACCOUNT_PATTERNS = [re.compile(pattern, re.I) for pattern in (
+    r"\b\d{3,6}-\d{3,6}-\d{4,10}\b",
+    r"(?:계좌번호|실제\s*보유\s*비중|보유수량)\s*[:=]?\s*\d+",
+)]
+SECRET_PATTERNS = [*CREDENTIAL_PATTERNS, *ACCOUNT_PATTERNS]
+PUBLIC_TEXT_REASONS = {
+    "encoding_replacement": "unreadable text encoding",
+    "prohibited_wording": "prohibited wording found",
+    "investment_pressure": "investment-pressure wording found",
+    "credential_pattern": "possible secret or account-like identifier found",
+    "account_like_identifier": "possible secret or account-like identifier found",
+}
 REF_PATTERN = re.compile(r"(source_id|data_key):\s*([A-Za-z0-9_-]+)")
 SYMBOL_PATTERN = re.compile(r"(?<![-:\d.])\b\d{6}\b(?![-:\d])")
 NUMBER_PATTERN = re.compile(
@@ -68,14 +78,14 @@ _OBFUSCATED_TERM_PATTERNS = [
 def sanitize_public_text(text: str, *, mask_symbols: bool = False) -> str:
     """Normalize and redact prohibited, secret, or spoofed-reference text for public output."""
     sanitized = _normalized(text).replace("\r", " ").replace("\n", " ").replace("|", "/")
+    for pattern in SECRET_PATTERNS:
+        sanitized = pattern.sub("[비공개 정보 제외]", sanitized)
     for original, replacement in PUBLIC_REPLACEMENTS.items():
         sanitized = sanitized.replace(original, replacement)
     for pattern, replacement in _OBFUSCATED_TERM_PATTERNS:
         sanitized = pattern.sub(replacement, sanitized)
     for pattern in INVESTMENT_PRESSURE_PATTERNS:
         sanitized = pattern.sub("가격 확인 필요", sanitized)
-    for pattern in SECRET_PATTERNS:
-        sanitized = pattern.sub("[비공개 정보 제외]", sanitized)
     sanitized = REF_PATTERN.sub(r"\1_ref_\2", sanitized)
     if mask_symbols:
         sanitized = SYMBOL_PATTERN.sub("종목코드 확인 필요", sanitized)
@@ -83,12 +93,22 @@ def sanitize_public_text(text: str, *, mask_symbols: bool = False) -> str:
 
 
 def unsafe_public_text(text: str) -> bool:
+    return bool(public_text_reasons(text))
+
+
+def public_text_reasons(text: str) -> tuple[str, ...]:
     text = _normalized(text)
     compact = re.sub(r"\s+", "", text)
-    return bool("\ufffd" in text or any(term.replace(" ", "") in compact
-                                      for term in FORBIDDEN_TERMS)
-                or any(pattern.search(text) for pattern in
-                       [*INVESTMENT_PRESSURE_PATTERNS, *SECRET_PATTERNS]))
+    matched = {
+        "encoding_replacement": "\ufffd" in text,
+        "prohibited_wording": any(term.replace(" ", "") in compact for term in FORBIDDEN_TERMS),
+        "investment_pressure": any(
+            pattern.search(text) for pattern in INVESTMENT_PRESSURE_PATTERNS
+        ),
+        "credential_pattern": any(pattern.search(text) for pattern in CREDENTIAL_PATTERNS),
+        "account_like_identifier": any(pattern.search(text) for pattern in ACCOUNT_PATTERNS),
+    }
+    return tuple(code for code, found in matched.items() if found)
 
 
 def _normalized(text: str) -> str:
@@ -161,17 +181,9 @@ def evidence_index(context: ReportContext) -> dict[tuple[str, str], str]:
 
 
 def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
+    errors = [PUBLIC_TEXT_REASONS[code] for code in public_text_reasons(markdown)]
     markdown = _normalized(markdown)
-    errors: list[str] = []
     warnings: list[str] = []
-    if any(term.replace(" ", "") in re.sub(r"\s+", "", markdown) for term in FORBIDDEN_TERMS):
-        errors.append("prohibited wording found")
-    if any(pattern.search(markdown) for pattern in INVESTMENT_PRESSURE_PATTERNS):
-        errors.append("investment-pressure wording found")
-    if any(pattern.search(markdown) for pattern in SECRET_PATTERNS):
-        errors.append("possible secret or account-like identifier found")
-    if "\ufffd" in markdown:
-        errors.append("unreadable text encoding")
     known_symbols = (
         {candidate.symbol for candidate in context.candidates}
         | {symbol for event in context.events for symbol in event.candidate_symbols}
@@ -179,7 +191,7 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
     )
     unknown = set(SYMBOL_PATTERN.findall(REF_PATTERN.sub("", markdown))) - known_symbols
     if unknown:
-        errors.append(f"unknown symbol mentioned: {', '.join(sorted(unknown))}")
+        errors.append("unknown symbol mentioned")
 
     evidence = evidence_index(context)
     snapshots = {snapshot.data_key: snapshot for snapshot in context.price_snapshots}
@@ -187,7 +199,7 @@ def verify_report(context: ReportContext, markdown: str) -> VerificationResult:
         refs = REF_PATTERN.findall(line)
         for ref_type, key in refs:
             if (ref_type, key) not in evidence:
-                errors.append(f"line {number}: unknown or unusable {ref_type} referenced: {key}")
+                errors.append(f"line {number}: unknown or unusable {ref_type} referenced")
         text = line.strip()
         if not text:
             continue
