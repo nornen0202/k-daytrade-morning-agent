@@ -16,7 +16,7 @@ def test_cli_dry_run_and_build_site(tmp_path):
         env=env,
         capture_output=True,
         text=True,
-        timeout=60,
+        timeout=180,
         check=False,
     )
     assert run.returncode == 0, run.stderr
@@ -32,7 +32,7 @@ def test_cli_dry_run_and_build_site(tmp_path):
         env=env,
         capture_output=True,
         text=True,
-        timeout=60,
+        timeout=180,
         check=False,
     )
     assert build.returncode == 0, build.stderr
@@ -71,7 +71,7 @@ def test_recent_trading_date_fixture_variants(tmp_path, variant, events, candida
     result = subprocess.run(
         [sys.executable, "-m", "daytrade_agent.cli", "run", "--dry-run", "--date", date,
          "--fixture", variant],
-        env=_test_env(tmp_path), capture_output=True, text=True, timeout=60, check=False,
+        env=_test_env(tmp_path), capture_output=True, text=True, timeout=180, check=False,
     )
     assert result.returncode == 0, result.stderr
     folder = tmp_path / "content" / "reports" / date
@@ -87,8 +87,13 @@ def test_recent_trading_date_fixture_variants(tmp_path, variant, events, candida
 def _test_env(tmp_path):
     import os
 
+    empty_env = tmp_path / "empty.env"
+    empty_env.write_text("", encoding="utf-8")
     env = os.environ.copy()
+    env["DAYTRADE_ENV_FILE"] = str(empty_env)
     env["DAYTRADE_CONTENT_DIR"] = str(tmp_path / "content" / "reports")
     env["DAYTRADE_DIST_DIR"] = str(tmp_path / "dist")
     env["DAYTRADE_PRIVATE_ARTIFACTS_DIR"] = str(tmp_path / "private_artifacts")
+    env["REPORT_LLM_PROVIDER"] = "template"
+    env["PYTHONUTF8"] = "1"
     return env

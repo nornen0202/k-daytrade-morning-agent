@@ -117,8 +117,8 @@ def test_two_processes_race_for_one_git_result_then_next_day_is_monotonic(sandbo
 
 def test_link_safety_block_defers_then_late_retry_keeps_same_notice_without_imports(sandbox):
     blocked = collect(sandbox, "windows", TEST_MORNING_SOURCE_CASE="account_link").stdout
-    assert "field=summary.sources[].source_url code=account_like_identifier" in blocked
-    assert "123-456-7890" not in blocked
+    assert "field=summary.sources[].source_url code=credential_url" in blocked
+    assert "secret-1234" not in blocked
     assert "morning deferred" in blocked and selected(sandbox) is None
 
     assert "simulated upstream" not in collect(sandbox, "windows", clock=AFTER).stdout
@@ -130,7 +130,21 @@ def test_link_safety_block_defers_then_late_retry_keeps_same_notice_without_impo
     assert selected(sandbox) == before
     assert git(sandbox[2], "rev-list", "--count", MAIN) == "2"
     raw = git(sandbox[2], "show", f"{before[0]}:content/reports/{DAY}/summary.json")
-    assert json.loads(raw)["candidates"] == [] and "123-456-7890" not in raw
+    assert json.loads(raw)["candidates"] == [] and "secret-1234" not in raw
+
+
+def test_dated_url_slug_and_single_noisy_item_still_publish_partial_research(sandbox):
+    output = collect(
+        sandbox, "windows", TEST_MORNING_SOURCE_CASE="dated_slug_and_noisy_event",
+    ).stdout
+    assert "morning selected" in output
+    picked = selected(sandbox)
+    assert picked is not None and picked[1].kind == "research"
+    raw = git(sandbox[2], "show", f"{picked[0]}:content/reports/{DAY}/summary.json")
+    summary = json.loads(raw)
+    assert summary["data_status"] == "partial"
+    assert "2026-1125-12345" in raw
+    assert "src_noisy_item" not in raw and "031-200-1234" not in raw
 
 
 @pytest.mark.parametrize(("stamp", "cross", "status", "had_collection"), [
@@ -213,6 +227,9 @@ def provider():
             state["calls"].append(version)
             if state["mode"] == "rejected":
                 self.send(422, {"message": "Validation failed"})
+                return
+            if state["mode"] == "rate_limited":
+                self.send(429, {"message": "Too many requests"})
                 return
             if state["mode"] == "unresolved":
                 self.connection.shutdown(socket.SHUT_RDWR)
@@ -315,3 +332,24 @@ def test_two_pages_processes_can_only_send_one_publication_request(sandbox, prov
     assert state["calls"] == [sha]
     receipt = journal(GitStore(sandbox[0]))[1]
     assert (receipt.phase, receipt.sha256) == ("shipped", publication.sha256)
+
+
+def test_pages_expired_intent_and_rate_limit_do_not_deadlock_future_releases(sandbox, provider):
+    state, env = provider
+    collect(sandbox, "windows")
+    sha, _ = selected(sandbox)
+    command = ("pages", "deploy", "--sha", sha, "--artifact-id", "17")
+    state["mode"] = "rate_limited"
+    assert run(sandbox, *command, **env, check=False).returncode == 1
+    assert journal(GitStore(sandbox[0]))[1].status == "http_429"
+
+    state["mode"] = "unresolved"
+    assert run(sandbox, *command, **env, check=False).returncode == 1
+    # Within the 30-minute OIDC window, resubmission stays fenced.
+    fenced = run(sandbox, *command, **env, client=1, clock="2026-04-27T09:10:00+09:00", check=False)
+    assert fenced.returncode == 1 and "automatic resubmission is fenced" in fenced.stderr
+    # Once the 30-minute intent TTL elapses with status still empty, reconcile expires the intent.
+    state["mode"] = "success"
+    run(sandbox, *command, **env, client=1, clock="2026-04-27T09:16:00+09:00")
+    receipt = journal(GitStore(sandbox[1]))[1]
+    assert (receipt.phase, receipt.source_sha, receipt.attempt) == ("shipped", sha, 3)

@@ -5,7 +5,11 @@ import re
 from dataclasses import dataclass
 from urllib.parse import parse_qsl, unquote, urlsplit
 
-from daytrade_agent.llm.report_verifier import PUBLIC_TEXT_REASONS, public_text_reasons
+from daytrade_agent.llm.report_verifier import (
+    CREDENTIAL_PATTERNS,
+    PUBLIC_TEXT_REASONS,
+    public_text_reasons,
+)
 from daytrade_agent.normalizers.event_schema import (
     Candidate,
     MarketEvent,
@@ -21,6 +25,12 @@ _PRIVATE_FIELDS = {
     "account_number", "holdings", "api_key", "apikey", "app_secret", "client_secret",
     "private_key", "secret", "token", "password",
 }
+CREDENTIAL_ISSUE_CODES = frozenset({
+    "configured_credential", "private_payload_field", "credential_url", "credential_pattern",
+})
+_EXPLICIT_ACCOUNT_LABEL = re.compile(
+    r"(?:계좌번호|실제\s*보유\s*비중|보유수량)\s*[:=]?\s*\d+", re.I,
+)
 _PUBLIC_FIELDS = _PRIVATE_FIELDS | {
     key
     for model in (Candidate, MarketEvent, MarketMetric, PriceSnapshot, ReportContext, Source,
@@ -68,19 +78,29 @@ def public_artifact_issues(
     issues: set[PublicSafetyIssue] = set()
 
     def check_text(value: str, field: str) -> None:
-        variants = (value,)
         if field.endswith(".source_url"):
             try:
                 url = urlsplit(value)
                 keys = {key.casefold() for key, _ in parse_qsl(url.query, keep_blank_values=True)}
                 if url.username is not None or keys & _PRIVATE_FIELDS:
                     issues.add(PublicSafetyIssue(field, "credential_url"))
+                if value and (url.scheme.casefold() not in {"http", "https"} or not url.netloc):
+                    issues.add(PublicSafetyIssue(field, "invalid_url"))
             except ValueError:
                 issues.add(PublicSafetyIssue(field, "invalid_url"))
-            # Inspect escaped credentials as well as the literal URL. Legacy URL encodings
-            # can contain non-UTF-8 escapes, which are separate from corrupt display text.
-            variants += (unquote(value, errors="ignore"),)
-        for text in variants:
+            # Inspect escaped credentials as well as the literal URL without false-flagging
+            # dated or UUID public article slugs as personal account numbers.
+            for text in (value, unquote(value, errors="ignore")):
+                if "\ufffd" in text:
+                    issues.add(PublicSafetyIssue(field, "encoding_replacement"))
+                if any(pattern.search(text) for pattern in CREDENTIAL_PATTERNS):
+                    issues.add(PublicSafetyIssue(field, "credential_pattern"))
+                if _EXPLICIT_ACCOUNT_LABEL.search(text):
+                    issues.add(PublicSafetyIssue(field, "account_like_identifier"))
+                if any(secret in text for secret in credentials):
+                    issues.add(PublicSafetyIssue(field, "configured_credential"))
+            return
+        for text in (value,):
             issues.update(PublicSafetyIssue(field, code) for code in public_text_reasons(text))
             if any(secret in text for secret in credentials):
                 issues.add(PublicSafetyIssue(field, "configured_credential"))
@@ -123,3 +143,8 @@ def stored_safety_messages(errors: object) -> list[str]:
                and (match[1] == "*" or match[1] in _PUBLIC_FIELDS) for part in parts):
             result.append(message)
     return sorted(set(result))
+
+
+def is_isolatable_item_issues(issues: list[PublicSafetyIssue]) -> bool:
+    """Return True when item-level public safety findings are non-credential external noise."""
+    return bool(issues) and all(issue.code not in CREDENTIAL_ISSUE_CODES for issue in issues)

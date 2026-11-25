@@ -6,7 +6,7 @@ import json
 import os
 import time
 from dataclasses import dataclass, replace
-from datetime import date
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
 
@@ -28,6 +28,7 @@ from daytrade_agent.operations.morning import (
 from daytrade_agent.render.site_builder import build_site
 
 RECEIPT = "receipt.json"
+INTENT_TTL = timedelta(minutes=30)
 TERMINAL_FAILURE = {
     "deployment_failed", "deployment_perms_error", "deployment_content_failed",
     "deployment_cancelled", "deployment_lost",
@@ -103,7 +104,7 @@ class Pages:
             json={"artifact_id": receipt.artifact_id, "pages_build_version": receipt.version,
                   "oidc_token": oidc},
         )
-        if response.status_code in {400, 401, 403, 404, 422}:
+        if response.status_code in {400, 401, 403, 404, 422, 429}:
             return None, f"http_{response.status_code}"
         response.raise_for_status()
         data = response.json()
@@ -134,9 +135,20 @@ def record(git: GitStore, base: str | None, receipt: Receipt) -> str:
     return commit
 
 
+def _intent_expired(receipt: Receipt, current: datetime) -> bool:
+    if receipt.phase != "intent" or receipt.deployment_id is not None:
+        return False
+    if current.date().isoformat() > receipt.report_date:
+        return True
+    if not receipt.observed_at:
+        return False
+    return current - datetime.fromisoformat(receipt.observed_at) >= INTENT_TTL
+
+
 def reconcile(
     git: GitStore, pages: Pages, base: str, receipt: Receipt, *, polls: int,
 ) -> tuple[str, Receipt]:
+    status = ""
     for poll in range(polls):
         status = pages.status(receipt)
         if status == "succeed" or status in TERMINAL_FAILURE:
@@ -154,6 +166,12 @@ def reconcile(
             return record(git, base, receipt), receipt
         if poll + 1 < polls:
             time.sleep(5)
+    observed = now_kst()
+    if status == "" and _intent_expired(receipt, observed):
+        expired = replace(
+            receipt, phase="failed", status="intent_expired", observed_at=observed.isoformat(),
+        )
+        return record(git, base, expired), expired
     raise RuntimeError(f"Pages outcome unresolved for version {receipt.version}; "
                        "automatic resubmission is fenced")
 
@@ -220,6 +238,7 @@ def deploy(git: GitStore, pages: Pages, target: str, artifact_id: int) -> None:
         artifact_digest=pages.artifact_digest(artifact_id),
         run_id=os.environ["GITHUB_RUN_ID"],
         operation_id=uuid4().hex,
+        observed_at=now_kst().isoformat(),
     )
     oidc = pages.oidc()
     base = record(git, base, receipt)

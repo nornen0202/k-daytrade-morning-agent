@@ -62,7 +62,23 @@ def run() -> None:
                 "source_id": source.source_id, "published_at": stale,
             }))
         elif case == "account_link":
-            result.sources[0].source_url = "https://synthetic.example.test/article/123-456-7890"
+            result.sources[0].source_url = (
+                "https://synthetic.example.test/article?token=secret-1234"
+            )
+        elif case == "dated_slug_and_noisy_event":
+            result.sources[0].source_url = "https://synthetic.example.test/article/2026-1125-12345"
+            noisy_src = result.sources[0].model_copy(update={
+                "source_id": "src_noisy_item",
+                "source_url": "https://synthetic.example.test/article/123-456-7890",
+            })
+            noisy_evt = result.events[0].model_copy(update={
+                "event_id": "evt_noisy_item",
+                "source_id": "src_noisy_item",
+                "source_url": noisy_src.source_url,
+                "summary": "무조건 매수 추천 연락처 031-200-1234",
+            })
+            result.sources.append(noisy_src)
+            result.events.append(noisy_evt)
         return [result]
 
     original_push = GitStore.push

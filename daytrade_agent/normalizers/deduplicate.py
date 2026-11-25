@@ -2,9 +2,21 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from datetime import UTC
 from urllib.parse import parse_qsl, urlsplit
 
 from daytrade_agent.normalizers.event_schema import Candidate, MarketEvent
+
+
+def _event_sort_timestamp(event: MarketEvent) -> tuple[bool, float]:
+    if event.published_at is None:
+        return (False, float("-inf"))
+    stamp = (
+        event.published_at.replace(tzinfo=UTC)
+        if event.published_at.tzinfo is None
+        else event.published_at
+    )
+    return (True, stamp.timestamp())
 
 
 def deduplicate_events(events: list[MarketEvent]) -> list[MarketEvent]:
@@ -29,7 +41,11 @@ def independent_events(events: list[MarketEvent]) -> list[MarketEvent]:
     seen: set[tuple[str, object]] = set()
     unique: list[MarketEvent] = []
     ordered = sorted(events, key=lambda event: (
-        event.source_quality, event.confidence, event.published_at, event.source_id, event.category,
+        event.source_quality,
+        event.confidence,
+        *_event_sort_timestamp(event),
+        event.source_id,
+        event.category,
     ), reverse=True)
     for event in ordered:
         keys: set[tuple[str, object]] = {("source", event.source_id)}

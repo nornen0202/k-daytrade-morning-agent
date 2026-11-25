@@ -12,7 +12,18 @@
   function refresh() {
     clearTimeout(timer);
     const now = Date.now();
-    if (!Number.isFinite(asOfMs) || now < asOfMs || date.format(now) !== date.format(asOfMs)) {
+    if (!Number.isFinite(asOfMs)) {
+      if (brief) brief.hidden = true;
+      notice.textContent = "사이트 갱신 시각을 확인할 수 없습니다. 현재 유효한 장전 연구가 없습니다.";
+      return;
+    }
+    if (now < asOfMs) {
+      if (brief) brief.hidden = true;
+      notice.textContent = "사이트 갱신 시각을 확인 중입니다. 잠시 후 다시 확인합니다.";
+      timer = setTimeout(refresh, Math.min(Math.max(asOfMs - now + 250, 250), 60000));
+      return;
+    }
+    if (date.format(now) !== date.format(asOfMs)) {
       if (brief) brief.hidden = true;
       notice.textContent = "사이트 갱신 시각을 확인할 수 없습니다. 현재 유효한 장전 연구가 없습니다.";
       return;
